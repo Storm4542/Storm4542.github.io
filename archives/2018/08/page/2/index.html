@@ -51,7 +51,7 @@
     </span>
 
     
-<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.png)">
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/item.png)">
   <div class="panel-main">
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
@@ -137,20 +137,6 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/Vue-动画/" title="link to post.title">Vue 动画</a></h2>
-      <p class="excerpt">
-    
-      Vue动画1.简单例子12345678&amp;lt;div id=&#34;demo&#34;&amp;gt;  &amp;lt;button v-on:click=&#34;show = !show&#34;&amp;gt;    Toggle  &amp;lt;/button&amp;gt;  &amp;lt;transition name=&#34;fade&#34;&amp;gt;    &amp;lt;p v-if=&#34;show&#34;&amp;gt;hello&amp;lt;/p&amp;gt;  &amp;lt;/transition&amp;g
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/2018/08/24/Vue-动画/">阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/08/24/写轱辘时候发现的新知识/" title="link to post.title">Vue--小知识</a></h2>
       <p class="excerpt">
     
@@ -178,16 +164,41 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/VueRouter/" title="link to post.title">Vue-Router</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/css-堆叠上下文/" title="link to post.title">CSS-堆叠上下文</a></h2>
       <p class="excerpt">
     
-      Vue-Router1.简单配置创建router.js
-1234567891011import Vue from &#39;vue&#39;import Router from &#39;vue-router&#39;import index from &#39;./components/index&#39;import user from &#39;./components/user&#39;Vue.use(Router)export default new
+      堆叠上下文1.堆叠顺序div是有空间层次关系的。
+原则：相同类型的元素，后出现的会覆盖之前的。
+层次顺序（底层-上层）： 
+
+background
+border
+块级
+浮动
+内联
+z-index : 0 ( position :relative , absolute)
+z-index :  +
+
+注意：z-index 只有在 position 不是 static 的时候才有用，比如 relativ
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/CSS/">CSS</a>
+</span><a class="btn-border-small" href="/2018/08/24/css-堆叠上下文/">阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/Vue-动画/" title="link to post.title">Vue 动画</a></h2>
+      <p class="excerpt">
+    
+      Vue动画1.简单例子12345678&amp;lt;div id=&#34;demo&#34;&amp;gt;  &amp;lt;button v-on:click=&#34;show = !show&#34;&amp;gt;    Toggle  &amp;lt;/button&amp;gt;  &amp;lt;transition name=&#34;fade&#34;&amp;gt;    &amp;lt;p v-if=&#34;show&#34;&amp;gt;hello&amp;lt;/p&amp;gt;  &amp;lt;/transition&amp;g
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/2018/08/24/VueRouter/">阅读</a></div>
+</span><a class="btn-border-small" href="/2018/08/24/Vue-动画/">阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -204,32 +215,6 @@ Vuex 使用单一状态树——是的，用一个对象就包含了全部的应
       <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/Vue/">Vue</a>
 </span><a class="btn-border-small" href="/2018/08/24/Vuex笔记/">阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/REM/" title="link to post.title">REM</a></h2>
-      <p class="excerpt">
-    
-      REM1.各种单位
-px 像素
-
-em 一个M的宽度，跟自身的 font-size 相同
-
-rem  根元素的 font-size
-
-vh : viewport height 视口高度  100vh === 视口高度
-vm: viewport width 视口宽度 100vw === 视口宽度
-
-
-2.使用REM当我们要写一个适配手机的页面的时候，我们就会陷入这样蛋疼的境地。
-因为各种品牌，各种型
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/CSS/">CSS</a>
-</span><a class="btn-border-small" href="/2018/08/24/REM/">阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -270,6 +255,32 @@ LESS 将 CSS 赋予了动态语言的特性，如 变量， 继承，运算， �
       <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/CSS/">CSS</a>
 </span><a class="btn-border-small" href="/2018/08/24/移动页面/">阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/REM/" title="link to post.title">REM</a></h2>
+      <p class="excerpt">
+    
+      REM1.各种单位
+px 像素
+
+em 一个M的宽度，跟自身的 font-size 相同
+
+rem  根元素的 font-size
+
+vh : viewport height 视口高度  100vh === 视口高度
+vm: viewport width 视口宽度 100vw === 视口宽度
+
+
+2.使用REM当我们要写一个适配手机的页面的时候，我们就会陷入这样蛋疼的境地。
+因为各种品牌，各种型
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/CSS/">CSS</a>
+</span><a class="btn-border-small" href="/2018/08/24/REM/">阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   

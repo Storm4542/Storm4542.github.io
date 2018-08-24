@@ -140,32 +140,14 @@
       <h2 class="post-list__post-title post-title"><a href="/2018/08/24/Array/" title="link to post.title">Array--方法</a></h2>
       <p class="excerpt">
     
-      ##1.Array
-1.join12var array = [1,2,3]array.join(&#39;-&#39;) // 1-2-3
+      1.Array1.join12var array = [1,2,3]array.join(&#39;-&#39;) // 1-2-3
 猜测一下源码
-12345678Array.prototype.join = function(char)&amp;#123;  let result = this[0] || &#39;&#39;;  let length = this.length;  for( let i = 1 ; i &amp;lt
+12345678Array.prototype.join = function(char)&amp;#123;  let result = this[0] || &#39;&#39;;  let length = this.length;  for( let i = 1 ; i &amp;lt; l
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
 </span><a class="btn-border-small" href="/2018/08/24/Array/">阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/MVC/" title="link to post.title">前端中的MVC</a></h2>
-      <p class="excerpt">
-    
-      前端中的MVC需求:通过AJAX获取数据，展示一个图书的书名，数量，并且用户可以修改数量，并上传到服务器。
-###1.意大利面条写法
-1&amp;lt;div id=&#34;app&#34;&amp;gt; &amp;lt;/div&amp;gt;
-1234567891011121314151617181920212223242526272829303132333435363738394041424344/*因为没有后台，默认bookdata
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/2018/08/24/MVC/">阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -193,6 +175,23 @@ se
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/MVC/" title="link to post.title">前端中的MVC</a></h2>
+      <p class="excerpt">
+    
+      前端中的MVC需求:通过AJAX获取数据，展示一个图书的书名，数量，并且用户可以修改数量，并上传到服务器。
+###1.意大利面条写法
+1&amp;lt;div id=&#34;app&#34;&amp;gt; &amp;lt;/div&amp;gt;
+1234567891011121314151617181920212223242526272829303132333435363738394041424344/*因为没有后台，默认bookdata
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/2018/08/24/MVC/">阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/08/24/关于函数/" title="link to post.title">JavaScript里的函数是什么</a></h2>
       <p class="excerpt">
     
@@ -213,6 +212,29 @@ se
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/封装和继承/" title="link to post.title">封装和继承</a></h2>
+      <p class="excerpt">
+    
+      1.封装和继承​    i 封装
+​    为了隐藏细节
+​    ii 继承
+​    为了复用代码
+​    iii 多态
+​    灵活
+####1.1原型链(对象与对象之间的关系)
+12var obj1 = &amp;#123;name:&#39;1&#39;&amp;#125;;window.Object.prototype === obj.__proto__; //true
+
+上面的原型链图形象的表示了他们之间的关系
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/2018/08/24/封装和继承/">阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/08/24/异步/" title="link to post.title">JavaScript中的异步</a></h2>
       <p class="excerpt">
     
@@ -224,29 +246,6 @@ se
       <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
 </span><a class="btn-border-small" href="/2018/08/24/异步/">阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/封装和继承/" title="link to post.title">封装和继承</a></h2>
-      <p class="excerpt">
-    
-      封装和继承1.封装和继承​    i 封装
-​    为了隐藏细节
-​    ii 继承
-​    为了复用代码
-​    iii 多态
-​    灵活
-####1.1原型链(对象与对象之间的关系)
-12var obj1 = &amp;#123;name:&#39;1&#39;&amp;#125;;window.Object.prototype === obj.__proto__; //true
-
-上面的原型链图形象的表示了他们
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/2018/08/24/封装和继承/">阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   

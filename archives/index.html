@@ -140,10 +140,9 @@
       <h2 class="post-list__post-title post-title"><a href="/2018/08/24/Array/" title="link to post.title">Array--方法</a></h2>
       <p class="excerpt">
     
-      ##1.Array
-1.join12var array = [1,2,3]array.join(&#39;-&#39;) // 1-2-3
+      1.Array1.join12var array = [1,2,3]array.join(&#39;-&#39;) // 1-2-3
 猜测一下源码
-12345678Array.prototype.join = function(char)&amp;#123;  let result = this[0] || &#39;&#39;;  let length = this.length;  for( let i = 1 ; i &amp;lt
+12345678Array.prototype.join = function(char)&amp;#123;  let result = this[0] || &#39;&#39;;  let length = this.length;  for( let i = 1 ; i &amp;lt; l
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
@@ -199,51 +198,6 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/封装和继承/" title="link to post.title">封装和继承</a></h2>
-      <p class="excerpt">
-    
-      封装和继承1.封装和继承​    i 封装
-​    为了隐藏细节
-​    ii 继承
-​    为了复用代码
-​    iii 多态
-​    灵活
-####1.1原型链(对象与对象之间的关系)
-12var obj1 = &amp;#123;name:&#39;1&#39;&amp;#125;;window.Object.prototype === obj.__proto__; //true
-
-上面的原型链图形象的表示了他们
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/2018/08/24/封装和继承/">阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/Http/" title="link to post.title">HTTP</a></h2>
-      <p class="excerpt">
-    
-      HTTP1.HTTP为什么重要
-HTTP 是前后端合作的重要方式99%的需求都是通过 HTTP 做到，小部分需求可以通过 WebSockets 做到。
-HTTP 能帮你从本质上理解 HTML、CSS、JS、图片、JSON、JSONP 等不同形式的资源
-Web 性能优化基本等价于对 HTTP 传输效率优化
-前端工程化需要你对 HTTP 缓存有深入了解
-
-2.什么是HTTP####1.四个概念
-
-se
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/2018/08/24/Http/">阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/08/24/异步/" title="link to post.title">JavaScript中的异步</a></h2>
       <p class="excerpt">
     
@@ -276,6 +230,29 @@ se
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/封装和继承/" title="link to post.title">封装和继承</a></h2>
+      <p class="excerpt">
+    
+      1.封装和继承​    i 封装
+​    为了隐藏细节
+​    ii 继承
+​    为了复用代码
+​    iii 多态
+​    灵活
+####1.1原型链(对象与对象之间的关系)
+12var obj1 = &amp;#123;name:&#39;1&#39;&amp;#125;;window.Object.prototype === obj.__proto__; //true
+
+上面的原型链图形象的表示了他们之间的关系
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/2018/08/24/封装和继承/">阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/08/24/关于函数/" title="link to post.title">JavaScript里的函数是什么</a></h2>
       <p class="excerpt">
     
@@ -296,44 +273,54 @@ se
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/单元测试/" title="link to post.title">单元测试</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/Http/" title="link to post.title">HTTP</a></h2>
       <p class="excerpt">
     
-      单元测试1.BDD&amp;amp;&amp;amp;TDD
-BDD( Behavior-Driven-Development ):行为驱动开发 , 主要是设计一些行为,进行对代码的测试
-12345describe(&#39;Button&#39;,()=&amp;gt;&amp;#123;  //Mocha语法,下面会介绍Mocha  it(&#39;存在&#39;,()=&amp;gt;&amp;#123;    //测试  &amp;#125;)&amp;#125;)
-这样的写法,我们
+      HTTP1.HTTP为什么重要
+HTTP 是前后端合作的重要方式99%的需求都是通过 HTTP 做到，小部分需求可以通过 WebSockets 做到。
+HTTP 能帮你从本质上理解 HTML、CSS、JS、图片、JSON、JSONP 等不同形式的资源
+Web 性能优化基本等价于对 HTTP 传输效率优化
+前端工程化需要你对 HTTP 缓存有深入了解
+
+2.什么是HTTP####1.四个概念
+
+se
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/2018/08/24/单元测试/">阅读</a></div>
+</span><a class="btn-border-small" href="/2018/08/24/Http/">阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/css-堆叠上下文/" title="link to post.title">CSS-堆叠上下文</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/LESS/" title="link to post.title">LESS</a></h2>
       <p class="excerpt">
     
-      堆叠上下文1.堆叠顺序div是有空间层次关系的。
-原则：相同类型的元素，后出现的会覆盖之前的。
-层次顺序（底层-上层）： 
-
-background
-border
-块级
-浮动
-内联
-z-index : 0 ( position :relative , absolute)
-z-index :  +
-
-注意：z-index 只有在 position 不是 static 的时候才有用，比如 relativ
+      LESS1.LESS是什么LESS是一种动态样式语言。
+LESS 将 CSS 赋予了动态语言的特性，如 变量， 继承，运算， 函数. LESS 既可以在 客户端 上运行 (支持IE 6+, Webkit, Firefox)，也可以借助Node.js或者Rhino在服务端运行。
+2.基本用法1.变量12@border-color:#fff;div&amp;#123;border:1px solid @bor
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/CSS/">CSS</a>
-</span><a class="btn-border-small" href="/2018/08/24/css-堆叠上下文/">阅读</a></div>
+</span><a class="btn-border-small" href="/2018/08/24/LESS/">阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/VueRouter/" title="link to post.title">Vue-Router</a></h2>
+      <p class="excerpt">
+    
+      Vue-Router1.简单配置创建router.js
+1234567891011import Vue from &#39;vue&#39;import Router from &#39;vue-router&#39;import index from &#39;./components/index&#39;import user from &#39;./components/user&#39;Vue.use(Router)export default new
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+</span><a class="btn-border-small" href="/2018/08/24/VueRouter/">阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   

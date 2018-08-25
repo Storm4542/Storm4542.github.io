@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="z">
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <title>JavaScript中的异步 | Storm</title>
     <meta name="renderer" content="webkit">
@@ -32,17 +32,16 @@
     <link rel="icon" href="/images/fav.png">
     
 
-    <meta name="generator" content="hexo"/>
+    <meta name="generator" content="hexo">
     
     <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2018/08/24/异步/"/>
+    <link rel="canonical" href="http://storm4542.githu.io/2018/08/24/异步/">
 
                  
 </head>
-
-<meta name="google-site-verification" content="gqIfH8k5Yrebjr0rXQOo076C4Xo73cRFOPfXfESlocA" />
+</html>
 <body class="home-template no-js">
     <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
     <script src="/js/main.js"></script>
@@ -57,14 +56,14 @@
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
 
-        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo" /></a>
+        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo"></a>
         <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Storm">Storm</a></h1>
         
         <span class="panel-cover__subtitle panel-subtitle">求知若饥 虚怀若谷</span>
         
-        <hr class="panel-cover__divider" />
+        <hr class="panel-cover__divider">
         <p class="panel-cover__description">前端 | 开发 | 学习</p>
-        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
 
         <div class="navigation-wrapper">
           <div>
@@ -87,8 +86,8 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank">
-      <i class='social fa fa-github'></i>
+    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank" rel="external nofollow noopener noreferrer">
+      <i class="social fa fa-github"></i>
       <span class="label">Github</span>
     </a>
   </li>
@@ -109,7 +108,7 @@
 
   <li class="navigation__item">
     <a href="/atom.xml" title="RSS" target="_blank">
-      <i class='social fa fa-rss'></i>
+      <i class="social fa fa-rss"></i>
       <span class="label">RSS</span>
     </a>
   </li>
@@ -157,12 +156,12 @@
 <h3 id="2-前端经常用到的异步"><a href="#2-前端经常用到的异步" class="headerlink" title="2.前端经常用到的异步"></a>2.前端经常用到的异步</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'img'</span>)[<span class="number">0</span>].width;</span><br><span class="line"><span class="built_in">console</span>.log(w) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
 <p>明明有图片，为什么宽度为0呢？</p>
 <p>因为图片加载需要时间。</p>
-<p><a href="http://jsbin.com/juwaxar/1/edit?html,js,output" target="_blank" rel="noopener">例子</a></p>
+<p><a href="http://jsbin.com/juwaxar/1/edit?html,js,output" rel="external nofollow noopener noreferrer" target="_blank">例子</a></p>
 <p>注意把 Network 的缓存禁用，可以看到效果</p>
 <h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>在图片加载完成后会有一个 <code>onload</code>事件</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'img'</span>)[<span class="number">0</span>];</span><br><span class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(img.width) <span class="comment">//400</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="3-遍历的异步"><a href="#3-遍历的异步" class="headerlink" title="3.遍历的异步"></a>3.遍历的异步</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> li_List =<span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;li_List.length;i++)&#123;</span><br><span class="line">  li_List[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//期望值：点击哪一个 li ， 就会出现该 li 的序号</span></span><br><span class="line"><span class="comment">//结果：打印出的结果会全部都是 n+1</span></span><br><span class="line"><span class="comment">//原因：var i= 0，变量声明提升，会导致循环里用的都是一个 i ，i 最后循环结果会变为 n+1 </span></span><br><span class="line"><span class="comment">//解决方法: let i = 0 ,let 在每次循环的时候都会制造一个分身，绑定到该 li_List[i]上</span></span><br><span class="line"><span class="comment">//哪里的异步？ li_List[i].onClick = function()&#123;&#125; JS没有功夫等你触发 onclick 事件，直接进行了下一步 i++</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://jsbin.com/juwaxar/3/edit?html,js,output" target="_blank" rel="noopener">例子</a></p>
+<p><a href="http://jsbin.com/juwaxar/3/edit?html,js,output" rel="external nofollow noopener noreferrer" target="_blank">例子</a></p>
 <h3 id="4-AJAX中的异步"><a href="#4-AJAX中的异步" class="headerlink" title="4.AJAX中的异步"></a>4.AJAX中的异步</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> requsest = $.ajax(&#123;</span><br><span class="line">  url:<span class="string">'.'</span>,</span><br><span class="line">  <span class="keyword">async</span>:<span class="literal">false</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(request.responseText);</span><br><span class="line"><span class="comment">//同步的ajax ， 在请求过程中，JS会一直等待响应，非常浪费资源</span></span><br><span class="line"></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">  url:<span class="string">'.'</span>,</span><br><span class="line">  <span class="keyword">async</span>:<span class="literal">true</span>,</span><br><span class="line">  success:<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'OK'</span>)</span><br><span class="line"><span class="comment">//结果 ： OK  res</span></span><br><span class="line"><span class="comment">//异步的ajax </span></span><br><span class="line"><span class="comment">// 为什么使用 success 接收请求？ 因为这是异步的，使用 var xx = $.ajax(&#123;&#125;) 是得不到任何数据的，所以我们告诉浏览器，当接收到请求的时候再用 success 处理</span></span><br></pre></td></tr></table></figure>
 <h3 id="5-异步拿到结果的形式"><a href="#5-异步拿到结果的形式" class="headerlink" title="5.异步拿到结果的形式"></a>5.异步拿到结果的形式</h3><p>两种方式</p>
 <ol>
@@ -183,9 +182,9 @@
 <p>succ1 return 的值会传入 succ2的参数</p>
 <p>手动失败 <code>return Promise.reject(&#39;xxx&#39;)</code></p>
 <p>catch可以放在最后搞定之前没写 失败函数的then ，但是 .catch((err)=&gt;{}) ===  .then(undefined,(err)=&gt;{})</p>
-<p><a href="http://jsbin.com/nituloc/edit?html,js,console,output" target="_blank" rel="noopener">例子</a></p>
+<p><a href="http://jsbin.com/nituloc/edit?html,js,console,output" rel="external nofollow noopener noreferrer" target="_blank">例子</a></p>
 <h3 id="7-手写一个Promise"><a href="#7-手写一个Promise" class="headerlink" title="7.手写一个Promise"></a>7.手写一个Promise</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resovle,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    	<span class="comment">//做事情</span></span><br><span class="line">    	<span class="comment">// 成功resovle</span></span><br><span class="line">    	<span class="comment">// 失败 reject</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buy</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res,rej</span>)=&gt;</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      res(<span class="string">'apple'</span>)</span><br><span class="line">    &#125;,<span class="number">2000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">buy().then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;<span class="built_in">console</span>.log(res)&#125;,(err)=&gt;&#123;<span class="built_in">console</span>.log(err)&#125;)</span><br></pre></td></tr></table></figure>
-<p><a href="http://jsbin.com/logenof/2/edit?html,js,output" target="_blank" rel="noopener">例子</a></p>
+<p><a href="http://jsbin.com/logenof/2/edit?html,js,output" rel="external nofollow noopener noreferrer" target="_blank">例子</a></p>
 <h3 id="8-async-await"><a href="#8-async-await" class="headerlink" title="8.async/await"></a>8.async/await</h3><p>以同步的方式写异步</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buy</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res,rej</span>)=&gt;</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      res(<span class="string">'apple'</span>)</span><br><span class="line">    &#125;,<span class="number">2000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> res = <span class="keyword">await</span> buy();</span><br></pre></td></tr></table></figure>
 
@@ -199,26 +198,6 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/关于函数/" title="JavaScript里的函数是什么">JavaScript里的函数是什么</a></h2>
-                <p class="excerpt">
-                
-                1.定义i 匿名函数
-​    var fn = function(){return 1} 有name fn.name = &amp;#39;fn&amp;#39;
-​    ii 具名函数
-​    function fn(){ return 1}
-​    var fn2 = function fn3(){ r
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/2018/08/24/关于函数/">阅读</a></div>
-                           
-            </div>
-        
-        
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/08/24/封装和继承/" title="封装和继承">封装和继承</a></h2>
                 <p class="excerpt">
                 
@@ -235,6 +214,31 @@
                 <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
 </span><a class="btn-border-small" href="/2018/08/24/封装和继承/">阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/重构/" title="重构">重构</a></h2>
+                <p class="excerpt">
+                
+                1.代码优化基本原则1.易读性优先
+2.如果不是性能瓶颈，就不要为了性能改代码
+3.复杂性守恒原则：无论你怎么写代码，复杂性都是不会消失的推论：如果逻辑很复杂，那么代码看起来就应该是复杂的。如果逻辑很简单，代码看起来就应该是简单的。
+2.命名程序员三大难题
+
+变量命名
+缓存失效
+循环边界
+
+可见变量
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/2018/08/24/重构/">阅读</a></div>
                        
             </div>
         
@@ -252,7 +256,7 @@
           
       var disqus_identifier = '/2018/08/24/异步/';
       var disqus_title = 'JavaScript中的异步';
-      var disqus_url = 'http://yoursite.com/2018/08/24/异步/';
+      var disqus_url = 'http://storm4542.githu.io/2018/08/24/异步/';
       
     
           /* * * DON'T EDIT BELOW THIS LINE * * */
@@ -263,18 +267,18 @@
               (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
       </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+      <a href="https://disqus.com" class="dsq-brlink" rel="external nofollow noopener noreferrer" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
     </section>
     
 
             <footer class="footer">
     <span class="footer__copyright">
-        &copy; 2018 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+        &copy; 2018 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
        
     </span>
     <span class="footer__copyright">
-             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+             - 基于 <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno " rel="external nofollow noopener noreferrer" target="_blank">new-vno</a> 主题，由<a href="https://monniya.com " rel="external nofollow noopener noreferrer" target="_blank">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external nofollow noopener noreferrer">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank" rel="external nofollow noopener noreferrer">onevcat</a>
          </span>
        
     
@@ -313,4 +317,4 @@
     
     
 </body>
-</html>
+

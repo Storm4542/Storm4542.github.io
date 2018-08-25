@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="z">
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <title>重构 | Storm</title>
     <meta name="renderer" content="webkit">
@@ -32,17 +32,16 @@
     <link rel="icon" href="/images/fav.png">
     
 
-    <meta name="generator" content="hexo"/>
+    <meta name="generator" content="hexo">
     
     <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2018/08/24/重构/"/>
+    <link rel="canonical" href="http://storm4542.githu.io/2018/08/24/重构/">
 
                  
 </head>
-
-<meta name="google-site-verification" content="gqIfH8k5Yrebjr0rXQOo076C4Xo73cRFOPfXfESlocA" />
+</html>
 <body class="home-template no-js">
     <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
     <script src="/js/main.js"></script>
@@ -57,14 +56,14 @@
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
 
-        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo" /></a>
+        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo"></a>
         <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Storm">Storm</a></h1>
         
         <span class="panel-cover__subtitle panel-subtitle">求知若饥 虚怀若谷</span>
         
-        <hr class="panel-cover__divider" />
+        <hr class="panel-cover__divider">
         <p class="panel-cover__description">前端 | 开发 | 学习</p>
-        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
 
         <div class="navigation-wrapper">
           <div>
@@ -87,8 +86,8 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank">
-      <i class='social fa fa-github'></i>
+    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank" rel="external nofollow noopener noreferrer">
+      <i class="social fa fa-github"></i>
       <span class="label">Github</span>
     </a>
   </li>
@@ -109,7 +108,7 @@
 
   <li class="navigation__item">
     <a href="/atom.xml" title="RSS" target="_blank">
-      <i class='social fa fa-rss'></i>
+      <i class="social fa fa-rss"></i>
       <span class="label">RSS</span>
     </a>
   </li>
@@ -158,7 +157,7 @@
 <li>循环边界</li>
 </ol>
 <p>可见变量命名的重要性。</p>
-<p><a href="https://www.google.com/search?q=github+%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83" target="_blank" rel="noopener">网上有很多命名规范</a>，大家可以参考。这里只讲基本原则。</p>
+<p><a href="https://www.google.com/search?q=github+%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83" rel="external nofollow noopener noreferrer" target="_blank">网上有很多命名规范</a>，大家可以参考。这里只讲基本原则。</p>
 <ol>
 <li><p>注意词性</p>
 <ul>
@@ -220,7 +219,7 @@
 </ol>
 <h3 id="二、使用对象来改代码"><a href="#二、使用对象来改代码" class="headerlink" title="二、使用对象来改代码"></a>二、使用对象来改代码</h3><p>如果使用了函数改造法改造后，发现有太多的小函数，则可以使用对象讲这个函数串起来。</p>
 <p>记得我们讲过「this 是函数和对象的桥梁」吗，我们会用 this 来串联这个对象和所有函数。</p>
-<p>最终代码：<a href="http://js.jirengu.com/mimazaboke/1/edit?html,js,output" target="_blank" rel="noopener">http://js.jirengu.com/mimazaboke/1/edit?html,js,output</a></p>
+<p>最终代码：<a href="http://js.jirengu.com/mimazaboke/1/edit?html,js,output" rel="external nofollow noopener noreferrer" target="_blank">http://js.jirengu.com/mimazaboke/1/edit?html,js,output</a></p>
 <h3 id="一些固定的套路"><a href="#一些固定的套路" class="headerlink" title="一些固定的套路"></a>一些固定的套路</h3><ol>
 <li><p>表驱动编程（《代码大全》里说的）<br>所有一一对应的关系都可以用表来做</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//传入分数，返回等级</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculateGrade</span>(<span class="params">score</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(score&gt;=<span class="number">90</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'A'</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score&gt;=<span class="number">80</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'B'</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score&gt;=<span class="number">70</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'C'</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score&gt;=<span class="number">60</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'D'</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'E'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//表驱动编程</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculateGrade</span>(<span class="params">score</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> table = &#123;</span><br><span class="line">        <span class="number">10</span> : <span class="string">'A'</span>,</span><br><span class="line">        <span class="number">9</span> : <span class="string">'A'</span>,</span><br><span class="line">        <span class="number">8</span> : <span class="string">'B'</span>,</span><br><span class="line">        <span class="number">7</span> : <span class="string">'C'</span>,</span><br><span class="line">        <span class="number">6</span> : <span class="string">'D'</span>,</span><br><span class="line">        others : <span class="string">'E'</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> level = <span class="built_in">parseInt</span>(score/<span class="number">10</span> , <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">return</span> table[level] || table[<span class="string">'others'</span>] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -255,18 +254,17 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/Http/" title="HTTP">HTTP</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/异步/" title="JavaScript中的异步">JavaScript中的异步</a></h2>
                 <p class="excerpt">
                 
-                HTTP1.HTTP为什么重要
-HTTP 是前后端合作的重要方式99%的需求都是通过 HTTP 做到，小部分需求可以通过 WebSockets 做到。
-HTTP 能帮你从本质上理解 HTML、CSS、JS、图片、JSON、JSONP 等不同形式的资源
-Web 性能优化基本等价于对 HTTP 传输效率
+                异步—代码烧脑的原因1.同步和异步同步：等待结果
+异步： 不等待结果
+1234567891011121314//同步function sleep(seconds)&amp;#123;  var a = new Date();  while(new Date() - a &amp;lt; seconds * 1000
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/2018/08/24/Http/">阅读</a></div>
+</span><a class="btn-border-small" href="/2018/08/24/异步/">阅读</a></div>
                            
             </div>
         
@@ -274,27 +272,17 @@ Web 性能优化基本等价于对 HTTP 传输效率
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/css-堆叠上下文/" title="CSS-堆叠上下文">CSS-堆叠上下文</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/制作一个vue的tabs轮子/" title="制作一个基于Vue的Tabs轮子">制作一个基于Vue的Tabs轮子</a></h2>
                 <p class="excerpt">
                 
-                堆叠上下文1.堆叠顺序div是有空间层次关系的。
-原则：相同类型的元素，后出现的会覆盖之前的。
-层次顺序（底层-上层）： 
-
-background
-border
-块级
-浮动
-内联
-z-index : 0 ( position :relative , absolute)
-z-index :  +
-
-注
+                tabs轮子制作1.先简单实现一下1&amp;lt;div id=&#39;app&#39;&amp;gt;&amp;lt;/div&amp;gt;
+1.active&amp;#123;background:red&amp;#125;
+1234567891011121314151617181920var vm = new Vue(&amp;#123;    el: &#39;#
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/CSS/">CSS</a>
-</span><a class="btn-border-small" href="/2018/08/24/css-堆叠上下文/">阅读</a></div>
+                <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+</span><a class="btn-border-small" href="/2018/08/24/制作一个vue的tabs轮子/">阅读</a></div>
                        
             </div>
         
@@ -312,7 +300,7 @@ z-index :  +
           
       var disqus_identifier = '/2018/08/24/重构/';
       var disqus_title = '重构';
-      var disqus_url = 'http://yoursite.com/2018/08/24/重构/';
+      var disqus_url = 'http://storm4542.githu.io/2018/08/24/重构/';
       
     
           /* * * DON'T EDIT BELOW THIS LINE * * */
@@ -323,18 +311,18 @@ z-index :  +
               (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
       </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+      <a href="https://disqus.com" class="dsq-brlink" rel="external nofollow noopener noreferrer" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
     </section>
     
 
             <footer class="footer">
     <span class="footer__copyright">
-        &copy; 2018 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+        &copy; 2018 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
        
     </span>
     <span class="footer__copyright">
-             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+             - 基于 <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno " rel="external nofollow noopener noreferrer" target="_blank">new-vno</a> 主题，由<a href="https://monniya.com " rel="external nofollow noopener noreferrer" target="_blank">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external nofollow noopener noreferrer">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank" rel="external nofollow noopener noreferrer">onevcat</a>
          </span>
        
     
@@ -373,4 +361,4 @@ z-index :  +
     
     
 </body>
-</html>
+

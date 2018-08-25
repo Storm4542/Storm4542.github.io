@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="z">
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <title>Vue--小知识 | Storm</title>
     <meta name="renderer" content="webkit">
@@ -32,17 +32,16 @@
     <link rel="icon" href="/images/fav.png">
     
 
-    <meta name="generator" content="hexo"/>
+    <meta name="generator" content="hexo">
     
     <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2018/08/24/写轱辘时候发现的新知识/"/>
+    <link rel="canonical" href="http://storm4542.githu.io/2018/08/24/写轱辘时候发现的新知识/">
 
                  
 </head>
-
-<meta name="google-site-verification" content="gqIfH8k5Yrebjr0rXQOo076C4Xo73cRFOPfXfESlocA" />
+</html>
 <body class="home-template no-js">
     <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
     <script src="/js/main.js"></script>
@@ -57,14 +56,14 @@
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
 
-        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo" /></a>
+        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo"></a>
         <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Storm">Storm</a></h1>
         
         <span class="panel-cover__subtitle panel-subtitle">求知若饥 虚怀若谷</span>
         
-        <hr class="panel-cover__divider" />
+        <hr class="panel-cover__divider">
         <p class="panel-cover__description">前端 | 开发 | 学习</p>
-        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
 
         <div class="navigation-wrapper">
           <div>
@@ -87,8 +86,8 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank">
-      <i class='social fa fa-github'></i>
+    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank" rel="external nofollow noopener noreferrer">
+      <i class="social fa fa-github"></i>
       <span class="label">Github</span>
     </a>
   </li>
@@ -109,7 +108,7 @@
 
   <li class="navigation__item">
     <a href="/atom.xml" title="RSS" target="_blank">
-      <i class='social fa fa-rss'></i>
+      <i class="social fa fa-rss"></i>
       <span class="label">RSS</span>
     </a>
   </li>
@@ -196,17 +195,17 @@
 <p>然后就可以使用了</p>
 <h3 id="5-Element-getBoundingClientRect"><a href="#5-Element-getBoundingClientRect" class="headerlink" title="5.Element.getBoundingClientRect()"></a>5.Element.getBoundingClientRect()</h3><p>返回Element的大小以及相对与视口的位置。</p>
 <p>在使用<code>vm.$el.style.height</code>获取不到高度等属性的时候可以尝试使用它</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">文档</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" rel="external nofollow noopener noreferrer" target="_blank">文档</a></p>
 <h3 id="6-ref"><a href="#6-ref" class="headerlink" title="6.ref"></a>6.ref</h3><p>在Toast里使用了ref。</p>
 <p>在普通的DOM 元素上使用，引用指向的就是 DOM 元素</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">ref</span>=<span class="string">'test'</span>&gt;</span></span><br><span class="line">        123</span><br><span class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取	</span></span><br><span class="line"><span class="keyword">this</span>.$refs.test <span class="comment">// &lt;p&gt;123&lt;/p&gt; 获取node元素</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://cn.vuejs.org/v2/api/#ref" target="_blank" rel="noopener">文档</a></p>
+<p><a href="https://cn.vuejs.org/v2/api/#ref" rel="external nofollow noopener noreferrer" target="_blank">文档</a></p>
 <p>如果用在子组件上，引用就指向组件实例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">child</span> <span class="attr">ref</span>=<span class="string">'child'</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="7-vm-slots"><a href="#7-vm-slots" class="headerlink" title="7.vm.$slots"></a>7.vm.$slots</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span> = <span class="string">'header'</span>&gt;</span></span><br><span class="line">  header</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.$slot.header<span class="comment">//header</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://cn.vuejs.org/v2/api/#vm-slots" target="_blank" rel="noopener">文档</a></p>
+<p><a href="https://cn.vuejs.org/v2/api/#vm-slots" rel="external nofollow noopener noreferrer" target="_blank">文档</a></p>
 <h3 id="8-元素放到最后面"><a href="#8-元素放到最后面" class="headerlink" title="8.元素放到最后面"></a>8.元素放到最后面</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;<span class="attribute">margin-left</span>:auto&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="9-EventBus"><a href="#9-EventBus" class="headerlink" title="9.EventBus"></a>9.EventBus</h3><p>当我们写父子传参,爷儿孙传参的时候,可以使用EventBus,会很方便.</p>
 <p>因为Vue是不允许儿子改变父亲的值,只能告诉父亲我要改了,父亲再改</p>
@@ -266,6 +265,26 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/css-宽度高度，对齐/" title="CSS-宽度高度，对齐">CSS-宽度高度，对齐</a></h2>
+                <p class="excerpt">
+                
+                CSS记住：能不用 height width 就不用他们，使用 padding ,  line-height 来替代
+1.中文对齐
+当我要写一个表单，有姓名和联系方式，需要姓和联对齐，名和式对齐。如何去做？
+
+123&amp;lt;span&amp;gt;姓名&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;&amp;lt;s
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/CSS/">CSS</a>
+</span><a class="btn-border-small" href="/2018/08/24/css-宽度高度，对齐/">阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/08/24/Vuex笔记/" title="Vuex">Vuex</a></h2>
                 <p class="excerpt">
                 
@@ -277,23 +296,6 @@ Vuex 使用单一状态树——是的，用一个对象就包含了全部的应
                 <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/Vue/">Vue</a>
 </span><a class="btn-border-small" href="/2018/08/24/Vuex笔记/">阅读</a></div>
-                           
-            </div>
-        
-        
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/VueRouter/" title="Vue-Router">Vue-Router</a></h2>
-                <p class="excerpt">
-                
-                Vue-Router1.简单配置创建router.js
-1234567891011import Vue from &#39;vue&#39;import Router from &#39;vue-router&#39;import index from &#39;./components/index&#39;import user from &#39;.
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/2018/08/24/VueRouter/">阅读</a></div>
                        
             </div>
         
@@ -311,7 +313,7 @@ Vuex 使用单一状态树——是的，用一个对象就包含了全部的应
           
       var disqus_identifier = '/2018/08/24/写轱辘时候发现的新知识/';
       var disqus_title = 'Vue--小知识';
-      var disqus_url = 'http://yoursite.com/2018/08/24/写轱辘时候发现的新知识/';
+      var disqus_url = 'http://storm4542.githu.io/2018/08/24/写轱辘时候发现的新知识/';
       
     
           /* * * DON'T EDIT BELOW THIS LINE * * */
@@ -322,18 +324,18 @@ Vuex 使用单一状态树——是的，用一个对象就包含了全部的应
               (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           })();
       </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+      <a href="https://disqus.com" class="dsq-brlink" rel="external nofollow noopener noreferrer" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
     </section>
     
 
             <footer class="footer">
     <span class="footer__copyright">
-        &copy; 2018 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+        &copy; 2018 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
        
     </span>
     <span class="footer__copyright">
-             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+             - 基于 <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno " rel="external nofollow noopener noreferrer" target="_blank">new-vno</a> 主题，由<a href="https://monniya.com " rel="external nofollow noopener noreferrer" target="_blank">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external nofollow noopener noreferrer">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank" rel="external nofollow noopener noreferrer">onevcat</a>
          </span>
        
     
@@ -372,4 +374,4 @@ Vuex 使用单一状态树——是的，用一个对象就包含了全部的应
     
     
 </body>
-</html>
+

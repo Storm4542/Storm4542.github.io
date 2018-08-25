@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>CSS-宽度高度，对齐 | Storm</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="前端 | Vue | JavaScript | css">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="CSS-宽度高度，对齐 | Storm">
+    <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="CSS-宽度高度，对齐 | Storm">
+    <meta property="og:description" content="前端 | Vue | JavaScript | css">
+
+    
+    <meta name="author" content="Storm">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/fav.png">
+    
+
+    <meta name="generator" content="hexo">
+    
+    <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https://storm4542.github.io/archives/422899b1.html">
+
+                 
+</head>
+</html>
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/item.png)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo"></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Storm">Storm</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">求知若饥 虚怀若谷</span>
+        
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">前端 | WEB | VUE</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank" rel="external nofollow noopener noreferrer">
+      <i class="social fa fa-github"></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class="social fa fa-rss"></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/CSS/">CSS</a>
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">CSS-宽度高度，对齐</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p><strong>记住：能不用 height width 就不用他们，使用 padding ,  line-height 来替代</strong></p>
+<h4 id="1-中文对齐"><a href="#1-中文对齐" class="headerlink" title="1.中文对齐"></a>1.中文对齐</h4><ul>
+<li>当我要写一个表单，有<strong>姓名</strong>和<strong>联系方式</strong>，需要姓和联对齐，名和式对齐。如何去做？</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>联系方式<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:inline-block;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">5em</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:justify;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">overflow</span>:hidden</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>:inline-block;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>当我有很多文字，靠到最右边要换行了，发现文字和最右边有间距怎么办?</p>
+<p><code>text-align:justify</code></p>
+</li>
+</ul>
+<h4 id="2-空格问题"><a href="#2-空格问题" class="headerlink" title="2.空格问题"></a>2.空格问题</h4><p>HTML会把两个 inline 元素之间看不见的字符都替换为一个空格，包括空格、TAB、回车。</p>
+<p>所以有时候就会莫名其妙中间多一个空格，因为代码里有回车。</p>
+<p><strong>解决方法：不用 inline 元素。</strong></p>
+<h4 id="3-清除浮动"><a href="#3-清除浮动" class="headerlink" title="3.清除浮动"></a>3.清除浮动</h4><p>在浮动元素的爸爸身上加一个 class </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">clearfix</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>:block;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-文字中断"><a href="#4-文字中断" class="headerlink" title="4.文字中断"></a>4.文字中断</h4><p>有时候文字太长了超出屏幕了，两种解决方式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>helooooooooooooooooooooooooooooooooooooooooooooooooo<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面这种情况下浏览器会认为这是一个单词，一个单词是不会自动换行的。</p>
+<p>可以加分隔符</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>helooooooo-ooooooooo-ooooooooo-oooooooo-ooooooo-ooooo-oooo<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以使用 word-break</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span> &#123; <span class="attribute">word-break</span>:break-all &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-文字溢出省略"><a href="#5-文字溢出省略" class="headerlink" title="5.文字溢出省略"></a>5.文字溢出省略</h4><p>当文字的长度超出了 div 的宽度，多余的部分，我们想用省略号代替。</p>
+<ul>
+<li>一行的时候</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">white-space</span>:nowrap; </span><br><span class="line">    <span class="attribute">overflow</span>:hidden;</span><br><span class="line">    <span class="attribute">text-overflow</span>:ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>多行</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">      <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">      <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;   <span class="comment">/*3行写3，n行写n */</span></span><br><span class="line">      <span class="attribute">-webkit-box-orient</span>: vertical;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="6-文字垂直居中"><a href="#6-文字垂直居中" class="headerlink" title="6.文字垂直居中"></a>6.文字垂直居中</h4><p>Div 的高度是跟随你文字的行数变化的，所以永远不要使用 height 给 Div 高度</p>
+<p>那假如我想要 div 的高度是40px , 怎么办？ 使用 line-height 和 padding </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">24px</span>;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">8px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>24 + 8+ 8 = 40</p>
+<h4 id="7-margin-合并"><a href="#7-margin-合并" class="headerlink" title="7.margin 合并"></a>7.margin 合并</h4><p>当子元素有 margin 的时候， 父元素如果没有“挡住”它的属性，那么就会出现父子margin 合并。</p>
+<p>解决方案 border/ padding/ overflow(不推荐)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dad</span>&#123;</span><br><span class="line">    <span class="attribute">border</span>:<span class="number">0.1px</span> solid white;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">0.1px</span>;</span><br><span class="line">    <span class="attribute">overflow</span>:hidden</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="8-div-的高度怎么确定的？"><a href="#8-div-的高度怎么确定的？" class="headerlink" title="8.div 的高度怎么确定的？"></a>8.div 的高度怎么确定的？</h4><p>div 的高度是由<strong>文档流</strong>中所有素高度的总和<strong>决定</strong>的。</p>
+<p>文档流：内联元素从左到右，块级元素从上到下，块级元素总是另起一行。</p>
+<p>所以脱离文档流的翻译就是：算高度别算我。（position:absolute,fixed ;  float; ）</p>
+<h4 id="9-内联元素的宽度和高度"><a href="#9-内联元素的宽度和高度" class="headerlink" title="9.内联元素的宽度和高度"></a>9.内联元素的宽度和高度</h4><p>宽度是受 文字的多少 和 margin padding boder 影响。</p>
+<p>高度只受行高决定。</p>
+<h4 id="10-DIV水平垂直居中"><a href="#10-DIV水平垂直居中" class="headerlink" title="10.DIV水平垂直居中"></a>10.DIV水平垂直居中</h4><p>高度不定，宽度不定的div水平垂直居中 flex </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dad</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:flex;</span><br><span class="line">    <span class="attribute">justify-content</span>:center;</span><br><span class="line">    <span class="attribute">align-items</span>:center</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="11-写一个-1-1-的-div"><a href="#11-写一个-1-1-的-div" class="headerlink" title="11.写一个 1:1 的 div"></a>11.写一个 1:1 的 div</h4><p>使用padding撑起高度。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.one</span>&#123;</span><br><span class="line">    <span class="attribute">padding-top</span>:<span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/archives/cef93ee3.html" title="单元测试">单元测试</a></h2>
+                <p class="excerpt">
+                
+                单元测试1.BDD&amp;amp;&amp;amp;TDD
+BDD( Behavior-Driven-Development ):行为驱动开发 , 主要是设计一些行为,进行对代码的测试
+12345describe(&#39;Button&#39;,()=&amp;gt;&amp;#123;  //Mocha语法,下面会介绍Mocha  it(&#39;
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/archives/cef93ee3.html">阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/archives/151aa5a1.html" title="REM">REM</a></h2>
+                <p class="excerpt">
+                
+                REM1.各种单位
+px 像素
+
+em 一个M的宽度，跟自身的 font-size 相同
+
+rem  根元素的 font-size
+
+vh : viewport height 视口高度  100vh === 视口高度
+vm: viewport width 视口宽度 100vw === 视口宽度
+
+
+
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/CSS/">CSS</a>
+</span><a class="btn-border-small" href="/archives/151aa5a1.html">阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+    <section class="post-comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          var disqus_shortname = 'storm'; 
+          
+      var disqus_identifier = '/archives/422899b1.html';
+      var disqus_title = 'CSS-宽度高度，对齐';
+      var disqus_url = 'https://storm4542.github.io/archives/422899b1.html';
+      
+    
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              //dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+              dsq.src = 'https://a.disquscdn.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+      <a href="https://disqus.com" class="dsq-brlink" rel="external nofollow noopener noreferrer" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+    
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno " rel="external nofollow noopener noreferrer" target="_blank">new-vno</a> 主题，由<a href="https://monniya.com " rel="external nofollow noopener noreferrer" target="_blank">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external nofollow noopener noreferrer">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank" rel="external nofollow noopener noreferrer">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-124586744-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?70f53ec987c743179662cbe4b386692e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+

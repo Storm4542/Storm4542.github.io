@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Vue--小知识 | Storm</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="前端 | Vue | JavaScript | css">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Vue--小知识 | Storm">
+    <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Vue--小知识 | Storm">
+    <meta property="og:description" content="前端 | Vue | JavaScript | css">
+
+    
+    <meta name="author" content="Storm">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/fav.png">
+    
+
+    <meta name="generator" content="hexo">
+    
+    <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https://storm4542.github.io/archives/9eed9a2c.html">
+
+                 
+</head>
+</html>
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/item.png)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo"></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Storm">Storm</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">求知若饥 虚怀若谷</span>
+        
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">前端 | WEB | VUE</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank" rel="external nofollow noopener noreferrer">
+      <i class="social fa fa-github"></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class="social fa fa-rss"></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Vue--小知识</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="1-Vue的双向绑定其实是单向绑定"><a href="#1-Vue的双向绑定其实是单向绑定" class="headerlink" title="1.Vue的双向绑定其实是单向绑定"></a>1.Vue的双向绑定其实是单向绑定</h3><p><strong>双向绑定的假设</strong></p>
+<blockquote>
+<p>假设，我有两个儿子，大儿子和二儿子</p>
+<p>我有500元</p>
+<p>大儿子要花500买衣服，把钱花了</p>
+<p>二儿子要花200买书籍，钱没了。</p>
+<p>原因：大儿子花钱的时候没有告诉我。</p>
+<p>所以：我定了规矩，以后花钱必须先跟我说，然后我再把钱给你！</p>
+</blockquote>
+<ul>
+<li>因此，Vue的 v-model 变成了两个单项绑定组成的双向绑定，把 v-model 拆分可以变成这样</li>
+</ul>
+<ul>
+<li>现在我加一个子组件child ，有一个属性 selected ，通过 button 切换值</li>
+</ul>
+<ul>
+<li>这样能改，但是会报出警告，告诉你别在子组件里自己改，你要通过父亲修改（上面的假设）</li>
+</ul>
+<p>​        所以我改成这样</p>
+<p>这样子组件的修改需要通过父组件，流程</p>
+<p><strong>Click button =&gt; </strong></p>
+<p><strong>触发@click事件=&gt;</strong></p>
+<p><strong>$emit触发当前实例上的事件“xxx”,传递$events=&gt;</strong></p>
+<p><strong>父组件监听 xxx方法，并将 value = $events =&gt; </strong></p>
+<p><strong>data中的value改变 =&gt; </strong></p>
+<p><strong>selected改变为当前value值</strong></p>
+<ul>
+<li><p>上面的实例更加证明了，Vue是单向数据流</p>
+<p>但是双向绑定很爽，于是作者给了我们一个语法糖  .sync语法糖</p>
+</li>
+</ul>
+<p>  原理写在下面注释里了，其实还是 监听了 @updata:selected 方法</p>
+<h3 id="2-created-和mounted-父子传参"><a href="#2-created-和mounted-父子传参" class="headerlink" title="2.created()和mounted() 父子传参"></a>2.created()和mounted() 父子传参</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>) <span class="comment">//这是created ,将div写入内存</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(div) <span class="comment">//这是mounted ,将div挂到页面里</span></span><br></pre></td></tr></table></figure>
+<p><strong>问题来了,如果div里有子元素,那么是什么顺序呢?</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>) <span class="comment">// div created</span></span><br><span class="line"><span class="keyword">var</span> chilid = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>) <span class="comment">// child created</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(chilid) <span class="comment">// child mounted</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(div) <span class="comment">// div mouted</span></span><br></pre></td></tr></table></figure>
+<p>所以我们可以看到顺序是</p>
+<p><strong>创建父亲 —-&gt; 创建儿子 —&gt; mounted儿子 —&gt;mounted 父亲</strong></p>
+<p>因此,得到在父子组件传参的时候,父亲的mouted()里面,一定能拿到所有儿子:<code>this.$children</code></p>
+<h3 id="3-data和computed"><a href="#3-data和computed" class="headerlink" title="3.data和computed"></a>3.data和computed</h3><p>当一个属性需要跟随另一个属性变化的时候使用 <code>computed</code></p>
+<p>data里的属性不会跟随其他属性变化</p>
+<h3 id="4-Vue开发插件"><a href="#4-Vue开发插件" class="headerlink" title="4.Vue开发插件"></a>4.Vue开发插件</h3><p>在写Toast组件的时候使用到了这个方法。</p>
+<p>Vue.js的插件应当有一个公开方法<code>install</code>,第一个参数是<code>vue</code>,第二个参数是可选的选项对象<code>options</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Plugin.js</span></span><br><span class="line">MyPlugin.install = <span class="function"><span class="keyword">function</span> (<span class="params">Vue, options</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1. 添加全局方法或属性</span></span><br><span class="line">  Vue.myGlobalMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 逻辑...</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2. 添加全局资源</span></span><br><span class="line">  Vue.directive(<span class="string">'my-directive'</span>, &#123;</span><br><span class="line">    bind (el, binding, vnode, oldVnode) &#123;</span><br><span class="line">      <span class="comment">// 逻辑...</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 3. 注入组件</span></span><br><span class="line">  Vue.mixin(&#123;</span><br><span class="line">    created: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 逻辑...</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 4. 添加实例方法</span></span><br><span class="line">  Vue.prototype.$myMethod = <span class="function"><span class="keyword">function</span> (<span class="params">methodOptions</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 逻辑...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在 app.js 里注册</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Plugin <span class="keyword">from</span> <span class="string">'./plugin'</span></span><br><span class="line">Vue.use(Plugin，&#123;<span class="attr">someOptions</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>然后就可以使用了</p>
+<h3 id="5-Element-getBoundingClientRect"><a href="#5-Element-getBoundingClientRect" class="headerlink" title="5.Element.getBoundingClientRect()"></a>5.Element.getBoundingClientRect()</h3><p>返回Element的大小以及相对与视口的位置。</p>
+<p>在使用<code>vm.$el.style.height</code>获取不到高度等属性的时候可以尝试使用它</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" rel="external nofollow noopener noreferrer" target="_blank">文档</a></p>
+<h3 id="6-ref"><a href="#6-ref" class="headerlink" title="6.ref"></a>6.ref</h3><p>在Toast里使用了ref。</p>
+<p>在普通的DOM 元素上使用，引用指向的就是 DOM 元素</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">ref</span>=<span class="string">'test'</span>&gt;</span></span><br><span class="line">        123</span><br><span class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取	</span></span><br><span class="line"><span class="keyword">this</span>.$refs.test <span class="comment">// &lt;p&gt;123&lt;/p&gt; 获取node元素</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://cn.vuejs.org/v2/api/#ref" rel="external nofollow noopener noreferrer" target="_blank">文档</a></p>
+<p>如果用在子组件上，引用就指向组件实例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">child</span> <span class="attr">ref</span>=<span class="string">'child'</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-vm-slots"><a href="#7-vm-slots" class="headerlink" title="7.vm.$slots"></a>7.vm.$slots</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span> = <span class="string">'header'</span>&gt;</span></span><br><span class="line">  header</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.$slot.header<span class="comment">//header</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://cn.vuejs.org/v2/api/#vm-slots" rel="external nofollow noopener noreferrer" target="_blank">文档</a></p>
+<h3 id="8-元素放到最后面"><a href="#8-元素放到最后面" class="headerlink" title="8.元素放到最后面"></a>8.元素放到最后面</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;<span class="attribute">margin-left</span>:auto&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="9-EventBus"><a href="#9-EventBus" class="headerlink" title="9.EventBus"></a>9.EventBus</h3><p>当我们写父子传参,爷儿孙传参的时候,可以使用EventBus,会很方便.</p>
+<p>因为Vue是不允许儿子改变父亲的值,只能告诉父亲我要改了,父亲再改</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//爷爷组件</span></span><br><span class="line"><span class="keyword">import</span> Vue form <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">  name:<span class="string">'爷爷'</span>,</span><br><span class="line">  props:[<span class="string">'selected'</span>], <span class="comment">//当前选择的tab</span></span><br><span class="line">  data()&#123; </span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">      eventBus:<span class="keyword">new</span> Vue() <span class="comment">//通过data生成一个eventBus</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  provide()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      eventBus:<span class="keyword">this</span>.eventBus <span class="comment">//使用provide给所有子组件注入这个值</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">    mounted()&#123;</span><br><span class="line">      <span class="keyword">this</span>.eventBus.$emit(<span class="string">'update:selected'</span>,<span class="keyword">this</span>.selected) <span class="comment">//初始化,也可以不初始化,看实际代码需不需要</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子组件1</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">  name:<span class="string">'儿子1号'</span>,</span><br><span class="line">  inject:[<span class="string">'eventBus'</span>],</span><br><span class="line">  props:[<span class="string">'name'</span>]</span><br><span class="line">  created()&#123;</span><br><span class="line">    <span class="keyword">this</span>.eventBus.$on(<span class="string">'update:selected'</span>,(name)=&gt;&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(name)    <span class="comment">//儿子1号监听事件.</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    change()&#123;</span><br><span class="line">      <span class="keyword">this</span>.eventBus.$emit(<span class="string">'update:selected'</span>,<span class="keyword">this</span>.name) <span class="comment">//儿子1号主动触发事件</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子组件2</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">  name:<span class="string">'儿子2号'</span>,</span><br><span class="line">  inject:[<span class="string">'eventBus'</span>],</span><br><span class="line">  props:[<span class="string">'name'</span>]</span><br><span class="line">  created()&#123;</span><br><span class="line">    <span class="keyword">this</span>.eventBus.$on(<span class="string">'update:selected'</span>,(name)=&gt;&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(name)    <span class="comment">//儿子2号监听事件.</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//孙子组件同理</span></span><br><span class="line"><span class="comment">//........</span></span><br><span class="line"><span class="comment">//........</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>创建一个EventBus为啥要用 new Vue()呢?</p>
+<p>因为我们使用了 <code>$on $emit</code>,只要符合这个条件就可以了,当然有时候还要用到<code>$off</code></p>
+</li>
+<li><p>EventBus的作用(不仅是父子，还有子子)</p>
+<p>我们在爷爷里声明了EventBus后,他就是我们的一个<strong>数据处理中心</strong>,例如上面的例子</p>
+<p>儿子1号通过EventBus触发update事件<code>:selected=&#39;儿子1号&#39;</code>,</p>
+<p>与此同时,儿子2号一直在监听update事件,他就知道了,现在selected === ‘儿子一号’(<strong>子组件之前的传递</strong>)，</p>
+<p>与此同时，爷爷也在监听update事件(父子传递)，</p>
+<p>与此同时，孙子也在监听update事件(父子传递)，</p>
+</li>
+<li><p><strong>EventBus 永远是 让爸爸更新自己，永远不要自己更新自己，让爸爸操控所有的事情</strong>，参考collapse组件的eventBus。</p>
+</li>
+</ol>
+<h3 id="10-vue-里面绑定-class"><a href="#10-vue-里面绑定-class" class="headerlink" title="10.vue 里面绑定 class"></a>10.vue 里面绑定 class</h3><p><strong>推荐使用对象加数组的形式。</strong></p>
+<p>计算属性里</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line">  itemclass()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`position-<span class="subst">$&#123;<span class="keyword">this</span>.position&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">computed:&#123;</span><br><span class="line">  someClasses()&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">`position-<span class="subst">$&#123;<span class="keyword">this</span>.position&#125;</span>`</span>,<span class="string">`text-<span class="subst">$&#123;<span class="keyword">this</span>.text&#125;</span>`</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">computed:&#123;</span><br><span class="line">  someClasses()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;[<span class="string">`position-<span class="subst">$&#123;<span class="keyword">this</span>.position&#125;</span>`</span>]:<span class="literal">true</span>,[<span class="string">`text-<span class="subst">$&#123;<span class="keyword">this</span>.text&#125;</span>`</span>]:<span class="literal">true</span>&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>template里直接放进 :class 里就行。</p>
+<h4 id="11-组件的递归"><a href="#11-组件的递归" class="headerlink" title="11.组件的递归"></a>11.组件的递归</h4><p>这个需求是做多级联动选择是出现的，因为你无法判断用户提供给你的数组的深度，有可能是5层，也有可能是6层，这时候就用到了组建的递归。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">        &#123;&#123;source.item&#125;&#125;</span><br><span class="line">        &lt;cascader v-if=&apos;source.children&apos;</span><br><span class="line">             	  v-for=&apos;item in source.children&apos;</span><br><span class="line">             	  :source=&apos;item&apos;&gt;</span><br><span class="line">         &lt;/cascader&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default&#123;</span><br><span class="line">        name:&apos;cascader&apos;,</span><br><span class="line">        props:&#123;</span><br><span class="line">            source:&#123;</span><br><span class="line">                type:Object</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// source 格式 这里是三层 省-市-区</span></span><br><span class="line">source:[</span><br><span class="line">    &#123;</span><br><span class="line">        name:<span class="string">'山东'</span>,</span><br><span class="line">        children:[</span><br><span class="line">            &#123;</span><br><span class="line">                name:<span class="string">'济南'</span>,</span><br><span class="line">                children:[</span><br><span class="line">                    &#123;</span><br><span class="line">                        name:<span class="string">'市中区'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        name:<span class="string">'历下区'</span></span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name:<span class="string">'淄博'</span>,</span><br><span class="line">                children:[</span><br><span class="line">                    &#123;</span><br><span class="line">                        name:<span class="string">'张店区'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        name:<span class="string">'临淄区'</span></span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>注意：该组件 template 中使用的标签名要和 name 相同，这样 Vue 才能知道这是一个递归组件。</strong></p>
+<p>该组件，接收一个类型为 Object 的 source 数据，展示 source.item 。同时在组件里面继续调用自己，并进行三个操作。</p>
+<pre><code>1. 判断是否还有下一层 children。
+   2. 循环下一层。
+   3. 将下一层的数据绑定到source。
+</code></pre><p>这样就形成了组件的复用。</p>
+<h4 id="12-轮子中写函数（名字没想好，瞎起的）"><a href="#12-轮子中写函数（名字没想好，瞎起的）" class="headerlink" title="12.轮子中写函数（名字没想好，瞎起的）"></a>12.轮子中写函数（名字没想好，瞎起的）</h4><p>在制作级联组件的时候遇到一个需求，就是用户需要ajax传输信息，用户获取了数据，怎么能放到组件上应用呢？这个就是需要轮子制作者做的了。</p>
+<p>用户使用时需要做的事</p>
+<ol>
+<li>定义一个函数，获取数据后通过 callback 调用</li>
+<li>在标签上绑定定义的函数，传给子组件，传过去的值就是一个 Function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div :load-data=&apos;loadData&apos;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">    loadData(callback)&#123;</span><br><span class="line">        axios.get(<span class="string">'xxx/data.php'</span>,(res)=&gt;&#123;</span><br><span class="line">            callback(res)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我需要做的事情</p>
+<ol>
+<li>定义好 props</li>
+<li>定义好 callback 函数</li>
+<li>调用 this.loadData(callback)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    props:&#123;</span><br><span class="line">        loadData:&#123;</span><br><span class="line">            type:<span class="built_in">Function</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        resovleData()&#123;</span><br><span class="line">            <span class="keyword">let</span> callback = <span class="function">(<span class="params">result</span>)=&gt;</span>&#123;<span class="keyword">return</span> result+<span class="string">'some'</span>&#125;;</span><br><span class="line">            <span class="keyword">this</span>.loadData(callback)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>回调 : 把别人给我的函数调用一下。</p>
+<p>总结：其实就是用户再前面写好获取数据的方法，然后把这个方法传到子组件，这样我们就能在子组件中获取到用户的数据，然后处理数据。</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/archives/6a317f77.html" title="Vue 动画">Vue 动画</a></h2>
+                <p class="excerpt">
+                
+                Vue动画1.简单例子12345678&amp;lt;div id=&#34;demo&#34;&amp;gt;  &amp;lt;button v-on:click=&#34;show = !show&#34;&amp;gt;    Toggle  &amp;lt;/button&amp;gt;  &amp;lt;transition name=&#34;fade&#34;&amp;gt;    &amp;lt;p
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+</span><a class="btn-border-small" href="/archives/6a317f77.html">阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/archives/cef93ee3.html" title="单元测试">单元测试</a></h2>
+                <p class="excerpt">
+                
+                单元测试1.BDD&amp;amp;&amp;amp;TDD
+BDD( Behavior-Driven-Development ):行为驱动开发 , 主要是设计一些行为,进行对代码的测试
+12345describe(&#39;Button&#39;,()=&amp;gt;&amp;#123;  //Mocha语法,下面会介绍Mocha  it(&#39;
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/archives/cef93ee3.html">阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+    <section class="post-comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          var disqus_shortname = 'storm'; 
+          
+      var disqus_identifier = '/archives/9eed9a2c.html';
+      var disqus_title = 'Vue--小知识';
+      var disqus_url = 'https://storm4542.github.io/archives/9eed9a2c.html';
+      
+    
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              //dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+              dsq.src = 'https://a.disquscdn.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+      <a href="https://disqus.com" class="dsq-brlink" rel="external nofollow noopener noreferrer" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+    
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno " rel="external nofollow noopener noreferrer" target="_blank">new-vno</a> 主题，由<a href="https://monniya.com " rel="external nofollow noopener noreferrer" target="_blank">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external nofollow noopener noreferrer">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank" rel="external nofollow noopener noreferrer">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-124586744-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?70f53ec987c743179662cbe4b386692e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+

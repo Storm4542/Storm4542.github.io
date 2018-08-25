@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>重构 | Storm</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="前端 | Vue | JavaScript | css">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="重构 | Storm">
+    <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="重构 | Storm">
+    <meta property="og:description" content="前端 | Vue | JavaScript | css">
+
+    
+    <meta name="author" content="Storm">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/fav.png">
+    
+
+    <meta name="generator" content="hexo">
+    
+    <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https://storm4542.github.io/archives/3404a532.html">
+
+                 
+</head>
+</html>
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/item.png)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo"></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Storm">Storm</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">求知若饥 虚怀若谷</span>
+        
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">前端 | WEB | VUE</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank" rel="external nofollow noopener noreferrer">
+      <i class="social fa fa-github"></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class="social fa fa-rss"></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">重构</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="1-代码优化基本原则"><a href="#1-代码优化基本原则" class="headerlink" title="1.代码优化基本原则"></a>1.代码优化基本原则</h3><p>1.易读性优先</p>
+<p>2.如果不是性能瓶颈，就不要为了性能改代码</p>
+<p>3.复杂性守恒原则：无论你怎么写代码，复杂性都是不会消失的<br>推论：如果逻辑很复杂，那么代码看起来就应该是复杂的。如果逻辑很简单，代码看起来就应该是简单的。</p>
+<h3 id="2-命名"><a href="#2-命名" class="headerlink" title="2.命名"></a>2.命名</h3><p><strong>程序员三大难题</strong></p>
+<ol>
+<li>变量命名</li>
+<li>缓存失效</li>
+<li>循环边界</li>
+</ol>
+<p>可见变量命名的重要性。</p>
+<p><a href="https://www.google.com/search?q=github+%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83" rel="external nofollow noopener noreferrer" target="_blank">网上有很多命名规范</a>，大家可以参考。这里只讲基本原则。</p>
+<ol>
+<li><p>注意词性</p>
+<ul>
+<li><p>普通变量/属性用「名词」</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name: <span class="string">'Frank'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> student = &#123;</span><br><span class="line">    grade: <span class="number">3</span>,</span><br><span class="line">    class: 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>bool变量/属性用「形容词」或者「be动词」或者「情态动词」或者「hasX」</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    dead: <span class="literal">false</span>, <span class="comment">// 如果是形容词，前面就没必要加 is，比如isDead 就很废话</span></span><br><span class="line">    canSpeak: <span class="literal">true</span>, <span class="comment">//情态动词有 can、should、will、need 等，情态动词后面接动词</span></span><br><span class="line">    isVip: <span class="literal">true</span>, <span class="comment">// be 动词有 is、was 等，后面一般接名词</span></span><br><span class="line">    hasChildren: <span class="literal">true</span>, <span class="comment">// has 加名词</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>普通函数/方法用「动词」开头</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    run()&#123;&#125;, <span class="comment">// 不及物动词</span></span><br><span class="line">    drinkWater()&#123;&#125;, <span class="comment">// 及物动词</span></span><br><span class="line">    eat(foo)&#123;&#125;, <span class="comment">// 及物动词加参数（参数是名词）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>回调、钩子函数用「介词」开头，或用「动词的现在完成时态」</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    beforeDie()&#123;&#125;,</span><br><span class="line">    afterDie()&#123;&#125;,</span><br><span class="line">    <span class="comment">// 或者</span></span><br><span class="line">    willDie()&#123;&#125;</span><br><span class="line">    dead()&#123;&#125; <span class="comment">// 这里跟 bool 冲突，你只要不同时暴露 bool dead 和函数 dead 就行，怕冲突就用上面的 afterDie</span></span><br><span class="line">&#125;</span><br><span class="line">button.addEventListener(<span class="string">'click'</span>, onButtonClick)</span><br><span class="line"><span class="keyword">var</span> component = &#123;</span><br><span class="line">    beforeCreate()&#123;&#125;,</span><br><span class="line">    created()&#123;&#125;,</span><br><span class="line">    beforeMount()&#123;&#125;,</span><br><span class="line">    mounted()&#123;&#125;,</span><br><span class="line">    beforeUpdate()&#123;&#125;,</span><br><span class="line">    updated()&#123;&#125;,</span><br><span class="line">    activated()&#123;&#125;,</span><br><span class="line">    deactivated()&#123;&#125;,</span><br><span class="line">    beforeDestroy()&#123;&#125;,</span><br><span class="line">    destroyed()&#123;&#125;,</span><br><span class="line">    errorCaptured()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>容易混淆的地方加前缀</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">div1.classList.add(<span class="string">'active'</span>) <span class="comment">// DOM 对象</span></span><br><span class="line">div2.addClass(<span class="string">'active'</span>) <span class="comment">// jQuery 对象</span></span><br><span class="line">不如改成</span><br><span class="line">domDiv1 或 elDiv1.classList.add(<span class="string">'active'</span>)</span><br><span class="line">$div2.addClass(<span class="string">'active'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性访问器函数可以用名词</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$div.text() <span class="comment">// 其实是 $div.getText()</span></span><br><span class="line">$div.text(<span class="string">'hi'</span>) <span class="comment">// 其实是 $div.setText('hi')</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>注意一致性</p>
+<ul>
+<li><p>介词一致性<br>如果你使用了 before + after，那么就在代码的所有地方都坚持使用<br>如果你使用了 before + 完成时，那么就坚持使用<br>如果你改来改去，就「不一致」了，不一致将导致「不可预测」</p>
+</li>
+<li><p>顺序一致性<br>比如 updateContainerWidth 和 updateHeightOfContainer 的顺序就令人很别扭，同样会引发「不可预测」</p>
+</li>
+<li><p>表里一致性<br>函数名必须完美体现函数的功能，既不能多也不能少。<br>比如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSongs</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $.get(<span class="string">'/songs).then((response)&#123;</span></span><br><span class="line"><span class="string">        div.innerText = response.songs</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>就违背了表里一致性，getSongs 表示获取歌曲，并没有暗示这个函数会更新页面，但是实际上函数更新了 div，这就是表里不一，正确的写法是</p>
+<ul>
+<li><p>要么纠正函数名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSongsAndUpdateDiv</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $.get(<span class="string">'/songs).then((response)&#123;</span></span><br><span class="line"><span class="string">        div.innerText = response.songs</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要么写成两个函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSongs</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $.get(<span class="string">'/songs)</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">function updateDiv(songs)&#123;</span></span><br><span class="line"><span class="string">    div.innerText = response.songs</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">getSongs().then((response)=&gt;&#123;</span></span><br><span class="line"><span class="string">    updateDiv(response.songs)</span></span><br><span class="line"><span class="string">&#125;)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>时间一致性<br>有可能随着代码的变迁，一个变量的含义已经不同于它一开始的含义了，这个时候你需要及时改掉这个变量的名字。<br>这一条是最难做到的，因为写代码容易，改代码难。如果这个代码组织得不好，很可能会出现牵一发而动全身的情况（如全局变量就很难改）</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="改代码"><a href="#改代码" class="headerlink" title="改代码"></a>改代码</h2><p>如果你的代码有单元测试，那么改起来就很放心。如果没有单元测试，就需要用「小步快跑」的策略来修改。</p>
+<p>小步快跑的意思是说，每次只修改一点点，测试通过后，再修改一点点，再测试，再修改一点点……如此反复。</p>
+<p>那么如何修改一点点呢？《重构》这本书介绍了很多方法，但是讲得挺啰嗦的，如果你有时间可以看看。</p>
+<p>我这里只说两个经久不衰的方法。</p>
+<h3 id="一、使用函数来改代码"><a href="#一、使用函数来改代码" class="headerlink" title="一、使用函数来改代码"></a>一、使用函数来改代码</h3><p>步骤：</p>
+<ol>
+<li>将一坨代码放到一个函数里</li>
+<li>将代码依赖的外部变量作为参数</li>
+<li>将代码的输出作为函数的返回值</li>
+<li>给函数取一个合适的名字</li>
+<li>调用这个函数并传入参数</li>
+<li>这个函数里的代码如果超过 5 行，则依然有优化的空间，请回到第 1 步</li>
+</ol>
+<h3 id="二、使用对象来改代码"><a href="#二、使用对象来改代码" class="headerlink" title="二、使用对象来改代码"></a>二、使用对象来改代码</h3><p>如果使用了函数改造法改造后，发现有太多的小函数，则可以使用对象讲这个函数串起来。</p>
+<p>记得我们讲过「this 是函数和对象的桥梁」吗，我们会用 this 来串联这个对象和所有函数。</p>
+<p>最终代码：<a href="http://js.jirengu.com/mimazaboke/1/edit?html,js,output" rel="external nofollow noopener noreferrer" target="_blank">http://js.jirengu.com/mimazaboke/1/edit?html,js,output</a></p>
+<h3 id="一些固定的套路"><a href="#一些固定的套路" class="headerlink" title="一些固定的套路"></a>一些固定的套路</h3><ol>
+<li><p>表驱动编程（《代码大全》里说的）<br>所有一一对应的关系都可以用表来做</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//传入分数，返回等级</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculateGrade</span>(<span class="params">score</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(score&gt;=<span class="number">90</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'A'</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score&gt;=<span class="number">80</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'B'</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score&gt;=<span class="number">70</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'C'</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score&gt;=<span class="number">60</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'D'</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'E'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//表驱动编程</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculateGrade</span>(<span class="params">score</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> table = &#123;</span><br><span class="line">        <span class="number">10</span> : <span class="string">'A'</span>,</span><br><span class="line">        <span class="number">9</span> : <span class="string">'A'</span>,</span><br><span class="line">        <span class="number">8</span> : <span class="string">'B'</span>,</span><br><span class="line">        <span class="number">7</span> : <span class="string">'C'</span>,</span><br><span class="line">        <span class="number">6</span> : <span class="string">'D'</span>,</span><br><span class="line">        others : <span class="string">'E'</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> level = <span class="built_in">parseInt</span>(score/<span class="number">10</span> , <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">return</span> table[level] || table[<span class="string">'others'</span>] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//同样也是表驱动编程</span></span><br><span class="line"><span class="comment">//提供数据，提供对应关系，然后我在通过一些方法，一些循环搞定，不需要每个都写函数、</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pre</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">next</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cleartimer</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resettimer</span>(<span class="params"></span>)</span>&#123;&#125; <span class="comment">//四个事件需要绑定到几个元素上</span></span><br><span class="line"><span class="keyword">var</span> events = [</span><br><span class="line">  &#123;<span class="attr">el</span>:<span class="string">'.prebtn'</span>,<span class="attr">event</span>:<span class="string">'click'</span>,<span class="attr">fn</span>:pre&#125;,</span><br><span class="line">  &#123;<span class="attr">el</span>:<span class="string">'.nextbtn'</span>,<span class="attr">event</span>:<span class="string">'click'</span>,<span class="attr">fn</span>:next&#125;,</span><br><span class="line">  &#123;<span class="attr">el</span>:<span class="string">'.timer'</span>,<span class="attr">event</span>:<span class="string">'mouseenter'</span>,<span class="attr">fn</span>:cleartimer&#125;,</span><br><span class="line">  &#123;<span class="attr">el</span>:<span class="string">'.timer'</span>,<span class="attr">event</span>:<span class="string">'mouseleave'</span>,<span class="attr">fn</span>:resettimer&#125;,</span><br><span class="line">];</span><br><span class="line">events.forEach(<span class="function">(<span class="params">eventobject</span>)=&gt;</span>&#123;</span><br><span class="line">  $(eventobject.el).on(eventobject.event,eventobject.fn)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>自说明代码（以 API 参数为例）<br>把别人关心的东西放在显眼的位置</p>
+</li>
+</ol>
+<h2 id="bad-smell（坏味道）"><a href="#bad-smell（坏味道）" class="headerlink" title="bad smell（坏味道）"></a>bad smell（坏味道）</h2><p>有些代码可以用，但是很「臭」。</p>
+<p>哪些代码是有坏味道的</p>
+<ol>
+<li>表里不一的代码</li>
+<li>过时的注释</li>
+<li>逻辑很简单，但是看起来很复杂的代码</li>
+<li>重复的代码</li>
+<li>相似的代码</li>
+<li>总是一起出现的代码</li>
+</ol>
+<h2 id="破窗效应"><a href="#破窗效应" class="headerlink" title="破窗效应"></a>破窗效应</h2><blockquote>
+<p>此理论认为环境中的不良现象如果被放任存在，会诱使人们仿效，甚至变本加厉。一幢有少许破窗的建筑为例，如果那些窗不被修理好，可能将会有破坏者破坏更多的窗户。最终他们甚至会闯入建筑内，如果发现无人居住，也许就在那里定居或者纵火。一面墙，如果出现一些涂鸦没有被清洗掉，很快的，墙上就布满了乱七八糟、不堪入目的东西；一条人行道有些许纸屑，不久后就会有更多垃圾，最终人们会视若理所当然地将垃圾顺手丢弃在地上。这个现象，就是犯罪心理学中的破窗效应。</p>
+</blockquote>
+<p>程序员要做到：只要是经过你手的代码，都会比之前好一点。</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/archives/a1ede006.html" title="HTTP">HTTP</a></h2>
+                <p class="excerpt">
+                
+                HTTP1.HTTP为什么重要
+HTTP 是前后端合作的重要方式99%的需求都是通过 HTTP 做到，小部分需求可以通过 WebSockets 做到。
+HTTP 能帮你从本质上理解 HTML、CSS、JS、图片、JSON、JSONP 等不同形式的资源
+Web 性能优化基本等价于对 HTTP 传输效率
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/archives/a1ede006.html">阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/archives/db4c4335.html" title="Vuex">Vuex</a></h2>
+                <p class="excerpt">
+                
+                Vuex1.Vuex是什么？
+Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。 
+Vuex 使用单一状态树——是的，用一个对象就包含了全部的应用层级状态。至此它便作为一个“唯一数据源 (SSO
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+</span><a class="btn-border-small" href="/archives/db4c4335.html">阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+    <section class="post-comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          var disqus_shortname = 'storm'; 
+          
+      var disqus_identifier = '/archives/3404a532.html';
+      var disqus_title = '重构';
+      var disqus_url = 'https://storm4542.github.io/archives/3404a532.html';
+      
+    
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              //dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+              dsq.src = 'https://a.disquscdn.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+      <a href="https://disqus.com" class="dsq-brlink" rel="external nofollow noopener noreferrer" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+    
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno " rel="external nofollow noopener noreferrer" target="_blank">new-vno</a> 主题，由<a href="https://monniya.com " rel="external nofollow noopener noreferrer" target="_blank">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external nofollow noopener noreferrer">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank" rel="external nofollow noopener noreferrer">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-124586744-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?70f53ec987c743179662cbe4b386692e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+

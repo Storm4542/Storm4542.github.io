@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>HTTP | Storm</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="前端 | Vue | JavaScript | css">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="HTTP | Storm">
+    <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="HTTP | Storm">
+    <meta property="og:description" content="前端 | Vue | JavaScript | css">
+
+    
+    <meta name="author" content="Storm">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/fav.png">
+    
+
+    <meta name="generator" content="hexo">
+    
+    <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https://storm4542.github.io/archives/a1ede006.html">
+
+                 
+</head>
+</html>
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/item.png)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo"></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Storm">Storm</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">求知若饥 虚怀若谷</span>
+        
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">前端 | WEB | VUE</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank" rel="external nofollow noopener noreferrer">
+      <i class="social fa fa-github"></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class="social fa fa-rss"></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">HTTP</h1>
+  </header>
+
+  <section class="post">
+    <h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="1-HTTP为什么重要"><a href="#1-HTTP为什么重要" class="headerlink" title="1.HTTP为什么重要"></a>1.HTTP为什么重要</h3><ol>
+<li>HTTP 是前后端合作的重要方式<br>99%的需求都是通过 HTTP 做到，小部分需求可以通过 WebSockets 做到。</li>
+<li>HTTP 能帮你从本质上理解 HTML、CSS、JS、图片、JSON、JSONP 等不同形式的资源</li>
+<li>Web 性能优化基本等价于对 HTTP 传输效率优化</li>
+<li>前端工程化需要你对 HTTP 缓存有深入了解</li>
+</ol>
+<h3 id="2-什么是HTTP"><a href="#2-什么是HTTP" class="headerlink" title="2.什么是HTTP"></a>2.什么是HTTP</h3><p>####1.四个概念</p>
+<ol>
+<li>server</li>
+<li>client</li>
+<li>request</li>
+<li>response</li>
+</ol>
+<ul>
+<li><p>server</p>
+<p>服务器端</p>
+</li>
+<li><p>client</p>
+<p>客户端</p>
+</li>
+</ul>
+<h4 id="2-request-请求"><a href="#2-request-请求" class="headerlink" title="2.request 请求"></a>2.request 请求</h4><p>请求包含四个部分</p>
+<ol>
+<li><p>动词  路径  协议/版本号  — GET ./style.css  HTTP/1.1</p>
+</li>
+<li><p>一些 key : value ，用回车分割</p>
+<p>Host : xxx.xxx.xxx</p>
+<p>Connection : keep-alive</p>
+<p>Content-Type : application/javascript</p>
+<p>User-Agent : xxxxxxxxxxx</p>
+<p>Accept : xxxxx</p>
+</li>
+<li><p>回车，作用：分割第二部分和第三部分</p>
+</li>
+<li><p>什么都行，但是内容的格式必须要在第二部分的 <code>Content-Type</code>中声明</p>
+</li>
+</ol>
+<h4 id="3-response-响应"><a href="#3-response-响应" class="headerlink" title="3.response 响应"></a>3.response 响应</h4><p>响应也包含四个部分</p>
+<ol>
+<li>协议/版本号 状态码 状态信息  HTTP/1.1 200 OK</li>
+<li>一些 key : value ，用回车分割</li>
+<li>回车，作用：分割第二部分和第三部分</li>
+<li>什么都行，但是内容的格式必须要在第二部分的 <code>Content-Type</code>中声明</li>
+</ol>
+<h3 id="3-HTML-CSS-JS-JSON-JSONP都是什么？"><a href="#3-HTML-CSS-JS-JSON-JSONP都是什么？" class="headerlink" title="3.HTML,CSS,JS,JSON,JSONP都是什么？"></a>3.HTML,CSS,JS,JSON,JSONP都是什么？</h3><h4 id="1-HTML，CSS，JS的本质"><a href="#1-HTML，CSS，JS的本质" class="headerlink" title="1.HTML，CSS，JS的本质"></a>1.HTML，CSS，JS的本质</h4><p>本质是字符串，只是 <code>Content-Type</code>不同</p>
+<ul>
+<li>HTML  Content-Type : text/html</li>
+<li>CSS      Content-Type : text/css</li>
+<li>JS          Content-Type : application/javascript</li>
+</ul>
+<p>注意 url 里的后缀是废话，毫无意义。</p>
+<ol>
+<li>浏览器通过地址栏、iframe 来请求 HTML</li>
+<li>浏览器通过 link 标签获取 CSS，然后渲染</li>
+<li>浏览器通过 script 标签获取 JS，然后执行</li>
+<li>浏览器通过 image 标签获取图片，然后展示</li>
+</ol>
+<h4 id="2-JSON"><a href="#2-JSON" class="headerlink" title="2.JSON"></a>2.JSON</h4><p>json也是字符串</p>
+<p>JSON Content-Type : application/json</p>
+<h4 id="3-JSONP"><a href="#3-JSONP" class="headerlink" title="3.JSONP"></a>3.JSONP</h4><p>本质就是字符串，只不过</p>
+<ol>
+<li>Content-Type 为application/javascript 或者 text/javascript</li>
+<li>内容格式为 <code>functionName( {&quot;format&quot;: &quot;JSON&quot;} )</code></li>
+</ol>
+<h3 id="4-缓存"><a href="#4-缓存" class="headerlink" title="4.缓存"></a>4.缓存</h3><ol>
+<li>使用 Cache-Control 缓存是常用的缓存方式</li>
+<li>想要更新缓存只需稍微变更一下 url<ol>
+<li>app-2131312362387123.js</li>
+<li>app.js?v=1</li>
+<li>app.js?t=201801012334</li>
+<li>不要缓存入口页面，这是你更新资源的唯一入口</li>
+</ol>
+</li>
+</ol>
+<p><strong>并不是缓存</strong></p>
+<p>Etag 和 304 会避免下载，但是还是会发出请求，并不属于缓存</p>
+<h3 id="5-Cookie-和-Session"><a href="#5-Cookie-和-Session" class="headerlink" title="5.Cookie 和 Session"></a>5.Cookie 和 Session</h3><h4 id="1-Cookie"><a href="#1-Cookie" class="headerlink" title="1.Cookie"></a>1.Cookie</h4><p>因为HTTP协议是 <strong>无状态</strong> 的，通俗来说是 <strong>没脑子</strong>，它没有记忆。</p>
+<p>假如用户登录成功后，刷新页面，用户的登录状态就没有了，这里可以用 Cookie 解决。</p>
+<p><strong>保存登录状态</strong></p>
+<p>jack登录a.com发出请求 uername:jack ; password : 123 —-&gt;  </p>
+<p>后台接收到数据，账号密码正确，发出响应，响应头<code>header</code>写上<code>&#39;Set-Cookie&#39;,&#39;login = jack&#39;</code>—–&gt;</p>
+<p>浏览器收到响应，种上 Cookie  —-&gt;</p>
+<p>当jack再次访问a.com的其他页面时候，请求头中会带上<code>Cookie : login=jack</code>——&gt;</p>
+<p>jack发现他还是登录状态，非常高兴 : ) —– end</p>
+<p><strong>区分用户</strong></p>
+<p>frank 这时候也登录 a.com 这时候他获得的 响应头就是<code>&#39;Set-Cookie&#39;,&#39;login = frank&#39;</code>了，这样我们也能区分jack 和 frank 了</p>
+<p>但是<code>Cookie</code>有一个很不安全的地方，任何一个前端都可以使用<code>document.cookie = xxx</code>来伪造。</p>
+<p><strong>我们需要一个方法既需要能标识用户，又可以防止前端伪造</strong></p>
+<h4 id="2-Session"><a href="#2-Session" class="headerlink" title="2.Session"></a>2.Session</h4><p>因为<code>Cookie</code>不安全，所以出现了<code>Session</code>。</p>
+<p><code>Session</code>是存在数据库的，因此前端无法修改。</p>
+<p><strong>流程</strong></p>
+<p>用户输入账户密码登录 ——&gt;  发送请求 ———&gt; 服务器验证账户密码正确———&gt; </p>
+<p><strong>分配一个<code>session</code>，通过<code>cookie</code>告诉浏览器</strong>———&gt;<code>Set-Cookie,sessionId = &#39;xxxxxxxxxxxxx&#39;</code></p>
+<p>剩下的就是和<code>Cookie</code>一样了。</p>
+<h4 id="3-两者不同"><a href="#3-两者不同" class="headerlink" title="3.两者不同"></a>3.两者不同</h4><ol>
+<li>使用时间：用Cookie分辨两个不同的用户，用Session存放用户的敏感数据。</li>
+<li>实现方式：Cookie使用Set-Cookie实现，Session你想怎么实现就怎么实现。</li>
+<li>存放方式：Cookie存放在浏览器里，Session存在服务器端的文件，数据库，内存等等。</li>
+<li>两者关系：Session一般基于Cookie，存在里面。但也可以放到 localStorage 里面，放到 URL 里等等</li>
+</ol>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/archives/88d55ab5.html" title="制作一个基于Vue的Tabs轮子">制作一个基于Vue的Tabs轮子</a></h2>
+                <p class="excerpt">
+                
+                tabs轮子制作1.先简单实现一下1&amp;lt;div id=&#39;app&#39;&amp;gt;&amp;lt;/div&amp;gt;
+1.active&amp;#123;background:red&amp;#125;
+1234567891011121314151617181920var vm = new Vue(&amp;#123;    el: &#39;#
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+</span><a class="btn-border-small" href="/archives/88d55ab5.html">阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/archives/3404a532.html" title="重构">重构</a></h2>
+                <p class="excerpt">
+                
+                1.代码优化基本原则1.易读性优先
+2.如果不是性能瓶颈，就不要为了性能改代码
+3.复杂性守恒原则：无论你怎么写代码，复杂性都是不会消失的推论：如果逻辑很复杂，那么代码看起来就应该是复杂的。如果逻辑很简单，代码看起来就应该是简单的。
+2.命名程序员三大难题
+
+变量命名
+缓存失效
+循环边界
+
+可见变量
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/archives/3404a532.html">阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+    <section class="post-comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          var disqus_shortname = 'storm'; 
+          
+      var disqus_identifier = '/archives/a1ede006.html';
+      var disqus_title = 'HTTP';
+      var disqus_url = 'https://storm4542.github.io/archives/a1ede006.html';
+      
+    
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              //dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+              dsq.src = 'https://a.disquscdn.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+      <a href="https://disqus.com" class="dsq-brlink" rel="external nofollow noopener noreferrer" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+    
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno " rel="external nofollow noopener noreferrer" target="_blank">new-vno</a> 主题，由<a href="https://monniya.com " rel="external nofollow noopener noreferrer" target="_blank">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external nofollow noopener noreferrer">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank" rel="external nofollow noopener noreferrer">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-124586744-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?70f53ec987c743179662cbe4b386692e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+

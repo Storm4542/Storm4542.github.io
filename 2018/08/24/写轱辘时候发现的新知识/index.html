@@ -265,19 +265,27 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/css-宽度高度，对齐/" title="CSS-宽度高度，对齐">CSS-宽度高度，对齐</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/css-堆叠上下文/" title="CSS-堆叠上下文">CSS-堆叠上下文</a></h2>
                 <p class="excerpt">
                 
-                CSS记住：能不用 height width 就不用他们，使用 padding ,  line-height 来替代
-1.中文对齐
-当我要写一个表单，有姓名和联系方式，需要姓和联对齐，名和式对齐。如何去做？
+                堆叠上下文1.堆叠顺序div是有空间层次关系的。
+原则：相同类型的元素，后出现的会覆盖之前的。
+层次顺序（底层-上层）： 
 
-123&amp;lt;span&amp;gt;姓名&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;&amp;lt;s
+background
+border
+块级
+浮动
+内联
+z-index : 0 ( position :relative , absolute)
+z-index :  +
+
+注
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/CSS/">CSS</a>
-</span><a class="btn-border-small" href="/2018/08/24/css-宽度高度，对齐/">阅读</a></div>
+</span><a class="btn-border-small" href="/2018/08/24/css-堆叠上下文/">阅读</a></div>
                            
             </div>
         
@@ -285,17 +293,16 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/Vuex笔记/" title="Vuex">Vuex</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2018/08/24/VueRouter/" title="Vue-Router">Vue-Router</a></h2>
                 <p class="excerpt">
                 
-                Vuex1.Vuex是什么？
-Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。 
-Vuex 使用单一状态树——是的，用一个对象就包含了全部的应用层级状态。至此它便作为一个“唯一数据源 (SSO
+                Vue-Router1.简单配置创建router.js
+1234567891011import Vue from &#39;vue&#39;import Router from &#39;vue-router&#39;import index from &#39;./components/index&#39;import user from &#39;.
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/2018/08/24/Vuex笔记/">阅读</a></div>
+</span><a class="btn-border-small" href="/2018/08/24/VueRouter/">阅读</a></div>
                        
             </div>
         

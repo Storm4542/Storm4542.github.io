@@ -137,52 +137,27 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/VueRouter/" title="link to post.title">Vue-Router</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/css-堆叠上下文/" title="link to post.title">CSS-堆叠上下文</a></h2>
       <p class="excerpt">
     
-      Vue-Router1.简单配置创建router.js
-1234567891011import Vue from &#39;vue&#39;import Router from &#39;vue-router&#39;import index from &#39;./components/index&#39;import user from &#39;./components/user&#39;Vue.use(Router)export default new
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/2018/08/24/VueRouter/">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/单元测试/" title="link to post.title">单元测试</a></h2>
-      <p class="excerpt">
-    
-      单元测试1.BDD&amp;amp;&amp;amp;TDD
-BDD( Behavior-Driven-Development ):行为驱动开发 , 主要是设计一些行为,进行对代码的测试
-12345describe(&#39;Button&#39;,()=&amp;gt;&amp;#123;  //Mocha语法,下面会介绍Mocha  it(&#39;存在&#39;,()=&amp;gt;&amp;#123;    //测试  &amp;#125;)&amp;#125;)
-这样的写法,我们
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/2018/08/24/单元测试/">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/css-宽度高度，对齐/" title="link to post.title">CSS-宽度高度，对齐</a></h2>
-      <p class="excerpt">
-    
-      CSS记住：能不用 height width 就不用他们，使用 padding ,  line-height 来替代
-1.中文对齐
-当我要写一个表单，有姓名和联系方式，需要姓和联对齐，名和式对齐。如何去做？
+      堆叠上下文1.堆叠顺序div是有空间层次关系的。
+原则：相同类型的元素，后出现的会覆盖之前的。
+层次顺序（底层-上层）： 
 
-123&amp;lt;span&amp;gt;姓名&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span&amp;gt;联系方式&amp;lt;/span&amp;gt;
-1234567891011121314span&amp;#
+background
+border
+块级
+浮动
+内联
+z-index : 0 ( position :relative , absolute)
+z-index :  +
+
+注意：z-index 只有在 position 不是 static 的时候才有用，比如 relativ
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/CSS/">CSS</a>
-</span><a class="btn-border-small" href="/2018/08/24/css-宽度高度，对齐/">阅读</a></div>
+</span><a class="btn-border-small" href="/2018/08/24/css-堆叠上下文/">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   
@@ -210,6 +185,38 @@ BDD( Behavior-Driven-Development ):行为驱动开发 , 主要是设计一些行
       <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/Vue/">Vue</a>
 </span><a class="btn-border-small" href="/2018/08/24/写轱辘时候发现的新知识/">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/VueRouter/" title="link to post.title">Vue-Router</a></h2>
+      <p class="excerpt">
+    
+      Vue-Router1.简单配置创建router.js
+1234567891011import Vue from &#39;vue&#39;import Router from &#39;vue-router&#39;import index from &#39;./components/index&#39;import user from &#39;./components/user&#39;Vue.use(Router)export default new
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+</span><a class="btn-border-small" href="/2018/08/24/VueRouter/">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/单元测试/" title="link to post.title">单元测试</a></h2>
+      <p class="excerpt">
+    
+      单元测试1.BDD&amp;amp;&amp;amp;TDD
+BDD( Behavior-Driven-Development ):行为驱动开发 , 主要是设计一些行为,进行对代码的测试
+12345describe(&#39;Button&#39;,()=&amp;gt;&amp;#123;  //Mocha语法,下面会介绍Mocha  it(&#39;存在&#39;,()=&amp;gt;&amp;#123;    //测试  &amp;#125;)&amp;#125;)
+这样的写法,我们
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/2018/08/24/单元测试/">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   
@@ -281,22 +288,6 @@ vm: viewport width 视口宽度 100vw === 视口宽度
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/设计模式/" title="link to post.title">一些常用的设计模式</a></h2>
-      <p class="excerpt">
-    
-      总结一些写轱辘的时候使用的设计模式（套路）1.发布订阅模式123vm.$emit(&#39;update:selected&#39;,this.name) //发布vm.$on(&#39;update:selected&#39;,(name)=&amp;gt;&amp;#123;this.name = name&amp;#125;) //订阅vm.$off(&#39;update:selected&#39;) //取消订阅
-2.单项数据流使用eventBus
-1234
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/2018/08/24/设计模式/">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/08/24/LESS/" title="link to post.title">LESS</a></h2>
       <p class="excerpt">
     
@@ -308,6 +299,22 @@ LESS 将 CSS 赋予了动态语言的特性，如 变量， 继承，运算， �
       <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/CSS/">CSS</a>
 </span><a class="btn-border-small" href="/2018/08/24/LESS/">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/24/设计模式/" title="link to post.title">一些常用的设计模式</a></h2>
+      <p class="excerpt">
+    
+      总结一些写轱辘的时候使用的设计模式（套路）1.发布订阅模式123vm.$emit(&#39;update:selected&#39;,this.name) //发布vm.$on(&#39;update:selected&#39;,(name)=&amp;gt;&amp;#123;this.name = name&amp;#125;) //订阅vm.$off(&#39;update:selected&#39;) //取消订阅
+2.单项数据流使用eventBus
+1234
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+</span><a class="btn-border-small" href="/2018/08/24/设计模式/">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   

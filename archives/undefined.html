@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>CSS-堆叠上下文 | Storm</title>
+    <title>如何在mpvue中使用第三方UI组件 | Storm</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="前端 | Vue | JavaScript | css">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="CSS-堆叠上下文 | Storm">
+    <meta name="twitter:title" content="如何在mpvue中使用第三方UI组件 | Storm">
     <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="CSS-堆叠上下文 | Storm">
+    <meta property="og:title" content="如何在mpvue中使用第三方UI组件 | Storm">
     <meta property="og:description" content="前端 | Vue | JavaScript | css">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
     
 
-    <link rel="canonical" href="https://storm4542.github.io/archives/81ea01b1.html">
+    <link rel="canonical" href="https://storm4542.github.io/archives/undefined.html">
 
                  
 </head>
@@ -135,46 +135,34 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-meta__tags tags">于 
-  <a class="tag-link" href="/tags/CSS/">CSS</a>
+      <time datetime="2018-08-27T06:02:43.000Z" class="post-list__meta--date date">2018-08-27</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/小程序/">小程序</a>
  </span>
       <span class="page-pv">
        阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">CSS-堆叠上下文</h1>
+    <h1 class="post-title">如何在mpvue中使用第三方UI组件</h1>
   </header>
 
   <section class="post">
-    <h3 id="堆叠上下文"><a href="#堆叠上下文" class="headerlink" title="堆叠上下文"></a>堆叠上下文</h3><h4 id="1-堆叠顺序"><a href="#1-堆叠顺序" class="headerlink" title="1.堆叠顺序"></a>1.堆叠顺序</h4><p>div是有空间层次关系的。</p>
-<p>原则：相同类型的元素，后出现的会覆盖之前的。</p>
-<p>层次顺序（底层-上层）： </p>
+    <p>最近接触了小程序业务，了解到美团的 mpvue 也可以小程序。</p>
+<p>使用方式也很简单，和 vue 一样， 但是他会自动将 Vue 编译为 小程序 语言。</p>
+<p>市面上有很多的 小程序 UI ,因此我想用他们，但是怎么用呢？研究了一番找到了答案。</p>
 <ol>
-<li>background</li>
-<li>border</li>
-<li>块级</li>
-<li>浮动</li>
-<li>内联</li>
-<li>z-index : 0 ( position :relative , absolute)</li>
-<li>z-index :  +</li>
+<li><p>创建 mpvue </p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init mpvue/mpvue-quickstart my-app</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以 ivew weapp UI 举例 ，进入其 github 地址，下载后将 dist 目录下的所有东西，拷贝到 my-app 下 static 的 ivew (自己创建) 目录。</p>
+</li>
+<li><p>在需要使用的页面中创建 main.json。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"usingComponents"</span>: &#123;</span><br><span class="line">    <span class="attr">"i-card"</span>: <span class="string">"../../../static/iview/card/index"</span>,</span><br><span class="line">    <span class="attr">"i-button"</span>: <span class="string">"../../../static/iview/button/index"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来就可以在 index.vue 中使用该标签了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">i-card</span> <span class="attr">full</span> <span class="attr">title</span>=<span class="string">"卡片标题"</span> <span class="attr">extra</span>=<span class="string">"额外内容"</span> <span class="attr">thumb</span>=<span class="string">"https://i.loli.net/2017/08/21/599a521472424.jpg"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"content"</span>&gt;</span>内容不错<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"footer"</span>&gt;</span>尾部内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">i-card</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i-button</span> <span class="attr">type</span>=<span class="string">"success"</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">i-button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<p>注意：z-index 只有在 position 不是 static 的时候才有用，比如 relative , absolute</p>
-<h4 id="2-怎么样形成堆叠上下文"><a href="#2-怎么样形成堆叠上下文" class="headerlink" title="2.怎么样形成堆叠上下文"></a>2.怎么样形成堆叠上下文</h4><p>可以理解为堆叠作用域。跟 BFC 一样，我们只知道一些属性会触发堆叠上下文，但并不知道堆叠上下文是什么。</p>
-<ul>
-<li><strong>根元素 (HTML),</strong></li>
-<li><strong>z-index 值不为 “auto”的 绝对/相对定位，</strong></li>
-<li><strong>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</strong></li>
-<li><strong>opacity 属性值小于 1 的元素（参考 the specification for opacity），</strong></li>
-<li><strong>transform 属性值不为 “none”的元素，</strong></li>
-<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
-<li>filter值不为“none”的元素，</li>
-<li>perspective值不为“none”的元素，</li>
-<li>isolation 属性被设置为 “isolate”的元素，</li>
-<li><strong>position: fixed</strong></li>
-<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值（参考 这篇文章）</li>
-<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
-</ul>
 
   </section>
 
@@ -183,44 +171,21 @@
 <section class="read-more">
            
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/archives/beed3124.html" title="一些常用的设计模式">一些常用的设计模式</a></h2>
-                <p class="excerpt">
-                
-                总结一些写轱辘的时候使用的设计模式（套路）1.发布订阅模式123vm.$emit(&#39;update:selected&#39;,this.name) //发布vm.$on(&#39;update:selected&#39;,(name)=&amp;gt;&amp;#123;this.name = name&amp;#125;) //订阅vm.$of
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/beed3124.html">阅读</a></div>
-                           
-            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/archives/9eed9a2c.html" title="Vue--小知识">Vue--小知识</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/archives/18e53f06.html" title="在 Vue Cli 3 中使用 px2rem">在 Vue Cli 3 中使用 px2rem</a></h2>
                 <p class="excerpt">
                 
-                1.Vue的双向绑定其实是单向绑定双向绑定的假设
-
-假设，我有两个儿子，大儿子和二儿子
-我有500元
-大儿子要花500买衣服，把钱花了
-二儿子要花200买书籍，钱没了。
-原因：大儿子花钱的时候没有告诉我。
-所以：我定了规矩，以后花钱必须先跟我说，然后我再把钱给你！
-
-
-因此，Vue的 v-model
+                # 安装 postcss-px2rem1yarn add postcss-px2rem
+# 在 vue.config.js 中添加配置1234567891011121314151617const px2rem = require(&#39;postcss-px2rem&#39;)const postcss = px
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+                <div class="post-list__meta"><time datetime="2018-08-25T07:16:43.000Z" class="post-list__meta--date date">2018-08-25</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/9eed9a2c.html">阅读</a></div>
+</span><a class="btn-border-small" href="/archives/18e53f06.html">阅读</a></div>
                        
             </div>
         
@@ -236,9 +201,9 @@
       <script type="text/javascript">
           var disqus_shortname = 'storm'; 
           
-      var disqus_identifier = '/archives/81ea01b1.html';
-      var disqus_title = 'CSS-堆叠上下文';
-      var disqus_url = 'https://storm4542.github.io/archives/81ea01b1.html';
+      var disqus_identifier = '/archives/undefined.html';
+      var disqus_title = '如何在mpvue中使用第三方UI组件';
+      var disqus_url = 'https://storm4542.github.io/archives/undefined.html';
       
     
           /* * * DON'T EDIT BELOW THIS LINE * * */

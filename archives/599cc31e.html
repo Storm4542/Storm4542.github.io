@@ -147,18 +147,23 @@
   </header>
 
   <section class="post">
-    <p>最近接触了小程序业务，了解到美团的 mpvue 也可以小程序。</p>
+    <p>最近接触了小程序业务，了解到美团的 mpvue 也可以做小程序。</p>
 <p>使用方式也很简单，和 vue 一样， 但是他会自动将 Vue 编译为 小程序 语言。</p>
-<p>市面上有很多的 小程序 UI ,因此我想用他们，但是怎么用呢？研究了一番找到了答案。</p>
+<p>下面言归正传，介绍一下如何在 mpvue 中使用第三方组件。</p>
 <ol>
 <li><p>创建 mpvue </p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init mpvue/mpvue-quickstart my-app</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>以 ivew weapp UI 举例 ，进入其 github 地址，下载后将 dist 目录下的所有东西，拷贝到 my-app 下 static 的 ivew (自己创建) 目录。</p>
-</li>
+</ol>
+<ol start="2">
+<li>以 ivew weapp UI 举例 ，进入其 github 地址，下载后将 dist 目录下的所有东西，拷贝到 my-app 下 static 的 ivew (自己创建) 目录。</li>
+</ol>
+<ol start="3">
 <li><p>在需要使用的页面中创建 main.json。</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"usingComponents"</span>: &#123;</span><br><span class="line">    <span class="attr">"i-card"</span>: <span class="string">"../../../static/iview/card/index"</span>,</span><br><span class="line">    <span class="attr">"i-button"</span>: <span class="string">"../../../static/iview/button/index"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
+</ol>
+<ol start="4">
 <li><p>接下来就可以在 index.vue 中使用该标签了。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">i-card</span> <span class="attr">full</span> <span class="attr">title</span>=<span class="string">"卡片标题"</span> <span class="attr">extra</span>=<span class="string">"额外内容"</span> <span class="attr">thumb</span>=<span class="string">"https://i.loli.net/2017/08/21/599a521472424.jpg"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"content"</span>&gt;</span>内容不错<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"footer"</span>&gt;</span>尾部内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">i-card</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i-button</span> <span class="attr">type</span>=<span class="string">"success"</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">i-button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>

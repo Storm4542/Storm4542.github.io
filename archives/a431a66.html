@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Vue父子传参的方式 | Storm</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="前端 | Vue | JavaScript | css">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Vue父子传参的方式 | Storm">
+    <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Vue父子传参的方式 | Storm">
+    <meta property="og:description" content="前端 | Vue | JavaScript | css">
+
+    
+    <meta name="author" content="Storm">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/fav.png">
+    
+
+    <meta name="generator" content="hexo">
+    
+    <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https://storm4542.github.io/archives/a431a66.html">
+
+                 
+</head>
+</html>
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/item.png)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo"></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Storm">Storm</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">求知若饥 虚怀若谷</span>
+        
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">前端 | WEB | VUE</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank" rel="external nofollow noopener noreferrer">
+      <i class="social fa fa-github"></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class="social fa fa-rss"></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-09-09T07:59:07.000Z" class="post-list__meta--date date">2018-09-09</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Vue父子传参的方式</h1>
+  </header>
+
+  <section class="post">
+    <p>感觉Vue中父子传参的方式，实在是太多了，于是做一个小总结，只是总结我所知道的。</p>
+<h3 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1.父传子"></a>1.父传子</h3><p>基本就用一个方式，<code>props</code></p>
+<p>父亲通过在 <strong>标签</strong> 中写入需要传入的数据。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--father.vue--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        我是爸爸，下面是儿子</span><br><span class="line">        <span class="tag">&lt;<span class="name">son</span> <span class="attr">title</span>=<span class="string">'儿子'</span> <span class="attr">:selected</span>=<span class="string">'selected'</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>儿子在 实例中的 <code>props</code> 选项中获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//son.vue</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name:<span class="string">'son'</span>,</span><br><span class="line">    props:&#123;</span><br><span class="line">        selected:&#123;</span><br><span class="line">            type:<span class="built_in">Boolean</span></span><br><span class="line">        &#125;,</span><br><span class="line">        title:&#123;</span><br><span class="line">            type:<span class="built_in">String</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-子传父"><a href="#2-子传父" class="headerlink" title="2.子传父"></a>2.子传父</h3><h4 id="update-my-prop-name-模式"><a href="#update-my-prop-name-模式" class="headerlink" title="# update:my-prop-name 模式"></a># <code>update:my-prop-name</code> 模式</h4><p>Vue 是单项数据流，所以不允许 儿子 直接修改父亲的数据，也不允许儿子直接修改自己的<code>props</code>。</p>
+<p>假设一个情况，点击儿子，儿子需要改变 <code>selected</code> 的状态。</p>
+<p><strong>儿子方面</strong></p>
+<p>触发点击事件后， 让儿子触发一个 <code>update</code> 事件，把新的 <code>selected</code> 传出去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--son.vue--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;son&quot; @click=&quot;onClick&quot;&gt;</span><br><span class="line">        title:&#123;&#123;title&#125;&#125; selected:&#123;&#123;selected&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;son&quot;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    selected: &#123;</span><br><span class="line">      type: Boolean</span><br><span class="line">    &#125;,</span><br><span class="line">    title: &#123;</span><br><span class="line">      type: String</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    onClick() &#123;</span><br><span class="line">      this.$emit(&quot;update:selected&quot;, !this.selected); //关键点</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.son &#123;</span><br><span class="line">  border: 1px solid red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>父亲方面</strong></p>
+<p>在标签中监听 <code>update</code>事件，并将传过来的 <code>$event</code>付给 <code>selected</code>，这样就完成了一次传参。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--father.vue--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        我是爸爸，下面是儿子</span><br><span class="line">        &lt;son title=&apos;儿子&apos; :selected=&apos;selected&apos; @update:selected=&apos;selected=$event&apos;&gt;&lt;/son&gt; </span><br><span class="line">        &lt;!--关键点--&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Son from &quot;./son&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;father&quot;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    Son</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      selected: true</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>简单方式</p>
+<p><strong>.sync 修饰符</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--father.vue--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        我是爸爸，下面是儿子</span><br><span class="line">        &lt;son title=&apos;儿子&apos; :selected.sync=&apos;selected&apos;&gt;&lt;/son&gt; </span><br><span class="line">        &lt;!--关键点--&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="parents-API"><a href="#parents-API" class="headerlink" title="#  $parents API"></a>#  $parents API</h4><p><strong>儿子方面</strong></p>
+<p>从 <code>this.$parent</code>中可以获取到 父组件 的 data 数据 ，直接进行修改，是不是很刺激。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    onClick() &#123;</span><br><span class="line">      <span class="keyword">this</span>.$parent.selected = !<span class="keyword">this</span>.$parent.selected;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>虽然刺激，<strong>但是，我建议调用父组件的函数，来切换状态。</strong></p>
+<p><strong>父亲方面</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//father.vue</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"father"</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    Son</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      selected: <span class="literal">true</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeSelected() &#123;</span><br><span class="line">      <span class="keyword">this</span>.selected = !<span class="keyword">this</span>.selected;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>儿子方面</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//son.vue </span></span><br><span class="line">methods: &#123;</span><br><span class="line">    onClick() &#123;</span><br><span class="line">      <span class="keyword">this</span>.$parent.changeSelected();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="EventBus"><a href="#EventBus" class="headerlink" title="# EventBus"></a># EventBus</h4><p>如果只是一个父亲，一个儿子上面的方法非常的简单实用，但是如果是祖孙三代传参呢？上面的方法就很麻烦了。</p>
+<p>具体怎么麻烦，可以看一下我的这篇文章，用原始的方法造 tabs轮子:<a href="https://zhuanlan.zhihu.com/p/39601572" rel="external nofollow noopener noreferrer" target="_blank">https://zhuanlan.zhihu.com/p/39601572</a> </p>
+<p>废话不多说，开始用 EventBus做一个简单的 tabs组件。</p>
+<h5 id="app-vue"><a href="#app-vue" class="headerlink" title="#app.vue"></a>#app.vue</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;tab selected=&apos;news&apos;&gt;</span><br><span class="line">      &lt;tab-item name=&apos;news&apos;&gt;新闻&lt;/tab-item&gt;</span><br><span class="line">      &lt;tab-item name=&apos;car&apos;&gt;汽车&lt;/tab-item&gt;</span><br><span class="line">      &lt;tab-item name=‘code’&gt;代码&lt;/tab-item&gt;</span><br><span class="line"></span><br><span class="line">      &lt;tab-pane name=&apos;news&apos;&gt;新闻列表&lt;/tab-pane&gt;</span><br><span class="line">      &lt;tab-pane name=&apos;car&apos;&gt;汽车列表&lt;/tab-pane&gt;</span><br><span class="line">      &lt;tab-pane name=‘code’&gt;代码列表&lt;/tab-pane&gt;</span><br><span class="line">    &lt;/tab&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Tab from &quot;./components/tabs.vue&quot;;</span><br><span class="line">import TabItem from &quot;./components/tab-item&quot;;</span><br><span class="line">import TabPane from &quot;./components/tab-pane&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;app&quot;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    Tab,</span><br><span class="line">    TabItem,</span><br><span class="line">    TabPane</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="tabs-vue"><a href="#tabs-vue" class="headerlink" title="# tabs.vue"></a># tabs.vue</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import TabItem from &quot;./tab-item.vue&quot;;</span><br><span class="line">import Vue from &quot;vue&quot;;  //引入VUE</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;tab&quot;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    selected: &#123;</span><br><span class="line">      type: [Number, String]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      eventBus: new Vue() // 创建 eventBus</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  provide() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      eventBus: this.eventBus // 提供 eventBus</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    this.eventBus.$emit(&quot;update:selected&quot;, this.selected); </span><br><span class="line">      //发布消息，告诉大家，现在的selected是啥</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="tabs-item-vue"><a href="#tabs-item-vue" class="headerlink" title="# tabs-item.vue"></a># tabs-item.vue</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div @click=&quot;onClick&quot; :class=&quot;&#123;active&#125;&quot;&gt;</span><br><span class="line">        &lt;slot/&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;tab-item&quot;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    name: &#123;</span><br><span class="line">      type: [String, Number]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  inject: [&quot;eventBus&quot;], //注入 eventBus</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      active: false</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    this.eventBus.$on(&quot;update:selected&quot;, newSelected =&gt; &#123;</span><br><span class="line">      this.active = this.name === newSelected;</span><br><span class="line">    &#125;); //接收消息，如果newselected 和我的 name 相同，那么我就被选中了</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    onClick() &#123;</span><br><span class="line">      this.eventBus.$emit(&quot;update:selected&quot;, this.name);</span><br><span class="line">        //发布消息，如果点击了我，我就告诉大家，我被选中了</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.active &#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="tab-pane-vue"><a href="#tab-pane-vue" class="headerlink" title="# tab-pane.vue"></a># tab-pane.vue</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div v-if=&quot;active&quot; class=&quot;pane&quot;&gt;</span><br><span class="line">    &lt;slot/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;tab-pane&quot;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    name: &#123;</span><br><span class="line">      type: [String, Number]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      active: false</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  inject: [&quot;eventBus&quot;],//注入 eventBus</span><br><span class="line">  created() &#123;</span><br><span class="line">    this.eventBus.$on(&quot;update:selected&quot;, newSelected =&gt; &#123;</span><br><span class="line">      this.active = this.name === newSelected;</span><br><span class="line">    &#125;);</span><br><span class="line">      //接收消息，如果newselected 和我的 name 相同，那么我就被选中了</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.pane &#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="灵活运用-provide-inject"><a href="#灵活运用-provide-inject" class="headerlink" title="# 灵活运用 provide inject"></a># 灵活运用 provide inject</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//father.vue</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name:<span class="string">'father'</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            someThing:<span class="string">'father'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    provide()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            father:<span class="keyword">this</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//son.vue</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name:<span class="string">'son'</span>,</span><br><span class="line">    inject:[<span class="string">'father'</span>],</span><br><span class="line">    methods:&#123;</span><br><span class="line">        onClick()&#123;</span><br><span class="line">            <span class="keyword">this</span>.father.someThing = <span class="string">'son'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/archives/9fa8d30b.html" title="关于JavaScript日期的一些小技巧">关于JavaScript日期的一些小技巧</a></h2>
+                <p class="excerpt">
+                
+                最近在做小程序，要做一些关于日期方面的计算，于是整理下来，方便下次使用
+1. 获得年月日123456789101112function newDateInit() &amp;#123;  let newDate = new Date();  let month = newDate.getMonth();  
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-28T15:17:42.000Z" class="post-list__meta--date date">2018-08-28</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/archives/9fa8d30b.html">阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+    <section class="post-comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          var disqus_shortname = 'storm'; 
+          
+      var disqus_identifier = '/archives/a431a66.html';
+      var disqus_title = 'Vue父子传参的方式';
+      var disqus_url = 'https://storm4542.github.io/archives/a431a66.html';
+      
+    
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              //dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+              dsq.src = 'https://a.disquscdn.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+      <a href="https://disqus.com" class="dsq-brlink" rel="external nofollow noopener noreferrer" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+    
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno " rel="external nofollow noopener noreferrer" target="_blank">new-vno</a> 主题，由<a href="https://monniya.com " rel="external nofollow noopener noreferrer" target="_blank">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external nofollow noopener noreferrer">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank" rel="external nofollow noopener noreferrer">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-124586744-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?70f53ec987c743179662cbe4b386692e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+

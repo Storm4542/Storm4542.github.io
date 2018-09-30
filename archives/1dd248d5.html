@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>CSS-堆叠上下文 | Storm</title>
+    <title>NodeJS 库 (持续更新) | Storm</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="前端 | Vue | JavaScript | css">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="CSS-堆叠上下文 | Storm">
+    <meta name="twitter:title" content="NodeJS 库 (持续更新) | Storm">
     <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="CSS-堆叠上下文 | Storm">
+    <meta property="og:title" content="NodeJS 库 (持续更新) | Storm">
     <meta property="og:description" content="前端 | Vue | JavaScript | css">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
     
 
-    <link rel="canonical" href="https://storm4542.github.io/archives/81ea01b1.html">
+    <link rel="canonical" href="https://storm4542.github.io/archives/1dd248d5.html">
 
                  
 </head>
@@ -135,46 +135,25 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-meta__tags tags">于 
-  <a class="tag-link" href="/tags/CSS/">CSS</a>
+      <time datetime="2018-09-30T08:22:41.000Z" class="post-list__meta--date date">2018-09-30</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/NodeJS/">NodeJS</a>
  </span>
       <span class="page-pv">
        阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">CSS-堆叠上下文</h1>
+    <h1 class="post-title">NodeJS 库 (持续更新)</h1>
   </header>
 
   <section class="post">
-    <h3 id="堆叠上下文"><a href="#堆叠上下文" class="headerlink" title="堆叠上下文"></a>堆叠上下文</h3><h4 id="1-堆叠顺序"><a href="#1-堆叠顺序" class="headerlink" title="1.堆叠顺序"></a>1.堆叠顺序</h4><p>div是有空间层次关系的。</p>
-<p>原则：相同类型的元素，后出现的会覆盖之前的。</p>
-<p>层次顺序（底层-上层）： </p>
-<ol>
-<li>background</li>
-<li>border</li>
-<li>块级</li>
-<li>浮动</li>
-<li>内联</li>
-<li>z-index : 0 ( position :relative , absolute)</li>
-<li>z-index :  +</li>
-</ol>
-<p>注意：z-index 只有在 position 不是 static 的时候才有用，比如 relative , absolute</p>
-<h4 id="2-怎么样形成堆叠上下文"><a href="#2-怎么样形成堆叠上下文" class="headerlink" title="2.怎么样形成堆叠上下文"></a>2.怎么样形成堆叠上下文</h4><p>可以理解为堆叠作用域。跟 BFC 一样，我们只知道一些属性会触发堆叠上下文，但并不知道堆叠上下文是什么。</p>
-<ul>
-<li><strong>根元素 (HTML),</strong></li>
-<li><strong>z-index 值不为 “auto”的 绝对/相对定位，</strong></li>
-<li><strong>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</strong></li>
-<li><strong>opacity 属性值小于 1 的元素（参考 the specification for opacity），</strong></li>
-<li><strong>transform 属性值不为 “none”的元素，</strong></li>
-<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
-<li>filter值不为“none”的元素，</li>
-<li>perspective值不为“none”的元素，</li>
-<li>isolation 属性被设置为 “isolate”的元素，</li>
-<li><strong>position: fixed</strong></li>
-<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值（参考 这篇文章）</li>
-<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
+    <h3 id="1-加密-解密-工具"><a href="#1-加密-解密-工具" class="headerlink" title="1.加密 解密 工具"></a>1.加密 解密 工具</h3><ul>
+<li>bcrypt </li>
 </ul>
+<p>  加密</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> saltRounds = <span class="number">10</span>; <span class="comment">//加密轮数</span></span><br><span class="line"><span class="keyword">let</span> password = userInfo.password <span class="comment">//密码</span></span><br><span class="line">bcrypt.genSalt(saltRounds, <span class="function"><span class="keyword">function</span> (<span class="params">err, salt</span>) </span>&#123;</span><br><span class="line">        bcrypt.hash(password, salt, <span class="function"><span class="keyword">function</span> (<span class="params">err, hash</span>) </span>&#123;</span><br><span class="line">            <span class="comment">//把hash值赋值给password变量</span></span><br><span class="line">            password = hash;</span><br><span class="line">            storeUInfo(&#123; <span class="comment">//存储</span></span><br><span class="line">                username: userInfo.username,</span><br><span class="line">                password,</span><br><span class="line">                name: userInfo.name,</span><br><span class="line">                age: userInfo.age</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>  解密验证</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">userInfo</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> user = <span class="keyword">await</span> UserModel.findOne(&#123; <span class="comment">//从数据库中找到该用户</span></span><br><span class="line">        username: userInfo.username</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">const</span> match = <span class="keyword">await</span> bcrypt.compare(userInfo.password, user.password) <span class="comment">// 看看 密码是否相同</span></span><br><span class="line">    <span class="keyword">if</span> (match) &#123;</span><br><span class="line">        <span class="keyword">return</span> user</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> HttpParamError(<span class="string">'user'</span>, <span class="string">'用户名密码错误'</span>, <span class="string">'username password error'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
   </section>
 
@@ -186,17 +165,24 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/archives/cef93ee3.html" title="单元测试">单元测试</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/archives/273360f2.html" title="mongoose 使用">mongoose 使用</a></h2>
                 <p class="excerpt">
                 
-                单元测试1.BDD&amp;amp;&amp;amp;TDD
-BDD( Behavior-Driven-Development ):行为驱动开发 , 主要是设计一些行为,进行对代码的测试
-12345describe(&#39;Button&#39;,()=&amp;gt;&amp;#123;  //Mocha语法,下面会介绍Mocha  it(&#39;
+                1. 命令行中创建并启动数据库
+指定存储的位置和端口号
+
+1mongod --dbpath --port=27018  code/mongo_demo
+
+另开一个命令行窗口，进入 code/mongo_demo
+
+1mongo
+2. 使用 mongoose 链接数据库并创建 Collection
+链
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/cef93ee3.html">阅读</a></div>
+                <div class="post-list__meta"><time datetime="2018-09-30T08:22:53.000Z" class="post-list__meta--date date">2018-09-30</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/NodeJS/">NodeJS</a>
+</span><a class="btn-border-small" href="/archives/273360f2.html">阅读</a></div>
                            
             </div>
         
@@ -204,17 +190,18 @@ BDD( Behavior-Driven-Development ):行为驱动开发 , 主要是设计一些行
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/archives/db4c4335.html" title="Vuex">Vuex</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/archives/a431a66.html" title="Vue父子传参的方式">Vue父子传参的方式</a></h2>
                 <p class="excerpt">
                 
-                Vuex1.Vuex是什么？
-Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。 
-Vuex 使用单一状态树——是的，用一个对象就包含了全部的应用层级状态。至此它便作为一个“唯一数据源 (SSO
+                感觉Vue中父子传参的方式，实在是太多了，于是做一个小总结，只是总结我所知道的。
+1.父传子基本就用一个方式，props
+父亲通过在 标签 中写入需要传入的数据。
+1234567&amp;lt;!--father.vue--&amp;gt;&amp;lt;template&amp;gt;    &amp;lt;div&amp;gt;       
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+                <div class="post-list__meta"><time datetime="2018-09-09T07:59:07.000Z" class="post-list__meta--date date">2018-09-09</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/db4c4335.html">阅读</a></div>
+</span><a class="btn-border-small" href="/archives/a431a66.html">阅读</a></div>
                        
             </div>
         
@@ -230,9 +217,9 @@ Vuex 使用单一状态树——是的，用一个对象就包含了全部的应
       <script type="text/javascript">
           var disqus_shortname = 'storm'; 
           
-      var disqus_identifier = '/archives/81ea01b1.html';
-      var disqus_title = 'CSS-堆叠上下文';
-      var disqus_url = 'https://storm4542.github.io/archives/81ea01b1.html';
+      var disqus_identifier = '/archives/1dd248d5.html';
+      var disqus_title = 'NodeJS 库 (持续更新)';
+      var disqus_url = 'https://storm4542.github.io/archives/1dd248d5.html';
       
     
           /* * * DON'T EDIT BELOW THIS LINE * * */

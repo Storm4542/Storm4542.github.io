@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>CSS-堆叠上下文 | Storm</title>
+    <title>Storm | 求知若饥 虚怀若谷</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="前端 | Vue | JavaScript | css">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="CSS-堆叠上下文 | Storm">
+    <meta name="twitter:title" content="Storm | 求知若饥 虚怀若谷">
     <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="CSS-堆叠上下文 | Storm">
+    <meta property="og:title" content="Storm | 求知若饥 虚怀若谷">
     <meta property="og:description" content="前端 | Vue | JavaScript | css">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
     
 
-    <link rel="canonical" href="https://storm4542.github.io/archives/81ea01b1.html">
+    <link rel="canonical" href="https://storm4542.github.io">
 
                  
 </head>
@@ -131,121 +131,59 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <article class="post-container post-container--single">
-
-  <header class="post-header">
-    <div class="post-meta">
-      <time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-meta__tags tags">于 
-  <a class="tag-link" href="/tags/CSS/">CSS</a>
- </span>
-      <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
-      </span> 
-   
-    </div>
-    <h1 class="post-title">CSS-堆叠上下文</h1>
-  </header>
-
-  <section class="post">
-    <h3 id="堆叠上下文"><a href="#堆叠上下文" class="headerlink" title="堆叠上下文"></a>堆叠上下文</h3><h4 id="1-堆叠顺序"><a href="#1-堆叠顺序" class="headerlink" title="1.堆叠顺序"></a>1.堆叠顺序</h4><p>div是有空间层次关系的。</p>
-<p>原则：相同类型的元素，后出现的会覆盖之前的。</p>
-<p>层次顺序（底层-上层）： </p>
-<ol>
-<li>background</li>
-<li>border</li>
-<li>块级</li>
-<li>浮动</li>
-<li>内联</li>
-<li>z-index : 0 ( position :relative , absolute)</li>
-<li>z-index :  +</li>
-</ol>
-<p>注意：z-index 只有在 position 不是 static 的时候才有用，比如 relative , absolute</p>
-<h4 id="2-怎么样形成堆叠上下文"><a href="#2-怎么样形成堆叠上下文" class="headerlink" title="2.怎么样形成堆叠上下文"></a>2.怎么样形成堆叠上下文</h4><p>可以理解为堆叠作用域。跟 BFC 一样，我们只知道一些属性会触发堆叠上下文，但并不知道堆叠上下文是什么。</p>
-<ul>
-<li><strong>根元素 (HTML),</strong></li>
-<li><strong>z-index 值不为 “auto”的 绝对/相对定位，</strong></li>
-<li><strong>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</strong></li>
-<li><strong>opacity 属性值小于 1 的元素（参考 the specification for opacity），</strong></li>
-<li><strong>transform 属性值不为 “none”的元素，</strong></li>
-<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
-<li>filter值不为“none”的元素，</li>
-<li>perspective值不为“none”的元素，</li>
-<li>isolation 属性被设置为 “isolate”的元素，</li>
-<li><strong>position: fixed</strong></li>
-<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值（参考 这篇文章）</li>
-<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
-</ul>
-
-  </section>
-
-</article>
-
-<section class="read-more">
-           
+            <div class="main-post-list">
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/archives/2869b8d0.html" title="Vue-Router">Vue-Router</a></h2>
-                <p class="excerpt">
-                
-                Vue-Router1.简单配置创建router.js
-1234567891011import Vue from &#39;vue&#39;import Router from &#39;vue-router&#39;import index from &#39;./components/index&#39;import user from &#39;.
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/2869b8d0.html">阅读</a></div>
-                           
-            </div>
-        
-        
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/archives/cef93ee3.html" title="单元测试">单元测试</a></h2>
-                <p class="excerpt">
-                
-                单元测试1.BDD&amp;amp;&amp;amp;TDD
+  <ol class="post-list">
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/archives/cef93ee3.html" title="link to post.title">单元测试</a></h2>
+      <p class="excerpt">
+    
+      单元测试1.BDD&amp;amp;&amp;amp;TDD
 BDD( Behavior-Driven-Development ):行为驱动开发 , 主要是设计一些行为,进行对代码的测试
-12345describe(&#39;Button&#39;,()=&amp;gt;&amp;#123;  //Mocha语法,下面会介绍Mocha  it(&#39;
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+12345describe(&#39;Button&#39;,()=&amp;gt;&amp;#123;  //Mocha语法,下面会介绍Mocha  it(&#39;存在&#39;,()=&amp;gt;&amp;#123;    //测试  &amp;#125;)&amp;#125;)
+这样的写法,我们
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
 </span><a class="btn-border-small" href="/archives/cef93ee3.html">阅读</a></div>
-                       
-            </div>
-        
-     
-   
-   
+      <hr class="post-list__divider">
+    </li>
   
-</section>
+    
+  </ol>
 
-  
-    <section class="post-comments">
-      <div id="disqus_thread"></div>
-      <script type="text/javascript">
-          var disqus_shortname = 'storm'; 
-          
-      var disqus_identifier = '/archives/81ea01b1.html';
-      var disqus_title = 'CSS-堆叠上下文';
-      var disqus_url = 'https://storm4542.github.io/archives/81ea01b1.html';
-      
+
+  <nav class="pagination" role="navigation">
     
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              //dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-              dsq.src = 'https://a.disquscdn.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
-      <a href="https://disqus.com" class="dsq-brlink" rel="external nofollow noopener noreferrer" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
-    </section>
+      <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/#blog">&larr; 最近</a>
     
+    <span class="pagination__page-number">  2 / 2 </span>
+    
+  </nav>
+
+ <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
+    
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</div>
+
 
             <footer class="footer">
     <span class="footer__copyright">

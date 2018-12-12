@@ -137,6 +137,38 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/archives/39d3351.html" title="link to post.title">JS引用类型</a></h2>
+      <p class="excerpt">
+    
+      1.JS中的类型
+基本类型
+String
+Boolean
+Number
+undefined
+Null
+Symbol
+
+引用类型
+Object
+
+
+对于基本类型，=代表的是值得拷贝，===代表的是值得比较。
+对于引用类型，=代表的是引用地址的拷贝，===代表的是引用地址的比较。
+2.几个例子深入理解
+案例一
+
+12345let a = 1;let b = a;a === b // trueb = 2
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-12-12T03:08:15.000Z" class="post-list__meta--date date">2018-12-12</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/archives/39d3351.html">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/archives/30db5aa.html" title="link to post.title">JS中的数组过滤和对象深拷贝</a></h2>
       <p class="excerpt">
     
@@ -163,22 +195,6 @@
       <div class="post-list__meta"><time datetime="2018-08-28T15:17:42.000Z" class="post-list__meta--date date">2018-08-28</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
 </span><a class="btn-border-small" href="/archives/9fa8d30b.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/b3afd273.html" title="link to post.title">Array--方法</a></h2>
-      <p class="excerpt">
-    
-      1.Array1.join12var array = [1,2,3]array.join(&#39;-&#39;) // 1-2-3
-猜测一下源码
-12345678Array.prototype.join = function(char)&amp;#123;  let result = this[0] || &#39;&#39;;  let length = this.length;  for( let i = 1 ; i &amp;lt; l
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/b3afd273.html">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   
@@ -223,21 +239,45 @@ se
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/4cf7e60f.html" title="link to post.title">JavaScript里的函数是什么</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/archives/b3afd273.html" title="link to post.title">Array--方法</a></h2>
       <p class="excerpt">
     
-      1.定义i 匿名函数
-​    var fn = function(){return 1} 有name fn.name = &amp;#39;fn&amp;#39;
-​    ii 具名函数
-​    function fn(){ return 1}
-​    var fn2 = function fn3(){ return 2 }
-​     两者的区别在于函数作用域
-​    console.log(fn()
+      1.Array1.join12var array = [1,2,3]array.join(&#39;-&#39;) // 1-2-3
+猜测一下源码
+12345678Array.prototype.join = function(char)&amp;#123;  let result = this[0] || &#39;&#39;;  let length = this.length;  for( let i = 1 ; i &amp;lt; l
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/4cf7e60f.html">阅读</a></div>
+</span><a class="btn-border-small" href="/archives/b3afd273.html">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/archives/3404a532.html" title="link to post.title">重构</a></h2>
+      <p class="excerpt">
+    
+      1.代码优化基本原则1.易读性优先
+2.如果不是性能瓶颈，就不要为了性能改代码
+3.复杂性守恒原则：无论你怎么写代码，复杂性都是不会消失的推论：如果逻辑很复杂，那么代码看起来就应该是复杂的。如果逻辑很简单，代码看起来就应该是简单的。
+2.命名程序员三大难题
+
+变量命名
+缓存失效
+循环边界
+
+可见变量命名的重要性。
+网上有很多命名规范，大家可以参考。这里只讲基本原则。
+
+注意词性
+
+普通变量/属性用
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/archives/3404a532.html">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   
@@ -282,52 +322,35 @@ se
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/3404a532.html" title="link to post.title">重构</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/archives/4cf7e60f.html" title="link to post.title">JavaScript里的函数是什么</a></h2>
       <p class="excerpt">
     
-      1.代码优化基本原则1.易读性优先
-2.如果不是性能瓶颈，就不要为了性能改代码
-3.复杂性守恒原则：无论你怎么写代码，复杂性都是不会消失的推论：如果逻辑很复杂，那么代码看起来就应该是复杂的。如果逻辑很简单，代码看起来就应该是简单的。
-2.命名程序员三大难题
-
-变量命名
-缓存失效
-循环边界
-
-可见变量命名的重要性。
-网上有很多命名规范，大家可以参考。这里只讲基本原则。
-
-注意词性
-
-普通变量/属性用
+      1.定义i 匿名函数
+​    var fn = function(){return 1} 有name fn.name = &amp;#39;fn&amp;#39;
+​    ii 具名函数
+​    function fn(){ return 1}
+​    var fn2 = function fn3(){ return 2 }
+​     两者的区别在于函数作用域
+​    console.log(fn()
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/3404a532.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/cef93ee3.html" title="link to post.title">单元测试</a></h2>
-      <p class="excerpt">
-    
-      单元测试1.BDD&amp;amp;&amp;amp;TDD
-BDD( Behavior-Driven-Development ):行为驱动开发 , 主要是设计一些行为,进行对代码的测试
-12345describe(&#39;Button&#39;,()=&amp;gt;&amp;#123;  //Mocha语法,下面会介绍Mocha  it(&#39;存在&#39;,()=&amp;gt;&amp;#123;    //测试  &amp;#125;)&amp;#125;)
-这样的写法,我们
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/cef93ee3.html">阅读</a></div>
+</span><a class="btn-border-small" href="/archives/4cf7e60f.html">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   
     
   </ol>
 
+
+  <nav class="pagination" role="navigation">
+    
+    <span class="pagination__page-number">  1 / 2 </span>
+    
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/tags/JavaScript/page/2/">更早 &rarr;</a>
+    
+  </nav>
 
  <script type="text/x-mathjax-config">
     MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },

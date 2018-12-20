@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>移动页面开发 | Storm</title>
+    <title>JS变量提升 | Storm</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="前端 | Vue | JavaScript | css">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="移动页面开发 | Storm">
+    <meta name="twitter:title" content="JS变量提升 | Storm">
     <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="移动页面开发 | Storm">
+    <meta property="og:title" content="JS变量提升 | Storm">
     <meta property="og:description" content="前端 | Vue | JavaScript | css">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
     
 
-    <link rel="canonical" href="https://storm4542.github.io/archives/3e92ca77.html">
+    <link rel="canonical" href="https://storm4542.github.io/archives/bd208f70.html">
 
                  
 </head>
@@ -135,43 +135,28 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-meta__tags tags">于 
-  <a class="tag-link" href="/tags/CSS/">CSS</a>
+      <time datetime="2018-12-20T08:52:09.000Z" class="post-list__meta--date date">2018-12-20</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/Javascript/">Javascript</a>
  </span>
       <span class="page-pv">
        阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">移动页面开发</h1>
+    <h1 class="post-title">JS变量提升</h1>
   </header>
 
   <section class="post">
-    <h3 id="移动页面"><a href="#移动页面" class="headerlink" title="移动页面"></a>移动页面</h3><h4 id="1-移动页面的区别"><a href="#1-移动页面的区别" class="headerlink" title="1.移动页面的区别"></a>1.移动页面的区别</h4><ol>
-<li><p>没有 hover</p>
-</li>
-<li><p>没有 touch</p>
-</li>
-<li><p>没有 resize</p>
-</li>
-<li><p>没有 滚动条</p>
-</li>
-<li><p>要加一个</p>
-<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
-</li>
-<li><p>会用  media query</p>
-</li>
-</ol>
-<h4 id="2-媒体查询"><a href="#2-媒体查询" class="headerlink" title="2.媒体查询"></a>2.媒体查询</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* wdith&gt;=320px */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width : <span class="number">320px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: red</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* wdith&gt;=375px */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width : <span class="number">375px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: orange</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* wdith&gt;=425px */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width : <span class="number">425px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: yellow</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* wdith&gt;=768px */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width : <span class="number">768px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: green</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* wdith&gt;=769px */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width : <span class="number">769px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: blue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>语法 @media(条件)</p>
-<p>注意：</p>
-<ol>
-<li>上面的条件使用<code>min-width</code>，假如使用<code>max-width</code>，在<code>width=768</code>之内的时候都是绿色，因为他们都符合条件，根据CSS的语法，谁在后面谁起作用。</li>
-<li>假如非要用<code>max-wdith</code>可以反过来写。大的在前面。</li>
-<li>或者条件复杂一些<code>@media(min-width:375px) and (max-width:424px)</code></li>
-</ol>
-<p>你也可以写多个CSS文件，在 link 标签中限定条件</p>
-<p><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./mobile-style.css&quot; media=&quot;(max-width:452px)&quot;&gt;</code></p>
+    <h3 id="1-var"><a href="#1-var" class="headerlink" title="1.var"></a>1.var</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>输出 a 为 <code>undefined</code></p>
+<p>说明var在代码执行前就将 <strong>创建变量，并初始化为 undefined</strong> </p>
+<h3 id="2-let"><a href="#2-let" class="headerlink" title="2.let"></a>2.let</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//ReferenceError: a is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>输出 <code>ReferenceError: a is not defined</code>，a  未定义</p>
+<p>说明let在代码执行前 <strong>创建变量，并未初始化</strong></p>
+<h3 id="3-function"><a href="#3-function" class="headerlink" title="3.function"></a>3.function</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// [Function:a]</span></span><br><span class="line">a()<span class="comment">//我是a</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'我是a'</span>)&#125;</span><br></pre></td></tr></table></figure>
+<p>说明 funtuon 在代码执行前  <strong>创建、初始化并赋值</strong></p>
+<h3 id="4-const"><a href="#4-const" class="headerlink" title="4.const"></a>4.const</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//ReferenceError: a is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>const 与 let 相同，但是唯一区别是 const 只有 <strong>创建和初始化并没有赋值</strong></p>
 
   </section>
 
@@ -180,36 +165,36 @@
 <section class="read-more">
            
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/archives/e523796b.html" title="LESS">LESS</a></h2>
-                <p class="excerpt">
-                
-                LESS1.LESS是什么LESS是一种动态样式语言。
-LESS 将 CSS 赋予了动态语言的特性，如 变量， 继承，运算， 函数. LESS 既可以在 客户端 上运行 (支持IE 6+, Webkit, Firefox)，也可以借助Node.js或者Rhino在服务端运行。
-2.基本用法1.变量1
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/CSS/">CSS</a>
-</span><a class="btn-border-small" href="/archives/e523796b.html">阅读</a></div>
-                           
-            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/archives/beed3124.html" title="一些常用的设计模式">一些常用的设计模式</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/archives/39d3351.html" title="JS引用类型">JS引用类型</a></h2>
                 <p class="excerpt">
                 
-                总结一些写轱辘的时候使用的设计模式（套路）1.发布订阅模式123vm.$emit(&#39;update:selected&#39;,this.name) //发布vm.$on(&#39;update:selected&#39;,(name)=&amp;gt;&amp;#123;this.name = name&amp;#125;) //订阅vm.$of
+                1.JS中的类型
+基本类型
+String
+Boolean
+Number
+undefined
+Null
+Symbol
+
+引用类型
+Object
+
+
+对于基本类型，=代表的是值得拷贝，===代表的是值得比较。
+对于引用类型，=代表的是引用地址的拷贝，===代表的是引用地址的比较。
+2.几个例子深入理解
+
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/beed3124.html">阅读</a></div>
+                <div class="post-list__meta"><time datetime="2018-12-12T03:08:15.000Z" class="post-list__meta--date date">2018-12-12</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/archives/39d3351.html">阅读</a></div>
                        
             </div>
         
@@ -225,9 +210,9 @@ LESS 将 CSS 赋予了动态语言的特性，如 变量， 继承，运算， �
       <script type="text/javascript">
           var disqus_shortname = 'storm'; 
           
-      var disqus_identifier = '/archives/3e92ca77.html';
-      var disqus_title = '移动页面开发';
-      var disqus_url = 'https://storm4542.github.io/archives/3e92ca77.html';
+      var disqus_identifier = '/archives/bd208f70.html';
+      var disqus_title = 'JS变量提升';
+      var disqus_url = 'https://storm4542.github.io/archives/bd208f70.html';
       
     
           /* * * DON'T EDIT BELOW THIS LINE * * */

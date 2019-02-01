@@ -135,7 +135,7 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2019-02-01T02:54:19.000Z" class="post-list__meta--date date">2019-02-01</time> &#8226; <span class="post-meta__tags tags">于 
+      <time datetime="2019-02-01T03:00:43.000Z" class="post-list__meta--date date">2019-02-01</time> &#8226; <span class="post-meta__tags tags">于 
   <a class="tag-link" href="/tags/Cordova/">Cordova</a>
  </span>
       <span class="page-pv">
@@ -219,8 +219,7 @@
 </blockquote>
 <p>寻找很久，应该是因为权限问题导致，解决办法如下:</p>
 <p>在 <code>AndroidManifest.xml</code>中<code>application</code>标签内增加</p>
-<p>`<provider android:authorities="${applicationId}.provider" android:exported="false" android:granturipermissions="true" android:name="org.apache.cordova.camera.FileProvider"></provider></p>
-<p><meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/camera_provider_paths"><br>`</meta-data></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;provider android:authorities=&quot;$&#123;applicationId&#125;.provider&quot; android:exported=&quot;false&quot; android:grantUriPermissions=&quot;true&quot; android:name=&quot;org.apache.cordova.camera.FileProvider&quot;&gt;</span><br><span class="line">&lt;meta-data android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot; android:resource=&quot;@xml/camera_provider_paths&quot; /&gt;</span><br><span class="line">&lt;/provider&gt;</span><br></pre></td></tr></table></figure>
 
   </section>
 

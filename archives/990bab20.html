@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Cordova下载并预览功能 | Storm</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="前端 | Vue | JavaScript | css">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Cordova下载并预览功能 | Storm">
+    <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Cordova下载并预览功能 | Storm">
+    <meta property="og:description" content="前端 | Vue | JavaScript | css">
+
+    
+    <meta name="author" content="Storm">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/fav.png">
+    
+
+    <meta name="generator" content="hexo">
+    
+    <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https://storm4542.github.io/archives/990bab20.html">
+
+                 
+</head>
+</html>
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/item.png)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo"></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Storm">Storm</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">求知若饥 虚怀若谷</span>
+        
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">前端 | WEB | VUE</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank" rel="external nofollow noopener noreferrer">
+      <i class="social fa fa-github"></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class="social fa fa-rss"></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-02-01T02:54:19.000Z" class="post-list__meta--date date">2019-02-01</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/Cordova/">Cordova</a>
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Cordova下载并预览功能</h1>
+  </header>
+
+  <section class="post">
+    <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>近期混合应用开发需要下载和预览的功能，选择方案为先下载到本地，再使用<code>cordova-plugin-file-opener2</code>插件进行预览。</p>
+<p>采用此预览方案文件会被先下载到本地，<code>cordova-plugin-file-opener2</code>插件其实可以直接打开网络地址来实现预览，采用此方式是基于以下考虑：</p>
+<ol>
+<li><p>避免重复下载（因app中还有下载功能）</p>
+</li>
+<li><p>避免有文件格式解析错误的情况，用户可以到本地再次进行查看</p>
+</li>
+<li><p>下载目录可控</p>
+</li>
+</ol>
+<h2 id="2-框架"><a href="#2-框架" class="headerlink" title="2.框架"></a>2.框架</h2><p>项目采用 <code>Cordova + Vue + MintUI</code></p>
+<h2 id="3-操作"><a href="#3-操作" class="headerlink" title="3.操作"></a>3.操作</h2><ul>
+<li><p>根据不同系统，选择不同的方法创建目录。</p>
+<ul>
+<li><p>Android : </p>
+<ul>
+<li><p><code>window.resolveLocalFileSystemURL</code> 可访问沙盒存储之外的文件系统位置</p>
+</li>
+<li><p><code>cordova.file.externalRootDirectory</code> 外部储存(sd卡)</p>
+</li>
+</ul>
+</li>
+<li><p>IOS : </p>
+<ul>
+<li><code>window.requestFileSystem</code> 仅为沙盒文件系统授予访问权限（沙箱限制对应用程序本身的访问），而不是对设备上任何文件系统位置的一般访问权限。</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  getEntry() &#123;</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">let</span> platform = device.platform.toLowerCase() <span class="comment">// cordova-plugin-device 获取系统</span></span><br><span class="line">    <span class="keyword">if</span> (platform === <span class="string">"android"</span>) &#123;</span><br><span class="line">        <span class="built_in">window</span>.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, _this.onFileSystemSuccess, _this.onError);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// for iOS</span></span><br><span class="line">        <span class="built_in">window</span>.requestFileSystem(LocalFileSystem.PERSISTENT, <span class="number">0</span>, _this.onFileSystemSuccess, _this.onError);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>onFileSystemSuccess</code>成功回调接收<code>fileSystem对象</code><ul>
+<li><code>fileSystem.root</code>返回一个<code>DirectoryEntry</code>对象，你可以用它来创建或获取文件（通过调用<code>getFile</code>）</li>
+<li><code>entry.getDirectory()</code>创建目录</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">onFileSystemSuccess(fileSystem) &#123;</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">let</span> entry = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">let</span> platform = device.platform.toLowerCase()</span><br><span class="line">    <span class="keyword">if</span> (platform === <span class="string">"android"</span>) &#123;</span><br><span class="line">        entry = fileSystem;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        entry = fileSystem.root;</span><br><span class="line">    &#125;</span><br><span class="line">    entry.getDirectory(<span class="string">"Cordova"</span>, &#123;</span><br><span class="line">        create: <span class="literal">true</span>,</span><br><span class="line">        exclusive: <span class="literal">false</span></span><br><span class="line">    &#125;, _this.onGetDirectorySuccess, _this.onGetDirectoryFail);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<ul>
+<li>成功创建目录<code>onGetDirectorySuccess</code>接收 <code>DirectoryEntry</code>对象<ul>
+<li><code>dir.getFile</code>创建文件</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">onGetDirectorySuccess(dir) &#123;</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">this</span>.cdr = dir;</span><br><span class="line">    dir.getFile(_this.fileName, &#123;</span><br><span class="line">        create: <span class="literal">true</span>,</span><br><span class="line">        exclusive: <span class="literal">false</span></span><br><span class="line">    &#125;, _this.downloadFile, _this.errorHandler);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<ul>
+<li>成功创建文件，通过下载写入文件<ul>
+<li>使用 <code>cordova-plugin-file-transfer</code>下载并写入文件</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">downloadFile(fileEntry) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$toast(<span class="string">'正在下载...'</span>);</span><br><span class="line">    <span class="keyword">let</span> fileTransfer = <span class="keyword">new</span> FileTransfer();</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">this</span></span><br><span class="line">    fileTransfer.download(</span><br><span class="line">        <span class="built_in">encodeURI</span>(_this.savePath), <span class="comment">//uri网络下载路径</span></span><br><span class="line">        fileEntry.toURL(), <span class="comment">//文件本地存储路径</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">entry</span>) </span>&#123;</span><br><span class="line">            _this.$toast(<span class="string">'下载成功'</span>);</span><br><span class="line">            <span class="comment">// 下载完成执行本地预览  </span></span><br><span class="line">            _this.preView(fileEntry);  </span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">            _this.$toast(<span class="string">'下载失败'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="literal">false</span>, &#123;</span><br><span class="line">            headers: &#123;</span><br><span class="line">                <span class="string">'Authorization'</span>: <span class="string">`Bearer <span class="subst">$&#123;localStorage.getItem(<span class="string">'CFA0'</span>)&#125;</span>`</span></span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>下载完成，预览文件</p>
+<ul>
+<li><p>使用 <code>cordova-plugin-file-opener2</code> 打开文件</p>
+</li>
+<li><p><code>mineType</code>使用 <code>mime-types</code>获取，提供扩展名即可获取。</p>
+</li>
+</ul>
+<p>  [地址]: <a href="https://github.com/jshttp/mime-types" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/jshttp/mime-types</a>    “Mime-types”</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">preView(fileEntry) &#123;</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">this</span>;</span><br><span class="line">    cordova.plugins.fileOpener2.showOpenWithDialog(</span><br><span class="line">        <span class="comment">// 此处必须填写cdvfile://地址，不然android7.0+会报文件权限错误</span></span><br><span class="line">        fileEntry.toInternalURL(), <span class="comment">//文件本地地址转cdvfile://地址</span></span><br><span class="line">        _this.mineType, <span class="comment">//文件类型</span></span><br><span class="line">        &#123;</span><br><span class="line">            error: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(e, <span class="string">'Error status: '</span> + e.status + <span class="string">' - Error message: '</span> + e.message);</span><br><span class="line">            &#125;,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                _this.$toast(<span class="string">'开始预览'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    );</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="4-可能遇到的坑"><a href="#4-可能遇到的坑" class="headerlink" title="4. 可能遇到的坑"></a>4. 可能遇到的坑</h2><p>在预览文件的时候 <code>cordova-plugin-file-opener2</code>有可能会报以下错误：</p>
+<blockquote>
+<p>Attempt to invoke virtual method ‘android.content.res.XmlResourceParser android.content.pm.ProviderInfo.loadXmlMetaData(android.content.pm.PackageManager, java.lang.String)’ on a null object reference</p>
+</blockquote>
+<p>寻找很久，应该是因为权限问题导致，解决办法如下:</p>
+<p>在 <code>AndroidManifest.xml</code>中<code>application</code>标签内增加</p>
+<blockquote>
+<provider android:authorities="${applicationId}.provider" android:exported="false" android:granturipermissions="true" android:name="org.apache.cordova.camera.FileProvider"><br><meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/camera_provider_paths"><br></meta-data></provider>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/archives/bd208f70.html" title="JS变量提升">JS变量提升</a></h2>
+                <p class="excerpt">
+                
+                1.var123console.log(a) //undefinedvar a = 1;
+输出 a 为 undefined
+说明var在代码执行前就将 创建变量，并初始化为 undefined 
+2.let123console.log(a) //ReferenceError: a is not de
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-12-20T08:52:09.000Z" class="post-list__meta--date date">2018-12-20</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Javascript/">Javascript</a>
+</span><a class="btn-border-small" href="/archives/bd208f70.html">阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+    <section class="post-comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          var disqus_shortname = 'storm'; 
+          
+      var disqus_identifier = '/archives/990bab20.html';
+      var disqus_title = 'Cordova下载并预览功能';
+      var disqus_url = 'https://storm4542.github.io/archives/990bab20.html';
+      
+    
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              //dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+              dsq.src = 'https://a.disquscdn.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+      <a href="https://disqus.com" class="dsq-brlink" rel="external nofollow noopener noreferrer" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+    
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2019 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno " rel="external nofollow noopener noreferrer" target="_blank">new-vno</a> 主题，由<a href="https://monniya.com " rel="external nofollow noopener noreferrer" target="_blank">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external nofollow noopener noreferrer">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank" rel="external nofollow noopener noreferrer">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-124586744-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?70f53ec987c743179662cbe4b386692e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+

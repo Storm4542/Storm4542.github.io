@@ -152,17 +152,23 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/b3afd273.html" title="link to post.title">Array--方法</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/archives/a1ede006.html" title="link to post.title">HTTP</a></h2>
       <p class="excerpt">
     
-      1.Array1.join12var array = [1,2,3]array.join(&#39;-&#39;) // 1-2-3
-猜测一下源码
-12345678Array.prototype.join = function(char)&amp;#123;  let result = this[0] || &#39;&#39;;  let length = this.length;  for( let i = 1 ; i &amp;lt; l
+      HTTP1.HTTP为什么重要
+HTTP 是前后端合作的重要方式99%的需求都是通过 HTTP 做到，小部分需求可以通过 WebSockets 做到。
+HTTP 能帮你从本质上理解 HTML、CSS、JS、图片、JSON、JSONP 等不同形式的资源
+Web 性能优化基本等价于对 HTTP 传输效率优化
+前端工程化需要你对 HTTP 缓存有深入了解
+
+2.什么是HTTP####1.四个概念
+
+se
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/b3afd273.html">阅读</a></div>
+</span><a class="btn-border-small" href="/archives/a1ede006.html">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   
@@ -180,81 +186,6 @@
       <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
 </span><a class="btn-border-small" href="/archives/5983b51f.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/4cf7e60f.html" title="link to post.title">JavaScript里的函数是什么</a></h2>
-      <p class="excerpt">
-    
-      1.定义i 匿名函数
-​    var fn = function(){return 1} 有name fn.name = &amp;#39;fn&amp;#39;
-​    ii 具名函数
-​    function fn(){ return 1}
-​    var fn2 = function fn3(){ return 2 }
-​     两者的区别在于函数作用域
-​    console.log(fn()
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/4cf7e60f.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/88d55ab5.html" title="link to post.title">制作一个基于Vue的Tabs轮子</a></h2>
-      <p class="excerpt">
-    
-      tabs轮子制作1.先简单实现一下1&amp;lt;div id=&#39;app&#39;&amp;gt;&amp;lt;/div&amp;gt;
-1.active&amp;#123;background:red&amp;#125;
-1234567891011121314151617181920var vm = new Vue(&amp;#123;    el: &#39;#app&#39;,    data() &amp;#123;        return &amp;#123;       
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/88d55ab5.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/f6d05227.html" title="link to post.title">JavaScript中的异步</a></h2>
-      <p class="excerpt">
-    
-      异步—代码烧脑的原因1.同步和异步同步：等待结果
-异步： 不等待结果
-1234567891011121314//同步function sleep(seconds)&amp;#123;  var a = new Date();  while(new Date() - a &amp;lt; seconds * 1000)&amp;#123;      &amp;#125;  return&amp;#125;console.log(1);sl
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/f6d05227.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/6936d1ca.html" title="link to post.title">封装和继承</a></h2>
-      <p class="excerpt">
-    
-      1.封装和继承​    i 封装
-​    为了隐藏细节
-​    ii 继承
-​    为了复用代码
-​    iii 多态
-​    灵活
-####1.1原型链(对象与对象之间的关系)
-12var obj1 = &amp;#123;name:&#39;1&#39;&amp;#125;;window.Object.prototype === obj.__proto__; //true
-
-上面的原型链图形象的表示了他们之间的关系
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/6936d1ca.html">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   
@@ -288,50 +219,107 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/a1ede006.html" title="link to post.title">HTTP</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/archives/f6d05227.html" title="link to post.title">JavaScript中的异步</a></h2>
       <p class="excerpt">
     
-      HTTP1.HTTP为什么重要
-HTTP 是前后端合作的重要方式99%的需求都是通过 HTTP 做到，小部分需求可以通过 WebSockets 做到。
-HTTP 能帮你从本质上理解 HTML、CSS、JS、图片、JSON、JSONP 等不同形式的资源
-Web 性能优化基本等价于对 HTTP 传输效率优化
-前端工程化需要你对 HTTP 缓存有深入了解
-
-2.什么是HTTP####1.四个概念
-
-se
+      异步—代码烧脑的原因1.同步和异步同步：等待结果
+异步： 不等待结果
+1234567891011121314//同步function sleep(seconds)&amp;#123;  var a = new Date();  while(new Date() - a &amp;lt; seconds * 1000)&amp;#123;      &amp;#125;  return&amp;#125;console.log(1);sl
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/a1ede006.html">阅读</a></div>
+</span><a class="btn-border-small" href="/archives/f6d05227.html">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/9eed9a2c.html" title="link to post.title">Vue--小知识</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/archives/b3afd273.html" title="link to post.title">Array--方法</a></h2>
       <p class="excerpt">
     
-      1.Vue的双向绑定其实是单向绑定双向绑定的假设
+      1.Array1.join12var array = [1,2,3]array.join(&#39;-&#39;) // 1-2-3
+猜测一下源码
+12345678Array.prototype.join = function(char)&amp;#123;  let result = this[0] || &#39;&#39;;  let length = this.length;  for( let i = 1 ; i &amp;lt; l
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/archives/b3afd273.html">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/archives/88d55ab5.html" title="link to post.title">制作一个基于Vue的Tabs轮子</a></h2>
+      <p class="excerpt">
+    
+      tabs轮子制作1.先简单实现一下1&amp;lt;div id=&#39;app&#39;&amp;gt;&amp;lt;/div&amp;gt;
+1.active&amp;#123;background:red&amp;#125;
+1234567891011121314151617181920var vm = new Vue(&amp;#123;    el: &#39;#app&#39;,    data() &amp;#123;        return &amp;#123;       
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+</span><a class="btn-border-small" href="/archives/88d55ab5.html">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/archives/6936d1ca.html" title="link to post.title">封装和继承</a></h2>
+      <p class="excerpt">
+    
+      1.封装和继承​    i 封装
+​    为了隐藏细节
+​    ii 继承
+​    为了复用代码
+​    iii 多态
+​    灵活
+####1.1原型链(对象与对象之间的关系)
+12var obj1 = &amp;#123;name:&#39;1&#39;&amp;#125;;window.Object.prototype === obj.__proto__; //true
 
-假设，我有两个儿子，大儿子和二儿子
-我有500元
-大儿子要花500买衣服，把钱花了
-二儿子要花200买书籍，钱没了。
-原因：大儿子花钱的时候没有告诉我。
-所以：我定了规矩，以后花钱必须先跟我说，然后我再把钱给你！
-
-
-因此，Vue的 v-model 变成了两个单项绑定组成的双向绑定，把 v-model 拆分可以变成这样
-
-
-现在我加一个子组件ch
+上面的原型链图形象的表示了他们之间的关系
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/archives/6936d1ca.html">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/archives/4cf7e60f.html" title="link to post.title">JavaScript里的函数是什么</a></h2>
+      <p class="excerpt">
+    
+      1.定义i 匿名函数
+​    var fn = function(){return 1} 有name fn.name = &amp;#39;fn&amp;#39;
+​    ii 具名函数
+​    function fn(){ return 1}
+​    var fn2 = function fn3(){ return 2 }
+​     两者的区别在于函数作用域
+​    console.log(fn()
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+</span><a class="btn-border-small" href="/archives/4cf7e60f.html">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/archives/2869b8d0.html" title="link to post.title">Vue-Router</a></h2>
+      <p class="excerpt">
+    
+      Vue-Router1.简单配置创建router.js
+1234567891011import Vue from &#39;vue&#39;import Router from &#39;vue-router&#39;import index from &#39;./components/index&#39;import user from &#39;./components/user&#39;Vue.use(Router)export default new
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/9eed9a2c.html">阅读</a></div>
+</span><a class="btn-border-small" href="/archives/2869b8d0.html">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   

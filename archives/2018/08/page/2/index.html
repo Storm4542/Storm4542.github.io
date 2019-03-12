@@ -137,31 +137,29 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/f6d05227.html" title="link to post.title">JavaScript中的异步</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/archives/3404a532.html" title="link to post.title">重构</a></h2>
       <p class="excerpt">
     
-      异步—代码烧脑的原因1.同步和异步同步：等待结果
-异步： 不等待结果
-1234567891011121314//同步function sleep(seconds)&amp;#123;  var a = new Date();  while(new Date() - a &amp;lt; seconds * 1000)&amp;#123;      &amp;#125;  return&amp;#125;console.log(1);sl
+      1.代码优化基本原则1.易读性优先
+2.如果不是性能瓶颈，就不要为了性能改代码
+3.复杂性守恒原则：无论你怎么写代码，复杂性都是不会消失的推论：如果逻辑很复杂，那么代码看起来就应该是复杂的。如果逻辑很简单，代码看起来就应该是简单的。
+2.命名程序员三大难题
+
+变量命名
+缓存失效
+循环边界
+
+可见变量命名的重要性。
+网上有很多命名规范，大家可以参考。这里只讲基本原则。
+
+注意词性
+
+普通变量/属性用
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/f6d05227.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/6a317f77.html" title="link to post.title">Vue 动画</a></h2>
-      <p class="excerpt">
-    
-      Vue动画1.简单例子12345678&amp;lt;div id=&#34;demo&#34;&amp;gt;  &amp;lt;button v-on:click=&#34;show = !show&#34;&amp;gt;    Toggle  &amp;lt;/button&amp;gt;  &amp;lt;transition name=&#34;fade&#34;&amp;gt;    &amp;lt;p v-if=&#34;show&#34;&amp;gt;hello&amp;lt;/p&amp;gt;  &amp;lt;/transition&amp;g
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/6a317f77.html">阅读</a></div>
+</span><a class="btn-border-small" href="/archives/3404a532.html">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   
@@ -181,21 +179,6 @@
       <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/CSS/">CSS</a>
 </span><a class="btn-border-small" href="/archives/422899b1.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/2869b8d0.html" title="link to post.title">Vue-Router</a></h2>
-      <p class="excerpt">
-    
-      Vue-Router1.简单配置创建router.js
-1234567891011import Vue from &#39;vue&#39;import Router from &#39;vue-router&#39;import index from &#39;./components/index&#39;import user from &#39;./components/user&#39;Vue.use(Router)export default new
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/2869b8d0.html">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   
@@ -261,6 +244,46 @@ Vuex 使用单一状态树——是的，用一个对象就包含了全部的应
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/archives/6a317f77.html" title="link to post.title">Vue 动画</a></h2>
+      <p class="excerpt">
+    
+      Vue动画1.简单例子12345678&amp;lt;div id=&#34;demo&#34;&amp;gt;  &amp;lt;button v-on:click=&#34;show = !show&#34;&amp;gt;    Toggle  &amp;lt;/button&amp;gt;  &amp;lt;transition name=&#34;fade&#34;&amp;gt;    &amp;lt;p v-if=&#34;show&#34;&amp;gt;hello&amp;lt;/p&amp;gt;  &amp;lt;/transition&amp;g
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+</span><a class="btn-border-small" href="/archives/6a317f77.html">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/archives/81ea01b1.html" title="link to post.title">CSS-堆叠上下文</a></h2>
+      <p class="excerpt">
+    
+      堆叠上下文1.堆叠顺序div是有空间层次关系的。
+原则：相同类型的元素，后出现的会覆盖之前的。
+层次顺序（底层-上层）： 
+
+background
+border
+块级
+浮动
+内联
+z-index : 0 ( position :relative , absolute)
+z-index :  +
+
+注意：z-index 只有在 position 不是 static 的时候才有用，比如 relativ
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/CSS/">CSS</a>
+</span><a class="btn-border-small" href="/archives/81ea01b1.html">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/archives/151aa5a1.html" title="link to post.title">REM</a></h2>
       <p class="excerpt">
     
@@ -287,30 +310,6 @@ vm: viewport width 视口宽度 100vw === 视口宽度
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/3e92ca77.html" title="link to post.title">移动页面开发</a></h2>
-      <p class="excerpt">
-    
-      移动页面1.移动页面的区别
-没有 hover
-
-没有 touch
-
-没有 resize
-
-没有 滚动条
-
-要加一个
-&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/CSS/">CSS</a>
-</span><a class="btn-border-small" href="/archives/3e92ca77.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
       <h2 class="post-list__post-title post-title"><a href="/archives/e523796b.html" title="link to post.title">LESS</a></h2>
       <p class="excerpt">
     
@@ -322,6 +321,22 @@ LESS 将 CSS 赋予了动态语言的特性，如 变量， 继承，运算， �
       <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/CSS/">CSS</a>
 </span><a class="btn-border-small" href="/archives/e523796b.html">阅读</a></div>
+      <hr class="post-list__divider">
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/archives/beed3124.html" title="link to post.title">一些常用的设计模式</a></h2>
+      <p class="excerpt">
+    
+      总结一些写轱辘的时候使用的设计模式（套路）1.发布订阅模式123vm.$emit(&#39;update:selected&#39;,this.name) //发布vm.$on(&#39;update:selected&#39;,(name)=&amp;gt;&amp;#123;this.name = name&amp;#125;) //订阅vm.$off(&#39;update:selected&#39;) //取消订阅
+2.单项数据流使用eventBus
+1234
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Vue/">Vue</a>
+</span><a class="btn-border-small" href="/archives/beed3124.html">阅读</a></div>
       <hr class="post-list__divider">
     </li>
   

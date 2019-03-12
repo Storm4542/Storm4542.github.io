@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>CSS-堆叠上下文 | Storm</title>
+    <title>Cordova+Vue实现点击两次返回退出应用 | Storm</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="前端 | Vue | JavaScript | css">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="CSS-堆叠上下文 | Storm">
+    <meta name="twitter:title" content="Cordova+Vue实现点击两次返回退出应用 | Storm">
     <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="CSS-堆叠上下文 | Storm">
+    <meta property="og:title" content="Cordova+Vue实现点击两次返回退出应用 | Storm">
     <meta property="og:description" content="前端 | Vue | JavaScript | css">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
     
 
-    <link rel="canonical" href="https://storm4542.github.io/archives/81ea01b1.html">
+    <link rel="canonical" href="https://storm4542.github.io/archives/81b0b94a.html">
 
                  
 </head>
@@ -135,46 +135,23 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-meta__tags tags">于 
-  <a class="tag-link" href="/tags/CSS/">CSS</a>
+      <time datetime="2019-03-12T06:08:54.000Z" class="post-list__meta--date date">2019-03-12</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/Cordova-Vue/">Cordova Vue</a>
  </span>
       <span class="page-pv">
        阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">CSS-堆叠上下文</h1>
+    <h1 class="post-title">Cordova+Vue实现点击两次返回退出应用</h1>
   </header>
 
   <section class="post">
-    <h3 id="堆叠上下文"><a href="#堆叠上下文" class="headerlink" title="堆叠上下文"></a>堆叠上下文</h3><h4 id="1-堆叠顺序"><a href="#1-堆叠顺序" class="headerlink" title="1.堆叠顺序"></a>1.堆叠顺序</h4><p>div是有空间层次关系的。</p>
-<p>原则：相同类型的元素，后出现的会覆盖之前的。</p>
-<p>层次顺序（底层-上层）： </p>
-<ol>
-<li>background</li>
-<li>border</li>
-<li>块级</li>
-<li>浮动</li>
-<li>内联</li>
-<li>z-index : 0 ( position :relative , absolute)</li>
-<li>z-index :  +</li>
-</ol>
-<p>注意：z-index 只有在 position 不是 static 的时候才有用，比如 relative , absolute</p>
-<h4 id="2-怎么样形成堆叠上下文"><a href="#2-怎么样形成堆叠上下文" class="headerlink" title="2.怎么样形成堆叠上下文"></a>2.怎么样形成堆叠上下文</h4><p>可以理解为堆叠作用域。跟 BFC 一样，我们只知道一些属性会触发堆叠上下文，但并不知道堆叠上下文是什么。</p>
-<ul>
-<li><strong>根元素 (HTML),</strong></li>
-<li><strong>z-index 值不为 “auto”的 绝对/相对定位，</strong></li>
-<li><strong>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</strong></li>
-<li><strong>opacity 属性值小于 1 的元素（参考 the specification for opacity），</strong></li>
-<li><strong>transform 属性值不为 “none”的元素，</strong></li>
-<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
-<li>filter值不为“none”的元素，</li>
-<li>perspective值不为“none”的元素，</li>
-<li>isolation 属性被设置为 “isolate”的元素，</li>
-<li><strong>position: fixed</strong></li>
-<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值（参考 这篇文章）</li>
-<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
-</ul>
+    <h3 id="Cordova-Vue-实现点击两次退出应用"><a href="#Cordova-Vue-实现点击两次退出应用" class="headerlink" title="Cordova + Vue 实现点击两次退出应用"></a>Cordova + Vue 实现点击两次退出应用</h3><h4 id="注册事件"><a href="#注册事件" class="headerlink" title="注册事件"></a>注册事件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注意在 deviceready 后使用,写在</span></span><br><span class="line">  onBackKeyDown() &#123;</span><br><span class="line">       <span class="keyword">this</span>.$toast(<span class="string">'再点击一次退出应用'</span>);</span><br><span class="line">       <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.onBackKeyDown, <span class="literal">false</span>); <span class="comment">// 注销返回键</span></span><br><span class="line">       <span class="built_in">document</span>.addEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.exitApp, <span class="literal">false</span>);<span class="comment">//绑定退出事件</span></span><br><span class="line">       setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">             <span class="built_in">document</span>.addEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.onBackKeyDown, <span class="literal">false</span>);</span><br><span class="line">             <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.exitApp, <span class="literal">false</span>);</span><br><span class="line">           &#125;, <span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="启动事件"><a href="#启动事件" class="headerlink" title="启动事件"></a>启动事件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">      <span class="built_in">document</span>.addEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.onBackKeyDown, <span class="literal">false</span>);</span><br><span class="line">      <span class="keyword">this</span>.refreshTask();</span><br><span class="line">      <span class="keyword">this</span>.refreshNotice();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="销毁事件"><a href="#销毁事件" class="headerlink" title="销毁事件"></a>销毁事件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">beforeDestroy() &#123;</span><br><span class="line">       <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.onBackKeyDown, <span class="literal">false</span>); <span class="comment">// 注销返回键</span></span><br><span class="line">       <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.exitApp, <span class="literal">false</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>如果页面使用了<code>&lt;keep-alive&gt;</code>标签，那么销毁事件的时机为页面离开之前。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteLeave(to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">    <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.onBackKeyDown, <span class="literal">false</span>); <span class="comment">// 注销返回键</span></span><br><span class="line">    <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.exitApp, <span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">this</span>.$indicator.close()</span><br><span class="line">    next()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
   </section>
 
@@ -183,22 +160,23 @@
 <section class="read-more">
            
     
+        
+        
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/archives/beed3124.html" title="一些常用的设计模式">一些常用的设计模式</a></h2>
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/archives/990bab20.html" title="Cordova下载并预览功能">Cordova下载并预览功能</a></h2>
                 <p class="excerpt">
                 
-                总结一些写轱辘的时候使用的设计模式（套路）1.发布订阅模式123vm.$emit(&#39;update:selected&#39;,this.name) //发布vm.$on(&#39;update:selected&#39;,(name)=&amp;gt;&amp;#123;this.name = name&amp;#125;) //订阅vm.$of
+                1.前言近期混合应用开发需要下载和预览的功能，选择方案为先下载到本地，再使用cordova-plugin-file-opener2插件进行预览。
+采用此预览方案文件会被先下载到本地，cordova-plugin-file-opener2插件其实可以直接打开网络地址来实现预览，采用此方式是基于以下考虑
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T08:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/beed3124.html">阅读</a></div>
-                           
+                <div class="post-list__meta"><time datetime="2019-02-01T03:00:43.000Z" class="post-list__meta--date date">2019-02-01</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Cordova/">Cordova</a>
+</span><a class="btn-border-small" href="/archives/990bab20.html">阅读</a></div>
+                       
             </div>
-        
-        
         
      
    
@@ -212,9 +190,9 @@
       <script type="text/javascript">
           var disqus_shortname = 'storm'; 
           
-      var disqus_identifier = '/archives/81ea01b1.html';
-      var disqus_title = 'CSS-堆叠上下文';
-      var disqus_url = 'https://storm4542.github.io/archives/81ea01b1.html';
+      var disqus_identifier = '/archives/81b0b94a.html';
+      var disqus_title = 'Cordova+Vue实现点击两次返回退出应用';
+      var disqus_url = 'https://storm4542.github.io/archives/81b0b94a.html';
       
     
           /* * * DON'T EDIT BELOW THIS LINE * * */

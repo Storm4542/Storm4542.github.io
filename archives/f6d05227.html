@@ -1,153 +1,60 @@
 <!DOCTYPE html>
-<html lang="z">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  
+  <title>JavaScript中的异步 | Storm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="异步—代码烧脑的原因1.同步和异步同步：等待结果 异步： 不等待结果 1234567891011121314//同步function sleep(seconds)&amp;#123;  var a = new Date();  while(new Date() - a &amp;lt; seconds * 1000)&amp;#123;      &amp;#125;  return&amp;#125;console.log(1);sl">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的异步">
+<meta property="og:url" content="https://storm4542.github.io/archives/f6d05227.html">
+<meta property="og:site_name" content="Storm">
+<meta property="og:description" content="异步—代码烧脑的原因1.同步和异步同步：等待结果 异步： 不等待结果 1234567891011121314//同步function sleep(seconds)&amp;#123;  var a = new Date();  while(new Date() - a &amp;lt; seconds * 1000)&amp;#123;      &amp;#125;  return&amp;#125;console.log(1);sl">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-25T09:08:27.179Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript中的异步">
+<meta name="twitter:description" content="异步—代码烧脑的原因1.同步和异步同步：等待结果 异步： 不等待结果 1234567891011121314//同步function sleep(seconds)&amp;#123;  var a = new Date();  while(new Date() - a &amp;lt; seconds * 1000)&amp;#123;      &amp;#125;  return&amp;#125;console.log(1);sl">
+  
+    <link rel="alternative" href="/atom.xml" title="Storm" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head></html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-异步" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
     
-    <title>JavaScript中的异步 | Storm</title>
-    <meta name="renderer" content="webkit">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <meta name="description" content="前端 | Vue | JavaScript | css">
-
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="JavaScript中的异步 | Storm">
-    <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
-
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="JavaScript中的异步 | Storm">
-    <meta property="og:description" content="前端 | Vue | JavaScript | css">
-
-    
-    <meta name="author" content="Storm">
-    
-    <link rel="stylesheet" href="/css/vno.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-
-    
-    <link rel="icon" href="/images/fav.png">
-    
-
-    <meta name="generator" content="hexo">
-    
-    <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
-    
-
-    <link rel="canonical" href="https://storm4542.github.io/archives/f6d05227.html">
-
-                 
-</head>
-</html>
-<body class="home-template no-js">
-    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    <script src="/js/main.js"></script>
-    <span class="mobile btn-mobile-menu">
-        <i class="fa fa-list btn-mobile-menu__icon"></i>
-        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
-    </span>
-
-    
-<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/item.png)">
-  <div class="panel-main">
-    <div class="panel-main__inner panel-inverted">
-    <div class="panel-main__content">
-
-        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo"></a>
-        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Storm">Storm</a></h1>
+      <header class="article-header">
         
-        <span class="panel-cover__subtitle panel-subtitle">求知若饥 虚怀若谷</span>
-        
-        <hr class="panel-cover__divider">
-        <p class="panel-cover__description">前端 | WEB | VUE</p>
-        <hr class="panel-cover__divider panel-cover__divider--secondary">
-
-        <div class="navigation-wrapper">
-          <div>
-          <nav class="cover-navigation cover-navigation--primary">
-            <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
-            
-              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
-            
-            </ul>
-          </nav>
-          </div>
-          <div>
-          <nav class="cover-navigation navigation--social">
-  <ul class="navigation">
-
-  <!-- Weibo-->
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript中的异步
+    </h1>
   
 
-  <!-- Github -->
-  
-  <li class="navigation__item">
-    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank" rel="external nofollow noopener noreferrer">
-      <i class="social fa fa-github"></i>
-      <span class="label">Github</span>
-    </a>
-  </li>
-
-
-<!-- Stack Overflow -->
-        
-
-  <!-- Google Plus -->
-  
-
-<!-- Facebook -->
-
-  
-<!-- Twitter -->
-
-  
-
-  <li class="navigation__item">
-    <a href="/atom.xml" title="RSS" target="_blank">
-      <i class="social fa fa-rss"></i>
-      <span class="label">RSS</span>
-    </a>
-  </li>
-
-
-
-  </ul>
-</nav>
-
-          </div>
-        </div>
-
-      </div>
-
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/f6d05227.html" class="article-date">
+  <time datetime="2018-08-24T09:16:35.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+      
     </div>
-
-    <div class="panel-cover--overlay cover-purple"></div>
-  </div> 
-</header>
-
-    <div class="content-wrapper">
-        <div class="content-wrapper__inner">
-            <article class="post-container post-container--single">
-
-  <header class="post-header">
-    <div class="post-meta">
-      <time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-meta__tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
- </span>
-      <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
-      </span> 
-   
-    </div>
-    <h1 class="post-title">JavaScript中的异步</h1>
-  </header>
-
-  <section class="post">
-    <h2 id="异步—代码烧脑的原因"><a href="#异步—代码烧脑的原因" class="headerlink" title="异步—代码烧脑的原因"></a>异步—代码烧脑的原因</h2><h3 id="1-同步和异步"><a href="#1-同步和异步" class="headerlink" title="1.同步和异步"></a>1.同步和异步</h3><p>同步：等待结果</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="异步—代码烧脑的原因"><a href="#异步—代码烧脑的原因" class="headerlink" title="异步—代码烧脑的原因"></a>异步—代码烧脑的原因</h2><h3 id="1-同步和异步"><a href="#1-同步和异步" class="headerlink" title="1.同步和异步"></a>1.同步和异步</h3><p>同步：等待结果</p>
 <p>异步： 不等待结果</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//同步</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">seconds</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">  <span class="keyword">while</span>(<span class="keyword">new</span> <span class="built_in">Date</span>() - a &lt; seconds * <span class="number">1000</span>)&#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">sleep(<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'wake up'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line"><span class="comment">//运行结果 1 wake up 2</span></span><br><span class="line"><span class="comment">// 同步是需要等待的，但是 JavaScript 没有这一项功能，所以只能让他不停的工作，然后到达3秒钟</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 异步</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">seconds,fn</span>)</span>&#123;</span><br><span class="line">  setTimeout(fn,seconds * <span class="number">1000</span>); <span class="comment">// 实际上是在设置闹钟，让浏览器 xx秒 后执行 fn</span></span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">sleep(<span class="number">3</span>,()=&gt;&#123;<span class="built_in">console</span>.log(<span class="string">'wake up '</span>)&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line"><span class="comment">//运行结果 1 2 wake up</span></span><br><span class="line"><span class="comment">// 为什么 setTimeout 可以模拟异步？ 因为 setTimeout 方法是浏览器提供并负责执行的，JS告诉浏览器3S以后执行fn,然后它就可以去干下一步事情了。</span></span><br></pre></td></tr></table></figure>
@@ -188,122 +95,118 @@
 <h3 id="8-async-await"><a href="#8-async-await" class="headerlink" title="8.async/await"></a>8.async/await</h3><p>以同步的方式写异步</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buy</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res,rej</span>)=&gt;</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      res(<span class="string">'apple'</span>)</span><br><span class="line">    &#125;,<span class="number">2000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> res = <span class="keyword">await</span> buy();</span><br></pre></td></tr></table></figure>
 
-  </section>
+      
 
+      
+        
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/archives/6936d1ca.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          封装和继承
+        
+      </div>
+    </a>
+  
+  
+    <a href="/archives/88d55ab5.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">制作一个基于Vue的Tabs轮子</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-<section class="read-more">
-           
-    
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/archives/a1ede006.html" title="HTTP">HTTP</a></h2>
-                <p class="excerpt">
-                
-                HTTP1.HTTP为什么重要
-HTTP 是前后端合作的重要方式99%的需求都是通过 HTTP 做到，小部分需求可以通过 WebSockets 做到。
-HTTP 能帮你从本质上理解 HTML、CSS、JS、图片、JSON、JSONP 等不同形式的资源
-Web 性能优化基本等价于对 HTTP 传输效率
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/a1ede006.html">阅读</a></div>
-                           
-            </div>
-        
-        
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/archives/88d55ab5.html" title="制作一个基于Vue的Tabs轮子">制作一个基于Vue的Tabs轮子</a></h2>
-                <p class="excerpt">
-                
-                tabs轮子制作1.先简单实现一下1&amp;lt;div id=&#39;app&#39;&amp;gt;&amp;lt;/div&amp;gt;
-1.active&amp;#123;background:red&amp;#125;
-1234567891011121314151617181920var vm = new Vue(&amp;#123;    el: &#39;#
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2018-08-24T09:16:35.000Z" class="post-list__meta--date date">2018-08-24</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/88d55ab5.html">阅读</a></div>
-                       
-            </div>
-        
-     
-   
-   
-  
+
+<section id="comments">
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+    var gitment = new Gitment({
+      owner: 'your github account',
+      repo: 'your repo',
+      oauth: {
+        client_id: 'your client_id',
+        client_secret: 'your client_secret',
+      },
+    })
+    gitment.render('comments')
+  </script>
 </section>
 
-  
-    <section class="post-comments">
-      <div id="disqus_thread"></div>
-      <script type="text/javascript">
-          var disqus_shortname = 'storm'; 
-          
-      var disqus_identifier = '/archives/f6d05227.html';
-      var disqus_title = 'JavaScript中的异步';
-      var disqus_url = 'https://storm4542.github.io/archives/f6d05227.html';
-      
-    
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              //dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-              dsq.src = 'https://a.disquscdn.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
-      <a href="https://disqus.com" class="dsq-brlink" rel="external nofollow noopener noreferrer" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
-    </section>
-    
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/hejianxian" target="_blank" rel="external nofollow noopener noreferrer"><i class="icon icon-github"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
 
-            <footer class="footer">
-    <span class="footer__copyright">
-        &copy; 2019 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
-       
-    </span>
-    <span class="footer__copyright">
-             - 基于 <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno " rel="external nofollow noopener noreferrer" target="_blank">new-vno</a> 主题，由<a href="https://monniya.com " rel="external nofollow noopener noreferrer" target="_blank">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external nofollow noopener noreferrer">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank" rel="external nofollow noopener noreferrer">onevcat</a>
-         </span>
-       
-    
-    
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2019 Storm 
+	  - Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+	  - Theme <a href="https://github.com/hejianxian/hexo-theme-jane/" target="_blank" rel="external nofollow noopener noreferrer">Jane</a>
+	</div>
 </footer>
 
-
-        </div>
     </div>
-
-     
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/hejianxian" class="mobile-nav-link" rel="external nofollow noopener noreferrer" target="_blank">Github</a>
+  
+</nav>
+    
 <script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	ga('create', 'UA-124586744-1', 'auto');
-	ga('send', 'pageview');
+  var disqus_shortname = 'storm';
+  
+  var disqus_url = 'https://storm4542.github.io/archives/f6d05227.html';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
 
-    
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?70f53ec987c743179662cbe4b386692e";
-            var s = document.getElementsByTagName("script")[0]; 
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 
 
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-    
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
-

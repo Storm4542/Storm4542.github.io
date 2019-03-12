@@ -1,418 +1,779 @@
 <!DOCTYPE html>
-<html lang="z">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  
+  <title>Storm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端 | WEB | VUE">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Storm">
+<meta property="og:url" content="https://storm4542.github.io/index.html">
+<meta property="og:site_name" content="Storm">
+<meta property="og:description" content="前端 | WEB | VUE">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Storm">
+<meta name="twitter:description" content="前端 | WEB | VUE">
+  
+    <link rel="alternative" href="/atom.xml" title="Storm" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head></html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Cordova-Vue实现点击两次返回退出应用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
     
-    <title>Storm | 求知若饥 虚怀若谷</title>
-    <meta name="renderer" content="webkit">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <meta name="description" content="前端 | Vue | JavaScript | css">
-
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Storm | 求知若饥 虚怀若谷">
-    <meta name="twitter:description" content="前端 | Vue | JavaScript | css">
-
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Storm | 求知若饥 虚怀若谷">
-    <meta property="og:description" content="前端 | Vue | JavaScript | css">
-
-    
-    <meta name="author" content="Storm">
-    
-    <link rel="stylesheet" href="/css/vno.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-
-    
-    <link rel="icon" href="/images/fav.png">
-    
-
-    <meta name="generator" content="hexo">
-    
-    <link rel="alternate" type="application/rss+xml" title="Storm" href="/atom.xml">
-    
-
-    <link rel="canonical" href="https://storm4542.github.io">
-
-                 
-</head>
-</html>
-<body class="home-template no-js">
-    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    <script src="/js/main.js"></script>
-    <span class="mobile btn-mobile-menu">
-        <i class="fa fa-list btn-mobile-menu__icon"></i>
-        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
-    </span>
-
-    
-<header class="panel-cover " style="background-image: url(/images/item.png)">
-  <div class="panel-main">
-    <div class="panel-main__inner panel-inverted">
-    <div class="panel-main__content">
-
-        <a href="/" title="前往 Storm 的主页"><img src="/images/fav.png" width="80" alt="Storm logo" class="panel-cover__logo logo"></a>
-        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Storm">Storm</a></h1>
+      <header class="article-header">
         
-        <span class="panel-cover__subtitle panel-subtitle">求知若饥 虚怀若谷</span>
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/81b0b94a.html">Cordova+Vue实现点击两次返回退出应用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/81b0b94a.html" class="article-date">
+  <time datetime="2019-03-12T06:08:54.000Z" itemprop="datePublished">2019-03-12</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Cordova-Vue-实现点击两次退出应用"><a href="#Cordova-Vue-实现点击两次退出应用" class="headerlink" title="Cordova + Vue 实现点击两次退出应用"></a>Cordova + Vue 实现点击两次退出应用</h3><h4 id="注册事件"><a href="#注册事件" class="headerlink" title="注册事件"></a>注册事件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注意在 deviceready 后使用,写在methods中</span></span><br><span class="line"><span class="comment">//点击返回按键</span></span><br><span class="line">  onBackKeyDown() &#123;</span><br><span class="line">       <span class="keyword">this</span>.$toast(<span class="string">'再点击一次退出应用'</span>);</span><br><span class="line">       <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.onBackKeyDown, <span class="literal">false</span>); <span class="comment">// 注销返回键</span></span><br><span class="line">       <span class="built_in">document</span>.addEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.exitApp, <span class="literal">false</span>);<span class="comment">//绑定退出事件</span></span><br><span class="line">       setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">             <span class="built_in">document</span>.addEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.onBackKeyDown, <span class="literal">false</span>);</span><br><span class="line">             <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.exitApp, <span class="literal">false</span>);</span><br><span class="line">           &#125;, <span class="number">3000</span>)</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//关闭APP</span></span><br><span class="line"> exitApp() &#123;</span><br><span class="line">         navigator.app.exitApp();</span><br><span class="line">        &#125;,</span><br></pre></td></tr></table></figure>
+<h4 id="启动事件"><a href="#启动事件" class="headerlink" title="启动事件"></a>启动事件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">      <span class="built_in">document</span>.addEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.onBackKeyDown, <span class="literal">false</span>);</span><br><span class="line">      <span class="keyword">this</span>.refreshTask();</span><br><span class="line">      <span class="keyword">this</span>.refreshNotice();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="销毁事件"><a href="#销毁事件" class="headerlink" title="销毁事件"></a>销毁事件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">beforeDestroy() &#123;</span><br><span class="line">       <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.onBackKeyDown, <span class="literal">false</span>); <span class="comment">// 注销返回键</span></span><br><span class="line">       <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.exitApp, <span class="literal">false</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>如果页面使用了<code>&lt;keep-alive&gt;</code>标签，那么销毁事件的时机为页面离开之前。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteLeave(to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">    <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.onBackKeyDown, <span class="literal">false</span>); <span class="comment">// 注销返回键</span></span><br><span class="line">    <span class="built_in">document</span>.removeEventListener(<span class="string">"backbutton"</span>, <span class="keyword">this</span>.exitApp, <span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">this</span>.$indicator.close()</span><br><span class="line">    next()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
         
-        <hr class="panel-cover__divider">
-        <p class="panel-cover__description">前端 | WEB | VUE</p>
-        <hr class="panel-cover__divider panel-cover__divider--secondary">
-
-        <div class="navigation-wrapper">
-          <div>
-          <nav class="cover-navigation cover-navigation--primary">
-            <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
-            
-              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
-            
-            </ul>
-          </nav>
-          </div>
-          <div>
-          <nav class="cover-navigation navigation--social">
-  <ul class="navigation">
-
-  <!-- Weibo-->
+    </div>
+  </div>
   
+</article>
 
-  <!-- Github -->
+
+
   
-  <li class="navigation__item">
-    <a href="https://github.com/Storm4542" title="查看我的GitHub主页" target="_blank" rel="external nofollow noopener noreferrer">
-      <i class="social fa fa-github"></i>
-      <span class="label">Github</span>
-    </a>
-  </li>
-
-
-<!-- Stack Overflow -->
+    <article id="post-Cordova下载并预览" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
         
-
-  <!-- Google Plus -->
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/990bab20.html">Cordova下载并预览功能</a>
+    </h1>
   
 
-<!-- Facebook -->
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/990bab20.html" class="article-date">
+  <time datetime="2019-02-01T03:00:43.000Z" itemprop="datePublished">2019-02-01</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>近期混合应用开发需要下载和预览的功能，选择方案为先下载到本地，再使用<code>cordova-plugin-file-opener2</code>插件进行预览。</p>
+<p>采用此预览方案文件会被先下载到本地，<code>cordova-plugin-file-opener2</code>插件其实可以直接打开网络地址来实现预览，采用此方式是基于以下考虑：</p>
+<ol>
+<li><p>避免重复下载</p>
+</li>
+<li><p>避免有文件格式解析错误的情况，用户可以到本地再次进行查看</p>
+</li>
+<li><p>下载目录可控</p>
+</li>
+</ol>
+<h2 id="2-框架"><a href="#2-框架" class="headerlink" title="2.框架"></a>2.框架</h2><p>项目采用 <code>Cordova + Vue + MintUI</code></p>
+<h2 id="3-操作"><a href="#3-操作" class="headerlink" title="3.操作"></a>3.操作</h2><ul>
+<li>下载</li>
+<li><ul>
+<li><code>fileInfo</code>提供下载地址、文件名称、文件格式（或扩展名）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">downLoad</span>(<span class="params">fileInfo</span>) </span>&#123;</span><br><span class="line">    Vue.$toast(<span class="string">'正在下载，请稍等'</span>);</span><br><span class="line">    <span class="keyword">new</span> FileTransfer().download(</span><br><span class="line">        <span class="built_in">encodeURI</span>(FILES_HOST + <span class="string">"/"</span> + fileInfo.fileid), <span class="comment">//uri网络下载路径</span></span><br><span class="line">        cordova.file.dataDirectory + fileInfo.fileid, <span class="comment">//文件本地存储路径</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">fileEntry</span>) </span>&#123;</span><br><span class="line">            preView(fileEntry, fileInfo);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">            Vue.$toast(<span class="string">'下载失败'</span>);</span><br><span class="line">            <span class="built_in">console</span>.log(error);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="literal">false</span>,</span><br><span class="line">        &#123;</span><br><span class="line">            headers: &#123;<span class="string">'Authorization'</span>: <span class="string">`Bearer <span class="subst">$&#123;localStorage.getItem(<span class="string">'CFA0'</span>)&#125;</span>`</span>&#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>下载完成，预览文件</li>
+</ul>
+<ul>
+<li><ul>
+<li><p>使用 <code>cordova-plugin-file-opener2</code> 打开文件</p>
+</li>
+<li><p><code>mineType</code>使用 <code>mime-types</code>获取，提供扩展名即可获取（若后端提供格式则不需要）。</p>
+</li>
+</ul>
+<p>  [地址]: <a href="https://github.com/jshttp/mime-types" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/jshttp/mime-types</a>    “Mime-types”</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">preView</span>(<span class="params">fileEntry, fileInfo</span>) </span>&#123;</span><br><span class="line">    Vue.$toast(<span class="string">'开始预览'</span>);</span><br><span class="line">    <span class="keyword">let</span> url;</span><br><span class="line">    <span class="keyword">let</span> platform = device.platform.toLowerCase();</span><br><span class="line">    <span class="keyword">if</span> (platform === <span class="string">'android'</span>) &#123;</span><br><span class="line">        url = fileEntry.toInternalURL() <span class="comment">//安卓预览路径</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        url = fileEntry.toURL() <span class="comment">//ios 预览路径</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'路径'</span>, url);</span><br><span class="line">    cordova.plugins.fileOpener2.showOpenWithDialog(</span><br><span class="line">        url,</span><br><span class="line">        mime.lookup(fileInfo.fileType),</span><br><span class="line">        &#123;</span><br><span class="line">            error: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">                Vue.$toast(<span class="string">'预览失败'</span>);</span><br><span class="line">            &#125;,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                Vue.$toast(<span class="string">'预览成功'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-可能遇到的坑"><a href="#4-可能遇到的坑" class="headerlink" title="4. 可能遇到的坑"></a>4. 可能遇到的坑</h2><p>在预览文件的时候 <code>cordova-plugin-file-opener2</code>有可能会报以下错误：</p>
+<blockquote>
+<p>Attempt to invoke virtual method ‘android.content.res.XmlResourceParser android.content.pm.ProviderInfo.loadXmlMetaData(android.content.pm.PackageManager, java.lang.String)’ on a null object reference</p>
+</blockquote>
+<p>寻找很久，应该是因为权限问题导致，解决办法如下:</p>
+<p>在 <code>AndroidManifest.xml</code>中<code>application</code>标签内增加</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">provider</span> </span></span><br><span class="line"><span class="tag">          <span class="attr">android:name</span>=<span class="string">"io.github.pwlin.cordova.plugins.fileopener2.FileProvider"</span> 				  <span class="attr">android:authorities</span>=<span class="string">"$&#123;applicationId&#125;.opener.provider"</span> </span></span><br><span class="line"><span class="tag">          <span class="attr">android:exported</span>=<span class="string">"false"</span> <span class="attr">android:grantUriPermissions</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta-data</span> </span></span><br><span class="line"><span class="tag">           <span class="attr">android:name</span>=<span class="string">"android.support.FILE_PROVIDER_PATHS"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:resource</span>=<span class="string">"@xml/opener_paths"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">provider</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
 
   
-<!-- Twitter -->
-
+    <article id="post-JS变量提升" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/bd208f70.html">JS变量提升</a>
+    </h1>
   
 
-  <li class="navigation__item">
-    <a href="/atom.xml" title="RSS" target="_blank">
-      <i class="social fa fa-rss"></i>
-      <span class="label">RSS</span>
-    </a>
-  </li>
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/bd208f70.html" class="article-date">
+  <time datetime="2018-12-20T08:52:09.000Z" itemprop="datePublished">2018-12-20</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-var"><a href="#1-var" class="headerlink" title="1.var"></a>1.var</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>输出 a 为 <code>undefined</code></p>
+<p>说明var在代码执行前就将 <strong>创建变量，并初始化为 undefined</strong> </p>
+<h3 id="2-let"><a href="#2-let" class="headerlink" title="2.let"></a>2.let</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//ReferenceError: a is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>输出 <code>ReferenceError: a is not defined</code>，a  未定义</p>
+<p>说明let在代码执行前 <strong>创建变量，并未初始化</strong></p>
+<h3 id="3-function"><a href="#3-function" class="headerlink" title="3.function"></a>3.function</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// [Function:a]</span></span><br><span class="line">a()<span class="comment">//我是a</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'我是a'</span>)&#125;</span><br></pre></td></tr></table></figure>
+<p>说明 funtuon 在代码执行前  <strong>创建、初始化并赋值</strong></p>
+<h3 id="4-const"><a href="#4-const" class="headerlink" title="4.const"></a>4.const</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//ReferenceError: a is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>const 与 let 相同，但是唯一区别是 const 只有 <strong>创建和初始化并没有赋值</strong></p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
 
 
 
-  </ul>
-</nav>
+  
+    <article id="post-JS引用类型" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/39d3351.html">JS引用类型</a>
+    </h1>
+  
 
-          </div>
-        </div>
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/39d3351.html" class="article-date">
+  <time datetime="2018-12-12T03:08:15.000Z" itemprop="datePublished">2018-12-12</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-JS中的类型"><a href="#1-JS中的类型" class="headerlink" title="1.JS中的类型"></a>1.JS中的类型</h4><ul>
+<li><p>基本类型</p>
+<p>String</p>
+<p>Boolean</p>
+<p>Number</p>
+<p>undefined</p>
+<p>Null</p>
+<p>Symbol</p>
+</li>
+<li><p>引用类型</p>
+<p>Object</p>
+</li>
+</ul>
+<p>对于基本类型，<code>=</code>代表的是值得拷贝，<code>===</code>代表的是值得比较。</p>
+<p>对于引用类型，<code>=</code>代表的是引用地址的拷贝，<code>===</code>代表的是引用地址的比较。</p>
+<h4 id="2-几个例子深入理解"><a href="#2-几个例子深入理解" class="headerlink" title="2.几个例子深入理解"></a>2.几个例子深入理解</h4><ul>
+<li>案例一</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = a;</span><br><span class="line">a === b <span class="comment">// true</span></span><br><span class="line">b = <span class="number">2</span>;</span><br><span class="line">a === <span class="number">1</span> ; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>基本类型Number，赋值为拷贝，当 <code>b</code>改变的时候不会影响到<code>a</code></p>
+<ul>
+<li>案例二</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> b = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> c = a ;</span><br><span class="line">a === b <span class="comment">//false</span></span><br><span class="line">a === c <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>引用类型Object，比较的是引用地址，<code>a</code>和<code>b</code>的引用地址明显是不同的，所以他们不相等。</p>
+<p><code>c</code>得到了<code>a</code>的引用的地址，因此<code>a===c</code></p>
+<ul>
+<li>案例三</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="attr">name</span>:<span class="string">'张三'</span>,<span class="attr">info</span>:&#123;<span class="attr">age</span>:<span class="number">11</span>,<span class="attr">sex</span>:<span class="string">'男'</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">let</span> b = a;</span><br><span class="line">b.info.age = <span class="number">22</span>;</span><br><span class="line">a === b <span class="comment">//true</span></span><br><span class="line">a.info.age === <span class="number">22</span> <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>因为<code>a</code>和<code>b</code>指向同一个地址，所以<code>b</code>做修改的时候，<code>a</code>同样修改了。</p>
+<ul>
+<li>案例四</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="attr">name</span>:<span class="string">'张三'</span>,<span class="attr">info</span>:&#123;<span class="attr">age</span>:<span class="number">11</span>,<span class="attr">sex</span>:<span class="string">'男'</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">let</span> b = a ; <span class="comment">//展开运算符浅拷贝</span></span><br><span class="line">a === b <span class="comment">//false</span></span><br><span class="line">a.name === b.name <span class="comment">//true</span></span><br><span class="line">a.info === b.info <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>因为展开运算符是浅拷贝，所以两个对象指向不同的地址，即<code>a!==b</code>。</p>
+<p>但是浅拷贝毕竟是浅拷贝。</p>
+<p><code>name</code>是基本类型，拷贝的值，所以相同。</p>
+<p><code>info</code>为引用类型，拷贝的地址，也相同。</p>
+<ul>
+<li>案例五</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="attr">name</span>:<span class="string">'张三'</span>,<span class="attr">info</span>:&#123;<span class="attr">age</span>:<span class="number">11</span>,<span class="attr">sex</span>:<span class="string">'男'</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">let</span> b = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify) ; <span class="comment">//深拷贝</span></span><br><span class="line">a === b <span class="comment">//false</span></span><br><span class="line">a.name === b.name <span class="comment">//true</span></span><br><span class="line">a.info === b.info <span class="comment">//false</span></span><br><span class="line">a.info.age === b.info.age<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>深拷贝了，其他的不用说。</p>
+<p>因为深拷贝过了，<code>info</code>指向的就是各自的地址了，没啥关系了。</p>
+<p>但是基本类型该相同相同。</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-JS中的数组过滤和对象深拷贝" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/30db5aa.html">JS中的数组过滤和对象深拷贝</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/30db5aa.html" class="article-date">
+  <time datetime="2018-10-19T02:13:10.000Z" itemprop="datePublished">2018-10-19</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文借鉴了该文章 </p>
+<p>原数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> res = [</span><br><span class="line">    &#123;<span class="attr">name</span>:<span class="string">'Anne'</span>, <span class="attr">age</span>: <span class="number">23</span>, <span class="attr">gender</span>:<span class="string">'female'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">name</span>:<span class="string">'Lisa'</span>, <span class="attr">age</span>: <span class="number">16</span>, <span class="attr">gender</span>:<span class="string">'female'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">name</span>:<span class="string">'Jay'</span>, <span class="attr">age</span>: <span class="number">19</span>, <span class="attr">gender</span>:<span class="string">'male'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">name</span>:<span class="string">'Jay'</span>, <span class="attr">age</span>: <span class="number">22</span>, <span class="attr">gender</span>:<span class="string">'male'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">name</span>:<span class="string">'Mark'</span>, <span class="attr">age</span>: <span class="number">40</span>, <span class="attr">gender</span>:<span class="string">'male'</span>&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h4 id="1-单个条件单数据筛选"><a href="#1-单个条件单数据筛选" class="headerlink" title="1.单个条件单数据筛选"></a>1.单个条件单数据筛选</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findOneByName</span>(<span class="params">res, name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> res.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.name === name) <span class="comment">//注意:filter返回的是数组</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(findOneByName(res,<span class="string">'Anne'</span>)) <span class="comment">// [ &#123; name: 'Anne', age: 23, gender: 'female' &#125; ]</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-单个条件多个数据筛选"><a href="#2-单个条件多个数据筛选" class="headerlink" title="2.单个条件多个数据筛选"></a>2.单个条件多个数据筛选</h4><p>有时候可能会遇到重名情况</p>
+<p>使用 <code>forEach</code>,<code>Map</code>或<code>for</code>遍历数组，push 进入一个临时数组返回。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findSomeByName</span>(<span class="params">res, name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = []</span><br><span class="line">    res.forEach(<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (e.name === name) &#123;</span><br><span class="line">            result.push(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(findSomeByName(res, <span class="string">'Jay'</span>)) </span><br><span class="line"><span class="comment">//[ &#123; name: 'Jay', age: 19, gender: 'male' &#125;,</span></span><br><span class="line"><span class="comment">//  &#123; name: 'Jay', age: 22, gender: 'male' &#125; ]</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-多个条件单个数据筛选"><a href="#3-多个条件单个数据筛选" class="headerlink" title="3.多个条件单个数据筛选"></a>3.多个条件单个数据筛选</h4><p>数据中有两个 ‘ Jay ‘，我只想要那个 22 岁的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findOneByNameAge</span>(<span class="params">res, name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> res.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.name === name &amp;&amp; item.age === age)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(findOneByNameAge(res, <span class="string">'Jay'</span>, <span class="number">22</span>));</span><br><span class="line"><span class="comment">//[ &#123; name: 'Jay', age: 22, gender: 'male' &#125; ]</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-多个条件多个筛选"><a href="#4-多个条件多个筛选" class="headerlink" title="4.多个条件多个筛选"></a>4.多个条件多个筛选</h4><p>我想找到所有叫 Jay 和  Anne 的人</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiFilter</span>(<span class="params">array, filters</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> filterKeys = <span class="built_in">Object</span>.keys(filters)</span><br><span class="line">    <span class="comment">// filters all elements passing the criteria</span></span><br><span class="line">    <span class="keyword">return</span> array.filter(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// dynamically validate all filter criteria</span></span><br><span class="line">        <span class="keyword">return</span> filterKeys.every(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">//ignore when the filter is empty Anne</span></span><br><span class="line">            <span class="keyword">if</span> (!filters[key].length) <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">            <span class="keyword">return</span> !!~filters[key].indexOf(item[key])</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> filter = &#123;</span><br><span class="line">    name: [<span class="string">'Jay'</span>, <span class="string">'Anne'</span>],</span><br><span class="line">    age: []</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(multiFilter(res, filter));</span><br></pre></td></tr></table></figure>
+<h4 id="5-判断是否有这个人，或者是否全部都为该人"><a href="#5-判断是否有这个人，或者是否全部都为该人" class="headerlink" title="5. 判断是否有这个人，或者是否全部都为该人"></a>5. 判断是否有这个人，或者是否全部都为该人</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// res 里有没有 Anne ?</span></span><br><span class="line"><span class="built_in">console</span>.log(res.some(<span class="function"><span class="params">item</span> =&gt;</span> item.name === <span class="string">'Anne'</span>));<span class="comment">//true</span></span><br><span class="line"><span class="comment">// res 里是不是全都是 Anne ?</span></span><br><span class="line"><span class="built_in">console</span>.log(res.every(<span class="function"><span class="params">item</span> =&gt;</span> item.name === <span class="string">'Anne'</span>));<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<h4 id="6-知识点1-Object-keys-获取数据索引或者对象属性"><a href="#6-知识点1-Object-keys-获取数据索引或者对象属性" class="headerlink" title="6.知识点1 : Object.keys() 获取数据索引或者对象属性"></a>6.知识点1 : Object.keys() 获取数据索引或者对象属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(arr)); <span class="comment">// [ '0', '1', '2' ]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    a: <span class="string">'1'</span>,</span><br><span class="line">    b: <span class="string">'2'</span>,</span><br><span class="line">    c: <span class="string">'3'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(obj));<span class="comment">//[ 'a', 'b', 'c' ]</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-对象的深拷贝"><a href="#7-对象的深拷贝" class="headerlink" title="7. 对象的深拷贝"></a>7. 对象的深拷贝</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newRes = Json.parse(Json.stringify(res)); </span><br><span class="line"><span class="comment">//数据量不大的时候使用，而且必须遵循JSON格式,假如有 function 就无法拷贝</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//递归深拷贝 o1:得到的新对象 , o2:原对象</span></span><br><span class="line"><span class="keyword">let</span> newRes = &#123;&#125; ; <span class="comment">//想得到数组</span></span><br><span class="line"><span class="keyword">let</span> newRes = [] ; <span class="comment">//想得到对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">o1, o2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> o2) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> o2[k] === <span class="string">'object'</span>) &#123;</span><br><span class="line">            o1[k] = &#123;&#125;;</span><br><span class="line">            deepClone(o1[k], o2[k]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            o1[k] = o2[k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">deepClone(newRes,res)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-QS中文文档" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/7b89c88d.html">QS中文文档</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/7b89c88d.html" class="article-date">
+  <time datetime="2018-10-16T05:08:34.000Z" itemprop="datePublished">2018-10-16</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>只是简要的并且用自己的话翻译了一下，方便本人查阅。</p>
+<h4 id="引入-QS-库"><a href="#引入-QS-库" class="headerlink" title="引入 QS 库"></a>引入 QS 库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add qs</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">'qs'</span></span><br><span class="line"><span class="keyword">import</span> assert <span class="keyword">from</span> <span class="string">'assert'</span> <span class="comment">//用来测试</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><h6 id="1-Parse-Object"><a href="#1-Parse-Object" class="headerlink" title="1.Parse Object"></a>1.Parse Object</h6><ul>
+<li>基本使用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = qs.parse(<span class="string">'a=c'</span>); <span class="comment">// &#123;a:'c'&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>是否有原型</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nullObject = qs.parse(<span class="string">"a[hasOwnProperty]=b"</span>, &#123; <span class="attr">plainObjects</span>: <span class="literal">true</span> &#125;); <span class="comment">//无原型链</span></span><br><span class="line"><span class="keyword">var</span> protoObject = qs.parse(<span class="string">"a[hasOwnProperty]=b"</span>, &#123;<span class="attr">allowPrototypes</span>: <span class="literal">true</span>&#125;);<span class="comment">//有原型链</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>嵌套生成</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = qs.parse(<span class="string">"foo[bar]=baz"</span>); <span class="comment">//&#123;foo:&#123;bar:baz&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//嵌套的深度设置</span></span><br><span class="line"><span class="keyword">var</span> deep = qs.parse(<span class="string">'a[b][c][d][e][f][g][h][i]=j'</span>, &#123; <span class="attr">depth</span>: <span class="number">1</span> &#125;);</span><br><span class="line">assert.deepEqual(deep, &#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: &#123; <span class="string">'[c][d][e][f][g][h][i]'</span>: <span class="string">'j'</span> &#125; &#125; &#125;);</span><br><span class="line"><span class="comment">//最多只能到五层</span></span><br><span class="line"><span class="keyword">var</span> expected = &#123;</span><br><span class="line">    a: &#123;</span><br><span class="line">        b: &#123;</span><br><span class="line">            c: &#123;</span><br><span class="line">                d: &#123;</span><br><span class="line">                    e: &#123;</span><br><span class="line">                        f: &#123;</span><br><span class="line">                            <span class="string">'[g][h][i]'</span>: <span class="string">'j'</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> string = <span class="string">'a[b][c][d][e][f][g][h][i]=j'</span>;</span><br><span class="line">assert.deepEqual(qs.parse(string), expected);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>限制数量</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> limited = qs.parse(<span class="string">'a=b&amp;c=d'</span>, &#123; <span class="attr">parameterLimit</span>: <span class="number">1</span> &#125;); <span class="comment">//限制为1</span></span><br><span class="line">assert.deepEqual(limited, &#123; <span class="attr">a</span>: <span class="string">'b'</span> &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>去除QueryFix</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> prefixed = qs.parse(<span class="string">'?a=b&amp;c=d'</span>, &#123; <span class="attr">ignoreQueryPrefix</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">assert.deepEqual(prefixed, &#123; <span class="attr">a</span>: <span class="string">'b'</span>, <span class="attr">c</span>: <span class="string">'d'</span> &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置判断分隔的符号</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> delimited = qs.parse(<span class="string">'a=b;c=d'</span>, &#123; <span class="attr">delimiter</span>: <span class="string">';'</span> &#125;);<span class="comment">// delimiter可以随意设置，比如 , &#123; |</span></span><br><span class="line">assert.deepEqual(delimited, &#123; <span class="attr">a</span>: <span class="string">'b'</span>, <span class="attr">c</span>: <span class="string">'d'</span> &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用正则判断分隔</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regexed = qs.parse(<span class="string">'a=b;c=d,e=f'</span>, &#123; <span class="attr">delimiter</span>: <span class="regexp">/[;,]/</span> &#125;);</span><br><span class="line">assert.deepEqual(regexed, &#123; <span class="attr">a</span>: <span class="string">'b'</span>, <span class="attr">c</span>: <span class="string">'d'</span>, <span class="attr">e</span>: <span class="string">'f'</span> &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>允许 dots</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> withDots = qs.parse(<span class="string">'a.b=c'</span>, &#123; <span class="attr">allowDots</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">assert.deepEqual(withDots, &#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: <span class="string">'c'</span> &#125; &#125;);</span><br></pre></td></tr></table></figure>
+<h6 id="2-Parse-Array"><a href="#2-Parse-Array" class="headerlink" title="2. Parse Array"></a>2. Parse Array</h6><ul>
+<li>使用 [] 生成</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> withArray = qs.parse(<span class="string">'a[]=b&amp;a[]=c'</span>);</span><br><span class="line">assert.deepEqual(withArray, &#123; <span class="attr">a</span>: [<span class="string">'b'</span>, <span class="string">'c'</span>] &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以指定 index<strong>（max=20）</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> withIndexes = qs.parse(<span class="string">'a[1]=c&amp;a[0]=b'</span>);</span><br><span class="line">assert.deepEqual(withIndexes, &#123; <span class="attr">a</span>: [<span class="string">'b'</span>, <span class="string">'c'</span>] &#125;);</span><br></pre></td></tr></table></figure>
+<p>​    当指定的 index 很大<strong>(小于20)</strong>的时候，qs 会自动压缩</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> withIndexes = qs.parse(<span class="string">'a[1]=c&amp;a[15]=b'</span>);</span><br><span class="line">assert.deepEqual(withIndexes, &#123; <span class="attr">a</span>: [<span class="string">'b'</span>, <span class="string">'c'</span>] &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>允许空值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> withEmptyString = qs.parse(<span class="string">'a[]=&amp;a[]=b'</span>);</span><br><span class="line">assert.deepEqual(withEmptyString, &#123; <span class="attr">a</span>: [<span class="string">''</span>, <span class="string">'b'</span>] &#125;);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> withIndexedEmptyString = qs.parse(<span class="string">'a[0]=b&amp;a[1]=&amp;a[2]=c'</span>);</span><br><span class="line">assert.deepEqual(withIndexedEmptyString, &#123; <span class="attr">a</span>: [<span class="string">'b'</span>, <span class="string">''</span>, <span class="string">'c'</span>] &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当 index <strong>大于20</strong>的时候 会变成对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> withMaxIndex = qs.parse(<span class="string">'a[100]=b'</span>);</span><br><span class="line">assert.deepEqual(withMaxIndex, &#123; <span class="attr">a</span>: &#123; <span class="string">'100'</span>: <span class="string">'b'</span> &#125; &#125;);</span><br></pre></td></tr></table></figure>
+<p>​    当然这个 max 值你可以自己设定(0~20 ，超过20设不设置都一样了)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> withArrayLimit = qs.parse(<span class="string">'a[1]=b'</span>, &#123; <span class="attr">arrayLimit</span>: <span class="number">0</span> &#125;);</span><br><span class="line">assert.deepEqual(withArrayLimit, &#123; <span class="attr">a</span>: &#123; <span class="string">'1'</span>: <span class="string">'b'</span> &#125; &#125;);</span><br></pre></td></tr></table></figure>
+<p>​    你甚至可以直接不让它生成数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> noParsingArrays = qs.parse(<span class="string">'a[]=b'</span>, &#123; <span class="attr">parseArrays</span>: <span class="literal">false</span> &#125;);</span><br><span class="line">assert.deepEqual(noParsingArrays, &#123; <span class="attr">a</span>: &#123; <span class="string">'0'</span>: <span class="string">'b'</span> &#125; &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>混合使用，返回的是Object</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mixedNotation = qs.parse(<span class="string">'a[0]=b&amp;a[b]=c'</span>);</span><br><span class="line">assert.deepEqual(mixedNotation, &#123; <span class="attr">a</span>: &#123; <span class="string">'0'</span>: <span class="string">'b'</span>, <span class="attr">b</span>: <span class="string">'c'</span> &#125; &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生成 Object</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arraysOfObjects = qs.parse(<span class="string">'a[][b]=c'</span>);</span><br><span class="line">assert.deepEqual(arraysOfObjects, &#123; <span class="attr">a</span>: [&#123; <span class="attr">b</span>: <span class="string">'c'</span> &#125;] &#125;);</span><br></pre></td></tr></table></figure>
+<h6 id="3-Parse-stringify"><a href="#3-Parse-stringify" class="headerlink" title="3. Parse stringify"></a>3. Parse stringify</h6><ul>
+<li>基本使用,默认encode输出</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">qs.stringify(object, [options]);</span><br><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: <span class="string">'b'</span> &#125;), <span class="string">'a=b'</span>);</span><br><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: <span class="string">'c'</span> &#125; &#125;), <span class="string">'a%5Bb%5D=c'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>关闭 encode</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> unencoded = qs.stringify(&#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: <span class="string">'c'</span> &#125; &#125;, &#123; <span class="attr">encode</span>: <span class="literal">false</span> &#125;);</span><br><span class="line">assert.equal(unencoded, <span class="string">'a[b]=c'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>只对 value encode</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> encodedValues = qs.stringify(</span><br><span class="line">    &#123; <span class="attr">a</span>: <span class="string">'b'</span>, <span class="attr">c</span>: [<span class="string">'d'</span>, <span class="string">'e=f'</span>], <span class="attr">f</span>: [[<span class="string">'g'</span>], [<span class="string">'h'</span>]] &#125;,</span><br><span class="line">    &#123; <span class="attr">encodeValuesOnly</span>: <span class="literal">true</span> &#125;</span><br><span class="line">);</span><br><span class="line">assert.equal(encodedValues,<span class="string">'a=b&amp;c[0]=d&amp;c[1]=e%3Df&amp;f[0][0]=g&amp;f[1][0]=h'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>自定义 encode</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> encoded = qs.stringify(&#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: <span class="string">'c'</span> &#125; &#125;, &#123; <span class="attr">encoder</span>: <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Passed in values `a`, `b`, `c`</span></span><br><span class="line">    <span class="keyword">return</span> <span class="comment">// Return encoded string</span></span><br><span class="line">&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>自定义 decode</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> decoded = qs.parse(<span class="string">'x=z'</span>, &#123; <span class="attr">decoder</span>: <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Passed in values `x`, `z`</span></span><br><span class="line">    <span class="keyword">return</span> <span class="comment">// Return decoded string</span></span><br><span class="line">&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对 Array 使用 arrayFormat</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">qs.stringify(&#123; <span class="attr">a</span>: [<span class="string">'b'</span>, <span class="string">'c'</span>] &#125;, &#123; <span class="attr">arrayFormat</span>: <span class="string">'indices'</span> &#125;)</span><br><span class="line"><span class="comment">// 'a[0]=b&amp;a[1]=c'</span></span><br><span class="line">qs.stringify(&#123; <span class="attr">a</span>: [<span class="string">'b'</span>, <span class="string">'c'</span>] &#125;, &#123; <span class="attr">arrayFormat</span>: <span class="string">'brackets'</span> &#125;)</span><br><span class="line"><span class="comment">// 'a[]=b&amp;a[]=c'</span></span><br><span class="line">qs.stringify(&#123; <span class="attr">a</span>: [<span class="string">'b'</span>, <span class="string">'c'</span>] &#125;, &#123; <span class="attr">arrayFormat</span>: <span class="string">'repeat'</span> &#125;)</span><br><span class="line"><span class="comment">// 'a=b&amp;a=c'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>对 Object 操作默认为 bracket notation</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">qs.stringify(&#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: &#123; <span class="attr">c</span>: <span class="string">'d'</span>, <span class="attr">e</span>: <span class="string">'f'</span> &#125; &#125; &#125;);</span><br><span class="line"><span class="comment">// 'a[b][c]=d&amp;a[b][e]=f'</span></span><br></pre></td></tr></table></figure>
+<pre><code>也可以设置为  dots notation
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">qs.stringify(&#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: &#123; <span class="attr">c</span>: <span class="string">'d'</span>, <span class="attr">e</span>: <span class="string">'f'</span> &#125; &#125; &#125;, &#123; <span class="attr">allowDots</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="comment">// 'a.b.c=d&amp;a.b.e=f'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>空的字符串或者 null 的时候会省略值，但是等号（=）会保留</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: <span class="string">''</span> &#125;), <span class="string">'a='</span>);</span><br><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: <span class="literal">null</span> &#125;), <span class="string">'a='</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当一个key对应的值为空时（空数组，空对象）,没有返回值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: [] &#125;), <span class="string">''</span>);</span><br><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: &#123;&#125; &#125;), <span class="string">''</span>);</span><br><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: [&#123;&#125;] &#125;), <span class="string">''</span>);</span><br><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: []&#125; &#125;), <span class="string">''</span>);</span><br><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: &#123;&#125;&#125; &#125;), <span class="string">''</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>value 为 undefined 的时候也会被忽略</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: <span class="literal">null</span>, <span class="attr">b</span>: <span class="literal">undefined</span> &#125;), <span class="string">'a='</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一个 query 字符串可以预添加 (?)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: <span class="string">'b'</span>, <span class="attr">c</span>: <span class="string">'d'</span> &#125;, &#123; <span class="attr">addQueryPrefix</span>: <span class="literal">true</span> &#125;), <span class="string">'?a=b&amp;c=d'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置分隔字符串</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: <span class="string">'b'</span>, <span class="attr">c</span>: <span class="string">'d'</span> &#125;, &#123; <span class="attr">delimiter</span>: <span class="string">';'</span> &#125;), <span class="string">'a=b;c=d'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果只想重写日期对象的序列化，则可以提供序列化选项</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">7</span>);</span><br><span class="line">assert.equal(</span><br><span class="line">    qs.stringify(&#123; <span class="attr">a</span>: date &#125;, &#123; <span class="attr">serializeDate</span>: <span class="function"><span class="keyword">function</span> (<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.getTime(); &#125; &#125;),</span><br><span class="line">    <span class="string">'a=7'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以使用 sort 选项，对 key 进行排序</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">alphabeticalSort</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.localeCompare(b);</span><br><span class="line">&#125;</span><br><span class="line">assert.equal(qs.stringify(&#123; <span class="attr">a</span>: <span class="string">'c'</span>, <span class="attr">z</span>: <span class="string">'y'</span>, <span class="attr">b</span> : <span class="string">'f'</span> &#125;, &#123; <span class="attr">sort</span>: alphabeticalSort &#125;), <span class="string">'a=c&amp;b=f&amp;z=y'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过对 key 进行 filter ，并对 value 操作</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterFunc</span>(<span class="params">prefix, value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (prefix == <span class="string">'b'</span>) &#123;</span><br><span class="line">        <span class="comment">// Return an `undefined` value to omit a property.</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (prefix == <span class="string">'e[f]'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> value.getTime();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (prefix == <span class="string">'e[g][0]'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> value * <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line">qs.stringify(&#123; <span class="attr">a</span>: <span class="string">'b'</span>, <span class="attr">c</span>: <span class="string">'d'</span>, <span class="attr">e</span>: &#123; <span class="attr">f</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">123</span>), <span class="attr">g</span>: [<span class="number">2</span>] &#125; &#125;, &#123; <span class="attr">filter</span>: filterFunc &#125;);</span><br><span class="line"><span class="comment">// 'a=b&amp;c=d&amp;e[f]=123&amp;e[g][0]=4'</span></span><br><span class="line">qs.stringify(&#123; <span class="attr">a</span>: <span class="string">'b'</span>, <span class="attr">c</span>: <span class="string">'d'</span>, <span class="attr">e</span>: <span class="string">'f'</span> &#125;, &#123; <span class="attr">filter</span>: [<span class="string">'a'</span>, <span class="string">'e'</span>] &#125;);</span><br><span class="line"><span class="comment">// 'a=b&amp;e=f'</span></span><br><span class="line">qs.stringify(&#123; <span class="attr">a</span>: [<span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>], <span class="attr">e</span>: <span class="string">'f'</span> &#125;, &#123; <span class="attr">filter</span>: [<span class="string">'a'</span>, <span class="number">0</span>, <span class="number">2</span>] &#125;);</span><br><span class="line"><span class="comment">// 'a[0]=b&amp;a[2]=d'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>对 null 的处理</li>
+</ul>
+<p>在默认下，null 会被当做空字符串处理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> withNull = qs.stringify(&#123; <span class="attr">a</span>: <span class="literal">null</span>, <span class="attr">b</span>: <span class="string">''</span> &#125;);</span><br><span class="line">assert.equal(withNull, <span class="string">'a=&amp;b='</span>);</span><br></pre></td></tr></table></figure>
+<p>Parse 不区分有没有 = 的参数，他们都会被解析为空字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> equalsInsensitive = qs.parse(<span class="string">'a&amp;b='</span>);</span><br><span class="line">assert.deepEqual(equalsInsensitive, &#123; <span class="attr">a</span>: <span class="string">''</span>, <span class="attr">b</span>: <span class="string">''</span> &#125;);</span><br></pre></td></tr></table></figure>
+<p>现在，为了区分 null 和 空字符串的区别，你可以加上 <code>strictNullHandling</code>，他会区分 <code>null</code> 和空字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> strictNull = qs.stringify(&#123; <span class="attr">a</span>: <span class="literal">null</span>, <span class="attr">b</span>: <span class="string">''</span> &#125;, &#123; <span class="attr">strictNullHandling</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">assert.equal(strictNull, <span class="string">'a&amp;b='</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> parsedStrictNull = qs.parse(<span class="string">'a&amp;b='</span>, &#123; <span class="attr">strictNullHandling</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">assert.deepEqual(parsedStrictNull, &#123; <span class="attr">a</span>: <span class="literal">null</span>, <span class="attr">b</span>: <span class="string">''</span> &#125;);</span><br></pre></td></tr></table></figure>
+<p>如果你想忽略 <code>value === null</code>的键值对，可以使用 <code>skipNulls</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nullsSkipped = qs.stringify(&#123; <span class="attr">a</span>: <span class="string">'b'</span>, <span class="attr">c</span>: <span class="literal">null</span>&#125;, &#123; <span class="attr">skipNulls</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">assert.equal(nullsSkipped, <span class="string">'a=b'</span>);</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mongoose-使用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/273360f2.html">mongoose 使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/273360f2.html" class="article-date">
+  <time datetime="2018-09-30T08:22:53.000Z" itemprop="datePublished">2018-09-30</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-命令行中创建并启动数据库"><a href="#1-命令行中创建并启动数据库" class="headerlink" title="1. 命令行中创建并启动数据库"></a>1. 命令行中创建并启动数据库</h3><ol>
+<li>指定存储的位置和端口号</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath --port=27018  code/mongo_demo</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>另开一个命令行窗口，进入 code/mongo_demo</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
+<h3 id="2-使用-mongoose-链接数据库并创建-Collection"><a href="#2-使用-mongoose-链接数据库并创建-Collection" class="headerlink" title="2. 使用 mongoose 链接数据库并创建 Collection"></a>2. 使用 mongoose 链接数据库并创建 Collection</h3><ol>
+<li><p>链接数据库</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"><span class="keyword">const</span> Schema = mongoose.Schema;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> uri = <span class="string">'mongodb://localhost/what_i_love'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ObjectId = Schema.Types.ObjectId;</span><br><span class="line"></span><br><span class="line">mongoose.set(<span class="string">'useCreateIndex'</span>, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">mongoose.Promise = <span class="built_in">Promise</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> connection = mongoose.connect(uri, &#123;<span class="attr">useNewUrlParser</span>: <span class="literal">true</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> db = mongoose.connection;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 Collection</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> UserSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">    name: &#123;<span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">required</span>: <span class="literal">true</span>, <span class="attr">unique</span>: <span class="literal">true</span>, <span class="attr">index</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    age: &#123;<span class="attr">type</span>: <span class="built_in">Number</span>, <span class="attr">required</span>: <span class="literal">true</span>, <span class="attr">max</span>: <span class="number">199</span>, <span class="attr">min</span>: [<span class="number">0</span>,<span class="string">'你还没生出来呢'</span>]&#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> UserModel = mongoose.model(<span class="string">'user'</span>, UserSchema);</span><br><span class="line"><span class="comment">//创建一个叫做 user 的 collection</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>操作 Collection</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">insert</span>(<span class="params">userInfo</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> UserModel.create(userInfo)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getOneById</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> UserModel.findOne(&#123;</span><br><span class="line">        _id: id</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getOneByName</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> UserModel.findOne(&#123;</span><br><span class="line">        name</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">list</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> match = &#123;&#125;</span><br><span class="line">    <span class="keyword">const</span> flow = UserModel.find(match)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> flow.exec()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    insert,</span><br><span class="line">    getOneById,</span><br><span class="line">    getOneByName,</span><br><span class="line">    list,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="3-使用中"><a href="#3-使用中" class="headerlink" title="3. 使用中"></a>3. 使用中</h3><p> 一般来说链接数据库的方法单独放在一个地方。（第一步操作）</p>
+<p>创建 Collection 并 操作Collection 放在一个地方。(第二步操作)</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-NodeJS-库-持续更新" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/1dd248d5.html">NodeJS 库 (持续更新)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/1dd248d5.html" class="article-date">
+  <time datetime="2018-09-30T08:22:41.000Z" itemprop="datePublished">2018-09-30</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-加密-解密-工具"><a href="#1-加密-解密-工具" class="headerlink" title="1.加密 解密 工具"></a>1.加密 解密 工具</h3><ul>
+<li>bcrypt </li>
+</ul>
+<p>  加密</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> saltRounds = <span class="number">10</span>; <span class="comment">//加密轮数</span></span><br><span class="line"><span class="keyword">let</span> password = userInfo.password <span class="comment">//密码</span></span><br><span class="line">bcrypt.genSalt(saltRounds, <span class="function"><span class="keyword">function</span> (<span class="params">err, salt</span>) </span>&#123;</span><br><span class="line">        bcrypt.hash(password, salt, <span class="function"><span class="keyword">function</span> (<span class="params">err, hash</span>) </span>&#123;</span><br><span class="line">            <span class="comment">//把hash值赋值给password变量</span></span><br><span class="line">            password = hash;</span><br><span class="line">            storeUInfo(&#123; <span class="comment">//存储</span></span><br><span class="line">                username: userInfo.username,</span><br><span class="line">                password,</span><br><span class="line">                name: userInfo.name,</span><br><span class="line">                age: userInfo.age</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>  解密验证</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">userInfo</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> user = <span class="keyword">await</span> UserModel.findOne(&#123; <span class="comment">//从数据库中找到该用户</span></span><br><span class="line">        username: userInfo.username</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">const</span> match = <span class="keyword">await</span> bcrypt.compare(userInfo.password, user.password) <span class="comment">// 看看 密码是否相同</span></span><br><span class="line">    <span class="keyword">if</span> (match) &#123;</span><br><span class="line">        <span class="keyword">return</span> user</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> HttpParamError(<span class="string">'user'</span>, <span class="string">'用户名密码错误'</span>, <span class="string">'username password error'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Vue父子传参的方式" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/a431a66.html">Vue父子传参的方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/a431a66.html" class="article-date">
+  <time datetime="2018-09-09T07:59:07.000Z" itemprop="datePublished">2018-09-09</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>感觉Vue中父子传参的方式，实在是太多了，于是做一个小总结，只是总结我所知道的。</p>
+<h3 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1.父传子"></a>1.父传子</h3><p>基本就用一个方式，<code>props</code></p>
+<p>父亲通过在 <strong>标签</strong> 中写入需要传入的数据。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--father.vue--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        我是爸爸，下面是儿子</span><br><span class="line">        <span class="tag">&lt;<span class="name">son</span> <span class="attr">title</span>=<span class="string">'儿子'</span> <span class="attr">:selected</span>=<span class="string">'selected'</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>儿子在 实例中的 <code>props</code> 选项中获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//son.vue</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name:<span class="string">'son'</span>,</span><br><span class="line">    props:&#123;</span><br><span class="line">        selected:&#123;</span><br><span class="line">            type:<span class="built_in">Boolean</span></span><br><span class="line">        &#125;,</span><br><span class="line">        title:&#123;</span><br><span class="line">            type:<span class="built_in">String</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-子传父"><a href="#2-子传父" class="headerlink" title="2.子传父"></a>2.子传父</h3><h4 id="update-my-prop-name-模式"><a href="#update-my-prop-name-模式" class="headerlink" title="# update:my-prop-name 模式"></a># <code>update:my-prop-name</code> 模式</h4><p>Vue 是单项数据流，所以不允许 儿子 直接修改父亲的数据，也不允许儿子直接修改自己的<code>props</code>。</p>
+<p>假设一个情况，点击儿子，儿子需要改变 <code>selected</code> 的状态。</p>
+<p><strong>儿子方面</strong></p>
+<p>触发点击事件后， 让儿子触发一个 <code>update</code> 事件，把新的 <code>selected</code> 传出去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--son.vue--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;son&quot; @click=&quot;onClick&quot;&gt;</span><br><span class="line">        title:&#123;&#123;title&#125;&#125; selected:&#123;&#123;selected&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;son&quot;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    selected: &#123;</span><br><span class="line">      type: Boolean</span><br><span class="line">    &#125;,</span><br><span class="line">    title: &#123;</span><br><span class="line">      type: String</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    onClick() &#123;</span><br><span class="line">      this.$emit(&quot;update:selected&quot;, !this.selected); //关键点</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.son &#123;</span><br><span class="line">  border: 1px solid red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>父亲方面</strong></p>
+<p>在标签中监听 <code>update</code>事件，并将传过来的 <code>$event</code>付给 <code>selected</code>，这样就完成了一次传参。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--father.vue--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        我是爸爸，下面是儿子</span><br><span class="line">        &lt;son title=&apos;儿子&apos; :selected=&apos;selected&apos; @update:selected=&apos;selected=$event&apos;&gt;&lt;/son&gt; </span><br><span class="line">        &lt;!--关键点--&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Son from &quot;./son&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;father&quot;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    Son</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      selected: true</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>简单方式</p>
+<p><strong>.sync 修饰符</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--father.vue--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        我是爸爸，下面是儿子</span><br><span class="line">        &lt;son title=&apos;儿子&apos; :selected.sync=&apos;selected&apos;&gt;&lt;/son&gt; </span><br><span class="line">        &lt;!--关键点--&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="parents-API"><a href="#parents-API" class="headerlink" title="#  $parents API"></a>#  $parents API</h4><p><strong>儿子方面</strong></p>
+<p>从 <code>this.$parent</code>中可以获取到 父组件 的 data 数据 ，直接进行修改，是不是很刺激。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    onClick() &#123;</span><br><span class="line">      <span class="keyword">this</span>.$parent.selected = !<span class="keyword">this</span>.$parent.selected;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>虽然刺激，<strong>但是，我建议调用父组件的函数，来切换状态。</strong></p>
+<p><strong>父亲方面</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//father.vue</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"father"</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    Son</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      selected: <span class="literal">true</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeSelected() &#123;</span><br><span class="line">      <span class="keyword">this</span>.selected = !<span class="keyword">this</span>.selected;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>儿子方面</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//son.vue </span></span><br><span class="line">methods: &#123;</span><br><span class="line">    onClick() &#123;</span><br><span class="line">      <span class="keyword">this</span>.$parent.changeSelected();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="EventBus"><a href="#EventBus" class="headerlink" title="# EventBus"></a># EventBus</h4><p>如果只是一个父亲，一个儿子上面的方法非常的简单实用，但是如果是祖孙三代传参呢？上面的方法就很麻烦了。</p>
+<p>具体怎么麻烦，可以看一下我的这篇文章，用原始的方法造 tabs轮子:<a href="https://zhuanlan.zhihu.com/p/39601572" rel="external nofollow noopener noreferrer" target="_blank">https://zhuanlan.zhihu.com/p/39601572</a> </p>
+<p>废话不多说，开始用 EventBus做一个简单的 tabs组件。</p>
+<h5 id="app-vue"><a href="#app-vue" class="headerlink" title="#app.vue"></a>#app.vue</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;tab selected=&apos;news&apos;&gt;</span><br><span class="line">      &lt;tab-item name=&apos;news&apos;&gt;新闻&lt;/tab-item&gt;</span><br><span class="line">      &lt;tab-item name=&apos;car&apos;&gt;汽车&lt;/tab-item&gt;</span><br><span class="line">      &lt;tab-item name=‘code’&gt;代码&lt;/tab-item&gt;</span><br><span class="line"></span><br><span class="line">      &lt;tab-pane name=&apos;news&apos;&gt;新闻列表&lt;/tab-pane&gt;</span><br><span class="line">      &lt;tab-pane name=&apos;car&apos;&gt;汽车列表&lt;/tab-pane&gt;</span><br><span class="line">      &lt;tab-pane name=‘code’&gt;代码列表&lt;/tab-pane&gt;</span><br><span class="line">    &lt;/tab&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Tab from &quot;./components/tabs.vue&quot;;</span><br><span class="line">import TabItem from &quot;./components/tab-item&quot;;</span><br><span class="line">import TabPane from &quot;./components/tab-pane&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;app&quot;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    Tab,</span><br><span class="line">    TabItem,</span><br><span class="line">    TabPane</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="tabs-vue"><a href="#tabs-vue" class="headerlink" title="# tabs.vue"></a># tabs.vue</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import TabItem from &quot;./tab-item.vue&quot;;</span><br><span class="line">import Vue from &quot;vue&quot;;  //引入VUE</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;tab&quot;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    selected: &#123;</span><br><span class="line">      type: [Number, String]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      eventBus: new Vue() // 创建 eventBus</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  provide() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      eventBus: this.eventBus // 提供 eventBus</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    this.eventBus.$emit(&quot;update:selected&quot;, this.selected); </span><br><span class="line">      //发布消息，告诉大家，现在的selected是啥</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="tabs-item-vue"><a href="#tabs-item-vue" class="headerlink" title="# tabs-item.vue"></a># tabs-item.vue</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div @click=&quot;onClick&quot; :class=&quot;&#123;active&#125;&quot;&gt;</span><br><span class="line">        &lt;slot/&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;tab-item&quot;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    name: &#123;</span><br><span class="line">      type: [String, Number]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  inject: [&quot;eventBus&quot;], //注入 eventBus</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      active: false</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    this.eventBus.$on(&quot;update:selected&quot;, newSelected =&gt; &#123;</span><br><span class="line">      this.active = this.name === newSelected;</span><br><span class="line">    &#125;); //接收消息，如果newselected 和我的 name 相同，那么我就被选中了</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    onClick() &#123;</span><br><span class="line">      this.eventBus.$emit(&quot;update:selected&quot;, this.name);</span><br><span class="line">        //发布消息，如果点击了我，我就告诉大家，我被选中了</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.active &#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="tab-pane-vue"><a href="#tab-pane-vue" class="headerlink" title="# tab-pane.vue"></a># tab-pane.vue</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div v-if=&quot;active&quot; class=&quot;pane&quot;&gt;</span><br><span class="line">    &lt;slot/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;tab-pane&quot;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    name: &#123;</span><br><span class="line">      type: [String, Number]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      active: false</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  inject: [&quot;eventBus&quot;],//注入 eventBus</span><br><span class="line">  created() &#123;</span><br><span class="line">    this.eventBus.$on(&quot;update:selected&quot;, newSelected =&gt; &#123;</span><br><span class="line">      this.active = this.name === newSelected;</span><br><span class="line">    &#125;);</span><br><span class="line">      //接收消息，如果newselected 和我的 name 相同，那么我就被选中了</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.pane &#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="灵活运用-provide-inject"><a href="#灵活运用-provide-inject" class="headerlink" title="# 灵活运用 provide inject"></a># 灵活运用 provide inject</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//father.vue</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name:<span class="string">'father'</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            someThing:<span class="string">'father'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    provide()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            father:<span class="keyword">this</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//son.vue</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name:<span class="string">'son'</span>,</span><br><span class="line">    inject:[<span class="string">'father'</span>],</span><br><span class="line">    methods:&#123;</span><br><span class="line">        onClick()&#123;</span><br><span class="line">            <span class="keyword">this</span>.father.someThing = <span class="string">'son'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-关于JavaScript日期的一些小技巧" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/9fa8d30b.html">关于JavaScript日期的一些小技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/9fa8d30b.html" class="article-date">
+  <time datetime="2018-08-28T15:17:42.000Z" itemprop="datePublished">2018-08-28</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在做小程序，要做一些关于日期方面的计算，于是整理下来，方便下次使用</p>
+<h4 id="1-获得年月日"><a href="#1-获得年月日" class="headerlink" title="1. 获得年月日"></a>1. 获得年月日</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">newDateInit</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> newDate = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">  <span class="keyword">let</span> month = newDate.getMonth();</span><br><span class="line">  <span class="keyword">if</span> (month &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    month = <span class="string">"0"</span> + month; <span class="comment">//补齐</span></span><br><span class="line">  &#125;</span><br><span class="line">  day = newDate.getDate();</span><br><span class="line">  <span class="keyword">if</span> (newDate.getDate() &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    day = <span class="string">"0"</span> + day; <span class="comment">//补齐</span></span><br><span class="line">  &#125;</span><br><span class="line">  year = newDate.getFullYear();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-计算前一天，后一天"><a href="#2-计算前一天，后一天" class="headerlink" title="2.计算前一天，后一天"></a>2.计算前一天，后一天</h4><p>一开始我考虑假如我现在是 1 号，前一天不就是 0 了吗？其实不用考虑这么多，JS 帮我们做好了判断。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentDate = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">var</span> currentDay = currentDate.getDate();</span><br><span class="line"><span class="keyword">var</span> currentMonth = currentDate.getMonth();</span><br><span class="line"><span class="keyword">var</span> currentYear = currentDate.getFullYear();</span><br><span class="line"><span class="comment">//现在要计算明天的日期</span></span><br><span class="line"><span class="keyword">var</span> nextDate = <span class="keyword">new</span> <span class="built_in">Date</span>(currentYear,currentMonth,currentDay+<span class="number">1</span>);</span><br><span class="line"><span class="comment">//前一天的日期</span></span><br><span class="line"><span class="keyword">var</span> preDate = <span class="keyword">new</span> <span class="built_in">Date</span>(currentYear,currentMonth,currentDay<span class="number">-1</span>);</span><br><span class="line"><span class="comment">//下个月，上个月同理</span></span><br></pre></td></tr></table></figure>
+<p>无需考虑边界问题。</p>
+<h4 id="3-假如给的是-2018-01-03-这种数值，传回去也要这种类型怎么办？"><a href="#3-假如给的是-2018-01-03-这种数值，传回去也要这种类型怎么办？" class="headerlink" title="3.假如给的是 2018-01-03 这种数值，传回去也要这种类型怎么办？"></a>3.假如给的是 2018-01-03 这种数值，传回去也要这种类型怎么办？</h4><p>先用 split 分隔为数组，再转换为 Number ，再进行加减，再转换为 String ,再拼接</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">data() &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    currentYear: <span class="number">2018</span>,</span><br><span class="line">    currentMonth: <span class="number">9</span>,</span><br><span class="line">    currentDay: <span class="number">1</span>,</span><br><span class="line">    currentDate: <span class="string">"2018-09-01"</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  currentDateSplit() &#123;  <span class="comment">//用 '-'分隔传入数组</span></span><br><span class="line">    <span class="keyword">let</span> num = [];</span><br><span class="line">    <span class="keyword">let</span> str = [];</span><br><span class="line">    <span class="keyword">let</span> current = <span class="keyword">this</span>.currentDate.split(<span class="string">"-"</span>);</span><br><span class="line">    current.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">      num.push(<span class="built_in">parseInt</span>(item));</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> num;</span><br><span class="line">  &#125;,</span><br><span class="line">  newDateInit(newDate) &#123; <span class="comment">// 初始化 新生成的日期</span></span><br><span class="line">    <span class="keyword">this</span>.currentMonth = newDate.getMonth();</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.currentMonth &lt; <span class="number">10</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.currentMonth = <span class="string">"0"</span> + <span class="keyword">this</span>.currentMonth; <span class="comment">//补齐</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.currentDay = newDate.getDate();</span><br><span class="line">    <span class="keyword">if</span> (newDate.getDate() &lt; <span class="number">10</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.currentDay = <span class="string">"0"</span> + newDate.getDate(); <span class="comment">//补齐</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.currentYear = newDate.getFullYear();</span><br><span class="line">  &#125;,</span><br><span class="line">  preDay() &#123;  <span class="comment">//前一天</span></span><br><span class="line">    <span class="keyword">let</span> num = <span class="keyword">this</span>.currentDateSplit();</span><br><span class="line">    <span class="keyword">let</span> newDate = <span class="keyword">new</span> <span class="built_in">Date</span>(num[<span class="number">0</span>], num[<span class="number">1</span>], num[<span class="number">2</span>] - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">this</span>.newDateInit(newDate);</span><br><span class="line">    <span class="keyword">this</span>.DateJoin();</span><br><span class="line">  &#125;,</span><br><span class="line">  nextDay() &#123; <span class="comment">// 后一天</span></span><br><span class="line">    <span class="keyword">let</span> num = <span class="keyword">this</span>.currentDateSplit();</span><br><span class="line">    <span class="keyword">let</span> newDate = <span class="keyword">new</span> <span class="built_in">Date</span>(num[<span class="number">0</span>], num[<span class="number">1</span>], num[<span class="number">2</span>] + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">this</span>.newDateInit(newDate);</span><br><span class="line">    <span class="keyword">this</span>.DateJoin();</span><br><span class="line">    <span class="keyword">this</span>.DateJoin();</span><br><span class="line">  &#125;,</span><br><span class="line">  DateJoin() &#123; <span class="comment">//拼接为 'xxxx-xx-xx' 返回去</span></span><br><span class="line">    <span class="keyword">this</span>.currentDate = </span><br><span class="line">        <span class="keyword">this</span>.currentYear + <span class="string">"-"</span> + <span class="keyword">this</span>.currentMonth + <span class="string">"-"</span> + <span class="keyword">this</span>.currentDay;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/hejianxian" target="_blank" rel="external nofollow noopener noreferrer"><i class="icon icon-github"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
 
       </div>
-
-    </div>
-
-    <div class="panel-cover--overlay cover-purple"></div>
-  </div> 
-</header>
-
-    <div class="content-wrapper">
-        <div class="content-wrapper__inner">
-            <div class="main-post-list">
-    
-  <ol class="post-list">
+      <footer id="footer">
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/81b0b94a.html" title="link to post.title">Cordova+Vue实现点击两次返回退出应用</a></h2>
-      <p class="excerpt">
-    
-      Cordova + Vue 实现点击两次退出应用注册事件123456789101112131415//注意在 deviceready 后使用,写在methods中//点击返回按键  onBackKeyDown() &amp;#123;       this.$toast(&#39;再点击一次退出应用&#39;);       document.removeEventListener(&#34;backbutton&#34;, this.
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2019-03-12T06:08:54.000Z" class="post-list__meta--date date">2019-03-12</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Cordova-Vue/">Cordova Vue</a>
-</span><a class="btn-border-small" href="/archives/81b0b94a.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/990bab20.html" title="link to post.title">Cordova下载并预览功能</a></h2>
-      <p class="excerpt">
-    
-      1.前言近期混合应用开发需要下载和预览的功能，选择方案为先下载到本地，再使用cordova-plugin-file-opener2插件进行预览。
-采用此预览方案文件会被先下载到本地，cordova-plugin-file-opener2插件其实可以直接打开网络地址来实现预览，采用此方式是基于以下考虑：
-
-避免重复下载
-
-避免有文件格式解析错误的情况，用户可以到本地再次进行查看
-
-下载目录可控
-
-
-
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2019-02-01T03:00:43.000Z" class="post-list__meta--date date">2019-02-01</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Cordova/">Cordova</a>
-</span><a class="btn-border-small" href="/archives/990bab20.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/bd208f70.html" title="link to post.title">JS变量提升</a></h2>
-      <p class="excerpt">
-    
-      1.var123console.log(a) //undefinedvar a = 1;
-输出 a 为 undefined
-说明var在代码执行前就将 创建变量，并初始化为 undefined 
-2.let123console.log(a) //ReferenceError: a is not definedlet a = 1;
-输出 ReferenceError: a is not define
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-12-20T08:52:09.000Z" class="post-list__meta--date date">2018-12-20</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Javascript/">Javascript</a>
-</span><a class="btn-border-small" href="/archives/bd208f70.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/39d3351.html" title="link to post.title">JS引用类型</a></h2>
-      <p class="excerpt">
-    
-      1.JS中的类型
-基本类型
-String
-Boolean
-Number
-undefined
-Null
-Symbol
-
-引用类型
-Object
-
-
-对于基本类型，=代表的是值得拷贝，===代表的是值得比较。
-对于引用类型，=代表的是引用地址的拷贝，===代表的是引用地址的比较。
-2.几个例子深入理解
-案例一
-
-12345let a = 1;let b = a;a === b // trueb = 2
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-12-12T03:08:15.000Z" class="post-list__meta--date date">2018-12-12</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/39d3351.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/30db5aa.html" title="link to post.title">JS中的数组过滤和对象深拷贝</a></h2>
-      <p class="excerpt">
-    
-      本文借鉴了该文章 
-原数组
-1234567let res = [    &amp;#123;name:&#39;Anne&#39;, age: 23, gender:&#39;female&#39;&amp;#125;,    &amp;#123;name:&#39;Lisa&#39;, age: 16, gender:&#39;female&#39;&amp;#125;,    &amp;#123;name:&#39;Jay&#39;, age: 19, gender:&#39;male&#39;&amp;#125;,    &amp;#123
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-10-19T02:13:10.000Z" class="post-list__meta--date date">2018-10-19</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/30db5aa.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/7b89c88d.html" title="link to post.title">QS中文文档</a></h2>
-      <p class="excerpt">
-    
-      只是简要的并且用自己的话翻译了一下，方便本人查阅。
-引入 QS 库1yarn add qs
-12import qs from &#39;qs&#39;import assert from &#39;assert&#39; //用来测试
-使用1.Parse Object
-基本使用
-
-1let obj = qs.parse(&#39;a=c&#39;); // &amp;#123;a:&#39;c&#39;&amp;#125;
-
-是否有原型
-
-12let nullObject =
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-10-16T05:08:34.000Z" class="post-list__meta--date date">2018-10-16</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/7b89c88d.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/273360f2.html" title="link to post.title">mongoose 使用</a></h2>
-      <p class="excerpt">
-    
-      1. 命令行中创建并启动数据库
-指定存储的位置和端口号
-
-1mongod --dbpath --port=27018  code/mongo_demo
-
-另开一个命令行窗口，进入 code/mongo_demo
-
-1mongo
-2. 使用 mongoose 链接数据库并创建 Collection
-链接数据库
-1234567891011121314const mongoose = require(&#39;
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-09-30T08:22:53.000Z" class="post-list__meta--date date">2018-09-30</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/NodeJS/">NodeJS</a>
-</span><a class="btn-border-small" href="/archives/273360f2.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/1dd248d5.html" title="link to post.title">NodeJS 库 (持续更新)</a></h2>
-      <p class="excerpt">
-    
-      1.加密 解密 工具
-bcrypt 
-
-  加密
-  1234567891011121314const saltRounds = 10; //加密轮数let password = userInfo.password //密码bcrypt.genSalt(saltRounds, function (err, salt) &amp;#123;        bcrypt.hash(password, salt
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-09-30T08:22:41.000Z" class="post-list__meta--date date">2018-09-30</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/NodeJS/">NodeJS</a>
-</span><a class="btn-border-small" href="/archives/1dd248d5.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/a431a66.html" title="link to post.title">Vue父子传参的方式</a></h2>
-      <p class="excerpt">
-    
-      感觉Vue中父子传参的方式，实在是太多了，于是做一个小总结，只是总结我所知道的。
-1.父传子基本就用一个方式，props
-父亲通过在 标签 中写入需要传入的数据。
-1234567&amp;lt;!--father.vue--&amp;gt;&amp;lt;template&amp;gt;    &amp;lt;div&amp;gt;        我是爸爸，下面是儿子        &amp;lt;son title=&#39;儿子&#39; :selected=&#39;s
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-09-09T07:59:07.000Z" class="post-list__meta--date date">2018-09-09</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/Vue/">Vue</a>
-</span><a class="btn-border-small" href="/archives/a431a66.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/archives/9fa8d30b.html" title="link to post.title">关于JavaScript日期的一些小技巧</a></h2>
-      <p class="excerpt">
-    
-      最近在做小程序，要做一些关于日期方面的计算，于是整理下来，方便下次使用
-1. 获得年月日123456789101112function newDateInit() &amp;#123;  let newDate = new Date();  let month = newDate.getMonth();  if (month &amp;lt; 10) &amp;#123;    month = &#34;0&#34; + month; 
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-08-28T15:17:42.000Z" class="post-list__meta--date date">2018-08-28</time> &#8226; <span class="post-list__meta--tags tags">于 
-  <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
-</span><a class="btn-border-small" href="/archives/9fa8d30b.html">阅读</a></div>
-      <hr class="post-list__divider">
-    </li>
-  
-    
-  </ol>
-
-
-  <nav class="pagination" role="navigation">
-    
-    <span class="pagination__page-number">  1 / 4 </span>
-    
-      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/page/2/">更早 &rarr;</a>
-    
-  </nav>
-
- <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-        messageStyle: "none"
-    }); 
-    
-</script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-</div>
-
-
-            <footer class="footer">
-    <span class="footer__copyright">
-        &copy; 2019 Storm - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
-       
-    </span>
-    <span class="footer__copyright">
-             - 基于 <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno " rel="external nofollow noopener noreferrer" target="_blank">new-vno</a> 主题，由<a href="https://monniya.com " rel="external nofollow noopener noreferrer" target="_blank">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external nofollow noopener noreferrer">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank" rel="external nofollow noopener noreferrer">onevcat</a>
-         </span>
-       
-    
-    
+	<div id="footer-info" class="inner">
+	  &copy; 2019 Storm 
+	  - Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+	  - Theme <a href="https://github.com/hejianxian/hexo-theme-jane/" target="_blank" rel="external nofollow noopener noreferrer">Jane</a>
+	</div>
 </footer>
 
-
-        </div>
     </div>
-
-     
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/hejianxian" class="mobile-nav-link" rel="external nofollow noopener noreferrer" target="_blank">Github</a>
+  
+</nav>
+    
 <script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	ga('create', 'UA-124586744-1', 'auto');
-	ga('send', 'pageview');
+  var disqus_shortname = 'storm';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
 
-    
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?70f53ec987c743179662cbe4b386692e";
-            var s = document.getElementsByTagName("script")[0]; 
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 
 
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-    
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
-

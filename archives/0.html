@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Storm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Map &amp;amp;&amp;amp; Set Map MethodsMap 是一个键值对的集合，与 Object 很像 ，但是 Map 允许任何数据类型作为键。主要的方法包括：  new Map() – 创建 map。 map.set(key, value) – 根据键（key）存储值（value）。 map.get(key) – 根据键返回值，如果 map 中该键不存在，返回 undefined。 ma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storm">
+<meta property="og:url" content="https://storm4542.github.io/archives/0.html">
+<meta property="og:site_name" content="Storm">
+<meta property="og:description" content="Map &amp;amp;&amp;amp; Set Map MethodsMap 是一个键值对的集合，与 Object 很像 ，但是 Map 允许任何数据类型作为键。主要的方法包括：  new Map() – 创建 map。 map.set(key, value) – 根据键（key）存储值（value）。 map.get(key) – 根据键返回值，如果 map 中该键不存在，返回 undefined。 ma">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-27T02:42:33.494Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Storm">
+<meta name="twitter:description" content="Map &amp;amp;&amp;amp; Set Map MethodsMap 是一个键值对的集合，与 Object 很像 ，但是 Map 允许任何数据类型作为键。主要的方法包括：  new Map() – 创建 map。 map.set(key, value) – 根据键（key）存储值（value）。 map.get(key) – 根据键返回值，如果 map 中该键不存在，返回 undefined。 ma">
+  
+    <link rel="alternative" href="/atom.xml" title="Storm" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head></html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-Map &amp;&amp; Set" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+    <div class="article-meta">
+      <a href="/archives/0.html" class="article-date">
+  <time datetime="2019-05-27T02:42:33.444Z" itemprop="datePublished">2019-05-27</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Map-amp-amp-Set"><a href="#Map-amp-amp-Set" class="headerlink" title="Map &amp;&amp; Set"></a>Map &amp;&amp; Set</h1><p><a name="vwKgD"></a></p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p><a name="UUV6K"></a></p>
+<h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><p>Map 是一个键值对的集合，与 Object 很像 ，<strong>但是 Map 允许任何数据类型作为键</strong>。<br>主要的方法包括：</p>
+<ul>
+<li><code>new Map()</code> – 创建 map。</li>
+<li><code>map.set(key, value)</code> – 根据键（key）存储值（value）。</li>
+<li><code>map.get(key)</code> – 根据键返回值，如果 map 中该键不存在，返回 <code>undefined</code>。</li>
+<li><code>map.has(key)</code> – 如果键存在，返回 <code>true</code>，否则返回 <code>false</code>。</li>
+<li><code>map.delete(key)</code> – 移除该键的值。</li>
+<li><code>map.clear()</code> – 清空 map</li>
+<li><code>map.size</code> – 返回当前元素个数。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">map.set(<span class="number">1</span>,<span class="string">'num'</span>);</span><br><span class="line">map.set(<span class="string">'1'</span>,<span class="string">'str'</span>);</span><br><span class="line">map.set(<span class="literal">true</span>,<span class="string">'bool'</span>);</span><br><span class="line"><span class="comment">// Object 会将所有的键转化为字符串</span></span><br><span class="line">map.get(<span class="number">1</span>); <span class="comment">// 'num'</span></span><br><span class="line">map.get(<span class="string">'1'</span>); <span class="comment">// 'str'</span></span><br></pre></td></tr></table></figure>
+<p>Map 还可以使用对象来作为键</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;;</span><br><span class="line">map.set(obj,<span class="number">1</span>);</span><br><span class="line">map.get(obj); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p><a name="uknod"></a></p>
+<h3 id="将-Object-转化为-Map"><a href="#将-Object-转化为-Map" class="headerlink" title="将 Object 转化为 Map"></a>将 Object 转化为 Map</h3><p>在创建 Map 时可以给构造函数传递一个<code>[key,value]</code>键值对数组。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'1'</span>,<span class="string">'str'</span>],[<span class="number">1</span>,<span class="string">'num'</span>]]);</span><br></pre></td></tr></table></figure></p>
+<p>有一个内建方法 <code>Object.entries</code> 可以返回对象的键值对数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>(<span class="built_in">Object</span>.entries(&#123;</span><br><span class="line">	name:<span class="string">'Jhon'</span>,</span><br><span class="line">  age:<span class="number">12</span></span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>这里  <code>Object.entries</code> 返回了<code>[[&#39;name&#39;,&#39;Jhon&#39;], [&#39;age&#39;,12]]</code></p>
+<p><a name="9KduC"></a></p>
+<h3 id="遍历-Map"><a href="#遍历-Map" class="headerlink" title="遍历 Map"></a>遍历 Map</h3><p>有三种方法可以循环遍历 <code>map</code>：</p>
+<ul>
+<li><code>map.keys()</code> – 返回键的迭代器，</li>
+<li><code>map.values()</code> – 返回值的迭代器，</li>
+<li><code>map.entries()</code> – 返回 <code>[key, value]</code> 迭代器入口，<code>for..of</code> 循环会默认使用它。</li>
+</ul>
+<p>例如：<a href="https://zh.javascript.info/map-set-weakmap-weakset#" rel="external nofollow noopener noreferrer" target="_blank"></a><br><a href="https://zh.javascript.info/map-set-weakmap-weakset#" rel="external nofollow noopener noreferrer" target="_blank"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> recipeMap = <span class="keyword">new</span> <span class="built_in">Map</span>([</span><br><span class="line">  [<span class="string">'cucumber'</span>, <span class="number">500</span>],</span><br><span class="line">  [<span class="string">'tomatoes'</span>, <span class="number">350</span>],</span><br><span class="line">  [<span class="string">'onion'</span>,    <span class="number">50</span>]</span><br><span class="line">]);</span><br><span class="line"><span class="comment">// 迭代键（vegetables）</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> vegetable <span class="keyword">of</span> recipeMap.keys()) &#123;</span><br><span class="line">  alert(vegetable); <span class="comment">// cucumber, tomatoes, onion</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 迭代值（amounts）</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> amount <span class="keyword">of</span> recipeMap.values()) &#123;</span><br><span class="line">  alert(amount); <span class="comment">// 500, 350, 50</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 迭代键值对 [key, value]</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> entry <span class="keyword">of</span> recipeMap) &#123; <span class="comment">// 和 recipeMap.entries() 一样</span></span><br><span class="line">  alert(entry); <span class="comment">// cucumber,500（等等）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>The insertion order is used</strong><br>和普通 <code>Object</code> 不同，迭代器的迭代顺序和值被插入的顺序一致，<code>Map</code> 会保留这个顺序。<br>另外，<code>Map</code> 有一个内建的 <code>forEach</code> 方法，和 <code>Array</code> 很像：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">recipeMap.forEach( <span class="function">(<span class="params">value, key, map</span>) =&gt;</span> &#123;</span><br><span class="line">  alert(<span class="string">`<span class="subst">$&#123;key&#125;</span>: <span class="subst">$&#123;value&#125;</span>`</span>); <span class="comment">// cucumber: 500 等等</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><a name="ppZ1Q"></a></p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set 是一个值的集合，<strong>集合中所有值只出现一次</strong>。<br>主要方法包括：</p>
+<ul>
+<li><code>new Set(iterable)</code> – 创建 set，利用数组来创建是可选的（任何可迭代对象都可以）。</li>
+<li><code>set.add(value)</code> – 添加值，返回 set 自身。</li>
+<li><code>set.delete(value)</code> – 删除值，如果该 <code>value</code> 在调用方法的时候存在则返回 <code>true</code> ，否则返回 <code>false</code>。</li>
+<li><code>set.has(value)</code> – 如果 set 中存在该值则返回 <code>true</code> ，否则返回 <code>false</code>。</li>
+<li><code>set.clear()</code> – 清空 set。</li>
+<li><code>set.size</code> – 元素个数。</li>
+</ul>
+<p>例如，我们有访客登门，我们希望记住所有人。但是重复来访者并不应该有两份记录。一个访客必须只记录一次。<br><code>Set</code> 就恰好是可以做到这个的数据结构：<br><a href="https://zh.javascript.info/map-set-weakmap-weakset#" rel="external nofollow noopener noreferrer" target="_blank"></a><br><a href="https://zh.javascript.info/map-set-weakmap-weakset#" rel="external nofollow noopener noreferrer" target="_blank"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"><span class="keyword">let</span> john = &#123; <span class="attr">name</span>: <span class="string">"John"</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> pete = &#123; <span class="attr">name</span>: <span class="string">"Pete"</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> mary = &#123; <span class="attr">name</span>: <span class="string">"Mary"</span> &#125;;</span><br><span class="line"><span class="comment">// 访客，一些用户来了多次</span></span><br><span class="line">set.add(john);</span><br><span class="line">set.add(pete);</span><br><span class="line">set.add(mary);</span><br><span class="line">set.add(john);</span><br><span class="line">set.add(mary);</span><br><span class="line"><span class="comment">// set 保证了值的唯一</span></span><br><span class="line">alert( set.size ); <span class="comment">// 3</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> user <span class="keyword">of</span> set) &#123;</span><br><span class="line">  alert(user.name); <span class="comment">// John（然后是 Pete 和 Mary）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>Set</code> 的替换方案是使用用户数组，每次插入新元素时使用 <a href="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Array/find" rel="external nofollow noopener noreferrer" target="_blank">arr.find</a> 方法检查用户编码是否重复。但是性能就会很差，因为这个方法会遍历整个数组，检查每个元素。而对于唯一性检查，<code>Set</code> 在内部优化得更好。<br><a name="sGl9y"></a></p>
+<h3 id="Set-迭代"><a href="#Set-迭代" class="headerlink" title="Set 迭代"></a>Set 迭代</h3><p>我们可以使用 <code>for..of</code> 或者 <code>forEach</code> 来循环查看 set：<a href="https://zh.javascript.info/map-set-weakmap-weakset#" rel="external nofollow noopener noreferrer" target="_blank"></a><br><a href="https://zh.javascript.info/map-set-weakmap-weakset#" rel="external nofollow noopener noreferrer" target="_blank"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">"oranges"</span>, <span class="string">"apples"</span>, <span class="string">"bananas"</span>]);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> set) alert(value);</span><br><span class="line"><span class="comment">// 和 forEach 相同：</span></span><br><span class="line">set.forEach(<span class="function">(<span class="params">value, valueAgain, set</span>) =&gt;</span> &#123;</span><br><span class="line">  alert(value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>注意到这里有个有趣得事情。<code>forEach</code> 函数用于 <code>Set</code> 时有三个参数：value，然后又一个 value，之后是目标对象。确实，相同值的 value 在参数中出现了两次。<br>这是为了兼容 <code>Map</code>，它在使用 <code>forEach</code> 方法时也包括三个参数。<br>适用于 <code>Map</code> 的迭代方法 set 也同样支持：</p>
+<ul>
+<li><code>set.keys()</code> – 返回 set 中值的迭代对象，</li>
+<li><code>set.values()</code> – 和 <code>set.keys</code> 一样，为了兼容 <code>Map</code>，</li>
+<li><code>set.entries()</code> – 返回形如 <code>[value, value]</code> 的迭代对象，为了兼容 <code>Map</code> 而存在。</li>
+</ul>
+<p><a name="tYqDG"></a></p>
+<h3 id="数组通过-Set-去重"><a href="#数组通过-Set-去重" class="headerlink" title="数组通过 Set 去重"></a>数组通过 Set 去重</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newArr = <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(oldArr));</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/archives/39d3351.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS的运行机制</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+    var gitment = new Gitment({
+      owner: 'your github account',
+      repo: 'your repo',
+      oauth: {
+        client_id: 'your client_id',
+        client_secret: 'your client_secret',
+      },
+    })
+    gitment.render('comments')
+  </script>
+</section>
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/Storm4542" target="_blank" rel="external nofollow noopener noreferrer"><i class="icon icon-github"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2019 Storm 
+	  - Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+	  - Theme <a href="https://github.com/hejianxian/hexo-theme-jane/" target="_blank" rel="external nofollow noopener noreferrer">Jane</a>
+	</div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/Storm4542" class="mobile-nav-link" rel="external nofollow noopener noreferrer" target="_blank">Github</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'storm';
+  
+  var disqus_url = 'https://storm4542.github.io/archives/0.html';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>

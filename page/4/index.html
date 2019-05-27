@@ -32,7 +32,7 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-VueRouter" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-REM" class="article article-type-post" itemscope="" itemprop="blogPost">
   
   <div class="article-inner">
     
@@ -40,129 +40,273 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/archives/2869b8d0.html">Vue-Router</a>
+      <a class="article-title" href="/archives/151aa5a1.html">REM</a>
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/archives/2869b8d0.html" class="article-date">
+      <a href="/archives/151aa5a1.html" class="article-date">
   <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
 </a>
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue-Router"></a>Vue-Router</h3><h4 id="1-简单配置"><a href="#1-简单配置" class="headerlink" title="1.简单配置"></a>1.简单配置</h4><p>创建router.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> index <span class="keyword">from</span> <span class="string">'./components/index'</span></span><br><span class="line"><span class="keyword">import</span> user <span class="keyword">from</span> <span class="string">'./components/user'</span></span><br><span class="line">Vue.use(Router)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">     routes:[</span><br><span class="line">        &#123;<span class="attr">path</span>:<span class="string">'/'</span>,<span class="attr">component</span>:index&#125;,</span><br><span class="line">        &#123;<span class="attr">path</span>:<span class="string">'/user'</span>,<span class="attr">component</span>:user&#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>在main.js里加入根实例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    render: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">    router</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
-<p>在App.vue里使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">        &lt;router-link to=&quot;/&quot;&gt;index&lt;/router-link&gt;</span><br><span class="line">        &lt;router-link to=&quot;/user&quot;&gt;info&lt;/router-link&gt;</span><br><span class="line">        &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &apos;app&apos;,</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="2-基础用法"><a href="#2-基础用法" class="headerlink" title="2.基础用法"></a>2.基础用法</h4><h5 id="1-动态路由匹配"><a href="#1-动态路由匹配" class="headerlink" title="1.动态路由匹配"></a>1.动态路由匹配</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//router.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">     routes:[</span><br><span class="line">        &#123;<span class="attr">path</span>:<span class="string">'/'</span>,<span class="attr">component</span>:index&#125;,</span><br><span class="line">        &#123;<span class="attr">path</span>:<span class="string">'/user/:id'</span>,<span class="attr">component</span>:user&#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>可以以 冒号 标记参数，该参数可以通过 <code>this.$router.params.id</code>获得。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- user.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;id:&#123;&#123;id&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &quot;info&quot;,</span><br><span class="line">        computed:&#123;</span><br><span class="line">            id()&#123;</span><br><span class="line">                return this.$route.params.id</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>响应路由参数的变化</strong></p>
-<blockquote>
-<p>提醒一下，当使用路由参数时，例如从 <code>/user/1</code> 导航到 <code>/user/2</code>，<strong>原来的组件实例会被复用</strong>。因为两个路由都渲染同个组件，比起销毁再创建，复用则显得更加高效。<strong>不过，这也意味着组件的生命周期钩子不会再被调用</strong>。</p>
-<p>复用组件时，想对路由参数的变化作出响应的话，你可以简单地 watch (监测变化) <code>$route</code> 对象：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">       name: <span class="string">"info"</span>,</span><br><span class="line">       computed:&#123;</span><br><span class="line">           id()&#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">this</span>.$route.params.id</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;,</span><br><span class="line">       watch:&#123;</span><br><span class="line">           <span class="string">'$route'</span>(to,<span class="keyword">from</span>)&#123;</span><br><span class="line">               <span class="comment">//（到哪去，从哪来）</span></span><br><span class="line">               <span class="comment">//对路由变化做出响应</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>或者使用<code>beforeRouteUpdate(to,from,next)</code>守卫</p>
-<h5 id="2-嵌套路由-children"><a href="#2-嵌套路由-children" class="headerlink" title="2.嵌套路由 children"></a>2.嵌套路由 children</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">    routes: [</span><br><span class="line">        &#123;</span><br><span class="line">            path: <span class="string">'/'</span>,</span><br><span class="line">            component: index</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            path: <span class="string">'/user/:id/'</span>,</span><br><span class="line">            component: user,</span><br><span class="line">            children: [</span><br><span class="line">                &#123;</span><br><span class="line">                    path: <span class="string">'profile'</span>,</span><br><span class="line">                    component: profile</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>加上 children 以后不要以为万事大吉了,需要在 <code>user</code> 里面加上 <code>router-view</code> 标签，不然无法展示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        id:&#123;&#123;$route.params.id&#125;&#125;</span><br><span class="line">        &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>要注意，以 / 开头的嵌套路径会被当作根路径。 这让你充分的使用嵌套组件而无须设置嵌套的路径。</strong></p>
-<p>你会发现，<code>children</code> 配置就是像 <code>routes</code> 配置一样的路由配置数组，所以呢，你可以嵌套多层路由。</p>
-<h5 id="3-编程式的导航"><a href="#3-编程式的导航" class="headerlink" title="3.编程式的导航"></a>3.编程式的导航</h5><p>之前我们写导航是这么写的：<code>&lt;router-link to=&quot;/user/1/profile&quot;&gt;&lt;/router-link&gt;</code>,这叫做声明式的导航。</p>
-<p>除了使用 <code>&lt;router-link&gt;</code> 创建 a 标签来定义导航链接，我们还可以借助 router 的实例方法，通过编写代码来实现。</p>
-<h2 id="route-push-location-onComplete-onAbort"><a href="#route-push-location-onComplete-onAbort" class="headerlink" title="route.push(location,onComplete?,onAbort?)"></a><code>route.push(location,onComplete?,onAbort?)</code></h2><p><strong>注意：在 Vue 实例内部，你可以通过 $router 访问路由实例。因此你可以调用 this.$router.push。</strong></p>
-<p>想要导航到不同的 URL，则使用 <code>router.push</code> 方法。这个方法会向 history 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，则回到之前的 URL。</p>
-<p>当你点击 <code>&lt;router-link&gt;</code> 时，这个方法会在内部调用，所以说，点击 <code>&lt;router-link :to=&quot;...&quot;&gt;</code> 等同于调用 <code>router.push(...)</code>。</p>
-<table>
-<thead>
-<tr>
-<th>声明式</th>
-<th>编程式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;router-link :to=&quot;...&quot;&gt;</code></td>
-<td><code>router.push(...)</code></td>
-</tr>
-</tbody>
-</table>
-<p>该方法的参数可以是一个字符串路径，或者一个描述地址的对象。例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串</span></span><br><span class="line">router.push(<span class="string">'home'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">'home'</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 命名的路由</span></span><br><span class="line">router.push(&#123; <span class="attr">name</span>: <span class="string">'user'</span>, <span class="attr">params</span>: &#123; <span class="attr">userId</span>: <span class="number">123</span> &#125;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 带查询参数，变成 /register?plan=private</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">'register'</span>, <span class="attr">query</span>: &#123; <span class="attr">plan</span>: <span class="string">'private'</span> &#125;&#125;)</span><br></pre></td></tr></table></figure>
-<p><strong>注意：如果提供了 path，params 会被忽略，上述例子中的 query 并不属于这种情况。取而代之的是下面例子的做法，你需要提供路由的 name 或手写完整的带有参数的 path：</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userId = <span class="number">123</span></span><br><span class="line">router.push(&#123; <span class="attr">name</span>: <span class="string">'user'</span>, <span class="attr">params</span>: &#123; userId &#125;&#125;) <span class="comment">// -&gt; /user/123</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">`/user/<span class="subst">$&#123;userId&#125;</span>`</span> &#125;) <span class="comment">// -&gt; /user/123</span></span><br><span class="line"><span class="comment">// 这里的 params 不生效</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">'/user'</span>, <span class="attr">params</span>: &#123; userId &#125;&#125;) <span class="comment">// -&gt; /user</span></span><br></pre></td></tr></table></figure>
-<p>同样的规则也适用于 <code>router-link</code> 组件的 <code>to</code> 属性。</p>
-<p>在 2.2.0+，可选的在 <code>router.push</code> 或 <code>router.replace</code> 中提供 <code>onComplete</code> 和 <code>onAbort</code> 回调作为第二个和第三个参数。这些回调将会在导航成功完成 (在所有的异步钩子被解析之后) 或终止 (导航到相同的路由、或在当前导航完成之前导航到另一个不同的路由) 的时候进行相应的调用。</p>
-<p><strong>注意：</strong>如果目的地和当前路由相同，只有参数发生了改变 (比如从一个用户资料到另一个 <code>/users/1</code> -&gt; <code>/users/2</code>)，你需要使用 <a href="https://router.vuejs.org/zh/guide/essentials/dynamic-matching.html#%E5%93%8D%E5%BA%94%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0%E7%9A%84%E5%8F%98%E5%8C%96" rel="external nofollow noopener noreferrer" target="_blank"><code>beforeRouteUpdate</code></a> 来响应这个变化 (比如抓取用户信息)。</p>
-<h2 id="route-replace-location-onComplete-onAbort"><a href="#route-replace-location-onComplete-onAbort" class="headerlink" title="route.replace(location,onComplete?,onAbort?)"></a><code>route.replace(location,onComplete?,onAbort?)</code></h2><p>和 push 很像，唯一不同的是，它不会向 history 添加记录，而是跟它的方法名一样 —— 替换掉当前的 history 记录。 这意味着，浏览器上的后退按钮将不会后退到前一个页面。</p>
-<table>
-<thead>
-<tr>
-<th>声明式</th>
-<th>编程式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;router-link :to=&quot;...&quot; replace&gt;</code></td>
-<td><code>router.replace(...)</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="router-go-n"><a href="#router-go-n" class="headerlink" title="router.go(n)"></a><code>router.go(n)</code></h2><p>参数 n 是整数，意思是在 histroy 记录中向前或者向后几步。类似 <code>window.history.go(n)</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在浏览器记录中前进一步，等同于 history.forward()</span></span><br><span class="line">router.go(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 后退一步记录，等同于 history.back()</span></span><br><span class="line">router.go(<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 前进 3 步记录</span></span><br><span class="line">router.go(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果 history 记录不够用，那就默默地失败呗</span></span><br><span class="line">router.go(<span class="number">-100</span>)</span><br><span class="line">router.go(<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
-<h5 id="4-命名路由"><a href="#4-命名路由" class="headerlink" title="4.命名路由"></a>4.命名路由</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">      &#123;</span><br><span class="line">          name:<span class="string">'index'</span>,</span><br><span class="line">          path: <span class="string">'/'</span>,</span><br><span class="line">          component: index</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">          name:<span class="string">'user'</span>,</span><br><span class="line">          path: <span class="string">'/user/:id'</span>,</span><br><span class="line">          component: user,</span><br><span class="line">          children: [</span><br><span class="line">              &#123;</span><br><span class="line">                  name:<span class="string">'profile'</span>,</span><br><span class="line">                  path: <span class="string">'profile'</span>,</span><br><span class="line">                  component: profile</span><br><span class="line">              &#125;</span><br><span class="line">          ]</span><br><span class="line">      &#125;,</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
-<p>加上 name 会使我们在 push 和 to 操作的时候更加方便</p>
-<p><code>route.push({name:&#39;user&#39;,params:{id:123}})</code></p>
-<p><code>&lt;router-link :to=&#39;{name:&quot;user&quot;,params:{id:123}}&#39;&gt;&lt;/router-link&gt;</code></p>
-<h5 id="5-命名视图"><a href="#5-命名视图" class="headerlink" title="5.命名视图"></a>5.命名视图</h5><p>当我们想在一个页面中展示两个视图组件的时候就用到命名视图了。</p>
-<p>首先，在 router.js里修改。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        name:<span class="string">'index'</span>,</span><br><span class="line">        path: <span class="string">'/'</span>,</span><br><span class="line">        components: &#123;   <span class="comment">//component ---&gt; components</span></span><br><span class="line">            <span class="keyword">default</span>:index,  <span class="comment">//默认index</span></span><br><span class="line">            a:profile       <span class="comment">// a是profile</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-<p>在视图里增加入口。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>这样就可以展示两个视图组件了。</p>
-<p><strong>嵌套命名视图</strong></p>
-<p>简单的来说就是children里有命名视图</p>
-<p>比如，我想在 /user/123/profile 里展示 profile 和 photo ，就像下面这么写。这样，user,profile,photo 这些视图组件就都在一个页面里了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">         name:<span class="string">'user'</span>,</span><br><span class="line">         path: <span class="string">'/user/:id'</span>,</span><br><span class="line">         component: user,</span><br><span class="line">         children: [</span><br><span class="line">             &#123;</span><br><span class="line">                 name:<span class="string">'profile'</span>,</span><br><span class="line">                 path: <span class="string">'profile'</span>,</span><br><span class="line">                 components: &#123;</span><br><span class="line">                     <span class="keyword">default</span>: profile,</span><br><span class="line">                     a:photo</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         ]</span><br><span class="line">     &#125;,</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;router-view name=&quot;a&quot;&gt;&lt;/router-view&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="6-重定向"><a href="#6-重定向" class="headerlink" title="6.重定向"></a>6.重定向</h5><p>重定向的三种方式。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = [</span><br><span class="line">    &#123;</span><br><span class="line">        name:<span class="string">'foo'</span></span><br><span class="line">        path:<span class="string">'/a'</span>,</span><br><span class="line">        redirect:<span class="string">'/b'</span></span><br><span class="line">	&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path:<span class="string">'/c'</span>,</span><br><span class="line">        redirect:<span class="string">'&#123;name:foo&#125;'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path:<span class="string">'/a'</span>,</span><br><span class="line">        redirect:<span class="function"><span class="params">to</span>=&gt;</span>&#123;</span><br><span class="line">           <span class="comment">// 方法接收 目标路由 作为参数</span></span><br><span class="line">          <span class="comment">// return 重定向的 字符串路径/路径对象</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>注意<a href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html" rel="external nofollow noopener noreferrer" target="_blank">导航守卫</a>并没有应用在跳转路由，上而仅仅应用在其目标上 ，第下面例子中，为 <code>/a</code> 路由添加一个 <code>beforeEach</code> 或 <code>beforeLeave</code> 守卫并不会有任何效果。 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = [</span><br><span class="line">    &#123;</span><br><span class="line">        name:<span class="string">'foo'</span></span><br><span class="line">        path:<span class="string">'/a'</span>,</span><br><span class="line">        redirect:<span class="string">'/b'</span>,</span><br><span class="line">        beforeLeave(to,<span class="keyword">from</span>,next)&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
-<h5 id="7-别名"><a href="#7-别名" class="headerlink" title="7.别名"></a>7.别名</h5><p>当我们想从<code>/a</code>跳转到<code>/b</code>，但是又不想改变URL，就用到了别名alias</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/a'</span>, <span class="attr">component</span>: A, <span class="attr">alias</span>: <span class="string">'/b'</span> &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p><strong>/a 的别名是 /b，意味着，当用户访问 /b 时，URL 会保持为 /b，但是路由匹配则为 /a，就像用户访问 /a 一样。</strong> </p>
-<h5 id="8-路由组件传参"><a href="#8-路由组件传参" class="headerlink" title="8.路由组件传参"></a>8.路由组件传参</h5><ul>
-<li>$route</li>
-</ul>
-<p>比如我们要展示用户 alan 的个人主页，路由是<code>/user/alan/profile</code> , 可以通过 <code>$route.params.id</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;&#123;$route.params.id&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+        <h3 id="REM"><a href="#REM" class="headerlink" title="REM"></a>REM</h3><h4 id="1-各种单位"><a href="#1-各种单位" class="headerlink" title="1.各种单位"></a>1.各种单位</h4><ol>
+<li><p>px 像素</p>
+</li>
+<li><p>em 一个M的宽度，跟自身的 font-size 相同</p>
+</li>
+<li><p>rem  <strong>根元素</strong>的 font-size</p>
+</li>
+<li><p>vh : viewport height 视口高度  100vh === 视口高度</p>
+<p>vm: viewport width 视口宽度 100vw === 视口宽度</p>
+</li>
+</ol>
+<h4 id="2-使用REM"><a href="#2-使用REM" class="headerlink" title="2.使用REM"></a>2.使用REM</h4><p>当我们要写一个适配手机的页面的时候，我们就会陷入这样蛋疼的境地。</p>
+<p>因为各种品牌，各种型号的手机分辨率是不一样的，这就很蛋疼了。</p>
+<p>这时候就使用REM来解决这个问题。</p>
+<ol>
+<li><p>REM始终为根元素(html)的 font-size 的值。</p>
+</li>
+<li><p>手机页面的宽度 width 是永远不变的。</p>
+</li>
+</ol>
+<p>知道了上面两个前提，我们就可以做一些事情了。</p>
+<ol>
+<li>通过 width的值设置根元素的 font-size。</li>
+<li>通过 REM 定义各种宽和高，这样就是永远适配当前页面宽度的。</li>
+</ol>
+<p>首先，添加 meta:viewport 标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>第二步，通过 width 计算根元素的font-size</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $width = <span class="built_in">window</span>.outerWidth;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">`&lt;style&gt;html&#123;font-size:<span class="subst">$&#123;$width<span class="regexp">/10&#125;px&#125;&lt;/</span>style&gt;<span class="string">`)</span></span></span></span><br></pre></td></tr></table></figure>
+<p>P.S. 虽然这个 fontsize/n 中的 n  ,是你可以自己决定的，但不要忘记了 </p>
+<ol>
+<li><p>12px 原则，chrome浏览器会阻止你设置比 12px还小的字。</p>
+</li>
+<li><p>假如你换算出来的 px 太小，CSS会认为这是 0 或者 1。</p>
+</li>
+</ol>
+<p>第三步，写CSS</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">widht</span>:<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span> .<span class="number">5rem</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过上面的换算，我们可以知道</p>
+<ol>
+<li>根元素的 font-size = $width/10 ， 也就是 十分之一个屏幕的宽度。</li>
+<li>所以 3rem === 十分之三个屏幕宽度。</li>
+<li>所以，无论在什么环境下，它都永远等于十分之三个屏幕宽度。</li>
+<li>因此，在每一个设备上的观看效果都相同。</li>
+</ol>
+<h4 id="3-使用sass"><a href="#3-使用sass" class="headerlink" title="3.使用sass"></a>3.使用sass</h4><p>每次都要计算，非常的麻烦，所以使用 sass 或者 less 帮我们计算。</p>
+<p>安装sass</p>
 <ul>
-<li>props 布尔模式</li>
+<li><p>npm config set registry <a href="https://registry.npm.taobao.org/" rel="external nofollow noopener noreferrer" target="_blank">https://registry.npm.taobao.org/</a></p>
+</li>
+<li><p>touch ~/.bashrc</p>
+</li>
+<li><p>echo ‘export SASS_BINARY_SITE=”<a href="https://npm.taobao.org/mirrors/node-sass%22&#39;" rel="external nofollow noopener noreferrer" target="_blank">https://npm.taobao.org/mirrors/node-sass”‘</a> &gt;&gt; ~/.bashrc</p>
+</li>
+<li><p>source ~/.bashrc</p>
+</li>
+<li><p>npm i -g node-sass</p>
+</li>
+<li><p>mkdir ~/Desktop/scss-demo</p>
+</li>
+<li><p>cd ~/Desktop/scss-demo</p>
+</li>
+<li><p>mkdir scss css</p>
+</li>
+<li><p>touch scss/style.scss</p>
+</li>
+<li><p>start scss/style.scss</p>
+</li>
+<li><p>node-sass -wr scss -o css</p>
+<p>编辑 scss 文件就会自动得到 css 文件</p>
+</li>
 </ul>
-<p>在路由配置中写入<code>props:true</code>,这样<code>route.params</code>会被设置为组件属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">          name:<span class="string">'user'</span>,</span><br><span class="line">          path: <span class="string">'/user/:id'</span>,</span><br><span class="line">          component: user,</span><br><span class="line">          props:<span class="literal">true</span>,</span><br><span class="line">          children: [</span><br><span class="line">              &#123;</span><br><span class="line">                  name:<span class="string">'profile'</span>,</span><br><span class="line">                  path: <span class="string">'profile'</span>,</span><br><span class="line">                  components: &#123;</span><br><span class="line">                      <span class="keyword">default</span>: profile,</span><br><span class="line">                      a:index</span><br><span class="line">                  &#125;,</span><br><span class="line">                  <span class="comment">// 对于包含命名视图的路由，你必须分别为每个命名视图添加 `props` 选项：</span></span><br><span class="line">                  props: &#123;<span class="attr">default</span>:<span class="literal">true</span>,<span class="attr">a</span>:<span class="literal">false</span>&#125;</span><br><span class="line">              &#125;</span><br><span class="line">          ]</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">        &#123;&#123;id&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default&#123;</span><br><span class="line">        props:[&apos;id&apos;]</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@function px( <span class="variable">$px</span>) &#123;</span><br><span class="line">    @return <span class="variable">$px</span>/<span class="variable">$designWidth</span>*<span class="number">10</span>+rem;  </span><br><span class="line">    <span class="comment">//这里为啥✖️10呢，因为在上面我们除以10了，所以要计算出比例值需要✖️10</span></span><br><span class="line">    <span class="comment">//假设 屏幕宽度为 320px , 那么 root font-size:32px ,即 1rem === 32px ，把屏幕分成了10等份。</span></span><br><span class="line">    <span class="comment">//但是 设计稿宽度为 640px , 里面还有一个高度为 320px 的 div,</span></span><br><span class="line">    <span class="comment">//相对于设计稿,div的比例是 320/640=1/2 , 也就是占了5份的屏幕宽度 即为 5rem </span></span><br><span class="line">    <span class="comment">//所以 height : 5rem </span></span><br><span class="line">&#125;</span><br><span class="line">@designWidth:<span class="number">640</span>; <span class="comment">//根据设计稿的宽度来写。</span></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: px2rem(<span class="number">320</span>);;</span><br><span class="line">    <span class="attribute">height</span>: px2rem(<span class="number">160</span>);</span><br><span class="line">    <span class="attribute">margin</span>: px2rem(<span class="number">40</span>) px2rem(<span class="number">40</span>);</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-移动页面" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/3e92ca77.html">移动页面开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/3e92ca77.html" class="article-date">
+  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="移动页面"><a href="#移动页面" class="headerlink" title="移动页面"></a>移动页面</h3><h4 id="1-移动页面的区别"><a href="#1-移动页面的区别" class="headerlink" title="1.移动页面的区别"></a>1.移动页面的区别</h4><ol>
+<li><p>没有 hover</p>
+</li>
+<li><p>没有 touch</p>
+</li>
+<li><p>没有 resize</p>
+</li>
+<li><p>没有 滚动条</p>
+</li>
+<li><p>要加一个</p>
+<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
+</li>
+<li><p>会用  media query</p>
+</li>
+</ol>
+<h4 id="2-媒体查询"><a href="#2-媒体查询" class="headerlink" title="2.媒体查询"></a>2.媒体查询</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* wdith&gt;=320px */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width : <span class="number">320px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: red</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* wdith&gt;=375px */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width : <span class="number">375px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: orange</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* wdith&gt;=425px */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width : <span class="number">425px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: yellow</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* wdith&gt;=768px */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width : <span class="number">768px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: green</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* wdith&gt;=769px */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width : <span class="number">769px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: blue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>语法 @media(条件)</p>
+<p>注意：</p>
+<ol>
+<li>上面的条件使用<code>min-width</code>，假如使用<code>max-width</code>，在<code>width=768</code>之内的时候都是绿色，因为他们都符合条件，根据CSS的语法，谁在后面谁起作用。</li>
+<li>假如非要用<code>max-wdith</code>可以反过来写。大的在前面。</li>
+<li>或者条件复杂一些<code>@media(min-width:375px) and (max-width:424px)</code></li>
+</ol>
+<p>你也可以写多个CSS文件，在 link 标签中限定条件</p>
+<p><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./mobile-style.css&quot; media=&quot;(max-width:452px)&quot;&gt;</code></p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-设计模式" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/beed3124.html">一些常用的设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/beed3124.html" class="article-date">
+  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="总结一些写轱辘的时候使用的设计模式（套路）"><a href="#总结一些写轱辘的时候使用的设计模式（套路）" class="headerlink" title="总结一些写轱辘的时候使用的设计模式（套路）"></a>总结一些写轱辘的时候使用的设计模式（套路）</h3><h4 id="1-发布订阅模式"><a href="#1-发布订阅模式" class="headerlink" title="1.发布订阅模式"></a>1.发布订阅模式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vm.$emit(<span class="string">'update:selected'</span>,<span class="keyword">this</span>.name) <span class="comment">//发布</span></span><br><span class="line">vm.$on(<span class="string">'update:selected'</span>,(name)=&gt;&#123;<span class="keyword">this</span>.name = name&#125;) <span class="comment">//订阅</span></span><br><span class="line">vm.$off(<span class="string">'update:selected'</span>) <span class="comment">//取消订阅</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-单项数据流"><a href="#2-单项数据流" class="headerlink" title="2.单项数据流"></a>2.单项数据流</h4><p>使用eventBus</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父亲</span></span><br><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data()&#123;<span class="keyword">return</span> &#123; <span class="attr">selected</span>: <span class="number">1</span> &#125;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.eventBus.$emit(<span class="string">'update:selected'</span>, <span class="keyword">this</span>.selected)  <span class="comment">//给儿子说，我给你传个现在最新的selected</span></span><br><span class="line">vm.eventBus.$on(<span class="string">'update:selected'</span>,(selected)=&gt;&#123; <span class="keyword">this</span>.selected = selected &#125;) </span><br><span class="line"><span class="comment">//监听儿子有没有让我修改selected</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//儿子</span></span><br><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data()&#123;<span class="keyword">return</span> &#123; <span class="attr">selected</span>: <span class="number">2</span> &#125;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.eventBus.$emit(<span class="string">'update:selected'</span>,<span class="keyword">this</span>.selected) <span class="comment">//给爸爸说一声，我想修改一下 selected的值</span></span><br><span class="line">vm.eventBus.$on(<span class="string">'update:selected'</span>,(selected)=&gt;&#123;<span class="keyword">this</span>.selected = selected&#125;) </span><br><span class="line"><span class="comment">//监听爸爸有没有 同意 或者 让 我改selected</span></span><br></pre></td></tr></table></figure>
+<p>流程:  爸爸修改儿子数据 —–&gt; 直接告诉儿子</p>
+<p>​       儿子想修改自己的数据  —–&gt; 告诉爸爸想要修改 ——&gt; 爸爸修改数据 —–&gt; 告诉儿子</p>
+<p>让爸爸始终掌控大局。</p>
+<h4 id="3-正交原则"><a href="#3-正交原则" class="headerlink" title="3.正交原则"></a>3.正交原则</h4><p>props 不要违反正交原则</p>
+<p>例如,我们设计一个button组件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props:[<span class="string">'rightIcon'</span>,<span class="string">'leftIcon'</span>]</span><br></pre></td></tr></table></figure>
+<p>这两个属性就是不正交的，他们都可以改变icon的位置</p>
+<p>修改</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props:[<span class="string">'iconPosition'</span>]  <span class="comment">// right || left</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-写可测试的代码"><a href="#4-写可测试的代码" class="headerlink" title="4.写可测试的代码"></a>4.写可测试的代码</h4>
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-使用 Vue Cli 3 打包组件并发布至npm" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/39d3351.html">使用 Vue Cli 3 打包组件并发布至npm</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/39d3351.html" class="article-date">
+  <time datetime="2018-05-27T03:08:15.000Z" itemprop="datePublished">2018-05-27</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用-Vue-Cli-3-打包组件并发布至npm"><a href="#使用-Vue-Cli-3-打包组件并发布至npm" class="headerlink" title="使用 Vue Cli 3 打包组件并发布至npm"></a>使用 Vue Cli 3 打包组件并发布至npm</h1><p><a name="XTDAo"></a></p>
+<h2 id="1-使用-Vue-Cli-3-创建项目"><a href="#1-使用-Vue-Cli-3-创建项目" class="headerlink" title="1.使用 Vue Cli 3 创建项目"></a>1.使用 Vue Cli 3 创建项目</h2><p><code>vue create vue-test</code></p>
+<p><a name="RfzFH"></a></p>
+<h2 id="2-修改目录并配置webpack"><a href="#2-修改目录并配置webpack" class="headerlink" title="2.修改目录并配置webpack"></a>2.修改目录并配置webpack</h2><p>修改后的目录<br><strong><img src="https://cdn.nlark.com/yuque/0/2019/png/148286/1558923194873-d02299bf-4410-4267-926c-2bcec79d11a6.png#align=left&amp;display=inline&amp;height=399&amp;name=image.png&amp;originHeight=798&amp;originWidth=556&amp;size=87992&amp;status=done&amp;width=278" alt="image.png"></strong></p>
 <ul>
-<li>props 对象模式</li>
+<li>src -&gt; examples  用于放置示例文件</li>
+<li>增加 packages 文件夹 用于打包</li>
+<li>增加 lib 文件夹 用户放置打包后的文件</li>
+<li>增加 vue.config.js 文件 用于配置webpack</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">       &#123;</span><br><span class="line">           name:<span class="string">'index'</span>,</span><br><span class="line">           path: <span class="string">'/'</span>,</span><br><span class="line">           props:&#123;<span class="attr">username</span>:<span class="string">'map_name'</span>&#125;,</span><br><span class="line">           component:index</span><br><span class="line">       &#125;,</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">        &#123;&#123;username&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default&#123;</span><br><span class="line">        props:[&apos;username&apos;]</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>注意，此时的 props 必须是静态的。</p>
+<p><strong>vue.config.js 配置</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="comment">// 修改 src 为 examples</span></span><br><span class="line">    pages: &#123;</span><br><span class="line">        index: &#123;</span><br><span class="line">            entry: <span class="string">'examples/main.js'</span>,</span><br><span class="line">            template: <span class="string">'public/index.html'</span>,</span><br><span class="line">            filename: <span class="string">'index.html'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    css: &#123;</span><br><span class="line">        extract: <span class="literal">false</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 扩展 webpack 配置，使 packages 加入编译</span></span><br><span class="line">    chainWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">        config.module</span><br><span class="line">            .rule(<span class="string">'js'</span>)</span><br><span class="line">            .include</span><br><span class="line">            .add(<span class="string">'/packages'</span>)</span><br><span class="line">            .end()</span><br><span class="line">            .use(<span class="string">'babel'</span>)</span><br><span class="line">            .loader(<span class="string">'babel-loader'</span>)</span><br><span class="line">            .tap(<span class="function"><span class="params">options</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="comment">// 修改它的选项...</span></span><br><span class="line">                <span class="keyword">return</span> options;</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a name="TP1jO"></a></p>
+<h2 id="3-packages-配置"><a href="#3-packages-配置" class="headerlink" title="3.packages 配置"></a>3.packages 配置</h2><p><strong>packages/index.js</strong><br>用于导出组件，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入组件</span></span><br><span class="line"><span class="keyword">import</span> datePicker <span class="keyword">from</span> <span class="string">'./datepicker'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 存储组件列表</span></span><br><span class="line"><span class="keyword">const</span> components = [</span><br><span class="line">    datePicker</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册</span></span><br><span class="line"><span class="keyword">const</span> install = <span class="function"><span class="keyword">function</span> (<span class="params">Vue</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 判断是否安装</span></span><br><span class="line">    <span class="keyword">if</span> (install.installed) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 遍历注册全局组件</span></span><br><span class="line">    components.map(<span class="function"><span class="params">component</span> =&gt;</span> Vue.component(component.name, component));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断是否是直接引入文件</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span> &amp;&amp; <span class="built_in">window</span>.Vue) &#123;</span><br><span class="line">    install(<span class="built_in">window</span>.Vue);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="comment">// 导出的对象必须具有 install，才能被 Vue.use() 方法安装</span></span><br><span class="line">    install,</span><br><span class="line">    <span class="comment">// 以下是具体的组件列表</span></span><br><span class="line">    datePicker</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><strong>packages/datepicker/index.js</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datepicker <span class="keyword">from</span> <span class="string">'./src/date-picker'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为组件提供 install 安装方法，供按需引入</span></span><br><span class="line">datepicker.install = <span class="function"><span class="keyword">function</span> (<span class="params">Vue</span>) </span>&#123;</span><br><span class="line">    Vue.component(datepicker.name, datepicker); <span class="comment">//datepiacker.name 下面解释</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认导出组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> datepicker;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>props 函数模式</li>
+<li>datepicker.name  为组件内的 name , 未来使用时，需要使用该 name 作为标签，因此不能随意写。</li>
 </ul>
-<p>这样就可以动态生成 props ，比如Url 是 <code>/user/:id/postId/:postId</code>,我现在想把所有参数传进去</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">       &#123;</span><br><span class="line">           name:<span class="string">'user'</span>,</span><br><span class="line">           path: <span class="string">'/user/:id/postId/:postId'</span>,</span><br><span class="line">	   props:  <span class="function">(<span class="params">route</span>) =&gt;</span> (&#123; <span class="attr">params</span>: route.params &#125;) ,</span><br><span class="line">           component:User</span><br><span class="line">       &#125;,</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">        &#123;&#123;params.id&#125;&#125;--&#123;&#123;params.postId&#125;&#125;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">        props:[<span class="string">'params'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/148286/1558923611695-fbdca6d1-4f50-4976-b223-37f659f9bacb.png#align=left&amp;display=inline&amp;height=296&amp;name=image.png&amp;originHeight=784&amp;originWidth=946&amp;size=87746&amp;status=done&amp;width=357" alt="image.png"></p>
+<p><strong>packages/src</strong></p>
+<p>里面包含组件的所有文件</p>
+<p><a name="B713v"></a></p>
+<h2 id="4-package-json"><a href="#4-package-json" class="headerlink" title="4. package.json"></a>4. package.json</h2><p>在 scripts 中增加一行命令</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"lib"</span>: <span class="string">"vue-cli-service build --target lib --name vue-simple-datepicker --dest lib packages/index.js"</span>,</span><br></pre></td></tr></table></figure>
+<ul>
+<li>–target lib  表明打包至 lib 文件夹</li>
+<li>–name vue-simple-d aepicker 表明打包后的文件名</li>
+<li>–dest lib  指定输出的目标文件</li>
+</ul>
+<p>然后我们执行 yarn build<br>可以看到 lib 文件夹下出现了三个文件</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/148286/1558924162109-795823a3-06d9-4f9e-a02a-5516b11775d3.png#align=left&amp;display=inline&amp;height=116&amp;name=image.png&amp;originHeight=232&amp;originWidth=670&amp;size=30083&amp;status=done&amp;width=335" alt="image.png"></p>
+<p>demo.html 不用管，下面的两个文件才是我们想要的。<br>一个是 umd 的，一个是 common 的。<br>在前端内我们一般都用 umd 的，因此可以在 package.json 加上这么一条 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"main"</span>: <span class="string">"lib/vue-simple-datepicker.umd.min.js"</span>,</span><br></pre></td></tr></table></figure>
+<p>表明入口文件是 <strong>lib/vue-simple-datepicker.umd.min.js</strong><br>**<br><a name="c2zJZ"></a></p>
+<h2 id="5-发布至-npm"><a href="#5-发布至-npm" class="headerlink" title="5. 发布至 npm"></a>5. 发布至 npm</h2><p>首先你要完善你的 package.json </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"vue-simple-datepicker-ln"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.1"</span>,</span><br><span class="line">  "private": false,    //一定要是 false</span><br><span class="line">  "main": "lib/vue-simple-datepicker.umd.min.js",</span><br><span class="line">  "repository": &#123;</span><br><span class="line">    "type": "git",</span><br><span class="line">    "url": "git@github.com:Storm4542/vue-simple-datepicker.git"</span><br><span class="line">  &#125;,</span><br><span class="line">  "bugs": &#123;</span><br><span class="line">    "url": "https://github.com/Storm4542/vue-simple-datepicker/issues"</span><br><span class="line">  &#125;,</span><br><span class="line">  "homepage": " https://storm4542.github.io/vue-simple-datepicker/",</span><br><span class="line">  "keywords": [</span><br><span class="line">    "datepicker",</span><br><span class="line">    <span class="string">"vue-datepicker"</span></span><br><span class="line">  ],</span><br><span class="line">  "license": "MIT",</span><br><span class="line">  "scripts": &#123;</span><br><span class="line">    "lib": "vue-cli-service build --target lib --name vue-simple-datepicker --dest lib packages/index.js",</span><br><span class="line">    "serve": "vue-cli-service serve",</span><br><span class="line">    "build": "vue-cli-service build"</span><br><span class="line">  &#125;,</span><br><span class="line">  "dependencies": &#123;</span><br><span class="line">    "@vue/babel-preset-app": "^3.0.0",</span><br><span class="line">    "vue": "^2.6.6"</span><br><span class="line">  &#125;,</span><br><span class="line">  "devDependencies": &#123;</span><br><span class="line">    "@vue/cli-plugin-babel": "^3.5.3",</span><br><span class="line">    "@vue/cli-service": "^3.5.3",</span><br><span class="line">    "less": "^3.0.4",</span><br><span class="line">    "less-loader": "^4.1.0",</span><br><span class="line">    "vue-template-compiler": "^2.5.21"</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>登录 npm 。<br>yarn lib 后  npm publish 即可。</p>
 
       
 

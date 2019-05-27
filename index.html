@@ -32,19 +32,29 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Map &amp;&amp; Set" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Map&amp;&amp;Set" class="article article-type-post" itemscope="" itemprop="blogPost">
   
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/be65f012.html">Map &amp;&amp; Set</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
-      <a href="/archives/0.html" class="article-date">
-  <time datetime="2019-05-27T02:42:33.444Z" itemprop="datePublished">2019-05-27</time>
+      <a href="/archives/be65f012.html" class="article-date">
+  <time datetime="2019-05-27T02:56:42.000Z" itemprop="datePublished">2019-05-27</time>
 </a>
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Map-amp-amp-Set"><a href="#Map-amp-amp-Set" class="headerlink" title="Map &amp;&amp; Set"></a>Map &amp;&amp; Set</h1><p><a name="vwKgD"></a></p>
+        <p><a name="vwKgD"></a></p>
 <h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p><a name="UUV6K"></a></p>
 <h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><p>Map 是一个键值对的集合，与 Object 很像 ，<strong>但是 Map 允许任何数据类型作为键</strong>。<br>主要的方法包括：</p>
 <ul>
@@ -115,15 +125,15 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/archives/39d3351.html">JS的运行机制</a>
+      <a class="article-title" href="/archives/b422724c.html">JS的运行机制</a>
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/archives/39d3351.html" class="article-date">
-  <time datetime="2019-05-20T03:08:15.000Z" itemprop="datePublished">2019-05-20</time>
+      <a href="/archives/b422724c.html" class="article-date">
+  <time datetime="2019-05-27T02:55:37.000Z" itemprop="datePublished">2019-05-27</time>
 </a>
       
     </div>
@@ -154,6 +164,79 @@
 <h2 id="5-setTimeout"><a href="#5-setTimeout" class="headerlink" title="5. setTimeout"></a>5. setTimeout</h2><p>setTimeout 的第一个参数是回调函数，第二个参数是 最小延迟时间。</p>
 <p>setTimeout(func,0)的意思是指，在主线程空闲后，尽可能早的执行 func。因此 func 会在放入任务队列的尾部执行。</p>
 <p>根据上面我们可以知道，必须等待主线程空闲后才可以执行 setTimeout(func,dely)，假如主线程有一个任务需要很久才能完成，setTimeout 的执行间隔就不能保证了，因此 dely 是指 最小延迟时间 , 而不是固定延时时间。</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-使用Vue Cli3打包组件并发布至npm" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/8ea8a281.html">使用 Vue Cli 3 打包组件并发布至npm</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/8ea8a281.html" class="article-date">
+  <time datetime="2019-05-27T02:54:14.000Z" itemprop="datePublished">2019-05-27</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a name="XTDAo"></a></p>
+<h2 id="1-使用-Vue-Cli-3-创建项目"><a href="#1-使用-Vue-Cli-3-创建项目" class="headerlink" title="1.使用 Vue Cli 3 创建项目"></a>1.使用 Vue Cli 3 创建项目</h2><p><code>vue create vue-test</code></p>
+<p><a name="RfzFH"></a></p>
+<h2 id="2-修改目录并配置webpack"><a href="#2-修改目录并配置webpack" class="headerlink" title="2.修改目录并配置webpack"></a>2.修改目录并配置webpack</h2><p>修改后的目录<br><strong><img src="https://cdn.nlark.com/yuque/0/2019/png/148286/1558923194873-d02299bf-4410-4267-926c-2bcec79d11a6.png#align=left&amp;display=inline&amp;height=399&amp;name=image.png&amp;originHeight=798&amp;originWidth=556&amp;size=87992&amp;status=done&amp;width=278" alt="image.png"></strong></p>
+<ul>
+<li>src -&gt; examples  用于放置示例文件</li>
+<li>增加 packages 文件夹 用于打包</li>
+<li>增加 lib 文件夹 用户放置打包后的文件</li>
+<li>增加 vue.config.js 文件 用于配置webpack</li>
+</ul>
+<p><strong>vue.config.js 配置</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="comment">// 修改 src 为 examples</span></span><br><span class="line">    pages: &#123;</span><br><span class="line">        index: &#123;</span><br><span class="line">            entry: <span class="string">'examples/main.js'</span>,</span><br><span class="line">            template: <span class="string">'public/index.html'</span>,</span><br><span class="line">            filename: <span class="string">'index.html'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    css: &#123;</span><br><span class="line">        extract: <span class="literal">false</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 扩展 webpack 配置，使 packages 加入编译</span></span><br><span class="line">    chainWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">        config.module</span><br><span class="line">            .rule(<span class="string">'js'</span>)</span><br><span class="line">            .include</span><br><span class="line">            .add(<span class="string">'/packages'</span>)</span><br><span class="line">            .end()</span><br><span class="line">            .use(<span class="string">'babel'</span>)</span><br><span class="line">            .loader(<span class="string">'babel-loader'</span>)</span><br><span class="line">            .tap(<span class="function"><span class="params">options</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="comment">// 修改它的选项...</span></span><br><span class="line">                <span class="keyword">return</span> options;</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a name="TP1jO"></a></p>
+<h2 id="3-packages-配置"><a href="#3-packages-配置" class="headerlink" title="3.packages 配置"></a>3.packages 配置</h2><p><strong>packages/index.js</strong><br>用于导出组件，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入组件</span></span><br><span class="line"><span class="keyword">import</span> datePicker <span class="keyword">from</span> <span class="string">'./datepicker'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 存储组件列表</span></span><br><span class="line"><span class="keyword">const</span> components = [</span><br><span class="line">    datePicker</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册</span></span><br><span class="line"><span class="keyword">const</span> install = <span class="function"><span class="keyword">function</span> (<span class="params">Vue</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 判断是否安装</span></span><br><span class="line">    <span class="keyword">if</span> (install.installed) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 遍历注册全局组件</span></span><br><span class="line">    components.map(<span class="function"><span class="params">component</span> =&gt;</span> Vue.component(component.name, component));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断是否是直接引入文件</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span> &amp;&amp; <span class="built_in">window</span>.Vue) &#123;</span><br><span class="line">    install(<span class="built_in">window</span>.Vue);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="comment">// 导出的对象必须具有 install，才能被 Vue.use() 方法安装</span></span><br><span class="line">    install,</span><br><span class="line">    <span class="comment">// 以下是具体的组件列表</span></span><br><span class="line">    datePicker</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><strong>packages/datepicker/index.js</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datepicker <span class="keyword">from</span> <span class="string">'./src/date-picker'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为组件提供 install 安装方法，供按需引入</span></span><br><span class="line">datepicker.install = <span class="function"><span class="keyword">function</span> (<span class="params">Vue</span>) </span>&#123;</span><br><span class="line">    Vue.component(datepicker.name, datepicker); <span class="comment">//datepiacker.name 下面解释</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认导出组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> datepicker;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>datepicker.name  为组件内的 name , 未来使用时，需要使用该 name 作为标签，因此不能随意写。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/148286/1558923611695-fbdca6d1-4f50-4976-b223-37f659f9bacb.png#align=left&amp;display=inline&amp;height=296&amp;name=image.png&amp;originHeight=784&amp;originWidth=946&amp;size=87746&amp;status=done&amp;width=357" alt="image.png"></p>
+<p><strong>packages/src</strong></p>
+<p>里面包含组件的所有文件</p>
+<p><a name="B713v"></a></p>
+<h2 id="4-package-json"><a href="#4-package-json" class="headerlink" title="4. package.json"></a>4. package.json</h2><p>在 scripts 中增加一行命令</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"lib"</span>: <span class="string">"vue-cli-service build --target lib --name vue-simple-datepicker --dest lib packages/index.js"</span>,</span><br></pre></td></tr></table></figure>
+<ul>
+<li>–target lib  表明打包至 lib 文件夹</li>
+<li>–name vue-simple-d aepicker 表明打包后的文件名</li>
+<li>–dest lib  指定输出的目标文件</li>
+</ul>
+<p>然后我们执行 yarn build<br>可以看到 lib 文件夹下出现了三个文件</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/148286/1558924162109-795823a3-06d9-4f9e-a02a-5516b11775d3.png#align=left&amp;display=inline&amp;height=116&amp;name=image.png&amp;originHeight=232&amp;originWidth=670&amp;size=30083&amp;status=done&amp;width=335" alt="image.png"></p>
+<p>demo.html 不用管，下面的两个文件才是我们想要的。<br>一个是 umd 的，一个是 common 的。<br>在前端内我们一般都用 umd 的，因此可以在 package.json 加上这么一条 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"main"</span>: <span class="string">"lib/vue-simple-datepicker.umd.min.js"</span>,</span><br></pre></td></tr></table></figure>
+<p>表明入口文件是 <strong>lib/vue-simple-datepicker.umd.min.js</strong><br>**<br><a name="c2zJZ"></a></p>
+<h2 id="5-发布至-npm"><a href="#5-发布至-npm" class="headerlink" title="5. 发布至 npm"></a>5. 发布至 npm</h2><p>首先你要完善你的 package.json </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"vue-simple-datepicker-ln"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.1"</span>,</span><br><span class="line">  "private": false,    //一定要是 false</span><br><span class="line">  "main": "lib/vue-simple-datepicker.umd.min.js",</span><br><span class="line">  "repository": &#123;</span><br><span class="line">    "type": "git",</span><br><span class="line">    "url": "git@github.com:Storm4542/vue-simple-datepicker.git"</span><br><span class="line">  &#125;,</span><br><span class="line">  "bugs": &#123;</span><br><span class="line">    "url": "https://github.com/Storm4542/vue-simple-datepicker/issues"</span><br><span class="line">  &#125;,</span><br><span class="line">  "homepage": " https://storm4542.github.io/vue-simple-datepicker/",</span><br><span class="line">  "keywords": [</span><br><span class="line">    "datepicker",</span><br><span class="line">    <span class="string">"vue-datepicker"</span></span><br><span class="line">  ],</span><br><span class="line">  "license": "MIT",</span><br><span class="line">  "scripts": &#123;</span><br><span class="line">    "lib": "vue-cli-service build --target lib --name vue-simple-datepicker --dest lib packages/index.js",</span><br><span class="line">    "serve": "vue-cli-service serve",</span><br><span class="line">    "build": "vue-cli-service build"</span><br><span class="line">  &#125;,</span><br><span class="line">  "dependencies": &#123;</span><br><span class="line">    "@vue/babel-preset-app": "^3.0.0",</span><br><span class="line">    "vue": "^2.6.6"</span><br><span class="line">  &#125;,</span><br><span class="line">  "devDependencies": &#123;</span><br><span class="line">    "@vue/cli-plugin-babel": "^3.5.3",</span><br><span class="line">    "@vue/cli-service": "^3.5.3",</span><br><span class="line">    "less": "^3.0.4",</span><br><span class="line">    "less-loader": "^4.1.0",</span><br><span class="line">    "vue-template-compiler": "^2.5.21"</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>登录 npm 。<br>yarn lib 后  npm publish 即可。</p>
 
       
 
@@ -675,48 +758,6 @@
 </ol>
 <h3 id="3-使用中"><a href="#3-使用中" class="headerlink" title="3. 使用中"></a>3. 使用中</h3><p> 一般来说链接数据库的方法单独放在一个地方。（第一步操作）</p>
 <p>创建 Collection 并 操作Collection 放在一个地方。(第二步操作)</p>
-
-      
-
-      
-        
-    </div>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-NodeJS-库-持续更新" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/1dd248d5.html">NodeJS 库 (持续更新)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/archives/1dd248d5.html" class="article-date">
-  <time datetime="2018-09-30T08:22:41.000Z" itemprop="datePublished">2018-09-30</time>
-</a>
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-加密-解密-工具"><a href="#1-加密-解密-工具" class="headerlink" title="1.加密 解密 工具"></a>1.加密 解密 工具</h3><ul>
-<li>bcrypt </li>
-</ul>
-<p>  加密</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> saltRounds = <span class="number">10</span>; <span class="comment">//加密轮数</span></span><br><span class="line"><span class="keyword">let</span> password = userInfo.password <span class="comment">//密码</span></span><br><span class="line">bcrypt.genSalt(saltRounds, <span class="function"><span class="keyword">function</span> (<span class="params">err, salt</span>) </span>&#123;</span><br><span class="line">        bcrypt.hash(password, salt, <span class="function"><span class="keyword">function</span> (<span class="params">err, hash</span>) </span>&#123;</span><br><span class="line">            <span class="comment">//把hash值赋值给password变量</span></span><br><span class="line">            password = hash;</span><br><span class="line">            storeUInfo(&#123; <span class="comment">//存储</span></span><br><span class="line">                username: userInfo.username,</span><br><span class="line">                password,</span><br><span class="line">                name: userInfo.name,</span><br><span class="line">                age: userInfo.age</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-<p>  解密验证</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">userInfo</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> user = <span class="keyword">await</span> UserModel.findOne(&#123; <span class="comment">//从数据库中找到该用户</span></span><br><span class="line">        username: userInfo.username</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">const</span> match = <span class="keyword">await</span> bcrypt.compare(userInfo.password, user.password) <span class="comment">// 看看 密码是否相同</span></span><br><span class="line">    <span class="keyword">if</span> (match) &#123;</span><br><span class="line">        <span class="keyword">return</span> user</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> HttpParamError(<span class="string">'user'</span>, <span class="string">'用户名密码错误'</span>, <span class="string">'username password error'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 

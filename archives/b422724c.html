@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JS的运行机制 | Storm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.为什么JS是单线程的？JavsScript 的目的就是与用户交互，以及操作 DOM ， 假如是多线程的，A线程添加了一个DOM节点，B线程删除了该DOM节点，这时浏览器应该以那个为准呢？为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS的运行机制">
+<meta property="og:url" content="https://storm4542.github.io/archives/b422724c.html">
+<meta property="og:site_name" content="Storm">
+<meta property="og:description" content="1.为什么JS是单线程的？JavsScript 的目的就是与用户交互，以及操作 DOM ， 假如是多线程的，A线程添加了一个DOM节点，B线程删除了该DOM节点，这时浏览器应该以那个为准呢？为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/148286/1557456919693-9ba790ff-b2ad-41ea-82e9-1e21f5227f97.jpeg#align=left&display=inline&height=420&name=bg2014100801.jpg&originHeight=420&originWidth=581&size=39698&status=done&width=581">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/148286/1557457486862-5373606b-967f-4850-b895-87d7e5811bdf.png#align=left&display=inline&height=527&name=bg2014100802.png&originHeight=527&originWidth=601&size=22933&status=done&width=601">
+<meta property="og:updated_time" content="2019-05-27T02:55:50.414Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS的运行机制">
+<meta name="twitter:description" content="1.为什么JS是单线程的？JavsScript 的目的就是与用户交互，以及操作 DOM ， 假如是多线程的，A线程添加了一个DOM节点，B线程删除了该DOM节点，这时浏览器应该以那个为准呢？为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/148286/1557456919693-9ba790ff-b2ad-41ea-82e9-1e21f5227f97.jpeg#align=left&display=inline&height=420&name=bg2014100801.jpg&originHeight=420&originWidth=581&size=39698&status=done&width=581">
+  
+    <link rel="alternative" href="/atom.xml" title="Storm" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head></html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-JS的运行机制" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS的运行机制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/b422724c.html" class="article-date">
+  <time datetime="2019-05-27T02:55:37.000Z" itemprop="datePublished">2019-05-27</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a name="hE5hW"></a></p>
+<h2 id="1-为什么JS是单线程的？"><a href="#1-为什么JS是单线程的？" class="headerlink" title="1.为什么JS是单线程的？"></a>1.为什么JS是单线程的？</h2><p>JavsScript 的目的就是与用户交互，以及操作 DOM ， 假如是多线程的，A线程添加了一个DOM节点，B线程删除了该DOM节点，这时浏览器应该以那个为准呢？<br>为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线程的本质。</p>
+<p><a name="yPVlP"></a></p>
+<h2 id="2-任务队列-task-queue"><a href="#2-任务队列-task-queue" class="headerlink" title="2.任务队列  task queue"></a>2.任务队列  task queue</h2><p>因为JS是单线程的，所以所有的任务都要在主线程里排队，一个一个执行。但是因为 I/O 设备很慢，CPU 很快，所以大多数时间 CPU 都是闲着的。因此 JavaScript 的设计者意识到，这时主线程可以不用管 I/O 设备，先挂起，执行后面的任务，等 I/O 设备返回了结果，再处理。</p>
+<p>因此任务分为了两种，同步任务和异步任务。</p>
+<p><a name="JWjpb"></a></p>
+<h3 id="2-1-同步任务"><a href="#2-1-同步任务" class="headerlink" title="2.1 同步任务"></a>2.1 同步任务</h3><p>同步任务是指在主线程排队的任务，他们会按照顺序一个一个的执行。</p>
+<p><a name="S5cRn"></a></p>
+<h3 id="2-2-异步任务"><a href="#2-2-异步任务" class="headerlink" title="2.2 异步任务"></a>2.2 异步任务</h3><p>异步任务是指不在主线程，而是在任务队列(task queue)的任务，只有任务队列向主线程通知，某个异步任务可以执行了，该任务才会进入主线程执行。<br>异步的执行流程如下：</p>
+<blockquote>
+<p>( 1 ) 所有同步任务都在主线程上执行，形成一个执行栈<br>( 2 ) 主线程之外还有一个任务队列。只要异步任务返回了结果，就在任务队列之中放置一个事件<br>( 3 ) 一旦执行栈中的同步任务执行完毕，系统就会读取任务队列，其中的异步任务会结束等待状态，进入执行栈，开始执行<br>( 4 ) 主线程不断重复以上三个过程<br></p>
+</blockquote>
+<p>以下是主线程和任务队列的示意图<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/148286/1557456919693-9ba790ff-b2ad-41ea-82e9-1e21f5227f97.jpeg#align=left&amp;display=inline&amp;height=420&amp;name=bg2014100801.jpg&amp;originHeight=420&amp;originWidth=581&amp;size=39698&amp;status=done&amp;width=581" alt="bg2014100801.jpg"><br>只要主线程空了，就回去读取任务队列。<br>任务队列是“先进先出”的结构。<br><a name="HDq8H"></a></p>
+<p>##<br><a name="1Tuxe"></a></p>
+<h2 id="3-事件和回调函数"><a href="#3-事件和回调函数" class="headerlink" title="3.事件和回调函数"></a>3.事件和回调函数</h2><p>任务队列是事件的队列，I/O 设备每执行完一个任务，就会向任务队列中添加一个事件，主线程的执行栈为空时，就会去读取任务队列的事件。<br>除了 I/O 设备外，还有一些用户的事件（onClick,onScroll等），这些事件需要指定回调函数，进入任务队列，等待主线程读取。<br>所谓回调函数（callback），就是指被主线程挂起的代码，异步事件必须指定回调函数，主线程在任务队列读取并执行的就是回调函数。</p>
+<p><a name="B1pDY"></a></p>
+<h2 id="4-Event-Loop"><a href="#4-Event-Loop" class="headerlink" title="4.Event Loop"></a>4.Event Loop</h2><p>主线程执行栈一空，就去读取任务队列，这是一个不断循环的过程，这种运行机制被称为 Event Loop(事件循环)。<br>示意图：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/148286/1557457486862-5373606b-967f-4850-b895-87d7e5811bdf.png#align=left&amp;display=inline&amp;height=527&amp;name=bg2014100802.png&amp;originHeight=527&amp;originWidth=601&amp;size=22933&amp;status=done&amp;width=601" alt="bg2014100802.png"><br>主线程运行的时候产生堆（heap）和栈（stack），在栈中执行的同步任务会调用 WebAPI，他们会在任务队列中添加各种回调函数，执行栈清空后，主线程读取任务队列，依次执行队列中的回调函数。<br><br><br>因此执行栈中的同步函数，总是在读取任务队列之前执行。</p>
+<p>举个例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xml = <span class="keyword">new</span> XMlHttoRequest()</span><br><span class="line">xml.open(<span class="string">'GET'</span>,url)</span><br><span class="line">xml.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">xml.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">xml.send()</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xml = <span class="keyword">new</span> XMlHttoRequest()</span><br><span class="line">xml.open(<span class="string">'GET'</span>,url)</span><br><span class="line">xml.send()</span><br><span class="line">xml.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">xml.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>上面两组代码的区别在于 <code>xml.send()</code>的位置不同。但是执行起来是没有任何区别的。<br>因为<code>xml.send()</code>是异步方法，他会被放在任务队列，而指定回调的部分（onload,onerror）在执行栈中，所以两者的执行顺序是可以预见的。</p>
+<p><a name="GyLNw"></a></p>
+<h2 id="5-setTimeout"><a href="#5-setTimeout" class="headerlink" title="5. setTimeout"></a>5. setTimeout</h2><p>setTimeout 的第一个参数是回调函数，第二个参数是 最小延迟时间。</p>
+<p>setTimeout(func,0)的意思是指，在主线程空闲后，尽可能早的执行 func。因此 func 会在放入任务队列的尾部执行。</p>
+<p>根据上面我们可以知道，必须等待主线程空闲后才可以执行 setTimeout(func,dely)，假如主线程有一个任务需要很久才能完成，setTimeout 的执行间隔就不能保证了，因此 dely 是指 最小延迟时间 , 而不是固定延时时间。</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/archives/be65f012.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Map &amp;&amp; Set
+        
+      </div>
+    </a>
+  
+  
+    <a href="/archives/8ea8a281.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用 Vue Cli 3 打包组件并发布至npm</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+    var gitment = new Gitment({
+      owner: 'your github account',
+      repo: 'your repo',
+      oauth: {
+        client_id: 'your client_id',
+        client_secret: 'your client_secret',
+      },
+    })
+    gitment.render('comments')
+  </script>
+</section>
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/Storm4542" target="_blank" rel="external nofollow noopener noreferrer"><i class="icon icon-github"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2019 Storm 
+	  - Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+	  - Theme <a href="https://github.com/hejianxian/hexo-theme-jane/" target="_blank" rel="external nofollow noopener noreferrer">Jane</a>
+	</div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/Storm4542" class="mobile-nav-link" rel="external nofollow noopener noreferrer" target="_blank">Github</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'storm';
+  
+  var disqus_url = 'https://storm4542.github.io/archives/b422724c.html';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>

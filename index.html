@@ -129,7 +129,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="JS的运行机制"><a href="#JS的运行机制" class="headerlink" title="JS的运行机制"></a>JS的运行机制</h1><p><a name="hE5hW"></a></p>
+        <p><a name="hE5hW"></a></p>
 <h2 id="1-为什么JS是单线程的？"><a href="#1-为什么JS是单线程的？" class="headerlink" title="1.为什么JS是单线程的？"></a>1.为什么JS是单线程的？</h2><p>JavsScript 的目的就是与用户交互，以及操作 DOM ， 假如是多线程的，A线程添加了一个DOM节点，B线程删除了该DOM节点，这时浏览器应该以那个为准呢？<br>为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线程的本质。</p>
 <p><a name="yPVlP"></a></p>
 <h2 id="2-任务队列-task-queue"><a href="#2-任务队列-task-queue" class="headerlink" title="2.任务队列  task queue"></a>2.任务队列  task queue</h2><p>因为JS是单线程的，所以所有的任务都要在主线程里排队，一个一个执行。但是因为 I/O 设备很慢，CPU 很快，所以大多数时间 CPU 都是闲着的。因此 JavaScript 的设计者意识到，这时主线程可以不用管 I/O 设备，先挂起，执行后面的任务，等 I/O 设备返回了结果，再处理。</p>

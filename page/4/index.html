@@ -32,7 +32,7 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-REM" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-LESS" class="article article-type-post" itemscope="" itemprop="blogPost">
   
   <div class="article-inner">
     
@@ -40,93 +40,88 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/archives/151aa5a1.html">REM</a>
+      <a class="article-title" href="/archives/e523796b.html">LESS</a>
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/archives/151aa5a1.html" class="article-date">
+      <a href="/archives/e523796b.html" class="article-date">
   <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
 </a>
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="REM"><a href="#REM" class="headerlink" title="REM"></a>REM</h3><h4 id="1-各种单位"><a href="#1-各种单位" class="headerlink" title="1.各种单位"></a>1.各种单位</h4><ol>
-<li><p>px 像素</p>
-</li>
-<li><p>em 一个M的宽度，跟自身的 font-size 相同</p>
-</li>
-<li><p>rem  <strong>根元素</strong>的 font-size</p>
-</li>
-<li><p>vh : viewport height 视口高度  100vh === 视口高度</p>
-<p>vm: viewport width 视口宽度 100vw === 视口宽度</p>
-</li>
-</ol>
-<h4 id="2-使用REM"><a href="#2-使用REM" class="headerlink" title="2.使用REM"></a>2.使用REM</h4><p>当我们要写一个适配手机的页面的时候，我们就会陷入这样蛋疼的境地。</p>
-<p>因为各种品牌，各种型号的手机分辨率是不一样的，这就很蛋疼了。</p>
-<p>这时候就使用REM来解决这个问题。</p>
-<ol>
-<li><p>REM始终为根元素(html)的 font-size 的值。</p>
-</li>
-<li><p>手机页面的宽度 width 是永远不变的。</p>
-</li>
-</ol>
-<p>知道了上面两个前提，我们就可以做一些事情了。</p>
-<ol>
-<li>通过 width的值设置根元素的 font-size。</li>
-<li>通过 REM 定义各种宽和高，这样就是永远适配当前页面宽度的。</li>
-</ol>
-<p>首先，添加 meta:viewport 标签</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>第二步，通过 width 计算根元素的font-size</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $width = <span class="built_in">window</span>.outerWidth;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">`&lt;style&gt;html&#123;font-size:<span class="subst">$&#123;$width<span class="regexp">/10&#125;px&#125;&lt;/</span>style&gt;<span class="string">`)</span></span></span></span><br></pre></td></tr></table></figure>
-<p>P.S. 虽然这个 fontsize/n 中的 n  ,是你可以自己决定的，但不要忘记了 </p>
-<ol>
-<li><p>12px 原则，chrome浏览器会阻止你设置比 12px还小的字。</p>
-</li>
-<li><p>假如你换算出来的 px 太小，CSS会认为这是 0 或者 1。</p>
-</li>
-</ol>
-<p>第三步，写CSS</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">widht</span>:<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span> .<span class="number">5rem</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过上面的换算，我们可以知道</p>
-<ol>
-<li>根元素的 font-size = $width/10 ， 也就是 十分之一个屏幕的宽度。</li>
-<li>所以 3rem === 十分之三个屏幕宽度。</li>
-<li>所以，无论在什么环境下，它都永远等于十分之三个屏幕宽度。</li>
-<li>因此，在每一个设备上的观看效果都相同。</li>
-</ol>
-<h4 id="3-使用sass"><a href="#3-使用sass" class="headerlink" title="3.使用sass"></a>3.使用sass</h4><p>每次都要计算，非常的麻烦，所以使用 sass 或者 less 帮我们计算。</p>
-<p>安装sass</p>
-<ul>
-<li><p>npm config set registry <a href="https://registry.npm.taobao.org/" rel="external nofollow noopener noreferrer" target="_blank">https://registry.npm.taobao.org/</a></p>
-</li>
-<li><p>touch ~/.bashrc</p>
-</li>
-<li><p>echo ‘export SASS_BINARY_SITE=”<a href="https://npm.taobao.org/mirrors/node-sass%22&#39;" rel="external nofollow noopener noreferrer" target="_blank">https://npm.taobao.org/mirrors/node-sass”‘</a> &gt;&gt; ~/.bashrc</p>
-</li>
-<li><p>source ~/.bashrc</p>
-</li>
-<li><p>npm i -g node-sass</p>
-</li>
-<li><p>mkdir ~/Desktop/scss-demo</p>
-</li>
-<li><p>cd ~/Desktop/scss-demo</p>
-</li>
-<li><p>mkdir scss css</p>
-</li>
-<li><p>touch scss/style.scss</p>
-</li>
-<li><p>start scss/style.scss</p>
-</li>
-<li><p>node-sass -wr scss -o css</p>
-<p>编辑 scss 文件就会自动得到 css 文件</p>
-</li>
-</ul>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@function px( <span class="variable">$px</span>) &#123;</span><br><span class="line">    @return <span class="variable">$px</span>/<span class="variable">$designWidth</span>*<span class="number">10</span>+rem;  </span><br><span class="line">    <span class="comment">//这里为啥✖️10呢，因为在上面我们除以10了，所以要计算出比例值需要✖️10</span></span><br><span class="line">    <span class="comment">//假设 屏幕宽度为 320px , 那么 root font-size:32px ,即 1rem === 32px ，把屏幕分成了10等份。</span></span><br><span class="line">    <span class="comment">//但是 设计稿宽度为 640px , 里面还有一个高度为 320px 的 div,</span></span><br><span class="line">    <span class="comment">//相对于设计稿,div的比例是 320/640=1/2 , 也就是占了5份的屏幕宽度 即为 5rem </span></span><br><span class="line">    <span class="comment">//所以 height : 5rem </span></span><br><span class="line">&#125;</span><br><span class="line">@designWidth:<span class="number">640</span>; <span class="comment">//根据设计稿的宽度来写。</span></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: px2rem(<span class="number">320</span>);;</span><br><span class="line">    <span class="attribute">height</span>: px2rem(<span class="number">160</span>);</span><br><span class="line">    <span class="attribute">margin</span>: px2rem(<span class="number">40</span>) px2rem(<span class="number">40</span>);</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="LESS"><a href="#LESS" class="headerlink" title="LESS"></a>LESS</h3><h4 id="1-LESS是什么"><a href="#1-LESS是什么" class="headerlink" title="1.LESS是什么"></a>1.LESS是什么</h4><p>LESS是一种<strong>动态</strong>样式语言。</p>
+<p>LESS 将 CSS 赋予了动态语言的特性，如 变量， 继承，运算， 函数. LESS 既可以在 客户端 上运行 (支持IE 6+, Webkit, Firefox)，也可以借助Node.js或者Rhino在服务端运行。</p>
+<h4 id="2-基本用法"><a href="#2-基本用法" class="headerlink" title="2.基本用法"></a>2.基本用法</h4><h5 id="1-变量"><a href="#1-变量" class="headerlink" title="1.变量"></a>1.变量</h5><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@border-color:</span><span class="number">#fff</span>;</span><br><span class="line"><span class="selector-tag">div</span>&#123;<span class="attribute">border</span>:<span class="number">1px</span> solid <span class="variable">@border-color</span>&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-混合"><a href="#2-混合" class="headerlink" title="2.混合"></a>2.混合</h5><p>混合可以将一个定义好的class A轻松的引入到另一个class B中，从而简单实现class B继承class A中的所有属性。我们还可以带参数地调用，就像使用函数一样。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.classA</span> (<span class="variable">@radius</span>:<span class="number">5px</span>)&#123;<span class="attribute">border-radius</span>:<span class="variable">@radius</span>&#125;</span><br><span class="line"><span class="selector-class">.classB</span> &#123;<span class="selector-class">.classA</span>&#125;</span><br><span class="line"><span class="selector-class">.classC</span> &#123;<span class="selector-class">.classA</span>(<span class="number">10px</span>)&#125;</span><br></pre></td></tr></table></figure>
+<p>@arguments变量 像写函数一样写CSS , 理解为JS里的 arguments 即可</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box-shadow</span>(<span class="variable">@x</span>:<span class="number">0</span> , <span class="variable">@y</span>:<span class="number">0</span> , <span class="variable">@blur</span>:<span class="number">1px</span>, <span class="variable">@color</span>:<span class="number">#666</span>)&#123;</span><br><span class="line">    <span class="attribute">box-shadow</span>:<span class="variable">@arguments</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box-shadow</span>(<span class="number">1px</span>,<span class="number">2px</span>);  <span class="comment">// '调用函数'的感觉</span></span><br><span class="line"><span class="selector-class">.box-shadow</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">2px</span>,<span class="number">#888</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="3-嵌套"><a href="#3-嵌套" class="headerlink" title="3.嵌套"></a>3.嵌套</h5><p><strong>最常用的</strong></p>
+<p>我们可以在一个选择器中嵌套另一个选择器来实现继承，这样很大程度减少了代码量，并且代码看起来更加的清晰。(&amp;表示当前元素)</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.Parent</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">12px</span>;</span><br><span class="line">    &gt; <span class="selector-tag">h1</span>&#123; <span class="attribute">font-size </span>: inherit&#125;</span><br><span class="line">    &gt; <span class="selector-tag">input</span> &#123; </span><br><span class="line">        <span class="attribute">color</span>: black;</span><br><span class="line">        <span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span>&#123; <span class="attribute">color</span>: red&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4-函数-amp-amp-运算"><a href="#4-函数-amp-amp-运算" class="headerlink" title="4.函数&amp;&amp;运算"></a>4.函数&amp;&amp;运算</h5><p>运算提供了加，减，乘，除操作；我们可以做属性值和颜色的运算，这样就可以实现属性值之间的复杂关系。LESS中的函数一一映射了JavaScript代码，如果你愿意的话可以操作属性值。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@the-border:</span> <span class="number">1px</span>;</span><br><span class="line"><span class="variable">@base-color:</span> <span class="number">#111</span>;</span><br><span class="line"><span class="variable">@red:</span> <span class="number">#842210</span>;</span><br><span class="line"><span class="selector-id">#header</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">@base-color</span> * <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">border-left</span>: <span class="variable">@the-border</span>;</span><br><span class="line">  <span class="attribute">border-right</span>: <span class="variable">@the-border</span> * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#footer</span> &#123; </span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">@base-color</span> + <span class="number">#003300</span>;</span><br><span class="line">  <span class="attribute">border-color</span>: desaturate(<span class="variable">@red</span>, <span class="number">10%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="5-引导"><a href="#5-引导" class="headerlink" title="5.引导"></a>5.引导</h5><p>当我们想根据表达式进行匹配，而非根据值和参数匹配时，导引就显得非常有用。如果你对函数式编程非常熟悉，那么你很可能已经使用过导引。</p>
+<p>为了尽可能地保留CSS的可声明性，LESS通过导引混合而非if/else语句来实现条件判断，因为前者已在@media query特性中被定义。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//匹配模式和引导表达式</span></span><br><span class="line"><span class="selector-class">.min</span>(drak,<span class="variable">@color</span>)&#123;</span><br><span class="line">    <span class="attribute">color</span>: darken(<span class="variable">@color</span>,<span class="number">20%</span>);</span><br><span class="line">    <span class="comment">//将颜色加深20%</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.min</span>(light,<span class="variable">@color</span>)&#123;</span><br><span class="line">    <span class="attribute">color</span>: lighten(<span class="variable">@color</span>,<span class="number">20%</span>);</span><br><span class="line">    <span class="comment">//将颜色变浅20%</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.min</span>(<span class="variable">@_</span>,<span class="variable">@color</span>)&#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">@switch1:</span>drak;</span><br><span class="line"><span class="variable">@switch2:</span>light;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="comment">//.min(@switch1,#ddd);</span></span><br><span class="line">    <span class="comment">//.min(drak,#ddd);@color:#ddd</span></span><br><span class="line">    <span class="comment">//.min(@switch2,#ddd);</span></span><br><span class="line">    <span class="comment">//@_,接受任意值，你传什么值他都会执行；</span></span><br><span class="line">    <span class="selector-class">.min</span>(<span class="variable">@word</span>,<span class="number">#ccc</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*---------------------------------*/</span></span><br><span class="line"><span class="selector-class">.mixin</span>(<span class="variable">@a</span>)&#123;</span><br><span class="line">    <span class="attribute">color</span>:<span class="variable">@a</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*@a的color亮度大于50%的话*/</span></span><br><span class="line"><span class="selector-class">.mixin</span>(<span class="variable">@a</span>) <span class="keyword">when</span> (lightness(<span class="variable">@a</span>)&gt;=<span class="number">50%</span>)&#123; </span><br><span class="line">    <span class="attribute">background-color</span>:black</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.mixin</span>(<span class="variable">@a</span>) <span class="keyword">when</span> (lightness(<span class="variable">@a</span>)&lt;<span class="number">50%</span>)&#123;</span><br><span class="line">    <span class="attribute">background-color</span>:white</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.classA</span>&#123;<span class="selector-class">.mixin</span>(<span class="number">#ddd</span>)&#125;</span><br><span class="line"><span class="selector-class">.classB</span>&#123;<span class="selector-class">.mixin</span>(<span class="number">#555</span>)&#125;</span><br><span class="line"><span class="comment">//注释</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 注释</span></span><br><span class="line"><span class="comment"> * color函数</span></span><br><span class="line"><span class="comment"> * 1. lighten(@color,10%):</span></span><br><span class="line"><span class="comment"> * 意思：return a color which is 10% lighter than @color</span></span><br><span class="line"><span class="comment"> * 2. darken(@color,10%);</span></span><br><span class="line"><span class="comment"> * 意思：return a color which is 10% draker than @color</span></span><br><span class="line"><span class="comment"> * 3. statuate(@color,10%);//增加饱和度</span></span><br><span class="line"><span class="comment"> * 意思：return a color which is 10% statuated than @color</span></span><br><span class="line"><span class="comment"> * 4. destatuste(@color,10%);//减少饱和度，褪色</span></span><br><span class="line"><span class="comment"> * 5. fadein(@color,10%)</span></span><br><span class="line"><span class="comment"> * 6. fadeout(@color,10%)</span></span><br><span class="line"><span class="comment"> * 7. fade(@color,50%)</span></span><br><span class="line"><span class="comment"> * 8. spin(@color,10)</span></span><br><span class="line"><span class="comment"> * 9. spin(@color,-10)</span></span><br><span class="line"><span class="comment"> * 10. mix(@color1,@color2);混合</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 提取颜色信息</span></span><br><span class="line"><span class="comment"> * hue(@color):返回当前颜色的色调</span></span><br><span class="line"><span class="comment"> * staturation(@color):返回当前颜色的饱和度</span></span><br><span class="line"><span class="comment"> * lightness(@color):返回当前颜色的亮度(浅的度数)</span></span><br><span class="line"><span class="comment"> * */</span></span><br></pre></td></tr></table></figure>
+<p>得到</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.classA</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: black;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#ddd</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.classB</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: white;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#555</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="6-计算功能"><a href="#6-计算功能" class="headerlink" title="6.计算功能"></a>6.计算功能</h5><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//计算功能：任何颜色，变量都可以参与运算</span></span><br><span class="line"><span class="variable">@base:</span><span class="number">5%</span>;</span><br><span class="line"><span class="variable">@filter:</span><span class="variable">@base</span>*<span class="number">2</span>;<span class="comment">//10%</span></span><br><span class="line"><span class="variable">@other:</span><span class="variable">@base</span>*<span class="number">4</span>+<span class="variable">@filter</span>;<span class="comment">//30%</span></span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#FFFF00</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="variable">@filter</span>+<span class="number">#111</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>/<span class="number">2</span>+<span class="variable">@other</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">@var:</span><span class="number">10px</span> + <span class="number">5</span>;</span><br><span class="line"><span class="selector-id">#box1</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: (<span class="variable">@var</span> + <span class="number">20</span>)*<span class="number">2</span>;</span><br><span class="line">    <span class="attribute">height</span>: (<span class="variable">@var</span> - <span class="number">5</span>)*<span class="number">3</span>;</span><br><span class="line">    <span class="selector-tag">p</span>&#123;</span><br><span class="line">        <span class="attribute">height</span>: (<span class="variable">@var</span> + <span class="number">5</span>)/<span class="number">2</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#101010</span>+<span class="number">#000111</span>;</span><br><span class="line">        <span class="attribute">border</span>: <span class="variable">@var</span> - <span class="number">5</span> solid <span class="number">#0000ff</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//less也支持部分Math函数</span></span><br><span class="line"><span class="comment">//round(1.67)-&gt;2</span></span><br><span class="line"><span class="comment">//ceil(2.1)-&gt;3</span></span><br><span class="line"><span class="comment">//floor(2.9)-&gt;2</span></span><br><span class="line"><span class="comment">//peercentage(0.5)-&gt;50%转为百分数的函数</span></span><br><span class="line"><span class="selector-id">#s</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: percentage(<span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="7-Import-amp-amp-字符串插值"><a href="#7-Import-amp-amp-字符串插值" class="headerlink" title="7.Import &amp;&amp; 字符串插值"></a>7.Import &amp;&amp; 字符串插值</h5><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import 'lib.less'</span><br><span class="line">import 'lib' //可省略后缀名</span><br><span class="line"></span><br><span class="line">import 'lib.css' //引入一个CSS，并且不让LESS对它进行处理</span><br><span class="line"></span><br><span class="line"><span class="variable">@baseURL</span> = <span class="string">'http://storm4542.github.com'</span></span><br><span class="line">body&#123;<span class="attribute">background</span>: url(<span class="string">"@&#123;baseURL&#125;/image/bg.jpg"</span>)&#125;  <span class="comment">//类似JS 的 $&#123;xxx&#125;</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-设计模式" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/beed3124.html">一些常用的设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/beed3124.html" class="article-date">
+  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="总结一些写轱辘的时候使用的设计模式（套路）"><a href="#总结一些写轱辘的时候使用的设计模式（套路）" class="headerlink" title="总结一些写轱辘的时候使用的设计模式（套路）"></a>总结一些写轱辘的时候使用的设计模式（套路）</h3><h4 id="1-发布订阅模式"><a href="#1-发布订阅模式" class="headerlink" title="1.发布订阅模式"></a>1.发布订阅模式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vm.$emit(<span class="string">'update:selected'</span>,<span class="keyword">this</span>.name) <span class="comment">//发布</span></span><br><span class="line">vm.$on(<span class="string">'update:selected'</span>,(name)=&gt;&#123;<span class="keyword">this</span>.name = name&#125;) <span class="comment">//订阅</span></span><br><span class="line">vm.$off(<span class="string">'update:selected'</span>) <span class="comment">//取消订阅</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-单项数据流"><a href="#2-单项数据流" class="headerlink" title="2.单项数据流"></a>2.单项数据流</h4><p>使用eventBus</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父亲</span></span><br><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data()&#123;<span class="keyword">return</span> &#123; <span class="attr">selected</span>: <span class="number">1</span> &#125;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.eventBus.$emit(<span class="string">'update:selected'</span>, <span class="keyword">this</span>.selected)  <span class="comment">//给儿子说，我给你传个现在最新的selected</span></span><br><span class="line">vm.eventBus.$on(<span class="string">'update:selected'</span>,(selected)=&gt;&#123; <span class="keyword">this</span>.selected = selected &#125;) </span><br><span class="line"><span class="comment">//监听儿子有没有让我修改selected</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//儿子</span></span><br><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data()&#123;<span class="keyword">return</span> &#123; <span class="attr">selected</span>: <span class="number">2</span> &#125;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.eventBus.$emit(<span class="string">'update:selected'</span>,<span class="keyword">this</span>.selected) <span class="comment">//给爸爸说一声，我想修改一下 selected的值</span></span><br><span class="line">vm.eventBus.$on(<span class="string">'update:selected'</span>,(selected)=&gt;&#123;<span class="keyword">this</span>.selected = selected&#125;) </span><br><span class="line"><span class="comment">//监听爸爸有没有 同意 或者 让 我改selected</span></span><br></pre></td></tr></table></figure>
+<p>流程:  爸爸修改儿子数据 —–&gt; 直接告诉儿子</p>
+<p>​       儿子想修改自己的数据  —–&gt; 告诉爸爸想要修改 ——&gt; 爸爸修改数据 —–&gt; 告诉儿子</p>
+<p>让爸爸始终掌控大局。</p>
+<h4 id="3-正交原则"><a href="#3-正交原则" class="headerlink" title="3.正交原则"></a>3.正交原则</h4><p>props 不要违反正交原则</p>
+<p>例如,我们设计一个button组件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props:[<span class="string">'rightIcon'</span>,<span class="string">'leftIcon'</span>]</span><br></pre></td></tr></table></figure>
+<p>这两个属性就是不正交的，他们都可以改变icon的位置</p>
+<p>修改</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props:[<span class="string">'iconPosition'</span>]  <span class="comment">// right || left</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-写可测试的代码"><a href="#4-写可测试的代码" class="headerlink" title="4.写可测试的代码"></a>4.写可测试的代码</h4>
       
 
       
@@ -199,54 +194,6 @@
 
 
   
-    <article id="post-设计模式" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/beed3124.html">一些常用的设计模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/archives/beed3124.html" class="article-date">
-  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
-</a>
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="总结一些写轱辘的时候使用的设计模式（套路）"><a href="#总结一些写轱辘的时候使用的设计模式（套路）" class="headerlink" title="总结一些写轱辘的时候使用的设计模式（套路）"></a>总结一些写轱辘的时候使用的设计模式（套路）</h3><h4 id="1-发布订阅模式"><a href="#1-发布订阅模式" class="headerlink" title="1.发布订阅模式"></a>1.发布订阅模式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vm.$emit(<span class="string">'update:selected'</span>,<span class="keyword">this</span>.name) <span class="comment">//发布</span></span><br><span class="line">vm.$on(<span class="string">'update:selected'</span>,(name)=&gt;&#123;<span class="keyword">this</span>.name = name&#125;) <span class="comment">//订阅</span></span><br><span class="line">vm.$off(<span class="string">'update:selected'</span>) <span class="comment">//取消订阅</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-单项数据流"><a href="#2-单项数据流" class="headerlink" title="2.单项数据流"></a>2.单项数据流</h4><p>使用eventBus</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父亲</span></span><br><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data()&#123;<span class="keyword">return</span> &#123; <span class="attr">selected</span>: <span class="number">1</span> &#125;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.eventBus.$emit(<span class="string">'update:selected'</span>, <span class="keyword">this</span>.selected)  <span class="comment">//给儿子说，我给你传个现在最新的selected</span></span><br><span class="line">vm.eventBus.$on(<span class="string">'update:selected'</span>,(selected)=&gt;&#123; <span class="keyword">this</span>.selected = selected &#125;) </span><br><span class="line"><span class="comment">//监听儿子有没有让我修改selected</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//儿子</span></span><br><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data()&#123;<span class="keyword">return</span> &#123; <span class="attr">selected</span>: <span class="number">2</span> &#125;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.eventBus.$emit(<span class="string">'update:selected'</span>,<span class="keyword">this</span>.selected) <span class="comment">//给爸爸说一声，我想修改一下 selected的值</span></span><br><span class="line">vm.eventBus.$on(<span class="string">'update:selected'</span>,(selected)=&gt;&#123;<span class="keyword">this</span>.selected = selected&#125;) </span><br><span class="line"><span class="comment">//监听爸爸有没有 同意 或者 让 我改selected</span></span><br></pre></td></tr></table></figure>
-<p>流程:  爸爸修改儿子数据 —–&gt; 直接告诉儿子</p>
-<p>​       儿子想修改自己的数据  —–&gt; 告诉爸爸想要修改 ——&gt; 爸爸修改数据 —–&gt; 告诉儿子</p>
-<p>让爸爸始终掌控大局。</p>
-<h4 id="3-正交原则"><a href="#3-正交原则" class="headerlink" title="3.正交原则"></a>3.正交原则</h4><p>props 不要违反正交原则</p>
-<p>例如,我们设计一个button组件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props:[<span class="string">'rightIcon'</span>,<span class="string">'leftIcon'</span>]</span><br></pre></td></tr></table></figure>
-<p>这两个属性就是不正交的，他们都可以改变icon的位置</p>
-<p>修改</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props:[<span class="string">'iconPosition'</span>]  <span class="comment">// right || left</span></span><br></pre></td></tr></table></figure>
-<h4 id="4-写可测试的代码"><a href="#4-写可测试的代码" class="headerlink" title="4.写可测试的代码"></a>4.写可测试的代码</h4>
-      
-
-      
-        
-    </div>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-使用 Vue Cli 3 打包组件并发布至npm" class="article article-type-post" itemscope="" itemprop="blogPost">
   
   <div class="article-inner">
@@ -263,13 +210,13 @@
     
     <div class="article-meta">
       <a href="/archives/39d3351.html" class="article-date">
-  <time datetime="2018-05-27T03:08:15.000Z" itemprop="datePublished">2018-05-27</time>
+  <time datetime="2018-05-26T03:08:15.000Z" itemprop="datePublished">2018-05-26</time>
 </a>
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="使用-Vue-Cli-3-打包组件并发布至npm"><a href="#使用-Vue-Cli-3-打包组件并发布至npm" class="headerlink" title="使用 Vue Cli 3 打包组件并发布至npm"></a>使用 Vue Cli 3 打包组件并发布至npm</h1><p><a name="XTDAo"></a></p>
+        <p><a name="XTDAo"></a></p>
 <h2 id="1-使用-Vue-Cli-3-创建项目"><a href="#1-使用-Vue-Cli-3-创建项目" class="headerlink" title="1.使用 Vue Cli 3 创建项目"></a>1.使用 Vue Cli 3 创建项目</h2><p><code>vue create vue-test</code></p>
 <p><a name="RfzFH"></a></p>
 <h2 id="2-修改目录并配置webpack"><a href="#2-修改目录并配置webpack" class="headerlink" title="2.修改目录并配置webpack"></a>2.修改目录并配置webpack</h2><p>修改后的目录<br><strong><img src="https://cdn.nlark.com/yuque/0/2019/png/148286/1558923194873-d02299bf-4410-4267-926c-2bcec79d11a6.png#align=left&amp;display=inline&amp;height=399&amp;name=image.png&amp;originHeight=798&amp;originWidth=556&amp;size=87992&amp;status=done&amp;width=278" alt="image.png"></strong></p>

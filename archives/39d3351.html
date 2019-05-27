@@ -5,21 +5,21 @@
   
   <title>使用 Vue Cli 3 打包组件并发布至npm | Storm</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用 Vue Cli 3 打包组件并发布至npm 1.使用 Vue Cli 3 创建项目vue create vue-test  2.修改目录并配置webpack修改后的目录  src -&amp;gt; examples  用于放置示例文件 增加 packages 文件夹 用于打包 增加 lib 文件夹 用户放置打包后的文件 增加 vue.config.js 文件 用于配置webpack  vue.co">
+  <meta name="description" content="1.使用 Vue Cli 3 创建项目vue create vue-test  2.修改目录并配置webpack修改后的目录  src -&amp;gt; examples  用于放置示例文件 增加 packages 文件夹 用于打包 增加 lib 文件夹 用户放置打包后的文件 增加 vue.config.js 文件 用于配置webpack  vue.config.js 配置 1234567891011">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Vue Cli 3 打包组件并发布至npm">
 <meta property="og:url" content="https://storm4542.github.io/archives/39d3351.html">
 <meta property="og:site_name" content="Storm">
-<meta property="og:description" content="使用 Vue Cli 3 打包组件并发布至npm 1.使用 Vue Cli 3 创建项目vue create vue-test  2.修改目录并配置webpack修改后的目录  src -&amp;gt; examples  用于放置示例文件 增加 packages 文件夹 用于打包 增加 lib 文件夹 用户放置打包后的文件 增加 vue.config.js 文件 用于配置webpack  vue.co">
+<meta property="og:description" content="1.使用 Vue Cli 3 创建项目vue create vue-test  2.修改目录并配置webpack修改后的目录  src -&amp;gt; examples  用于放置示例文件 增加 packages 文件夹 用于打包 增加 lib 文件夹 用户放置打包后的文件 增加 vue.config.js 文件 用于配置webpack  vue.config.js 配置 1234567891011">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/148286/1558923194873-d02299bf-4410-4267-926c-2bcec79d11a6.png#align=left&display=inline&height=399&name=image.png&originHeight=798&originWidth=556&size=87992&status=done&width=278">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/148286/1558923611695-fbdca6d1-4f50-4976-b223-37f659f9bacb.png#align=left&display=inline&height=296&name=image.png&originHeight=784&originWidth=946&size=87746&status=done&width=357">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/148286/1558924162109-795823a3-06d9-4f9e-a02a-5516b11775d3.png#align=left&display=inline&height=116&name=image.png&originHeight=232&originWidth=670&size=30083&status=done&width=335">
-<meta property="og:updated_time" content="2019-05-27T02:48:23.510Z">
+<meta property="og:updated_time" content="2019-05-27T02:50:59.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Vue Cli 3 打包组件并发布至npm">
-<meta name="twitter:description" content="使用 Vue Cli 3 打包组件并发布至npm 1.使用 Vue Cli 3 创建项目vue create vue-test  2.修改目录并配置webpack修改后的目录  src -&amp;gt; examples  用于放置示例文件 增加 packages 文件夹 用于打包 增加 lib 文件夹 用户放置打包后的文件 增加 vue.config.js 文件 用于配置webpack  vue.co">
+<meta name="twitter:description" content="1.使用 Vue Cli 3 创建项目vue create vue-test  2.修改目录并配置webpack修改后的目录  src -&amp;gt; examples  用于放置示例文件 增加 packages 文件夹 用于打包 增加 lib 文件夹 用户放置打包后的文件 增加 vue.config.js 文件 用于配置webpack  vue.config.js 配置 1234567891011">
 <meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/148286/1558923194873-d02299bf-4410-4267-926c-2bcec79d11a6.png#align=left&display=inline&height=399&name=image.png&originHeight=798&originWidth=556&size=87992&status=done&width=278">
   
     <link rel="alternative" href="/atom.xml" title="Storm" type="application/atom+xml">
@@ -52,13 +52,13 @@
     
     <div class="article-meta">
       <a href="/archives/39d3351.html" class="article-date">
-  <time datetime="2018-05-27T03:08:15.000Z" itemprop="datePublished">2018-05-27</time>
+  <time datetime="2018-05-26T03:08:15.000Z" itemprop="datePublished">2018-05-26</time>
 </a>
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="使用-Vue-Cli-3-打包组件并发布至npm"><a href="#使用-Vue-Cli-3-打包组件并发布至npm" class="headerlink" title="使用 Vue Cli 3 打包组件并发布至npm"></a>使用 Vue Cli 3 打包组件并发布至npm</h1><p><a name="XTDAo"></a></p>
+        <p><a name="XTDAo"></a></p>
 <h2 id="1-使用-Vue-Cli-3-创建项目"><a href="#1-使用-Vue-Cli-3-创建项目" class="headerlink" title="1.使用 Vue Cli 3 创建项目"></a>1.使用 Vue Cli 3 创建项目</h2><p><code>vue create vue-test</code></p>
 <p><a name="RfzFH"></a></p>
 <h2 id="2-修改目录并配置webpack"><a href="#2-修改目录并配置webpack" class="headerlink" title="2.修改目录并配置webpack"></a>2.修改目录并配置webpack</h2><p>修改后的目录<br><strong><img src="https://cdn.nlark.com/yuque/0/2019/png/148286/1558923194873-d02299bf-4410-4267-926c-2bcec79d11a6.png#align=left&amp;display=inline&amp;height=399&amp;name=image.png&amp;originHeight=798&amp;originWidth=556&amp;size=87992&amp;status=done&amp;width=278" alt="image.png"></strong></p>
@@ -107,11 +107,11 @@
     
 <nav id="article-nav">
   
-    <a href="/archives/beed3124.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/archives/3e92ca77.html" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          一些常用的设计模式
+          移动页面开发
         
       </div>
     </a>

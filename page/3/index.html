@@ -32,6 +32,160 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-关于函数" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/4cf7e60f.html">JavaScript里的函数是什么</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/4cf7e60f.html" class="article-date">
+  <time datetime="2018-08-24T09:16:35.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h3><pre><code>i 匿名函数
+</code></pre><p>​    <code>var fn = function(){return 1} 有name fn.name = &#39;fn&#39;</code></p>
+<p>​    ii 具名函数</p>
+<p>​    <code>function fn(){ return 1}</code></p>
+<p>​    <code>var fn2 = function fn3(){ return 2 }</code></p>
+<p>​     两者的区别在于函数作用域</p>
+<p>​    <code>console.log(fn()) fn()</code>  </p>
+<p>​    <code>console.log(fn3()) undefined</code></p>
+<p>​    iii 箭头函数</p>
+<p>​    <code>var fn = (i,j)=&gt;{return i+j}</code> fn.name = fn</p>
+<p>###2.词法作用域（静态作用域）</p>
+<pre><code>  var global1 = 1
+
+     function fn1(param1){
+
+       var local1 = &apos;local1&apos;
+       var local2 = &apos;local2&apos;)
+       function fn2(param2){
+           var local2 = &apos;inner local2&apos;
+           console.log(local1)
+           console.log(local2)
+       }
+
+     function fn3(){
+         var local2 = &apos;fn3 local2&apos;
+         fn2(local2)
+     }
+   }
+
+
+var i = 1,j = 2,k = 3;
+
+function a(o,p,x,q){
+
+var x = 4;
+    alert(i+&apos;a&apos;);
+function b(r,s) {
+    var i = 11,y = 5;
+        alert(i+ &apos;b&apos;);
+    function c(t){
+      var z = 6;
+            alert(i+&apos;c&apos;);
+    };
+        //函数表达式
+    var d = function(){
+            alert(y+&apos;y d&apos;);
+        };
+        c(60);
+        d();
+};
+    b(40,50);
+    }
+
+a(10,20,30);
+</code></pre><p> 通过画出词法树分析。先找同级有没有，再找上级的。</p>
+<p><a href="https://xiedaimala.com/tasks/f3b7885d-ac51-4c41-a498-d01d532cc651?learnable_type=VideoTutorial&amp;learnable_id=76247167-7764-4c49-bf78-53b4d126da7a#/" rel="external nofollow noopener noreferrer" target="_blank">方方的视频</a></p>
+<p><a href="http://js8.in/2011/08/15/javascript%E7%9A%84%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="external nofollow noopener noreferrer" target="_blank">参考</a></p>
+<p>###3.call stack</p>
+<p>​    i stack</p>
+<p>​    栈，先进后出，后进先出。</p>
+<blockquote>
+<p><a href="http://latentflip.com/loupe/?code=ZnVuY3Rpb24gYSgpewogICAgY29uc29sZS5sb2coJ2EnKQogIHJldHVybiAnYScgIAp9CgpmdW5jdGlvbiBiKCl7CiAgICBjb25zb2xlLmxvZygnYicpCiAgICByZXR1cm4gJ2InCn0KCmZ1bmN0aW9uIGMoKXsKICAgIGNvbnNvbGUubG9nKCdjJykKICAgIHJldHVybiAnYycKfQoKYSgpCmIoKQpjKCk%3D!!!" rel="external nofollow noopener noreferrer" target="_blank">1+1+1</a></p>
+<p><a href="http://latentflip.com/loupe/?code=ZnVuY3Rpb24gYSgpewogICAgY29uc29sZS5sb2coJ2ExJykKICAgIGIoKQogICAgY29uc29sZS5sb2coJ2EyJykKICByZXR1cm4gJ2EnICAKfQpmdW5jdGlvbiBiKCl7CiAgICBjb25zb2xlLmxvZygnYjEnKQogICAgYygpCiAgICBjb25zb2xlLmxvZygnYjInKQogICAgcmV0dXJuICdiJwp9CmZ1bmN0aW9uIGMoKXsKICAgIGNvbnNvbGUubG9nKCdjJykKICAgIHJldHVybiAnYycKfQphKCkKY29uc29sZS5sb2coJ2VuZCcp!!!" rel="external nofollow noopener noreferrer" target="_blank">1+2+3</a></p>
+<p><a href="ZnVuY3Rpb24gZmFiKG4pewogICAgY29uc29sZS5sb2coJ3N0YXJ0IGNhbGMgZmFiICcrIG4pCiAgICBpZihuPj0zKXsKICAgICAgICByZXR1cm4gZmFiKG4tMSkgKyBmYWIobi0yKQogICAgfWVsc2V7CiAgICAgICAgcmV0dXJuIDEKICAgIH0KfQoKZmFiKDUp">递归</a></p>
+<blockquote>
+<p>斐波那契数列</p>
+<p>function fb(n){</p>
+<p>console.log(‘我正在计算’+ n );</p>
+<p>if( n&gt;=3 ){</p>
+<p>return fb(n-1) + fb(n-2)</p>
+<p>}else{</p>
+<p>return 1;</p>
+<p>}</p>
+<p>}</p>
+</blockquote>
+</blockquote>
+<h3 id="4-this-amp-amp-arguments"><a href="#4-this-amp-amp-arguments" class="headerlink" title="4.this &amp;&amp; arguments"></a>4.this &amp;&amp; arguments</h3><ul>
+<li><p>this 是隐藏的第一个参数，而且必须是对象。</p>
+<ul>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)&#125;</span><br><span class="line">f.call() <span class="comment">// window []</span></span><br><span class="line">f.call(&#123;<span class="attr">name</span>:<span class="string">'zty'</span>&#125;) <span class="comment">// &#123;name:'zty'&#125; []</span></span><br><span class="line">f.call(&#123;<span class="attr">name</span>:<span class="string">'zty'</span>&#125;,<span class="number">1</span>,<span class="number">2</span>) <span class="comment">// &#123;name:'zty&#125; [1,2]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用一个函数，开始需要三部</p>
+<ul>
+<li><p>记录函数的位置，放入 call stack</p>
+</li>
+<li><p>传入 this 对象</p>
+</li>
+<li><p>传入 arguments 数组(伪)</p>
+</li>
+</ul>
+</li>
+<li><p>为什么要用 call</p>
+<ul>
+<li>fn() 是 fn.call() 的阉割版</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>为什么 this 必须是对象</p>
+<ul>
+<li><p>因为 this 就是函数与对象之间的羁绊</p>
+</li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name : <span class="string">'zty'</span>,</span><br><span class="line">  sayHi : <span class="function"><span class="keyword">function</span>(<span class="params">person</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(person.name ,<span class="string">'HI'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">person.sayHi(person) <span class="comment">// zty HI 这种方式很蠢，前面有 person 后面有 person, 为什么 JS 不能帮我把 参数中的person 指定了呢，于是改造一下</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name : <span class="string">'zty'</span>,</span><br><span class="line">  sayHi : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name ,<span class="string">'HI'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">person.sayHi.call(person) <span class="comment">// zty HI 不吃语法糖 this === person ，指定this</span></span><br><span class="line">person.sayHi() <span class="comment">// 吃语法糖</span></span><br><span class="line">person.sayHi.call(&#123;<span class="attr">name</span>:<span class="string">'xxx'</span>&#125;) <span class="comment">// xxx HI 说明里面的函数其实跟person对象没有任何关系，是独立的。(this 真的很不靠谱)</span></span><br><span class="line">------------------------------</span><br><span class="line"><span class="keyword">var</span> fn = person.sayHi;</span><br><span class="line">fn() <span class="comment">// HI 显示不出 'zty',这是因为fn()其实是 fn.call() =&gt; this为window</span></span><br><span class="line">fn(person) <span class="comment">// HI this === window</span></span><br><span class="line">fn.call(person) <span class="comment">// zty HI this === persom</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-call-aplly"><a href="#5-call-aplly" class="headerlink" title="5.call/aplly"></a>5.call/aplly</h3><p>​    i call 用是函数调用标准写法，传递this , xxx.call(ASthis , arguments)</p>
+<p>​    ii  当你不确定参数的个数时候(数组)，使用apply , xxx.apply(ASthis , [ … ])</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> n = <span class="number">0</span> ;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i&lt;<span class="built_in">arguments</span>.length ; i++)&#123;</span><br><span class="line">    n+=<span class="built_in">arguments</span>[i]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> n ;</span><br><span class="line">&#125; <span class="comment">// 无论有多少参数都可以求和的函数</span></span><br><span class="line">sum.call(<span class="literal">undefined</span> , <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)   <span class="comment">// 6</span></span><br><span class="line">sum.call(<span class="literal">undefined</span> , <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>) <span class="comment">// 10</span></span><br><span class="line"><span class="comment">//假如你不知道有多少参数呢？传给你一个数组 a , 并不知道里面的内容，如何求和？</span></span><br><span class="line"><span class="comment">//或者 a.length === 100 ，你如何传参呢？</span></span><br><span class="line">sum.apply(<span class="literal">undefined</span> , a);</span><br></pre></td></tr></table></figure>
+<h3 id="6-bind"><a href="#6-bind" class="headerlink" title="6.bind"></a>6.bind</h3><p>​    call 和 apply 都是直接调用函数，而 bind 是返回一个新的函数 ， 这个新函数会call 原来的参数 ，call 的参数由你指定。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> view = &#123;</span><br><span class="line">  element : <span class="string">'#div'</span>,</span><br><span class="line">  bindEvents : <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.element.onClick = <span class="keyword">this</span>.onClick.bind(<span class="keyword">this</span>)</span><br><span class="line">    <span class="comment">//view.element.onClick = view.onClick.bind(view)</span></span><br><span class="line">    <span class="comment">//this.onClick.bind(this) bind的参数this ，会变成 onClick 的第一个参数</span></span><br><span class="line">    <span class="comment">//为什么这么做？因为 onClick 的 this ， 是被点击元素，我们需要的 this === view</span></span><br><span class="line">  &#125;</span><br><span class="line">    onClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.element.addClass(<span class="string">'active'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7-回调-callback"><a href="#7-回调-callback" class="headerlink" title="7.回调 callback"></a>7.回调 callback</h3><p>​    i 名词形式 ： 被当做参数的函数 <code>array.sort(function(a,b){return a-b})</code></p>
+<p>​    ii 动词形式 ： 调用这个回调</p>
+<p>​    回调跟异步没有一点关系</p>
+<h3 id="8-构造函数"><a href="#8-构造函数" class="headerlink" title="8.构造函数"></a>8.构造函数</h3><p>​    i 返回对象的函数就是构造函数  <code>new Number(1)</code></p>
+<p>​    ii 一般首字母大写。</p>
+<h3 id="9-箭头函数"><a href="#9-箭头函数" class="headerlink" title="9.箭头函数"></a>9.箭头函数</h3><p>​    i 箭头函数没有 this </p>
+<p>​    ii 有 arguments </p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-MVC" class="article article-type-post" itemscope="" itemprop="blogPost">
   
   <div class="article-inner">
@@ -254,7 +408,7 @@
 
 
   
-    <article id="post-关于函数" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Http" class="article article-type-post" itemscope="" itemprop="blogPost">
   
   <div class="article-inner">
     
@@ -262,139 +416,346 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/archives/4cf7e60f.html">JavaScript里的函数是什么</a>
+      <a class="article-title" href="/archives/a1ede006.html">HTTP</a>
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/archives/4cf7e60f.html" class="article-date">
+      <a href="/archives/a1ede006.html" class="article-date">
   <time datetime="2018-08-24T09:16:35.000Z" itemprop="datePublished">2018-08-24</time>
 </a>
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h3><pre><code>i 匿名函数
-</code></pre><p>​    <code>var fn = function(){return 1} 有name fn.name = &#39;fn&#39;</code></p>
-<p>​    ii 具名函数</p>
-<p>​    <code>function fn(){ return 1}</code></p>
-<p>​    <code>var fn2 = function fn3(){ return 2 }</code></p>
-<p>​     两者的区别在于函数作用域</p>
-<p>​    <code>console.log(fn()) fn()</code>  </p>
-<p>​    <code>console.log(fn3()) undefined</code></p>
-<p>​    iii 箭头函数</p>
-<p>​    <code>var fn = (i,j)=&gt;{return i+j}</code> fn.name = fn</p>
-<p>###2.词法作用域（静态作用域）</p>
-<pre><code>  var global1 = 1
-
-     function fn1(param1){
-
-       var local1 = &apos;local1&apos;
-       var local2 = &apos;local2&apos;)
-       function fn2(param2){
-           var local2 = &apos;inner local2&apos;
-           console.log(local1)
-           console.log(local2)
-       }
-
-     function fn3(){
-         var local2 = &apos;fn3 local2&apos;
-         fn2(local2)
-     }
-   }
-
-
-var i = 1,j = 2,k = 3;
-
-function a(o,p,x,q){
-
-var x = 4;
-    alert(i+&apos;a&apos;);
-function b(r,s) {
-    var i = 11,y = 5;
-        alert(i+ &apos;b&apos;);
-    function c(t){
-      var z = 6;
-            alert(i+&apos;c&apos;);
-    };
-        //函数表达式
-    var d = function(){
-            alert(y+&apos;y d&apos;);
-        };
-        c(60);
-        d();
-};
-    b(40,50);
-    }
-
-a(10,20,30);
-</code></pre><p> 通过画出词法树分析。先找同级有没有，再找上级的。</p>
-<p><a href="https://xiedaimala.com/tasks/f3b7885d-ac51-4c41-a498-d01d532cc651?learnable_type=VideoTutorial&amp;learnable_id=76247167-7764-4c49-bf78-53b4d126da7a#/" rel="external nofollow noopener noreferrer" target="_blank">方方的视频</a></p>
-<p><a href="http://js8.in/2011/08/15/javascript%E7%9A%84%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="external nofollow noopener noreferrer" target="_blank">参考</a></p>
-<p>###3.call stack</p>
-<p>​    i stack</p>
-<p>​    栈，先进后出，后进先出。</p>
-<blockquote>
-<p><a href="http://latentflip.com/loupe/?code=ZnVuY3Rpb24gYSgpewogICAgY29uc29sZS5sb2coJ2EnKQogIHJldHVybiAnYScgIAp9CgpmdW5jdGlvbiBiKCl7CiAgICBjb25zb2xlLmxvZygnYicpCiAgICByZXR1cm4gJ2InCn0KCmZ1bmN0aW9uIGMoKXsKICAgIGNvbnNvbGUubG9nKCdjJykKICAgIHJldHVybiAnYycKfQoKYSgpCmIoKQpjKCk%3D!!!" rel="external nofollow noopener noreferrer" target="_blank">1+1+1</a></p>
-<p><a href="http://latentflip.com/loupe/?code=ZnVuY3Rpb24gYSgpewogICAgY29uc29sZS5sb2coJ2ExJykKICAgIGIoKQogICAgY29uc29sZS5sb2coJ2EyJykKICByZXR1cm4gJ2EnICAKfQpmdW5jdGlvbiBiKCl7CiAgICBjb25zb2xlLmxvZygnYjEnKQogICAgYygpCiAgICBjb25zb2xlLmxvZygnYjInKQogICAgcmV0dXJuICdiJwp9CmZ1bmN0aW9uIGMoKXsKICAgIGNvbnNvbGUubG9nKCdjJykKICAgIHJldHVybiAnYycKfQphKCkKY29uc29sZS5sb2coJ2VuZCcp!!!" rel="external nofollow noopener noreferrer" target="_blank">1+2+3</a></p>
-<p><a href="ZnVuY3Rpb24gZmFiKG4pewogICAgY29uc29sZS5sb2coJ3N0YXJ0IGNhbGMgZmFiICcrIG4pCiAgICBpZihuPj0zKXsKICAgICAgICByZXR1cm4gZmFiKG4tMSkgKyBmYWIobi0yKQogICAgfWVsc2V7CiAgICAgICAgcmV0dXJuIDEKICAgIH0KfQoKZmFiKDUp">递归</a></p>
-<blockquote>
-<p>斐波那契数列</p>
-<p>function fb(n){</p>
-<p>console.log(‘我正在计算’+ n );</p>
-<p>if( n&gt;=3 ){</p>
-<p>return fb(n-1) + fb(n-2)</p>
-<p>}else{</p>
-<p>return 1;</p>
-<p>}</p>
-<p>}</p>
-</blockquote>
-</blockquote>
-<h3 id="4-this-amp-amp-arguments"><a href="#4-this-amp-amp-arguments" class="headerlink" title="4.this &amp;&amp; arguments"></a>4.this &amp;&amp; arguments</h3><ul>
-<li><p>this 是隐藏的第一个参数，而且必须是对象。</p>
+        <h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="1-HTTP为什么重要"><a href="#1-HTTP为什么重要" class="headerlink" title="1.HTTP为什么重要"></a>1.HTTP为什么重要</h3><ol>
+<li>HTTP 是前后端合作的重要方式<br>99%的需求都是通过 HTTP 做到，小部分需求可以通过 WebSockets 做到。</li>
+<li>HTTP 能帮你从本质上理解 HTML、CSS、JS、图片、JSON、JSONP 等不同形式的资源</li>
+<li>Web 性能优化基本等价于对 HTTP 传输效率优化</li>
+<li>前端工程化需要你对 HTTP 缓存有深入了解</li>
+</ol>
+<h3 id="2-什么是HTTP"><a href="#2-什么是HTTP" class="headerlink" title="2.什么是HTTP"></a>2.什么是HTTP</h3><p>####1.四个概念</p>
+<ol>
+<li>server</li>
+<li>client</li>
+<li>request</li>
+<li>response</li>
+</ol>
 <ul>
-<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)&#125;</span><br><span class="line">f.call() <span class="comment">// window []</span></span><br><span class="line">f.call(&#123;<span class="attr">name</span>:<span class="string">'zty'</span>&#125;) <span class="comment">// &#123;name:'zty'&#125; []</span></span><br><span class="line">f.call(&#123;<span class="attr">name</span>:<span class="string">'zty'</span>&#125;,<span class="number">1</span>,<span class="number">2</span>) <span class="comment">// &#123;name:'zty&#125; [1,2]</span></span><br></pre></td></tr></table></figure>
+<li><p>server</p>
+<p>服务器端</p>
 </li>
-<li><p>调用一个函数，开始需要三部</p>
+<li><p>client</p>
+<p>客户端</p>
+</li>
+</ul>
+<h4 id="2-request-请求"><a href="#2-request-请求" class="headerlink" title="2.request 请求"></a>2.request 请求</h4><p>请求包含四个部分</p>
+<ol>
+<li><p>动词  路径  协议/版本号  — GET ./style.css  HTTP/1.1</p>
+</li>
+<li><p>一些 key : value ，用回车分割</p>
+<p>Host : xxx.xxx.xxx</p>
+<p>Connection : keep-alive</p>
+<p>Content-Type : application/javascript</p>
+<p>User-Agent : xxxxxxxxxxx</p>
+<p>Accept : xxxxx</p>
+</li>
+<li><p>回车，作用：分割第二部分和第三部分</p>
+</li>
+<li><p>什么都行，但是内容的格式必须要在第二部分的 <code>Content-Type</code>中声明</p>
+</li>
+</ol>
+<h4 id="3-response-响应"><a href="#3-response-响应" class="headerlink" title="3.response 响应"></a>3.response 响应</h4><p>响应也包含四个部分</p>
+<ol>
+<li>协议/版本号 状态码 状态信息  HTTP/1.1 200 OK</li>
+<li>一些 key : value ，用回车分割</li>
+<li>回车，作用：分割第二部分和第三部分</li>
+<li>什么都行，但是内容的格式必须要在第二部分的 <code>Content-Type</code>中声明</li>
+</ol>
+<h3 id="3-HTML-CSS-JS-JSON-JSONP都是什么？"><a href="#3-HTML-CSS-JS-JSON-JSONP都是什么？" class="headerlink" title="3.HTML,CSS,JS,JSON,JSONP都是什么？"></a>3.HTML,CSS,JS,JSON,JSONP都是什么？</h3><h4 id="1-HTML，CSS，JS的本质"><a href="#1-HTML，CSS，JS的本质" class="headerlink" title="1.HTML，CSS，JS的本质"></a>1.HTML，CSS，JS的本质</h4><p>本质是字符串，只是 <code>Content-Type</code>不同</p>
 <ul>
-<li><p>记录函数的位置，放入 call stack</p>
-</li>
-<li><p>传入 this 对象</p>
-</li>
-<li><p>传入 arguments 数组(伪)</p>
-</li>
+<li>HTML  Content-Type : text/html</li>
+<li>CSS      Content-Type : text/css</li>
+<li>JS          Content-Type : application/javascript</li>
 </ul>
+<p>注意 url 里的后缀是废话，毫无意义。</p>
+<ol>
+<li>浏览器通过地址栏、iframe 来请求 HTML</li>
+<li>浏览器通过 link 标签获取 CSS，然后渲染</li>
+<li>浏览器通过 script 标签获取 JS，然后执行</li>
+<li>浏览器通过 image 标签获取图片，然后展示</li>
+</ol>
+<h4 id="2-JSON"><a href="#2-JSON" class="headerlink" title="2.JSON"></a>2.JSON</h4><p>json也是字符串</p>
+<p>JSON Content-Type : application/json</p>
+<h4 id="3-JSONP"><a href="#3-JSONP" class="headerlink" title="3.JSONP"></a>3.JSONP</h4><p>本质就是字符串，只不过</p>
+<ol>
+<li>Content-Type 为application/javascript 或者 text/javascript</li>
+<li>内容格式为 <code>functionName( {&quot;format&quot;: &quot;JSON&quot;} )</code></li>
+</ol>
+<h3 id="4-缓存"><a href="#4-缓存" class="headerlink" title="4.缓存"></a>4.缓存</h3><ol>
+<li>使用 Cache-Control 缓存是常用的缓存方式</li>
+<li>想要更新缓存只需稍微变更一下 url<ol>
+<li>app-2131312362387123.js</li>
+<li>app.js?v=1</li>
+<li>app.js?t=201801012334</li>
+<li>不要缓存入口页面，这是你更新资源的唯一入口</li>
+</ol>
 </li>
-<li><p>为什么要用 call</p>
+</ol>
+<p><strong>并不是缓存</strong></p>
+<p>Etag 和 304 会避免下载，但是还是会发出请求，并不属于缓存</p>
+<h3 id="5-Cookie-和-Session"><a href="#5-Cookie-和-Session" class="headerlink" title="5.Cookie 和 Session"></a>5.Cookie 和 Session</h3><h4 id="1-Cookie"><a href="#1-Cookie" class="headerlink" title="1.Cookie"></a>1.Cookie</h4><p>因为HTTP协议是 <strong>无状态</strong> 的，通俗来说是 <strong>没脑子</strong>，它没有记忆。</p>
+<p>假如用户登录成功后，刷新页面，用户的登录状态就没有了，这里可以用 Cookie 解决。</p>
+<p><strong>保存登录状态</strong></p>
+<p>jack登录a.com发出请求 uername:jack ; password : 123 —-&gt;  </p>
+<p>后台接收到数据，账号密码正确，发出响应，响应头<code>header</code>写上<code>&#39;Set-Cookie&#39;,&#39;login = jack&#39;</code>—–&gt;</p>
+<p>浏览器收到响应，种上 Cookie  —-&gt;</p>
+<p>当jack再次访问a.com的其他页面时候，请求头中会带上<code>Cookie : login=jack</code>——&gt;</p>
+<p>jack发现他还是登录状态，非常高兴 : ) —– end</p>
+<p><strong>区分用户</strong></p>
+<p>frank 这时候也登录 a.com 这时候他获得的 响应头就是<code>&#39;Set-Cookie&#39;,&#39;login = frank&#39;</code>了，这样我们也能区分jack 和 frank 了</p>
+<p>但是<code>Cookie</code>有一个很不安全的地方，任何一个前端都可以使用<code>document.cookie = xxx</code>来伪造。</p>
+<p><strong>我们需要一个方法既需要能标识用户，又可以防止前端伪造</strong></p>
+<h4 id="2-Session"><a href="#2-Session" class="headerlink" title="2.Session"></a>2.Session</h4><p>因为<code>Cookie</code>不安全，所以出现了<code>Session</code>。</p>
+<p><code>Session</code>是存在数据库的，因此前端无法修改。</p>
+<p><strong>流程</strong></p>
+<p>用户输入账户密码登录 ——&gt;  发送请求 ———&gt; 服务器验证账户密码正确———&gt; </p>
+<p><strong>分配一个<code>session</code>，通过<code>cookie</code>告诉浏览器</strong>———&gt;<code>Set-Cookie,sessionId = &#39;xxxxxxxxxxxxx&#39;</code></p>
+<p>剩下的就是和<code>Cookie</code>一样了。</p>
+<h4 id="3-两者不同"><a href="#3-两者不同" class="headerlink" title="3.两者不同"></a>3.两者不同</h4><ol>
+<li>使用时间：用Cookie分辨两个不同的用户，用Session存放用户的敏感数据。</li>
+<li>实现方式：Cookie使用Set-Cookie实现，Session你想怎么实现就怎么实现。</li>
+<li>存放方式：Cookie存放在浏览器里，Session存在服务器端的文件，数据库，内存等等。</li>
+<li>两者关系：Session一般基于Cookie，存在里面。但也可以放到 localStorage 里面，放到 URL 里等等</li>
+</ol>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Vue-动画" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/6a317f77.html">Vue 动画</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/6a317f77.html" class="article-date">
+  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Vue动画"><a href="#Vue动画" class="headerlink" title="Vue动画"></a>Vue动画</h3><h4 id="1-简单例子"><a href="#1-简单例子" class="headerlink" title="1.简单例子"></a>1.简单例子</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"show = !show"</span>&gt;</span></span><br><span class="line">    Toggle</span><br><span class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">transition</span> <span class="attr">name</span>=<span class="string">"fade"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"show"</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#demo'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    show: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fade-enter-active</span>, <span class="selector-class">.fade-leave-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity .<span class="number">5s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.fade-enter</span>, <span class="selector-class">.fade-leave-to</span> <span class="comment">/* .fade-leave-active below version 2.1.8 */</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该例子可以实现 p 标签的渐隐效果。</p>
+<h4 id="2-使用CSS添加稍微多一点动画"><a href="#2-使用CSS添加稍微多一点动画" class="headerlink" title="2.使用CSS添加稍微多一点动画"></a>2.使用CSS添加稍微多一点动画</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter-active</span>,<span class="selector-class">.slide-leave-active</span>&#123;</span><br><span class="line">  <span class="attribute">transition</span>:all <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter</span>&#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">translateX</span>(100px)</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-leave-to</span>&#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">translateX</span>(-100px)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现了一个类似轮播感觉的动画。</p>
+<h5 id="使用-animation"><a href="#使用-animation" class="headerlink" title="# 使用 animation"></a># 使用 animation</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter-active</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: bounce-in <span class="number">2s</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-leave-active</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: bounce-in <span class="number">2s</span> reverse</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">keyframes</span> bounce-in &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(0)</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(2)</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(1)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个 Scale-in-out 的动画效果</p>
+<h4 id="3-使用-Animate-css"><a href="#3-使用-Animate-css" class="headerlink" title="3.使用 Animate.css"></a>3.使用 Animate.css</h4><p>动画这个东西写起来还是比较复杂的，但是有大牛帮我们写好了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  &lt;link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet"&gt; --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"visable = !visable"</span>&gt;</span></span><br><span class="line">      Toggle</span><br><span class="line">    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">transition</span> </span></span><br><span class="line"><span class="tag">                <span class="attr">name</span>=<span class="string">"custom-classes-transition"</span> </span></span><br><span class="line"><span class="tag">                <span class="attr">enter-active-class</span>=<span class="string">"animated tada"</span> </span></span><br><span class="line"><span class="tag">                <span class="attr">leave-active-class</span>=<span class="string">"animated bounceOutRight"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">test</span> <span class="attr">v-if</span>=<span class="string">"visable"</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这样不用写 CSS 了，这里的 name 可写可不写。</p>
+<p>但是标签里的 <strong>过度类名</strong> 和之前不一样了:</p>
 <ul>
-<li>fn() 是 fn.call() 的阉割版</li>
+<li><code>enter-class</code></li>
+<li><code>enter-active-class</code></li>
+<li><code>enter-to-class</code> (2.1.8+)</li>
+<li><code>leave-class</code></li>
+<li><code>leave-active-class</code></li>
+<li><code>leave-to-class</code> (2.1.8+)</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>为什么 this 必须是对象</p>
+<p>各种效果预览:</p>
+<h4 id="4-使用-JavaScript-钩子"><a href="#4-使用-JavaScript-钩子" class="headerlink" title="4.使用 JavaScript 钩子"></a>4.使用 JavaScript 钩子</h4><p>有时候我们需要在动画的过程中做一些事情，这就需要钩子函数了。</p>
+<p>首先在属性中声明钩子:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">transition</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:before-enter</span>=<span class="string">"beforeEnter"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:enter</span>=<span class="string">"enter"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:after-enter</span>=<span class="string">"afterEnter"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:enter-cancelled</span>=<span class="string">"enterCancelled"</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:before-leave</span>=<span class="string">"beforeLeave"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:leave</span>=<span class="string">"leave"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:after-leave</span>=<span class="string">"afterLeave"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:leave-cancelled</span>=<span class="string">"leaveCancelled"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后在实例中的 methods 中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">methods: &#123;</span><br><span class="line">  <span class="comment">// --------</span></span><br><span class="line">  <span class="comment">// 进入中</span></span><br><span class="line">  <span class="comment">// --------</span></span><br><span class="line"></span><br><span class="line">  beforeEnter: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 此回调函数是可选项的设置</span></span><br><span class="line">  <span class="comment">// 与 CSS 结合时使用</span></span><br><span class="line">  enter: <span class="function"><span class="keyword">function</span> (<span class="params">el, done</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    done()</span><br><span class="line">  &#125;,</span><br><span class="line">  afterEnter: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line">  enterCancelled: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// --------</span></span><br><span class="line">  <span class="comment">// 离开时</span></span><br><span class="line">  <span class="comment">// --------</span></span><br><span class="line"></span><br><span class="line">  beforeLeave: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 此回调函数是可选项的设置</span></span><br><span class="line">  <span class="comment">// 与 CSS 结合时使用</span></span><br><span class="line">  leave: <span class="function"><span class="keyword">function</span> (<span class="params">el, done</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    done()</span><br><span class="line">  &#125;,</span><br><span class="line">  afterLeave: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// leaveCancelled 只用于 v-show 中</span></span><br><span class="line">  leaveCancelled: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当<strong>只用 JavaScript 过渡</strong>的时候，<strong>在 enter 和 leave 中必须使用 done 进行回调</strong>。</p>
+<p>否则，它们将被同步调用，过渡会立即完成。</p>
+<h5 id="使用-Velocity-js"><a href="#使用-Velocity-js" class="headerlink" title="# 使用 Velocity.js"></a># 使用 Velocity.js</h5><p>这是一个很出名的使用 JavaScript 做动画的库，与其自己写，不如直接用他的。</p>
+<p>(当然，我们一般用CSS )</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example-4"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"show = !show"</span>&gt;</span></span><br><span class="line">    Toggle</span><br><span class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">transition</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-on:before-enter</span>=<span class="string">"beforeEnter"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-on:enter</span>=<span class="string">"enter"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-on:leave</span>=<span class="string">"leave"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-bind:css</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">  &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"show"</span>&gt;</span></span><br><span class="line">      Demo</span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example-4'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    show: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    beforeEnter: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">      el.style.opacity = <span class="number">0</span></span><br><span class="line">      el.style.transformOrigin = <span class="string">'left'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    enter: <span class="function"><span class="keyword">function</span> (<span class="params">el, done</span>) </span>&#123;</span><br><span class="line">      Velocity(el, &#123; <span class="attr">opacity</span>: <span class="number">1</span>, <span class="attr">fontSize</span>: <span class="string">'1.4em'</span> &#125;, &#123; <span class="attr">duration</span>: <span class="number">300</span> &#125;)</span><br><span class="line">      Velocity(el, &#123; <span class="attr">fontSize</span>: <span class="string">'1em'</span> &#125;, &#123; <span class="attr">complete</span>: done &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    leave: <span class="function"><span class="keyword">function</span> (<span class="params">el, done</span>) </span>&#123;</span><br><span class="line">      Velocity(el, &#123; <span class="attr">translateX</span>: <span class="string">'15px'</span>, <span class="attr">rotateZ</span>: <span class="string">'50deg'</span> &#125;, &#123; <span class="attr">duration</span>: <span class="number">600</span> &#125;)</span><br><span class="line">      Velocity(el, &#123; <span class="attr">rotateZ</span>: <span class="string">'100deg'</span> &#125;, &#123; <span class="attr">loop</span>: <span class="number">2</span> &#125;)</span><br><span class="line">      Velocity(el, &#123;</span><br><span class="line">        rotateZ: <span class="string">'45deg'</span>,</span><br><span class="line">        translateY: <span class="string">'30px'</span>,</span><br><span class="line">        translateX: <span class="string">'30px'</span>,</span><br><span class="line">        opacity: <span class="number">0</span></span><br><span class="line">      &#125;, &#123; <span class="attr">complete</span>: done &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="5-多个元素的过度"><a href="#5-多个元素的过度" class="headerlink" title="5.多个元素的过度"></a>5.多个元素的过度</h4><p>上面我们一直在写单个元素的动画，涉及到多个元素，该如何操作呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#demo'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    status: <span class="string">'on'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">transition</span> <span class="attr">name</span>=<span class="string">'slide'</span> <span class="attr">mode</span> = <span class="string">"out-in"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-if</span>=<span class="string">"status === 'off'"</span> <span class="attr">key</span>=<span class="string">"on"</span> @<span class="attr">click</span>=<span class="string">"status='on'"</span>&gt;</span>on<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-else</span>=<span class="string">"status === 'on'"</span> <span class="attr">key</span>=<span class="string">"off"</span> @<span class="attr">click</span>=<span class="string">"status='off'"</span>&gt;</span>off<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>因为 this 就是函数与对象之间的羁绊</p>
-</li>
-<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name : <span class="string">'zty'</span>,</span><br><span class="line">  sayHi : <span class="function"><span class="keyword">function</span>(<span class="params">person</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(person.name ,<span class="string">'HI'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">person.sayHi(person) <span class="comment">// zty HI 这种方式很蠢，前面有 person 后面有 person, 为什么 JS 不能帮我把 参数中的person 指定了呢，于是改造一下</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name : <span class="string">'zty'</span>,</span><br><span class="line">  sayHi : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name ,<span class="string">'HI'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">person.sayHi.call(person) <span class="comment">// zty HI 不吃语法糖 this === person ，指定this</span></span><br><span class="line">person.sayHi() <span class="comment">// 吃语法糖</span></span><br><span class="line">person.sayHi.call(&#123;<span class="attr">name</span>:<span class="string">'xxx'</span>&#125;) <span class="comment">// xxx HI 说明里面的函数其实跟person对象没有任何关系，是独立的。(this 真的很不靠谱)</span></span><br><span class="line">------------------------------</span><br><span class="line"><span class="keyword">var</span> fn = person.sayHi;</span><br><span class="line">fn() <span class="comment">// HI 显示不出 'zty',这是因为fn()其实是 fn.call() =&gt; this为window</span></span><br><span class="line">fn(person) <span class="comment">// HI this === window</span></span><br><span class="line">fn.call(person) <span class="comment">// zty HI this === persom</span></span><br></pre></td></tr></table></figure>
+<li><code>name</code> : 类名</li>
+<li><code>mode</code> : <code>in-out</code>, <code>out-in</code> </li>
+<li><code>key</code>: 两个元素的时候一定要加上 <code>key</code> 属性，里面写啥不重要，但是一定要写上，并且不重复</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#demo</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">button</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter-active</span>,</span><br><span class="line"><span class="selector-class">.slide-leave-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(100px)</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-100px)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="6-组件之间的过度"><a href="#6-组件之间的过度" class="headerlink" title="6.组件之间的过度"></a>6.组件之间的过度</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"temp='v-a'"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"temp='v-b'"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">transition</span> <span class="attr">name</span>=<span class="string">'slide'</span> <span class="attr">mode</span>=<span class="string">"out-in"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">component</span> <span class="attr">v-bind:is</span>=<span class="string">'temp'</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#demo'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    temp: <span class="string">'v-a'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    <span class="string">'v-a'</span>: &#123;</span><br><span class="line">      template: <span class="string">'&lt;div&gt;Component A&lt;/div&gt;'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'v-b'</span>: &#123;</span><br><span class="line">      template: <span class="string">'&lt;div&gt;Component B&lt;/div&gt;'</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.slide-enter-active</span>,</span><br><span class="line"><span class="selector-class">.slide-leave-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(100px)</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-100px)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>组件之间的过度不需要 <code>key</code></p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-css-宽度高度，对齐" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/422899b1.html">CSS-宽度高度，对齐</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/422899b1.html" class="article-date">
+  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p><strong>记住：能不用 height width 就不用他们，使用 padding ,  line-height 来替代</strong></p>
+<h4 id="1-中文对齐"><a href="#1-中文对齐" class="headerlink" title="1.中文对齐"></a>1.中文对齐</h4><ul>
+<li>当我要写一个表单，有<strong>姓名</strong>和<strong>联系方式</strong>，需要姓和联对齐，名和式对齐。如何去做？</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>联系方式<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:inline-block;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">5em</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:justify;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">overflow</span>:hidden</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>:inline-block;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>当我有很多文字，靠到最右边要换行了，发现文字和最右边有间距怎么办?</p>
+<p><code>text-align:justify</code></p>
 </li>
 </ul>
-</li>
+<h4 id="2-空格问题"><a href="#2-空格问题" class="headerlink" title="2.空格问题"></a>2.空格问题</h4><p>HTML会把两个 inline 元素之间看不见的字符都替换为一个空格，包括空格、TAB、回车。</p>
+<p>所以有时候就会莫名其妙中间多一个空格，因为代码里有回车。</p>
+<p><strong>解决方法：不用 inline 元素。</strong></p>
+<h4 id="3-清除浮动"><a href="#3-清除浮动" class="headerlink" title="3.清除浮动"></a>3.清除浮动</h4><p>在浮动元素的爸爸身上加一个 class </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">clearfix</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>:block;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-文字中断"><a href="#4-文字中断" class="headerlink" title="4.文字中断"></a>4.文字中断</h4><p>有时候文字太长了超出屏幕了，两种解决方式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>helooooooooooooooooooooooooooooooooooooooooooooooooo<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面这种情况下浏览器会认为这是一个单词，一个单词是不会自动换行的。</p>
+<p>可以加分隔符</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>helooooooo-ooooooooo-ooooooooo-oooooooo-ooooooo-ooooo-oooo<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以使用 word-break</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span> &#123; <span class="attribute">word-break</span>:break-all &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-文字溢出省略"><a href="#5-文字溢出省略" class="headerlink" title="5.文字溢出省略"></a>5.文字溢出省略</h4><p>当文字的长度超出了 div 的宽度，多余的部分，我们想用省略号代替。</p>
+<ul>
+<li>一行的时候</li>
 </ul>
-<h3 id="5-call-aplly"><a href="#5-call-aplly" class="headerlink" title="5.call/aplly"></a>5.call/aplly</h3><p>​    i call 用是函数调用标准写法，传递this , xxx.call(ASthis , arguments)</p>
-<p>​    ii  当你不确定参数的个数时候(数组)，使用apply , xxx.apply(ASthis , [ … ])</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> n = <span class="number">0</span> ;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i&lt;<span class="built_in">arguments</span>.length ; i++)&#123;</span><br><span class="line">    n+=<span class="built_in">arguments</span>[i]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> n ;</span><br><span class="line">&#125; <span class="comment">// 无论有多少参数都可以求和的函数</span></span><br><span class="line">sum.call(<span class="literal">undefined</span> , <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)   <span class="comment">// 6</span></span><br><span class="line">sum.call(<span class="literal">undefined</span> , <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>) <span class="comment">// 10</span></span><br><span class="line"><span class="comment">//假如你不知道有多少参数呢？传给你一个数组 a , 并不知道里面的内容，如何求和？</span></span><br><span class="line"><span class="comment">//或者 a.length === 100 ，你如何传参呢？</span></span><br><span class="line">sum.apply(<span class="literal">undefined</span> , a);</span><br></pre></td></tr></table></figure>
-<h3 id="6-bind"><a href="#6-bind" class="headerlink" title="6.bind"></a>6.bind</h3><p>​    call 和 apply 都是直接调用函数，而 bind 是返回一个新的函数 ， 这个新函数会call 原来的参数 ，call 的参数由你指定。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> view = &#123;</span><br><span class="line">  element : <span class="string">'#div'</span>,</span><br><span class="line">  bindEvents : <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.element.onClick = <span class="keyword">this</span>.onClick.bind(<span class="keyword">this</span>)</span><br><span class="line">    <span class="comment">//view.element.onClick = view.onClick.bind(view)</span></span><br><span class="line">    <span class="comment">//this.onClick.bind(this) bind的参数this ，会变成 onClick 的第一个参数</span></span><br><span class="line">    <span class="comment">//为什么这么做？因为 onClick 的 this ， 是被点击元素，我们需要的 this === view</span></span><br><span class="line">  &#125;</span><br><span class="line">    onClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.element.addClass(<span class="string">'active'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="7-回调-callback"><a href="#7-回调-callback" class="headerlink" title="7.回调 callback"></a>7.回调 callback</h3><p>​    i 名词形式 ： 被当做参数的函数 <code>array.sort(function(a,b){return a-b})</code></p>
-<p>​    ii 动词形式 ： 调用这个回调</p>
-<p>​    回调跟异步没有一点关系</p>
-<h3 id="8-构造函数"><a href="#8-构造函数" class="headerlink" title="8.构造函数"></a>8.构造函数</h3><p>​    i 返回对象的函数就是构造函数  <code>new Number(1)</code></p>
-<p>​    ii 一般首字母大写。</p>
-<h3 id="9-箭头函数"><a href="#9-箭头函数" class="headerlink" title="9.箭头函数"></a>9.箭头函数</h3><p>​    i 箭头函数没有 this </p>
-<p>​    ii 有 arguments </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">white-space</span>:nowrap; </span><br><span class="line">    <span class="attribute">overflow</span>:hidden;</span><br><span class="line">    <span class="attribute">text-overflow</span>:ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>多行</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">      <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">      <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;   <span class="comment">/*3行写3，n行写n */</span></span><br><span class="line">      <span class="attribute">-webkit-box-orient</span>: vertical;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="6-文字垂直居中"><a href="#6-文字垂直居中" class="headerlink" title="6.文字垂直居中"></a>6.文字垂直居中</h4><p>Div 的高度是跟随你文字的行数变化的，所以永远不要使用 height 给 Div 高度</p>
+<p>那假如我想要 div 的高度是40px , 怎么办？ 使用 line-height 和 padding </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">24px</span>;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">8px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>24 + 8+ 8 = 40</p>
+<h4 id="7-margin-合并"><a href="#7-margin-合并" class="headerlink" title="7.margin 合并"></a>7.margin 合并</h4><p>当子元素有 margin 的时候， 父元素如果没有“挡住”它的属性，那么就会出现父子margin 合并。</p>
+<p>解决方案 border/ padding/ overflow(不推荐)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dad</span>&#123;</span><br><span class="line">    <span class="attribute">border</span>:<span class="number">0.1px</span> solid white;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">0.1px</span>;</span><br><span class="line">    <span class="attribute">overflow</span>:hidden</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="8-div-的高度怎么确定的？"><a href="#8-div-的高度怎么确定的？" class="headerlink" title="8.div 的高度怎么确定的？"></a>8.div 的高度怎么确定的？</h4><p>div 的高度是由<strong>文档流</strong>中所有素高度的总和<strong>决定</strong>的。</p>
+<p>文档流：内联元素从左到右，块级元素从上到下，块级元素总是另起一行。</p>
+<p>所以脱离文档流的翻译就是：算高度别算我。（position:absolute,fixed ;  float; ）</p>
+<h4 id="9-内联元素的宽度和高度"><a href="#9-内联元素的宽度和高度" class="headerlink" title="9.内联元素的宽度和高度"></a>9.内联元素的宽度和高度</h4><p>宽度是受 文字的多少 和 margin padding boder 影响。</p>
+<p>高度只受行高决定。</p>
+<h4 id="10-DIV水平垂直居中"><a href="#10-DIV水平垂直居中" class="headerlink" title="10.DIV水平垂直居中"></a>10.DIV水平垂直居中</h4><p>高度不定，宽度不定的div水平垂直居中 flex </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dad</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:flex;</span><br><span class="line">    <span class="attribute">justify-content</span>:center;</span><br><span class="line">    <span class="attribute">align-items</span>:center</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="11-写一个-1-1-的-div"><a href="#11-写一个-1-1-的-div" class="headerlink" title="11.写一个 1:1 的 div"></a>11.写一个 1:1 的 div</h4><p>使用padding撑起高度。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.one</span>&#123;</span><br><span class="line">    <span class="attribute">padding-top</span>:<span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-css-堆叠上下文" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/81ea01b1.html">CSS-堆叠上下文</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/81ea01b1.html" class="article-date">
+  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="堆叠上下文"><a href="#堆叠上下文" class="headerlink" title="堆叠上下文"></a>堆叠上下文</h3><h4 id="1-堆叠顺序"><a href="#1-堆叠顺序" class="headerlink" title="1.堆叠顺序"></a>1.堆叠顺序</h4><p>div是有空间层次关系的。</p>
+<p>原则：相同类型的元素，后出现的会覆盖之前的。</p>
+<p>层次顺序（底层-上层）： </p>
+<ol>
+<li>background</li>
+<li>border</li>
+<li>块级</li>
+<li>浮动</li>
+<li>内联</li>
+<li>z-index : 0 ( position :relative , absolute)</li>
+<li>z-index :  +</li>
+</ol>
+<p>注意：z-index 只有在 position 不是 static 的时候才有用，比如 relative , absolute</p>
+<h4 id="2-怎么样形成堆叠上下文"><a href="#2-怎么样形成堆叠上下文" class="headerlink" title="2.怎么样形成堆叠上下文"></a>2.怎么样形成堆叠上下文</h4><p>可以理解为堆叠作用域。跟 BFC 一样，我们只知道一些属性会触发堆叠上下文，但并不知道堆叠上下文是什么。</p>
+<ul>
+<li><strong>根元素 (HTML),</strong></li>
+<li><strong>z-index 值不为 “auto”的 绝对/相对定位，</strong></li>
+<li><strong>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</strong></li>
+<li><strong>opacity 属性值小于 1 的元素（参考 the specification for opacity），</strong></li>
+<li><strong>transform 属性值不为 “none”的元素，</strong></li>
+<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
+<li>filter值不为“none”的元素，</li>
+<li>perspective值不为“none”的元素，</li>
+<li>isolation 属性被设置为 “isolate”的元素，</li>
+<li><strong>position: fixed</strong></li>
+<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值（参考 这篇文章）</li>
+<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
+</ul>
 
       
 
@@ -503,232 +864,6 @@ a(10,20,30);
 <li><p>等着就完事儿了</p>
 </li>
 </ol>
-
-      
-
-      
-        
-    </div>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-css-堆叠上下文" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/81ea01b1.html">CSS-堆叠上下文</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/archives/81ea01b1.html" class="article-date">
-  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
-</a>
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="堆叠上下文"><a href="#堆叠上下文" class="headerlink" title="堆叠上下文"></a>堆叠上下文</h3><h4 id="1-堆叠顺序"><a href="#1-堆叠顺序" class="headerlink" title="1.堆叠顺序"></a>1.堆叠顺序</h4><p>div是有空间层次关系的。</p>
-<p>原则：相同类型的元素，后出现的会覆盖之前的。</p>
-<p>层次顺序（底层-上层）： </p>
-<ol>
-<li>background</li>
-<li>border</li>
-<li>块级</li>
-<li>浮动</li>
-<li>内联</li>
-<li>z-index : 0 ( position :relative , absolute)</li>
-<li>z-index :  +</li>
-</ol>
-<p>注意：z-index 只有在 position 不是 static 的时候才有用，比如 relative , absolute</p>
-<h4 id="2-怎么样形成堆叠上下文"><a href="#2-怎么样形成堆叠上下文" class="headerlink" title="2.怎么样形成堆叠上下文"></a>2.怎么样形成堆叠上下文</h4><p>可以理解为堆叠作用域。跟 BFC 一样，我们只知道一些属性会触发堆叠上下文，但并不知道堆叠上下文是什么。</p>
-<ul>
-<li><strong>根元素 (HTML),</strong></li>
-<li><strong>z-index 值不为 “auto”的 绝对/相对定位，</strong></li>
-<li><strong>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</strong></li>
-<li><strong>opacity 属性值小于 1 的元素（参考 the specification for opacity），</strong></li>
-<li><strong>transform 属性值不为 “none”的元素，</strong></li>
-<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
-<li>filter值不为“none”的元素，</li>
-<li>perspective值不为“none”的元素，</li>
-<li>isolation 属性被设置为 “isolate”的元素，</li>
-<li><strong>position: fixed</strong></li>
-<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值（参考 这篇文章）</li>
-<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
-</ul>
-
-      
-
-      
-        
-    </div>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-css-宽度高度，对齐" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/422899b1.html">CSS-宽度高度，对齐</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/archives/422899b1.html" class="article-date">
-  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
-</a>
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p><strong>记住：能不用 height width 就不用他们，使用 padding ,  line-height 来替代</strong></p>
-<h4 id="1-中文对齐"><a href="#1-中文对齐" class="headerlink" title="1.中文对齐"></a>1.中文对齐</h4><ul>
-<li>当我要写一个表单，有<strong>姓名</strong>和<strong>联系方式</strong>，需要姓和联对齐，名和式对齐。如何去做？</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>联系方式<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:inline-block;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">5em</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:justify;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">overflow</span>:hidden</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>:inline-block;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>当我有很多文字，靠到最右边要换行了，发现文字和最右边有间距怎么办?</p>
-<p><code>text-align:justify</code></p>
-</li>
-</ul>
-<h4 id="2-空格问题"><a href="#2-空格问题" class="headerlink" title="2.空格问题"></a>2.空格问题</h4><p>HTML会把两个 inline 元素之间看不见的字符都替换为一个空格，包括空格、TAB、回车。</p>
-<p>所以有时候就会莫名其妙中间多一个空格，因为代码里有回车。</p>
-<p><strong>解决方法：不用 inline 元素。</strong></p>
-<h4 id="3-清除浮动"><a href="#3-清除浮动" class="headerlink" title="3.清除浮动"></a>3.清除浮动</h4><p>在浮动元素的爸爸身上加一个 class </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">clearfix</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>:block;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="4-文字中断"><a href="#4-文字中断" class="headerlink" title="4.文字中断"></a>4.文字中断</h4><p>有时候文字太长了超出屏幕了，两种解决方式。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>helooooooooooooooooooooooooooooooooooooooooooooooooo<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>上面这种情况下浏览器会认为这是一个单词，一个单词是不会自动换行的。</p>
-<p>可以加分隔符</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>helooooooo-ooooooooo-ooooooooo-oooooooo-ooooooo-ooooo-oooo<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>可以使用 word-break</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span> &#123; <span class="attribute">word-break</span>:break-all &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="5-文字溢出省略"><a href="#5-文字溢出省略" class="headerlink" title="5.文字溢出省略"></a>5.文字溢出省略</h4><p>当文字的长度超出了 div 的宽度，多余的部分，我们想用省略号代替。</p>
-<ul>
-<li>一行的时候</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">white-space</span>:nowrap; </span><br><span class="line">    <span class="attribute">overflow</span>:hidden;</span><br><span class="line">    <span class="attribute">text-overflow</span>:ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>多行</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">      <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">      <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;   <span class="comment">/*3行写3，n行写n */</span></span><br><span class="line">      <span class="attribute">-webkit-box-orient</span>: vertical;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="6-文字垂直居中"><a href="#6-文字垂直居中" class="headerlink" title="6.文字垂直居中"></a>6.文字垂直居中</h4><p>Div 的高度是跟随你文字的行数变化的，所以永远不要使用 height 给 Div 高度</p>
-<p>那假如我想要 div 的高度是40px , 怎么办？ 使用 line-height 和 padding </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">24px</span>;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">8px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>24 + 8+ 8 = 40</p>
-<h4 id="7-margin-合并"><a href="#7-margin-合并" class="headerlink" title="7.margin 合并"></a>7.margin 合并</h4><p>当子元素有 margin 的时候， 父元素如果没有“挡住”它的属性，那么就会出现父子margin 合并。</p>
-<p>解决方案 border/ padding/ overflow(不推荐)</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dad</span>&#123;</span><br><span class="line">    <span class="attribute">border</span>:<span class="number">0.1px</span> solid white;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">0.1px</span>;</span><br><span class="line">    <span class="attribute">overflow</span>:hidden</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="8-div-的高度怎么确定的？"><a href="#8-div-的高度怎么确定的？" class="headerlink" title="8.div 的高度怎么确定的？"></a>8.div 的高度怎么确定的？</h4><p>div 的高度是由<strong>文档流</strong>中所有素高度的总和<strong>决定</strong>的。</p>
-<p>文档流：内联元素从左到右，块级元素从上到下，块级元素总是另起一行。</p>
-<p>所以脱离文档流的翻译就是：算高度别算我。（position:absolute,fixed ;  float; ）</p>
-<h4 id="9-内联元素的宽度和高度"><a href="#9-内联元素的宽度和高度" class="headerlink" title="9.内联元素的宽度和高度"></a>9.内联元素的宽度和高度</h4><p>宽度是受 文字的多少 和 margin padding boder 影响。</p>
-<p>高度只受行高决定。</p>
-<h4 id="10-DIV水平垂直居中"><a href="#10-DIV水平垂直居中" class="headerlink" title="10.DIV水平垂直居中"></a>10.DIV水平垂直居中</h4><p>高度不定，宽度不定的div水平垂直居中 flex </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dad</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:flex;</span><br><span class="line">    <span class="attribute">justify-content</span>:center;</span><br><span class="line">    <span class="attribute">align-items</span>:center</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="11-写一个-1-1-的-div"><a href="#11-写一个-1-1-的-div" class="headerlink" title="11.写一个 1:1 的 div"></a>11.写一个 1:1 的 div</h4><p>使用padding撑起高度。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.one</span>&#123;</span><br><span class="line">    <span class="attribute">padding-top</span>:<span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-        
-    </div>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Vue-动画" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/6a317f77.html">Vue 动画</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/archives/6a317f77.html" class="article-date">
-  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
-</a>
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Vue动画"><a href="#Vue动画" class="headerlink" title="Vue动画"></a>Vue动画</h3><h4 id="1-简单例子"><a href="#1-简单例子" class="headerlink" title="1.简单例子"></a>1.简单例子</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"show = !show"</span>&gt;</span></span><br><span class="line">    Toggle</span><br><span class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">transition</span> <span class="attr">name</span>=<span class="string">"fade"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"show"</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#demo'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    show: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fade-enter-active</span>, <span class="selector-class">.fade-leave-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity .<span class="number">5s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.fade-enter</span>, <span class="selector-class">.fade-leave-to</span> <span class="comment">/* .fade-leave-active below version 2.1.8 */</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该例子可以实现 p 标签的渐隐效果。</p>
-<h4 id="2-使用CSS添加稍微多一点动画"><a href="#2-使用CSS添加稍微多一点动画" class="headerlink" title="2.使用CSS添加稍微多一点动画"></a>2.使用CSS添加稍微多一点动画</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter-active</span>,<span class="selector-class">.slide-leave-active</span>&#123;</span><br><span class="line">  <span class="attribute">transition</span>:all <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter</span>&#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">translateX</span>(100px)</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-leave-to</span>&#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">translateX</span>(-100px)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>实现了一个类似轮播感觉的动画。</p>
-<h5 id="使用-animation"><a href="#使用-animation" class="headerlink" title="# 使用 animation"></a># 使用 animation</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter-active</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: bounce-in <span class="number">2s</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-leave-active</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: bounce-in <span class="number">2s</span> reverse</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">keyframes</span> bounce-in &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(0)</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(2)</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(1)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>一个 Scale-in-out 的动画效果</p>
-<h4 id="3-使用-Animate-css"><a href="#3-使用-Animate-css" class="headerlink" title="3.使用 Animate.css"></a>3.使用 Animate.css</h4><p>动画这个东西写起来还是比较复杂的，但是有大牛帮我们写好了。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  &lt;link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet"&gt; --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"visable = !visable"</span>&gt;</span></span><br><span class="line">      Toggle</span><br><span class="line">    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">transition</span> </span></span><br><span class="line"><span class="tag">                <span class="attr">name</span>=<span class="string">"custom-classes-transition"</span> </span></span><br><span class="line"><span class="tag">                <span class="attr">enter-active-class</span>=<span class="string">"animated tada"</span> </span></span><br><span class="line"><span class="tag">                <span class="attr">leave-active-class</span>=<span class="string">"animated bounceOutRight"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">test</span> <span class="attr">v-if</span>=<span class="string">"visable"</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这样不用写 CSS 了，这里的 name 可写可不写。</p>
-<p>但是标签里的 <strong>过度类名</strong> 和之前不一样了:</p>
-<ul>
-<li><code>enter-class</code></li>
-<li><code>enter-active-class</code></li>
-<li><code>enter-to-class</code> (2.1.8+)</li>
-<li><code>leave-class</code></li>
-<li><code>leave-active-class</code></li>
-<li><code>leave-to-class</code> (2.1.8+)</li>
-</ul>
-<p>各种效果预览:</p>
-<h4 id="4-使用-JavaScript-钩子"><a href="#4-使用-JavaScript-钩子" class="headerlink" title="4.使用 JavaScript 钩子"></a>4.使用 JavaScript 钩子</h4><p>有时候我们需要在动画的过程中做一些事情，这就需要钩子函数了。</p>
-<p>首先在属性中声明钩子:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">transition</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:before-enter</span>=<span class="string">"beforeEnter"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:enter</span>=<span class="string">"enter"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:after-enter</span>=<span class="string">"afterEnter"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:enter-cancelled</span>=<span class="string">"enterCancelled"</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:before-leave</span>=<span class="string">"beforeLeave"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:leave</span>=<span class="string">"leave"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:after-leave</span>=<span class="string">"afterLeave"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:leave-cancelled</span>=<span class="string">"leaveCancelled"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>然后在实例中的 methods 中：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">methods: &#123;</span><br><span class="line">  <span class="comment">// --------</span></span><br><span class="line">  <span class="comment">// 进入中</span></span><br><span class="line">  <span class="comment">// --------</span></span><br><span class="line"></span><br><span class="line">  beforeEnter: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 此回调函数是可选项的设置</span></span><br><span class="line">  <span class="comment">// 与 CSS 结合时使用</span></span><br><span class="line">  enter: <span class="function"><span class="keyword">function</span> (<span class="params">el, done</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    done()</span><br><span class="line">  &#125;,</span><br><span class="line">  afterEnter: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line">  enterCancelled: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// --------</span></span><br><span class="line">  <span class="comment">// 离开时</span></span><br><span class="line">  <span class="comment">// --------</span></span><br><span class="line"></span><br><span class="line">  beforeLeave: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 此回调函数是可选项的设置</span></span><br><span class="line">  <span class="comment">// 与 CSS 结合时使用</span></span><br><span class="line">  leave: <span class="function"><span class="keyword">function</span> (<span class="params">el, done</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    done()</span><br><span class="line">  &#125;,</span><br><span class="line">  afterLeave: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// leaveCancelled 只用于 v-show 中</span></span><br><span class="line">  leaveCancelled: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当<strong>只用 JavaScript 过渡</strong>的时候，<strong>在 enter 和 leave 中必须使用 done 进行回调</strong>。</p>
-<p>否则，它们将被同步调用，过渡会立即完成。</p>
-<h5 id="使用-Velocity-js"><a href="#使用-Velocity-js" class="headerlink" title="# 使用 Velocity.js"></a># 使用 Velocity.js</h5><p>这是一个很出名的使用 JavaScript 做动画的库，与其自己写，不如直接用他的。</p>
-<p>(当然，我们一般用CSS )</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example-4"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"show = !show"</span>&gt;</span></span><br><span class="line">    Toggle</span><br><span class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">transition</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-on:before-enter</span>=<span class="string">"beforeEnter"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-on:enter</span>=<span class="string">"enter"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-on:leave</span>=<span class="string">"leave"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-bind:css</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">  &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"show"</span>&gt;</span></span><br><span class="line">      Demo</span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example-4'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    show: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    beforeEnter: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">      el.style.opacity = <span class="number">0</span></span><br><span class="line">      el.style.transformOrigin = <span class="string">'left'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    enter: <span class="function"><span class="keyword">function</span> (<span class="params">el, done</span>) </span>&#123;</span><br><span class="line">      Velocity(el, &#123; <span class="attr">opacity</span>: <span class="number">1</span>, <span class="attr">fontSize</span>: <span class="string">'1.4em'</span> &#125;, &#123; <span class="attr">duration</span>: <span class="number">300</span> &#125;)</span><br><span class="line">      Velocity(el, &#123; <span class="attr">fontSize</span>: <span class="string">'1em'</span> &#125;, &#123; <span class="attr">complete</span>: done &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    leave: <span class="function"><span class="keyword">function</span> (<span class="params">el, done</span>) </span>&#123;</span><br><span class="line">      Velocity(el, &#123; <span class="attr">translateX</span>: <span class="string">'15px'</span>, <span class="attr">rotateZ</span>: <span class="string">'50deg'</span> &#125;, &#123; <span class="attr">duration</span>: <span class="number">600</span> &#125;)</span><br><span class="line">      Velocity(el, &#123; <span class="attr">rotateZ</span>: <span class="string">'100deg'</span> &#125;, &#123; <span class="attr">loop</span>: <span class="number">2</span> &#125;)</span><br><span class="line">      Velocity(el, &#123;</span><br><span class="line">        rotateZ: <span class="string">'45deg'</span>,</span><br><span class="line">        translateY: <span class="string">'30px'</span>,</span><br><span class="line">        translateX: <span class="string">'30px'</span>,</span><br><span class="line">        opacity: <span class="number">0</span></span><br><span class="line">      &#125;, &#123; <span class="attr">complete</span>: done &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="5-多个元素的过度"><a href="#5-多个元素的过度" class="headerlink" title="5.多个元素的过度"></a>5.多个元素的过度</h4><p>上面我们一直在写单个元素的动画，涉及到多个元素，该如何操作呢？</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#demo'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    status: <span class="string">'on'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">transition</span> <span class="attr">name</span>=<span class="string">'slide'</span> <span class="attr">mode</span> = <span class="string">"out-in"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-if</span>=<span class="string">"status === 'off'"</span> <span class="attr">key</span>=<span class="string">"on"</span> @<span class="attr">click</span>=<span class="string">"status='on'"</span>&gt;</span>on<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-else</span>=<span class="string">"status === 'on'"</span> <span class="attr">key</span>=<span class="string">"off"</span> @<span class="attr">click</span>=<span class="string">"status='off'"</span>&gt;</span>off<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>name</code> : 类名</li>
-<li><code>mode</code> : <code>in-out</code>, <code>out-in</code> </li>
-<li><code>key</code>: 两个元素的时候一定要加上 <code>key</code> 属性，里面写啥不重要，但是一定要写上，并且不重复</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#demo</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">button</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter-active</span>,</span><br><span class="line"><span class="selector-class">.slide-leave-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(100px)</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-100px)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="6-组件之间的过度"><a href="#6-组件之间的过度" class="headerlink" title="6.组件之间的过度"></a>6.组件之间的过度</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"temp='v-a'"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"temp='v-b'"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">transition</span> <span class="attr">name</span>=<span class="string">'slide'</span> <span class="attr">mode</span>=<span class="string">"out-in"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">component</span> <span class="attr">v-bind:is</span>=<span class="string">'temp'</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#demo'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    temp: <span class="string">'v-a'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    <span class="string">'v-a'</span>: &#123;</span><br><span class="line">      template: <span class="string">'&lt;div&gt;Component A&lt;/div&gt;'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'v-b'</span>: &#123;</span><br><span class="line">      template: <span class="string">'&lt;div&gt;Component B&lt;/div&gt;'</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.slide-enter-active</span>,</span><br><span class="line"><span class="selector-class">.slide-leave-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-enter</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(100px)</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slide-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-100px)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>组件之间的过度不需要 <code>key</code></p>
 
       
 
@@ -1016,113 +1151,6 @@ a(10,20,30);
 <p>回调 : 把别人给我的函数调用一下。</p>
 <p>总结：其实就是用户再前面写好获取数据的方法，然后把这个方法传到子组件，这样我们就能在子组件中获取到用户的数据，然后处理数据。</p>
 
-      
-
-      
-        
-    </div>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-REM" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/151aa5a1.html">REM</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/archives/151aa5a1.html" class="article-date">
-  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
-</a>
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="REM"><a href="#REM" class="headerlink" title="REM"></a>REM</h3><h4 id="1-各种单位"><a href="#1-各种单位" class="headerlink" title="1.各种单位"></a>1.各种单位</h4><ol>
-<li><p>px 像素</p>
-</li>
-<li><p>em 一个M的宽度，跟自身的 font-size 相同</p>
-</li>
-<li><p>rem  <strong>根元素</strong>的 font-size</p>
-</li>
-<li><p>vh : viewport height 视口高度  100vh === 视口高度</p>
-<p>vm: viewport width 视口宽度 100vw === 视口宽度</p>
-</li>
-</ol>
-<h4 id="2-使用REM"><a href="#2-使用REM" class="headerlink" title="2.使用REM"></a>2.使用REM</h4><p>当我们要写一个适配手机的页面的时候，我们就会陷入这样蛋疼的境地。</p>
-<p>因为各种品牌，各种型号的手机分辨率是不一样的，这就很蛋疼了。</p>
-<p>这时候就使用REM来解决这个问题。</p>
-<ol>
-<li><p>REM始终为根元素(html)的 font-size 的值。</p>
-</li>
-<li><p>手机页面的宽度 width 是永远不变的。</p>
-</li>
-</ol>
-<p>知道了上面两个前提，我们就可以做一些事情了。</p>
-<ol>
-<li>通过 width的值设置根元素的 font-size。</li>
-<li>通过 REM 定义各种宽和高，这样就是永远适配当前页面宽度的。</li>
-</ol>
-<p>首先，添加 meta:viewport 标签</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>第二步，通过 width 计算根元素的font-size</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $width = <span class="built_in">window</span>.outerWidth;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">`&lt;style&gt;html&#123;font-size:<span class="subst">$&#123;$width<span class="regexp">/10&#125;px&#125;&lt;/</span>style&gt;<span class="string">`)</span></span></span></span><br></pre></td></tr></table></figure>
-<p>P.S. 虽然这个 fontsize/n 中的 n  ,是你可以自己决定的，但不要忘记了 </p>
-<ol>
-<li><p>12px 原则，chrome浏览器会阻止你设置比 12px还小的字。</p>
-</li>
-<li><p>假如你换算出来的 px 太小，CSS会认为这是 0 或者 1。</p>
-</li>
-</ol>
-<p>第三步，写CSS</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">widht</span>:<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span> .<span class="number">5rem</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过上面的换算，我们可以知道</p>
-<ol>
-<li>根元素的 font-size = $width/10 ， 也就是 十分之一个屏幕的宽度。</li>
-<li>所以 3rem === 十分之三个屏幕宽度。</li>
-<li>所以，无论在什么环境下，它都永远等于十分之三个屏幕宽度。</li>
-<li>因此，在每一个设备上的观看效果都相同。</li>
-</ol>
-<h4 id="3-使用sass"><a href="#3-使用sass" class="headerlink" title="3.使用sass"></a>3.使用sass</h4><p>每次都要计算，非常的麻烦，所以使用 sass 或者 less 帮我们计算。</p>
-<p>安装sass</p>
-<ul>
-<li><p>npm config set registry <a href="https://registry.npm.taobao.org/" rel="external nofollow noopener noreferrer" target="_blank">https://registry.npm.taobao.org/</a></p>
-</li>
-<li><p>touch ~/.bashrc</p>
-</li>
-<li><p>echo ‘export SASS_BINARY_SITE=”<a href="https://npm.taobao.org/mirrors/node-sass%22&#39;" rel="external nofollow noopener noreferrer" target="_blank">https://npm.taobao.org/mirrors/node-sass”‘</a> &gt;&gt; ~/.bashrc</p>
-</li>
-<li><p>source ~/.bashrc</p>
-</li>
-<li><p>npm i -g node-sass</p>
-</li>
-<li><p>mkdir ~/Desktop/scss-demo</p>
-</li>
-<li><p>cd ~/Desktop/scss-demo</p>
-</li>
-<li><p>mkdir scss css</p>
-</li>
-<li><p>touch scss/style.scss</p>
-</li>
-<li><p>start scss/style.scss</p>
-</li>
-<li><p>node-sass -wr scss -o css</p>
-<p>编辑 scss 文件就会自动得到 css 文件</p>
-</li>
-</ul>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@function px( <span class="variable">$px</span>) &#123;</span><br><span class="line">    @return <span class="variable">$px</span>/<span class="variable">$designWidth</span>*<span class="number">10</span>+rem;  </span><br><span class="line">    <span class="comment">//这里为啥✖️10呢，因为在上面我们除以10了，所以要计算出比例值需要✖️10</span></span><br><span class="line">    <span class="comment">//假设 屏幕宽度为 320px , 那么 root font-size:32px ,即 1rem === 32px ，把屏幕分成了10等份。</span></span><br><span class="line">    <span class="comment">//但是 设计稿宽度为 640px , 里面还有一个高度为 320px 的 div,</span></span><br><span class="line">    <span class="comment">//相对于设计稿,div的比例是 320/640=1/2 , 也就是占了5份的屏幕宽度 即为 5rem </span></span><br><span class="line">    <span class="comment">//所以 height : 5rem </span></span><br><span class="line">&#125;</span><br><span class="line">@designWidth:<span class="number">640</span>; <span class="comment">//根据设计稿的宽度来写。</span></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: px2rem(<span class="number">320</span>);;</span><br><span class="line">    <span class="attribute">height</span>: px2rem(<span class="number">160</span>);</span><br><span class="line">    <span class="attribute">margin</span>: px2rem(<span class="number">40</span>) px2rem(<span class="number">40</span>);</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       

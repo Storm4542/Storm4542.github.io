@@ -32,6 +32,113 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-REM" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/151aa5a1.html">REM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/archives/151aa5a1.html" class="article-date">
+  <time datetime="2018-08-24T08:16:35.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="REM"><a href="#REM" class="headerlink" title="REM"></a>REM</h3><h4 id="1-各种单位"><a href="#1-各种单位" class="headerlink" title="1.各种单位"></a>1.各种单位</h4><ol>
+<li><p>px 像素</p>
+</li>
+<li><p>em 一个M的宽度，跟自身的 font-size 相同</p>
+</li>
+<li><p>rem  <strong>根元素</strong>的 font-size</p>
+</li>
+<li><p>vh : viewport height 视口高度  100vh === 视口高度</p>
+<p>vm: viewport width 视口宽度 100vw === 视口宽度</p>
+</li>
+</ol>
+<h4 id="2-使用REM"><a href="#2-使用REM" class="headerlink" title="2.使用REM"></a>2.使用REM</h4><p>当我们要写一个适配手机的页面的时候，我们就会陷入这样蛋疼的境地。</p>
+<p>因为各种品牌，各种型号的手机分辨率是不一样的，这就很蛋疼了。</p>
+<p>这时候就使用REM来解决这个问题。</p>
+<ol>
+<li><p>REM始终为根元素(html)的 font-size 的值。</p>
+</li>
+<li><p>手机页面的宽度 width 是永远不变的。</p>
+</li>
+</ol>
+<p>知道了上面两个前提，我们就可以做一些事情了。</p>
+<ol>
+<li>通过 width的值设置根元素的 font-size。</li>
+<li>通过 REM 定义各种宽和高，这样就是永远适配当前页面宽度的。</li>
+</ol>
+<p>首先，添加 meta:viewport 标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>第二步，通过 width 计算根元素的font-size</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $width = <span class="built_in">window</span>.outerWidth;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">`&lt;style&gt;html&#123;font-size:<span class="subst">$&#123;$width<span class="regexp">/10&#125;px&#125;&lt;/</span>style&gt;<span class="string">`)</span></span></span></span><br></pre></td></tr></table></figure>
+<p>P.S. 虽然这个 fontsize/n 中的 n  ,是你可以自己决定的，但不要忘记了 </p>
+<ol>
+<li><p>12px 原则，chrome浏览器会阻止你设置比 12px还小的字。</p>
+</li>
+<li><p>假如你换算出来的 px 太小，CSS会认为这是 0 或者 1。</p>
+</li>
+</ol>
+<p>第三步，写CSS</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">widht</span>:<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span> .<span class="number">5rem</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过上面的换算，我们可以知道</p>
+<ol>
+<li>根元素的 font-size = $width/10 ， 也就是 十分之一个屏幕的宽度。</li>
+<li>所以 3rem === 十分之三个屏幕宽度。</li>
+<li>所以，无论在什么环境下，它都永远等于十分之三个屏幕宽度。</li>
+<li>因此，在每一个设备上的观看效果都相同。</li>
+</ol>
+<h4 id="3-使用sass"><a href="#3-使用sass" class="headerlink" title="3.使用sass"></a>3.使用sass</h4><p>每次都要计算，非常的麻烦，所以使用 sass 或者 less 帮我们计算。</p>
+<p>安装sass</p>
+<ul>
+<li><p>npm config set registry <a href="https://registry.npm.taobao.org/" rel="external nofollow noopener noreferrer" target="_blank">https://registry.npm.taobao.org/</a></p>
+</li>
+<li><p>touch ~/.bashrc</p>
+</li>
+<li><p>echo ‘export SASS_BINARY_SITE=”<a href="https://npm.taobao.org/mirrors/node-sass%22&#39;" rel="external nofollow noopener noreferrer" target="_blank">https://npm.taobao.org/mirrors/node-sass”‘</a> &gt;&gt; ~/.bashrc</p>
+</li>
+<li><p>source ~/.bashrc</p>
+</li>
+<li><p>npm i -g node-sass</p>
+</li>
+<li><p>mkdir ~/Desktop/scss-demo</p>
+</li>
+<li><p>cd ~/Desktop/scss-demo</p>
+</li>
+<li><p>mkdir scss css</p>
+</li>
+<li><p>touch scss/style.scss</p>
+</li>
+<li><p>start scss/style.scss</p>
+</li>
+<li><p>node-sass -wr scss -o css</p>
+<p>编辑 scss 文件就会自动得到 css 文件</p>
+</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@function px( <span class="variable">$px</span>) &#123;</span><br><span class="line">    @return <span class="variable">$px</span>/<span class="variable">$designWidth</span>*<span class="number">10</span>+rem;  </span><br><span class="line">    <span class="comment">//这里为啥✖️10呢，因为在上面我们除以10了，所以要计算出比例值需要✖️10</span></span><br><span class="line">    <span class="comment">//假设 屏幕宽度为 320px , 那么 root font-size:32px ,即 1rem === 32px ，把屏幕分成了10等份。</span></span><br><span class="line">    <span class="comment">//但是 设计稿宽度为 640px , 里面还有一个高度为 320px 的 div,</span></span><br><span class="line">    <span class="comment">//相对于设计稿,div的比例是 320/640=1/2 , 也就是占了5份的屏幕宽度 即为 5rem </span></span><br><span class="line">    <span class="comment">//所以 height : 5rem </span></span><br><span class="line">&#125;</span><br><span class="line">@designWidth:<span class="number">640</span>; <span class="comment">//根据设计稿的宽度来写。</span></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: px2rem(<span class="number">320</span>);;</span><br><span class="line">    <span class="attribute">height</span>: px2rem(<span class="number">160</span>);</span><br><span class="line">    <span class="attribute">margin</span>: px2rem(<span class="number">40</span>) px2rem(<span class="number">40</span>);</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-LESS" class="article article-type-post" itemscope="" itemprop="blogPost">
   
   <div class="article-inner">
